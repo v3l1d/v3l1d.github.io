@@ -7,6 +7,24 @@ showToc: true
 social:
   github: https://github.com/v3l1d
 
+
+outputs:
+  home:
+    - HTML
+    - RSS
+  section:
+    - HTML
+  taxonomy:
+    - HTML
+  term:
+    - HTML
+  page:
+    - HTML
+
+permalinks:
+  posts: "/posts/:title/"
+
+
 permalinks:
     posts: /posts/:title/
 
@@ -35,6 +53,7 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+
 
 # Site parameters
 params:
