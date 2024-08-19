@@ -2,7 +2,7 @@
 title= "FunBoexEasyEnum by OffSec"
 author= "v3l1d"
 date= "2024-08-17"
-draf= false
+draft= false
 +++
 
 ![image1](Homepage-default-preview.jpg)
