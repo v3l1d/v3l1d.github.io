@@ -5,7 +5,7 @@ date= "2024-08-17"
 draft= false
 +++
 
-![image1](Homepage-default-preview.jpg)
+![image1](FunboxEasyEnum/Homepage-default-preview.jpg)
 
 On a lazy Saturday morning, August 17, 2024, I embarked on a thrilling adventure in the world of Offensive Security, tackling the FunboxEasyEnum box on the Proving Grounds Play labs. This easy-level warmup machine was the perfect way to kick-start my journey, and I'm excited to share my experience with you.
 
@@ -40,26 +40,26 @@ Nmap done: 1 IP address (1 host up) scanned in 43.77 seconds
 
 Ran gobuster for directory enumeration:
 
-![[Pasted image 20240814141922.png]]
+![image2](FunboxEasyEnum/Pasted image 20240814141922.png)
 
 Only /phpmyadmin is accessible
-![[Pasted image 20240814142029.png]]
+![image1](FunboxEasyEnum/Pasted image 20240814142029.png)
 
 Analyzing burp request found that /phpmyadmin/js/whitelist.php and /js/messages.php are readable:
-![[Pasted image 20240814143143.png]]
+![image1](FunboxEasyEnum/Pasted image 20240814143143.png)
 
 Nothing interesting here, re run enumeration with gobuster filtering for php file:
 
-![[Pasted image 20240814144359.png]]
+![image1](FunboxEasyEnum/Pasted image 20240814144359.png)
 
 Try mini.php:
 
-![[Pasted image 20240814144433.png]]
+![image1](FunboxEasyEnum/Pasted image 20240814144433.png)
 ### Access
 
 I uploaded a shell.php while listening on my kali:
 
-![[Pasted image 20240814145857.png]]
+![image1](FunboxEasyEnum/Pasted image 20240814145857.png)
 
 ```shell
 lrwxrwxrwx   1 root root        31 Sep 18  2020 vmlinuz.old -> boot/vmlinuz-4.15.0-117-generic
@@ -160,7 +160,7 @@ $dbtype='mysql';
 
 Now we can log in phpmyadmin
 
-![[Pasted image 20240815213653.png]]
+![image1](FunboxEasyEnum/Pasted image 20240815213653.png)
 
 ```
 sudo su karla:tgbzhnujm! 
@@ -191,7 +191,7 @@ proof.txt  root.flag
 root@funbox7:~# 
 ```
 
-![[Pasted image 20240815214144.png]]
+![image1](FunboxEasyEnum/Pasted image 20240815214144.png)
 
 
 # Flags

