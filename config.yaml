@@ -50,7 +50,7 @@ params:
   # Author biography
   bio: Software Engineer, Cybersecurity graduated
   # Site Description, used in HTML meat
-  description: My personal shared notebook :)
+  description:
 
   tags: false
 
@@ -67,10 +67,10 @@ params:
   # To enable table of content, you could set `showToc: true`, default is `false`
   showToc: false
   # To hidden powerBy message in the page footer, you could set: `showPowerBy: false`, default is `true`
-  showPowerBy: false
+  showPowerBy: true
   # To enable math typesetting , you could set `math: true`, default is `false`
   math: false
   # To hidden post summary in home page, you could set `hiddenPostSummaryInHomePage: true`, default is `false`
   hiddenPostSummaryInHomePage: true
   # Website copyright, default: '© Copyright 2021 ❤️ {params.author}'
-  copyright: '© Copyright 2021 ❤️ v3l1d' 
+  copyright: '❤️ v3l1d' 
