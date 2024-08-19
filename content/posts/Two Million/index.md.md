@@ -27,6 +27,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
  ```
 
 ![](attachment/cebd9713f29652a2953bbac2f2371ed1.png)
+
 ### Invite code generation
 
 ``` shell
@@ -181,7 +182,7 @@ This CVE will give you root access
 ![](attachment/3a2cb1f670e1d6bbaa01132a1090bf31.png)
 
 
-**Flags
+### Flags
 
 ```
 root:7dc68d17b543edb77d35bc192d63907a
