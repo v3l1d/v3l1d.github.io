@@ -2,6 +2,7 @@ baseURL: https://v3l1d.github.io/
 languageCode: en-us
 title: v3l1d's Blog
 theme: mini
+publishDir: docs
 
 showToc: true
 social:
