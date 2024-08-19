@@ -34,7 +34,7 @@ PORT    STATE SERVICE     VERSION
 139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
 445/tcp open  netbios-ssn Samba smbd 3.0.20-Debian (workgroup: WORKGROUP)
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
- ```
+```
 
 Anonymous connection FTP but nothing there
 
