@@ -8,18 +8,6 @@ social:
   github: https://github.com/v3l1d
 
 
-outputs:
-  home:
-    - HTML
-    - RSS
-  section:
-    - HTML
-  taxonomy:
-    - HTML
-  term:
-    - HTML
-  page:
-    - HTML
 
 permalinks:
   posts: "/posts/:title/"
