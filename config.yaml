@@ -8,7 +8,7 @@ social:
   github: https://github.com/v3l1d
 
 permalinks:
-    posts: /posts/:title/
+    posts: content/posts/:title/
 
 hasCJKLanguage: true
 
