@@ -3,6 +3,7 @@ languageCode: en-us
 title: v3l1d's Blog
 theme: mini
 publishDir: docs
+contentDir: docs
 showToc: true
 social:
   github: https://github.com/v3l1d
