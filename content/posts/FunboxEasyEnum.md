@@ -1,3 +1,9 @@
++++
+title= "FunBoxEasyEnum by OffSec"
+author= "v3l1d"
+date= "2024-08-17"
++++
+
 ![](attachment/93250afd83aff038b608942734b9a111.jpg)
 
 On a lazy Saturday morning, August 17, 2024, I embarked on a thrilling adventure in the world of Offensive Security, tackling the FunboxEasyEnum box on the Proving Grounds Play labs. This easy-level warmup machine was the perfect way to kick-start my journey, and I'm excited to share my experience with you.
