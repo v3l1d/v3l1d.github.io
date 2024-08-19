@@ -2,20 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://v3l1d.github.io/posts/example2/</loc>
-    <lastmod>2024-08-19T15:08:26+02:00</lastmod>
-  </url><url>
     <loc>https://v3l1d.github.io/posts/</loc>
-    <lastmod>2024-08-19T15:08:26+02:00</lastmod>
-  </url><url>
-    <loc>https://v3l1d.github.io/</loc>
-    <lastmod>2024-08-19T15:08:26+02:00</lastmod>
-  </url><url>
-    <loc>https://v3l1d.github.io/posts/funboexeasyenum-by-offsec/</loc>
-    <lastmod>2024-08-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://v3l1d.github.io/categories/</loc>
   </url><url>
+    <loc>https://v3l1d.github.io/posts/</loc>
+  </url><url>
     <loc>https://v3l1d.github.io/tags/</loc>
+  </url><url>
+    <loc>https://v3l1d.github.io/</loc>
   </url>
 </urlset>

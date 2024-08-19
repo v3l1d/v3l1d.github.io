@@ -1,11 +1,4 @@
-+++
-title= "FunBoexEasyEnum by OffSec"
-author= "v3l1d"
-date= "2024-08-17"
-draft= false
-+++
-
-![image1](FunboxEasyEnum/Homepage-default-preview.jpg)
+![](attachment/93250afd83aff038b608942734b9a111.jpg)
 
 On a lazy Saturday morning, August 17, 2024, I embarked on a thrilling adventure in the world of Offensive Security, tackling the FunboxEasyEnum box on the Proving Grounds Play labs. This easy-level warmup machine was the perfect way to kick-start my journey, and I'm excited to share my experience with you.
 
@@ -40,26 +33,26 @@ Nmap done: 1 IP address (1 host up) scanned in 43.77 seconds
 
 Ran gobuster for directory enumeration:
 
-![image2](FunboxEasyEnum/Pasted image 20240814141922.png)
+![](attachment/8056c88ec9d48a1a73583502575dc7a7.png)
 
 Only /phpmyadmin is accessible
-![image1](FunboxEasyEnum/Pasted image 20240814142029.png)
+![](attachment/2f1137ed6b04c6e54a3555ea3b74f8bb.png)
 
 Analyzing burp request found that /phpmyadmin/js/whitelist.php and /js/messages.php are readable:
-![image1](FunboxEasyEnum/Pasted image 20240814143143.png)
+![](attachment/0bc35d213b3744dff25955d61e5c3dc7.png)
 
 Nothing interesting here, re run enumeration with gobuster filtering for php file:
 
-![image1](FunboxEasyEnum/Pasted image 20240814144359.png)
+![](attachment/343af38a849df0558dcd46d857f37a9b.png)
 
 Try mini.php:
 
-![image1](FunboxEasyEnum/Pasted image 20240814144433.png)
+![](attachment/4d78da8958ab8e7f54fd207350384649.png)
 ### Access
 
 I uploaded a shell.php while listening on my kali:
 
-![image1](FunboxEasyEnum/Pasted image 20240814145857.png)
+![](attachment/c776a86f8411bde6fc6f25428c54b0c8.png)
 
 ```shell
 lrwxrwxrwx   1 root root        31 Sep 18  2020 vmlinuz.old -> boot/vmlinuz-4.15.0-117-generic
@@ -160,7 +153,7 @@ $dbtype='mysql';
 
 Now we can log in phpmyadmin
 
-![image1](FunboxEasyEnum/Pasted image 20240815213653.png)
+![](attachment/4f8c1e0352e5cffceb06abbef4a03b5b.png)
 
 ```
 sudo su karla:tgbzhnujm! 
@@ -191,7 +184,7 @@ proof.txt  root.flag
 root@funbox7:~# 
 ```
 
-![image1](FunboxEasyEnum/Pasted image 20240815214144.png)
+![](attachment/23b8ace2c3ef681dca18c48344780c46.png)
 
 
 # Flags
