@@ -7,7 +7,7 @@ date: "2024-08-04"
 ### Port Scan
 
 ```
-"Nmap 7.94SVN scan initiated Sat Aug 10 08:35:19 2024 as: nmap -sC -sV -A -T4 -Pn -o scan 10.10.10.3
+Nmap 7.94SVN scan initiated Sat Aug 10 08:35:19 2024 as: nmap -sC -sV -A -T4 -Pn -o scan 10.10.10.3
 Nmap scan report for 10.10.10.3
 Host is up (0.15s latency).
 Not shown: 996 filtered tcp ports (no-response)
@@ -34,11 +34,12 @@ PORT    STATE SERVICE     VERSION
 445/tcp open  netbios-ssn Samba smbd 3.0.20-Debian (workgroup: WORKGROUP)
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
  ```
+
 Anonymous connection FTP but nothing there
 
-# CVE-2007-2447
+### CVE-2007-2447
 
-Looking online i found this vulnerability for this version of 
+Looking online i found this vulnerability for this version of smb
 
 
 ```text
