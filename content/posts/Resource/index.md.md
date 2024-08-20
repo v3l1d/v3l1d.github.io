@@ -31,7 +31,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Sun Aug 11 14:52:32 2024 -- 1 IP address (1 host up) scanned in 15.74 seconds
 ```
 
-Visit the http://itrc.ssg.htb/ 
+Visit http://itrc.ssg.htb/ 
 
 
 
@@ -95,8 +95,8 @@ try {
 
 ```
 
-Credentials found here didn't work neither for ssh or others
-Machine looks always broken so i decided to look another writeup and found out that should be present a file in /uploads folder of itrc that i don't have:
+Credentials found here didn't work neither for ssh or others.
+This box looks always broken so i decided to look a writeup and found out that should be present a file in /uploads folder of itrc that i don't have:
 
 ![](attachment/836cab1aee6922d645e447bf11a51d46.png)
 
