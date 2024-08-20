@@ -6,7 +6,16 @@
     <description>Recent content in Posts on v3l1d&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://v3l1d.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://v3l1d.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTB: Resource Seasonal Machine</title>
+      <link>https://v3l1d.github.io/posts/htb-resource-seasonal-machine/</link>
+      <pubDate>Tue, 20 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://v3l1d.github.io/posts/htb-resource-seasonal-machine/</guid>
+      <description>Port Scan ┌──(kali㉿kali)-[~/HTB/Resource] └─$ cat scan_Complete # Nmap 7.94SVN scan initiated Sun Aug 11 14:52:16 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan_Complete 10.10.11.27 Nmap scan report for 10.10.11.27 Host is up (0.086s latency). Not shown: 65533 closed tcp ports (conn-refused) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 9.2p1 Debian 2+deb12u3 (protocol 2.0) | ssh-hostkey: | 256 d5:4f:62:39:7b:d2:22:f0:a8:8a:d9:90:35:60:56:88 (ECDSA) |_ 256 fb:67:b0:60:52:f2:12:7e:6c:13:fb:75:f2:bb:1a:ca (ED25519) 2222/tcp open ssh OpenSSH 8.</description>
+    </item>
+    
     <item>
       <title>HTB: SEA Seasonal Machine</title>
       <link>https://v3l1d.github.io/posts/htb-sea-seasonal-machine/</link>
