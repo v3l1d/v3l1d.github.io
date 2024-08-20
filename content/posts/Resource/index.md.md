@@ -4,8 +4,11 @@ author: "v3l1d"
 date: "2024-08-20"
 ---
 
-**Port Scan**
+
 ![](attachment/3bd70dd5104068e4031e06ac1c61711d.png)
+
+**Port Scan**
+
 ```
 ┌──(kali㉿kali)-[~/HTB/Resource]
 └─$ cat scan_Complete 
