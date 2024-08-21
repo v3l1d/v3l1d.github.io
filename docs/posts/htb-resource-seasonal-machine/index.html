@@ -56,7 +56,7 @@
           ·
         </span>
         <span>
-          826 words
+          772 words
         </span>
         <span class="split">
           ·
@@ -188,24 +188,10 @@ permitted by applicable law.
 root@itrc:~# ls
 </code></pre></div><p>Even if we logged as root, there&rsquo;s no root flag, so download <strong>sign_key_api.sh</strong> file.</p>
 <p><p class="markdown-image">
-  <img src="attachment/09598aa1ce18ac9b5f233eecf3a06a09.png" alt=""  />
-</p></p>
-<p>Go back in msainristil SSH:</p>
-<p><p class="markdown-image">
-  <img src="attachment/b4223d8b25ba9e87781b1b3c05157fee.png" alt=""  />
-</p></p>
-<p>Run these commands to generate ssh keypair again and sign them with <strong>ca-itrc</strong> SSH certificate</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-keygen -t rsa -b 2048 -f keypair
-ssh-keygen -s ca-itrc -I user-cert -n zzinter -V +52w -z 12345 keypair.pub
-</code></pre></div><p><p class="markdown-image">
-  <img src="attachment/416696f04cb1bbddf329cdb2a8a2cc90.png" alt=""  />
-</p></p>
-<p>Now copy the files generated in local machine:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">scp  msainristil@10.10.11.27:/home/msainristil/decommission_old_ca/keypair* 
-82yards2closeit
-ssh -i keypair zzinter@10.10.11.27
-</code></pre></div><p><p class="markdown-image">
   <img src="attachment/922daa0e3bdaddd8a0a3093c42c89b9f.png" alt=""  />
+</p></p>
+<p><p class="markdown-image">
+  <img src="attachment/09598aa1ce18ac9b5f233eecf3a06a09.png" alt=""  />
 </p></p>
 <p>From zzinter ssh scp this file: <strong>sign_key_api.sh</strong> and modify the file with vim appending <strong>zzinter_temp</strong> and <strong>root_user</strong> as are present in ssh_principals of the box. This is visible generating a public cert for support@ssg.</p>
 <p><p class="markdown-image">

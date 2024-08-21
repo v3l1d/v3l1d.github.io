@@ -143,31 +143,9 @@ root@itrc:~# ls
 
 Even if we logged as root, there's no root flag, so download **sign_key_api.sh** file.
 
-![](attachment/09598aa1ce18ac9b5f233eecf3a06a09.png)
-
-Go back in msainristil SSH:
-
-![](attachment/b4223d8b25ba9e87781b1b3c05157fee.png)
-
-
-Run these commands to generate ssh keypair again and sign them with **ca-itrc** SSH certificate
-
-```
-ssh-keygen -t rsa -b 2048 -f keypair
-ssh-keygen -s ca-itrc -I user-cert -n zzinter -V +52w -z 12345 keypair.pub
-```
-
-![](attachment/416696f04cb1bbddf329cdb2a8a2cc90.png)
-
-Now copy the files generated in local machine:
-
-```
-scp  msainristil@10.10.11.27:/home/msainristil/decommission_old_ca/keypair* 
-82yards2closeit
-ssh -i keypair zzinter@10.10.11.27
-```
-
 ![](attachment/922daa0e3bdaddd8a0a3093c42c89b9f.png)
+
+![](attachment/09598aa1ce18ac9b5f233eecf3a06a09.png)
 
 From zzinter ssh scp this file: **sign_key_api.sh** and modify the file with vim appending **zzinter_temp** and **root_user** as are present in ssh_principals of the box. This is visible generating a public cert for support@ssg.
 
