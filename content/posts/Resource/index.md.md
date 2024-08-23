@@ -200,8 +200,8 @@ This command generates a signed SSH user certificate using the `ssh-keygen` tool
 The resulting certificate is stored in `keypair-cert.pub`.
 
 **Flags**
-![](attachment/d9314cee50c28c2118e10e586b1ea6b8.png)
 
+![](attachment/d9314cee50c28c2118e10e586b1ea6b8.png)
 
 ```
 user: 98a79086fe46218a7edd6abc87eb54f3
