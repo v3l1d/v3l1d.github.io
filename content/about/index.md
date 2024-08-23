@@ -40,4 +40,5 @@
 
 * **Systems Configuration and Implementation**
 * **Enterprise Systems Development**
-* **Security Operations**w
+* **Pentetration Testing**
+* **Reverse Engineering**
