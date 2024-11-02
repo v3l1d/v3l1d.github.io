@@ -75,5 +75,14 @@ nmap -sC -sV -A -T4 -p- 192.168.235.132 -o scan Starting Nmap 7.94SVN ( https://
       <description>v31ld 🔗Contact Information 🔗 GitHub: github.com/v3l1d HackTheBox : v3l1d  Education 🔗 Master&amp;rsquo;s Degree 🔗 Master Degree in Cybersecurity, Università degli Studi di Milano (September 2021 - July 2024)  Final grade: 110/110 Thesis title: &amp;ldquo;Implementation of an AWS Cloud Infrastructure for Managing Performance-Based Layers of REST Services / gRPC with Optimized Communication&amp;rdquo;    Exchange Program 🔗 Exchange student in Master in Innovation and Research of Informatics, Universitat Politècnica de Catalunya - FIB Barcellona (September 2022 - October 2023)  Bachelor&amp;rsquo;s Degree 🔗 Bachelor Degree in Computer Science, Università degli Studi di Bari &amp;ldquo;Aldo Moro&amp;rdquo; (September 2018 - October 2021)  Final Grade: 107/110 Thesis Title: &amp;ldquo;Techniques and Methods for Secure Monitoring of Information and Events&amp;rdquo;    Technical Skills 🔗 Programming Languages 🔗 C/C++ Java Python JavaScript  Expertise 🔗 Systems Configuration and Implementation Enterprise Systems Development Pentetration Testing Reverse Engineering  </description>
     </item>
     
+    <item>
+      <title>HTB: Chemistry</title>
+      <link>https://v3l1d.github.io/posts/htb-chemistry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://v3l1d.github.io/posts/htb-chemistry/</guid>
+      <description>Port Scan 🔗# Nmap 7.94SVN scan initiated Fri Oct 25 12:20:35 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.10.11.38 Nmap scan report for 10.10.11.38 Host is up (0.098s latency). Not shown: 986 closed tcp ports (reset) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 b6:fc:20:ae:9d:1d:45:1d:0b:ce:d9:d0:20:f2:6f:dc (RSA) | 256 f1:ae:1c:3e:1d:ea:55:44:6c:2f:f2:56:8d:62:3c:2b (ECDSA) |_ 256 94:42:1b:78:f2:51:87:07:3e:97:26:c9:a2:5c:0a:26 (ED25519) 306/tcp filtered unknown 668/tcp filtered mecomm 1049/tcp filtered td-postman 1112/tcp filtered msql 1247/tcp filtered visionpyramid 1600/tcp filtered issd 1801/tcp filtered msmq 4848/tcp filtered appserv-http 5000/tcp open upnp?</description>
+    </item>
+    
   </channel>
 </rss>

