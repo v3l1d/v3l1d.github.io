@@ -1,7 +1,7 @@
 ---
 title: "HTB: Chemistry"
 author: "v3l1d"
-date: "2024-11-'1"
+date: "2024-11-01"
 year: "2024"
 ---
 
@@ -266,22 +266,3 @@ _laurel:!:20007::::::
 ```
 
 Got the root flag, but let's try to crack root password anyway
-
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```
-
-```
-```

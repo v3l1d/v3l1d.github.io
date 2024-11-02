@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://v3l1d.github.io/posts/htb-seasonal-sightless/</loc>
-    <lastmod>2024-10-23T00:00:00+00:00</lastmod>
+    <loc>https://v3l1d.github.io/posts/htb-chemistry/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://v3l1d.github.io/posts/</loc>
-    <lastmod>2024-10-23T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://v3l1d.github.io/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://v3l1d.github.io/posts/htb-seasonal-sightless/</loc>
     <lastmod>2024-10-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://v3l1d.github.io/posts/htb-resource-seasonal-machine/</loc>
@@ -30,8 +33,6 @@
     <priority>0</priority>
   </url><url>
     <loc>https://v3l1d.github.io/categories/</loc>
-  </url><url>
-    <loc>https://v3l1d.github.io/posts/htb-chemistry/</loc>
   </url><url>
     <loc>https://v3l1d.github.io/tags/</loc>
   </url>

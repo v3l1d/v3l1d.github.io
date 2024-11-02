@@ -6,7 +6,16 @@
     <description>Recent content in Posts on v3l1d&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 23 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://v3l1d.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://v3l1d.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTB: Chemistry</title>
+      <link>https://v3l1d.github.io/posts/htb-chemistry/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://v3l1d.github.io/posts/htb-chemistry/</guid>
+      <description>Port Scan 🔗# Nmap 7.94SVN scan initiated Fri Oct 25 12:20:35 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.10.11.38 Nmap scan report for 10.10.11.38 Host is up (0.098s latency). Not shown: 986 closed tcp ports (reset) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 b6:fc:20:ae:9d:1d:45:1d:0b:ce:d9:d0:20:f2:6f:dc (RSA) | 256 f1:ae:1c:3e:1d:ea:55:44:6c:2f:f2:56:8d:62:3c:2b (ECDSA) |_ 256 94:42:1b:78:f2:51:87:07:3e:97:26:c9:a2:5c:0a:26 (ED25519) 306/tcp filtered unknown 668/tcp filtered mecomm 1049/tcp filtered td-postman 1112/tcp filtered msql 1247/tcp filtered visionpyramid 1600/tcp filtered issd 1801/tcp filtered msmq 4848/tcp filtered appserv-http 5000/tcp open upnp?</description>
+    </item>
+    
     <item>
       <title>HTB Seasonal: Sightless</title>
       <link>https://v3l1d.github.io/posts/htb-seasonal-sightless/</link>
@@ -64,15 +73,6 @@ nmap -sC -sV -A -T4 -p- 192.168.235.132 -o scan Starting Nmap 7.94SVN ( https://
       
       <guid>https://v3l1d.github.io/posts/htb-lame/</guid>
       <description>Port Scan 🔗Nmap 7.94SVN scan initiated Sat Aug 10 08:35:19 2024 as: nmap -sC -sV -A -T4 -Pn -o scan 10.10.10.3 Nmap scan report for 10.10.10.3 Host is up (0.15s latency). Not shown: 996 filtered tcp ports (no-response) PORT STATE SERVICE VERSION 21/tcp open ftp vsftpd 2.3.4 |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: | STAT: | FTP server status: | Connected to 10.10.14.185 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | vsFTPd 2.</description>
-    </item>
-    
-    <item>
-      <title>HTB: Chemistry</title>
-      <link>https://v3l1d.github.io/posts/htb-chemistry/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://v3l1d.github.io/posts/htb-chemistry/</guid>
-      <description>Port Scan 🔗# Nmap 7.94SVN scan initiated Fri Oct 25 12:20:35 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.10.11.38 Nmap scan report for 10.10.11.38 Host is up (0.098s latency). Not shown: 986 closed tcp ports (reset) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 b6:fc:20:ae:9d:1d:45:1d:0b:ce:d9:d0:20:f2:6f:dc (RSA) | 256 f1:ae:1c:3e:1d:ea:55:44:6c:2f:f2:56:8d:62:3c:2b (ECDSA) |_ 256 94:42:1b:78:f2:51:87:07:3e:97:26:c9:a2:5c:0a:26 (ED25519) 306/tcp filtered unknown 668/tcp filtered mecomm 1049/tcp filtered td-postman 1112/tcp filtered msql 1247/tcp filtered visionpyramid 1600/tcp filtered issd 1801/tcp filtered msmq 4848/tcp filtered appserv-http 5000/tcp open upnp?</description>
     </item>
     
   </channel>
