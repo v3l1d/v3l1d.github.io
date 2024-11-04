@@ -157,7 +157,7 @@ SMB         cicada.htb      445    CICADA-DC        1109: CICADA\Dev Support (Si
 SMB         cicada.htb      445    CICADA-DC        1601: CICADA\emily.oscars (SidTypeUser
 ```
 
-Trying the usernames i found that the correct one was **michael.wrightson:
+Trying the usernames i found that the correct one was **michael.wrightson**:
 
 ```shell
 ldapsearch -x -H ldap://cicada.htb -D "Cicada\\michael.wrightson" -w 'Cicada$M6Corpb*@Lp#nZp!8' -b "DC=cicada,DC=htb" "(objectClass=user)"
@@ -309,7 +309,7 @@ C:\Windows\system32>
 
 ![](attachment/6c4e7fc15c5e909ebca94f90ff258d6e.png)
 
-Then get root.txt in **C:\Users\Administrator\Desktop> 
+Then get root.txt in **C:\Users\Administrator\Desktop>**
 
 ![](attachment/1b649ffb4e75f05397d31a254f89ee84.png)
 
