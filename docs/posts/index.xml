@@ -47,14 +47,14 @@ HOP RTT       ADDRESS
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 62.45 seconds
 
-</code></pre></div><p><img src="attachment/1c65b14c8845d5d6c409e2fe6c8cea9c.png" alt=""></p>
-<h3 id="initial-port-scan">Initial Port Scan</h3>
+</code></pre></div><h3 id="initial-port-scan">Initial Port Scan</h3>
 <p>An initial scan of the target revealed two open ports:</p>
 <ul>
 <li><strong>Port 22 (SSH)</strong>: Running OpenSSH 8.9p1 Ubuntu</li>
 <li><strong>Port 80 (HTTP)</strong>: Hosting Apache HTTPD 2.4.52 (Ubuntu)</li>
 </ul>
 <p>Upon accessing the HTTP server, we were redirected to <code>trickster.htb</code>.</p>
+<p><img src="attachment/1c65b14c8845d5d6c409e2fe6c8cea9c.png" alt=""></p>
 <h3 id="domain-setup">Domain Setup</h3>
 <p>To interact with the web application, the domain <code>trickster.htb</code> was mapped in the hosts file. Within the site, navigation to the &ldquo;Shop&rdquo; section revealed a secondary domain, <code>shop.trickster.htb</code>, hosted on the PrestaShop CMS platform.</p>
 <p><img src="attachment/897c652fd839484ba4b2f5b96130e042.png" alt=""></p>
