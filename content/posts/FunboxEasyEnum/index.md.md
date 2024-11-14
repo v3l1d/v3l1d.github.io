@@ -13,7 +13,7 @@ On a lazy Saturday morning, August 17, 2024, I embarked on a thrilling adventure
 
 From port scan we got:
 
-```
+```shell
 nmap -sC -sV -A -T4 -p- 192.168.235.132  -o scan 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-14 08:12 EDT
 Nmap scan report for 192.168.235.132
@@ -180,7 +180,8 @@ User karla may run the following commands on funbox7:
 ```
 
 Run sudo su with its password:
-```
+
+```shell
 karla@funbox7:~$ sudo su
 root@funbox7:/home/karla# ls
 root@funbox7:/home/karla# cd /root/root.txt
@@ -196,7 +197,7 @@ root@funbox7:~#
 
 # Flags
 
-```
+```shell
 local:896e80f60f8536d18c123448e656a7fc
 proof.txt: d0a70330bf49d3799b000cbe3d7ec011
 ```

