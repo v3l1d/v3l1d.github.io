@@ -1,3 +1,9 @@
+---
+title: "HTB: Trickster"
+author: "v3l1d"
+date: "2024-11-12"
+year: "2024"
+---
 ### Port Scan
 
 ![](attachment/67ded40961c0ff7d9273362b8671de4c.png)
@@ -77,7 +83,7 @@ Log the last commit with git show:
 git show 
 ```
 
-Found the admin panel is on **admin634ewutrx1jgitlooaj** 
+Found the admin panel is on **/admin634ewutrx1jgitlooaj** 
 
 ![](attachment/0f3ad9ccf91a2c50385895f77d0c3e42.png)
 
