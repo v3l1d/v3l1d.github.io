@@ -4,7 +4,7 @@ title = "v3l1d's Blog"
 languageCode = "en-us"
 theme = "hello-friend-ng"  # Set theme to hello-friend-ng
 paginate = 10
-publishDir   = "public"
+publishDir   = "docs"
 [params]
   dateform = "Jan 2, 2006"
   dateformShort = "Jan 2"
