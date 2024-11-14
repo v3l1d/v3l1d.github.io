@@ -40,9 +40,6 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 62.45 seconds
 
 ```
-
-![](attachment/1c65b14c8845d5d6c409e2fe6c8cea9c.png)
-
 ### Initial Port Scan
 An initial scan of the target revealed two open ports:
 
@@ -50,6 +47,8 @@ An initial scan of the target revealed two open ports:
 - **Port 80 (HTTP)**: Hosting Apache HTTPD 2.4.52 (Ubuntu)
 
 Upon accessing the HTTP server, we were redirected to `trickster.htb`.
+
+![](attachment/1c65b14c8845d5d6c409e2fe6c8cea9c.png)
 
 ### Domain Setup
 To interact with the web application, the domain `trickster.htb` was mapped in the hosts file. Within the site, navigation to the "Shop" section revealed a secondary domain, `shop.trickster.htb`, hosted on the PrestaShop CMS platform.
