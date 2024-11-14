@@ -14,7 +14,6 @@ This document outlines the process of exploiting vulnerabilities on the HackTheB
 
 
 ### Port Scan
-
 ```shell
 # Nmap 7.94SVN scan initiated Fri Oct 25 12:20:35 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.10.11.38
 Nmap scan report for 10.10.11.38
@@ -145,7 +144,6 @@ OS and Service detection performed. Please report any incorrect results at https
 
 ```
 ## Port 5000 - Initial Access
-
 After creating a user account and logging in on port 5000, an upload form becomes visible. This upload form allows for the submission of `.cif` files, which we will use for further exploitation.
 
 ![](attachment/423da4aaa84e1eee68fc2a57325dfc93.png)
@@ -155,7 +153,6 @@ After creating a user account and logging in on port 5000, an upload form become
 Upon reviewing the upload functionality, I found a reference to a relevant vulnerability: [CVE-2024-23346](https://ethicalhacking.uk/cve-2024-23346-arbitrary-code-execution-in-pymatgen-via-insecure/#gsc.tab=0). This vulnerability allows for arbitrary code execution in the `pymatgen` library due to insecure handling of `.cif` files.
 
 ### Exploit Creation
-
 To generate a reverse shell exploit, I appended the following code to the example `.cif` file, which leverages the vulnerability in `pymatgen`:
 
 
@@ -190,6 +187,7 @@ _space_group_magn.name_BNS  "P  n'  m  a'  "
 ```
 
 After uploading the modified .cif file and clicking the "view" button, a reverse shell connection was established, allowing access to the server.
+
 ![](attachment/98544c9579f85dbaff4467d330a40405.png)
 
 Once in I browsed trough folders and found a .db file in **/instance**:
@@ -197,6 +195,7 @@ Once in I browsed trough folders and found a .db file in **/instance**:
 ![](attachment/a07416b7d39814bf65a972ab67ce98cb.png)
 
 So copy it and store in local to analyze and the go to https://inloop.github.io/sqlite-viewer/ to visualize it:
+
 ![](attachment/ae5c718a5452b6ba809d75e9acc8f8bb.png)
 
 
@@ -212,10 +211,10 @@ After cracking the MD5 hash on CrackStation, I obtained the following plaintext 
 rosa:unicorniosrosados
 ```
 ### SSH Access
-
 With the cracked credentials, I attempted to establish an SSH connection to the machine as the user rosa. This provided access to additional internal services. Port Forwarding and Service Exploration
 
-After connecting via SSH, I noticed an internal service running on port 8080, which wasn’t directly exposed externally. 
+After connecting via SSH, I noticed an internal service running on port 8080, which wasn’t directly exposed externally.
+
 ![](attachment/3e53bd91182caf7e0eb31b8d52df7f50.png)
 
 ![](attachment/edc77558fb5d6ae50ac9eabb0bb941b2.png)
@@ -237,7 +236,6 @@ The running service is aiohttp 3.9.1, which is vulnerable to directory traversal
 Through this vulnerability we can get the root flag:
 
 ### Exploiting Directory Traversal on aiohttp
-
 The service running on port 8080 uses aiohttp version 3.9.1, which is vulnerable to a directory traversal attack: **[CVE-2024-23334](https://github.com/ox1111/CVE-2024-23334)**. By exploiting this vulnerability, I was able to retrieve the root flag directly from the server: I also used this directory traversal method to access the /etc/shadow file, which contained hashed passwords for further analysis. Summary and Next Steps
 
 ```shell

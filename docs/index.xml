@@ -95,5 +95,14 @@ nmap -sC -sV -A -T4 -p- 192.168.235.132 -o scan Starting Nmap 7.94SVN ( https://
       <description>v31ld Contact Information  GitHub: github.com/v3l1d HackTheBox : v3l1d  Education  Master&amp;rsquo;s Degree  Master Degree in Cybersecurity, Università degli Studi di Milano (September 2021 - July 2024)  Final grade: 110/110 Thesis title: &amp;ldquo;Implementation of an AWS Cloud Infrastructure for Managing Performance-Based Layers of REST Services / gRPC with Optimized Communication&amp;rdquo;    Exchange Program  Exchange student in Master in Innovation and Research of Informatics, Universitat Politècnica de Catalunya - FIB Barcellona (September 2022 - October 2023)  Bachelor&amp;rsquo;s Degree  Bachelor Degree in Computer Science, Università degli Studi di Bari &amp;ldquo;Aldo Moro&amp;rdquo; (September 2018 - October 2021)  Final Grade: 107/110 Thesis Title: &amp;ldquo;Techniques and Methods for Secure Monitoring of Information and Events&amp;rdquo;    Technical Skills  Programming Languages  C/C++ Java Python JavaScript  Expertise  Systems Configuration and Implementation Enterprise Systems Development Pentetration Testing Reverse Engineering  </description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://v3l1d.github.io/posts/trickster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://v3l1d.github.io/posts/trickster/</guid>
+      <description>Port Scan ┌──(kali㉿kali)-[~/HTB/Trickster] └─$ nmap -sC -sV -A -T4 10.10.11.34 -o scan Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-11-07 16:28 EST Nmap scan report for 10.10.11.34 Host is up (0.088s latency). Not shown: 998 closed tcp ports (reset) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 256 8c:01:0e:7b:b4:da:b7:2f:bb:2f:d3:a3:8c:a6:6d:87 (ECDSA) |_ 256 90:c6:f3:d8:3f:96:99:94:69:fe:d3:72:cb:fe:6c:c5 (ED25519) 80/tcp open http Apache httpd 2.4.52 |_http-title: Did not follow redirect to http://trickster.</description>
+    </item>
+    
   </channel>
 </rss>
