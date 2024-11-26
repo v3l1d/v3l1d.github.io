@@ -20,7 +20,7 @@ publishDir   = "docs"
   hasMermaid = false
   enableGlobalLanguageMenu = false
   enableThemeToggle = true
-  description = "My new homepage or blog"
+  description = "v3l1d's Writeups Blog"
   keywords = "homepage, blog"
   images = [""]
 
