@@ -125,5 +125,14 @@ Port Scan # Nmap 7.94SVN scan initiated Sat Aug 10 10:26:58 2024 as: nmap -sC -s
       <description>v31ld Contact Information  GitHub: github.com/v3l1d HackTheBox : v3l1d  Education  Master&amp;rsquo;s Degree  Master Degree in Cybersecurity, Università degli Studi di Milano (September 2021 - July 2024)  Final grade: 110/110 Thesis title: &amp;ldquo;Implementation of an AWS Cloud Infrastructure for Managing Performance-Based Layers of REST Services / gRPC with Optimized Communication&amp;rdquo;    Exchange Program  Exchange student in Master in Innovation and Research of Informatics, Universitat Politècnica de Catalunya - FIB Barcellona (September 2022 - October 2023)  Bachelor&amp;rsquo;s Degree  Bachelor Degree in Computer Science, Università degli Studi di Bari &amp;ldquo;Aldo Moro&amp;rdquo; (September 2018 - October 2021)  Final Grade: 107/110 Thesis Title: &amp;ldquo;Techniques and Methods for Secure Monitoring of Information and Events&amp;rdquo;    Technical Skills  Programming Languages  C/C++ Java Python JavaScript  Expertise  Systems Configuration and Implementation Enterprise Systems Development Pentetration Testing Reverse Engineering  </description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://v3l1d.github.io/posts/instant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://v3l1d.github.io/posts/instant/</guid>
+      <description>Port Scanning nmap -sC -sV -A -T4 -o port_scan 10.10.11.37 Nmap scan report for 10.10.11.37 Host is up (0.055s latency). Not shown: 998 closed tcp ports (reset) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 9.6p1 Ubuntu 3ubuntu13.5 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 256 31:83:eb:9f:15:f8:40:a5:04:9c:cb:3f:f6:ec:49:76 (ECDSA) |_ 256 6f:66:03:47:0e:8a:e0:03:97:67:5b:41:cf:e2:c7:c7 (ED25519) 80/tcp open http Apache httpd 2.4.58 |_http-server-header: Apache/2.4.58 (Ubuntu) |_http-title: Did not follow redirect to http://instant.htb/ Device type: general purpose Running: Linux 5.</description>
+    </item>
+    
   </channel>
 </rss>

