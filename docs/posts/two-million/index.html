@@ -192,7 +192,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </span><span style="color:#ae81ff"></span>  http://2million.htb/api/v1/invite/generate <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{}&#39;</span>
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;0&#34;</span>:200,<span style="color:#e6db74">&#34;success&#34;</span>:1,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;N0VDWEYtQjFWU1UtVDNZSTktMTFMRFc=&#34;</span>,<span style="color:#e6db74">&#34;format&#34;</span>:<span style="color:#e6db74">&#34;encoded&#34;</span><span style="color:#f92672">}}</span>                                                                                                                                    
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;0&#34;</span>:200,<span style="color:#e6db74">&#34;success&#34;</span>:1,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;N0VDWEYt************&#34;</span>,<span style="color:#e6db74">&#34;format&#34;</span>:<span style="color:#e6db74">&#34;encoded&#34;</span><span style="color:#f92672">}}</span>                                                                                                                                    
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB<span style="color:#f92672">]</span>
 └─$
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB<span style="color:#f92672">]</span>
@@ -200,9 +200,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </span><span style="color:#ae81ff"></span>  http://2million.htb/api/v1/invite/generate <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{}&#39;</span>
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;0&#34;</span>:200,<span style="color:#e6db74">&#34;success&#34;</span>:1,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;SFlKOUUtSDNQU0ItMEhJTFotMDlIVVU=&#34;</span>,<span style="color:#e6db74">&#34;format&#34;</span>:<span style="color:#e6db74">&#34;encoded&#34;</span><span style="color:#f92672">}}</span>                                                                                                                              
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;0&#34;</span>:200,<span style="color:#e6db74">&#34;success&#34;</span>:1,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;SFlKOUUtSDNQU************&#34;</span>,<span style="color:#e6db74">&#34;format&#34;</span>:<span style="color:#e6db74">&#34;encoded&#34;</span><span style="color:#f92672">}}</span>                                                                                                                              
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB<span style="color:#f92672">]</span>
-└─$ echo <span style="color:#e6db74">&#34;SFlKOUUtSDNQU0ItMEhJTFotMDlIVVU=&#34;</span> | base64 -d          
+└─$ echo <span style="color:#e6db74">&#34;SFlKOUUtSDN************&#34;</span> | base64 -d          
 HYJ9E-H3PSB-0HILZ-09HUU      
 
 </code></pre></div><h2 id="api-enumeration">API Enumeration</h2>
@@ -309,16 +309,16 @@ drwxr-xr-x  <span style="color:#ae81ff">2</span> root root <span style="color:#a
 Cat the .env file:</p>
 <p><img src="attachment/76cd033960d09f1f9ebf70f4cbfa5501.png" alt=""></p>
 <p>Log in ssh with credentials</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh admin@10.10.11.221: SuperDuberPass123
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh admin@10.10.11.221: Su************
 </code></pre></div><p><img src="attachment/0127d0b1827447c60fa7afec74c2f32b.png" alt=""></p>
 <h3 id="privilege-escalation-cve-2023-0386">Privilege Escalation (CVE-2023-0386)</h3>
 <p>The <a href="https://github.com/xkaneiki/CVE-2023-0386">CVE-2023-0386</a> exploit was used to escalate privileges to root. This exploit enabled full control over the target system, concluding the penetration test with root access.
 This CVE will give you root access</p>
 <p><img src="attachment/3a2cb1f670e1d6bbaa01132a1090bf31.png" alt=""></p>
 <h3 id="flags">Flags</h3>
-<pre tabindex="0"><code>root:7dc68d17b543edb77d35bc192d63907a
-user:f62e9b661ecc6002193860132292c635
-</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">root:7dc68d17************
+user:f62e9b66************
+</code></pre></div>
       </div>
     </article>
 

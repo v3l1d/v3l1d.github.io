@@ -83,7 +83,7 @@ $ cat db.php
 <?php
 $dsn = "mysql:host=db;dbname=resourcecenter;";
 $dbusername = "jj";
-$dbpassword = "ugEG5rR5SG8uPd";
+$dbpassword = "ugEG5********";
 $pdo = new PDO($dsn, $dbusername, $dbpassword);
 
 try {
@@ -101,7 +101,7 @@ This box looks always broken so i decided to look a writeup and found out that s
 
 ```shell
 Credentials:
-msainristil:82yards2closeit
+msainristil:82********
 ```
 
 ![](attachment/334f5c9284c02ea18b054c4959331e94.png)
@@ -162,11 +162,7 @@ From a writeup (i needed help) i recover this key that we will use a certificate
 ```shell
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW 
-QyNTUxOQAAACCB4PArnctUocmH6swtwDZYAHFu0ODKGbnswBPJjRUpsQAAAKg7BlysOwZc 
-rAAAAAtzc2gtZWQyNTUxOQAAACCB4PArnctUocmH6swtwDZYAHFu0ODKGbnswBPJjRUpsQ 
-AAAEBexnpzDJyYdz+91UG3dVfjT/scyWdzgaXlgx75RjYOo4Hg8Cudy1ShyYfqzC3ANlgA 
-cW7Q4MoZuezAE8mNFSmxAAAAIkdsb2JhbCBTU0cgU1NIIENlcnRmaWNpYXRlIGZyb20gSV 
-QBAgM=
+.......
 -----END OPENSSH PRIVATE KEY-----
 ```
 
@@ -204,6 +200,6 @@ The resulting certificate is stored in `keypair-cert.pub`.
 ![](attachment/d9314cee50c28c2118e10e586b1ea6b8.png)
 
 ```shell
-user: 98a79086fe46218a7edd6abc87eb54f3
-root: 495f767f17cf87214179384c1f145b91
+user: 98a79086fe4621************
+root: 495f767f17cf87************
 ```

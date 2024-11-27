@@ -77,8 +77,8 @@ There's a file sqlpad.sqlite:
 
 In this file are present some interesting parts:
 
-```
-admin@sightless.htbadmin$2a$10$cjbITibC.4BQQKJ8NOBUv.p0bG2n8t.
+```shell
+admin@sightless.htbadmin$2a$10$cjbITibC.********.
 ����1john@sightless.htb3        admin@sightless.htb
 ```
 
@@ -89,8 +89,8 @@ Meanwhile try to run a linpeas on sqlpad machine:
 
 There's an hash for user **micheal** in passwd file:
 
-```
-michael:$6$mG3Cp2VPGY.FDE8u$KVWVIHzqTzhOSYkzJIpFc2EsgmqvPa.q2Z9bLUU6tlBWaEwuxCDEP9UFHIXNUcF2rBnsaFYuJa6DUh/pL2IJD/:19860:0:99999:7::
+```shell
+michael:$6$mG3Cp2VPGY.********:19860:0:99999:7::
 ```
 
 Try to crack it with hashcat:
@@ -152,7 +152,7 @@ Stopped: Sat Oct 19 08:58:49 2024
 
 ┌──(kali㉿kali)-[~/HTB/Sightless]
 └─$ cat cracked_micheal_hash.txt 
-$6$mG3Cp2VPGY.FDE8u$KVWVIHzqTzhOSYkzJIpFc2EsgmqvPa.q2Z9bLUU6tlBWaEwuxCDEP9UFHIXNUcF2rBnsaFYuJa6DUh/pL2IJD/:insaneclownposse
+$6$mG3Cp2VPGY.********:********
 
 
 ```
@@ -161,8 +161,8 @@ Try ssh into **michael**:
 
 ![](attachment/e86b9c94c5913aea4b70e9b7e3fb03cc.png)
 
-```
-userflag:9dc449a3cd76e16166ea0ae08bd65880
+```shell
+userflag:9dc449a3********
 ```
 
 By analyzing services running on port:
@@ -175,8 +175,8 @@ During ports forwarding trough SSH i found that there's froxlor running on 8080,
 
 ![](attachment/70fff9de0a46ccc3364d2458727d946c.png)
 
-```
-admin:ForlorfroxAdmin
+```shell
+admin:F********
 ```
 
 
@@ -189,7 +189,7 @@ After saving the PHPFM configuration disable and enable this by settings panel a
 
 Now redo this procedure with the chmod command on id_rsa file just copied:
 
-```
+```shell
 chmod 644 /tmp/id_rsa
 ```
 
@@ -199,6 +199,6 @@ After a bit the command will be executed and you will be able to use id_rsa to l
 
 ![](attachment/b21470aaf193edff2e229c3637135c2c.png)
 
-```
-rootflag: 7a2a1b4afb44130a744827929fe643d3
+```shell
+rootflag: 7a2a1b4afb4********
 ```

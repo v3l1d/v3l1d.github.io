@@ -206,14 +206,14 @@ listening on <span style="color:#f92672">[</span>any<span style="color:#f92672">
 <p>There&rsquo;s a file sqlpad.sqlite:
 <img src="attachment/9ee6825e92c38020c4d8b7f7fbb9f070.png" alt=""></p>
 <p>In this file are present some interesting parts:</p>
-<pre tabindex="0"><code>admin@sightless.htbadmin$2a$10$cjbITibC.4BQQKJ8NOBUv.p0bG2n8t.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">admin@sightless.htbadmin$2a$10$cjbITibC.********.
 ����1john@sightless.htb3        admin@sightless.htb
-</code></pre><p>Meanwhile try to run a linpeas on sqlpad machine:
+</code></pre></div><p>Meanwhile try to run a linpeas on sqlpad machine:
 <img src="attachment/cb5e7e14d62ecb6a8111c1d31d0440bd.png" alt=""></p>
 <p><img src="attachment/a0f88f95ba5694f4e5d41dc034b8ce87.png" alt=""></p>
 <p>There&rsquo;s an hash for user <strong>micheal</strong> in passwd file:</p>
-<pre tabindex="0"><code>michael:$6$mG3Cp2VPGY.FDE8u$KVWVIHzqTzhOSYkzJIpFc2EsgmqvPa.q2Z9bLUU6tlBWaEwuxCDEP9UFHIXNUcF2rBnsaFYuJa6DUh/pL2IJD/:19860:0:99999:7::
-</code></pre><p>Try to crack it with hashcat:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">michael:$6$mG3Cp2VPGY.********:19860:0:99999:7::
+</code></pre></div><p>Try to crack it with hashcat:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sightless<span style="color:#f92672">]</span>
 └─$ <span style="color:#75715e"># Example command for Hashcat</span>
 hashcat -m <span style="color:#ae81ff">1800</span> -a <span style="color:#ae81ff">0</span> -o cracked_micheal_hash.txt micheal_user_hash /usr/share/wordlists/rockyou.txt
@@ -270,29 +270,29 @@ Stopped: Sat Oct <span style="color:#ae81ff">19</span> 08:58:49 <span style="col
 
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sightless<span style="color:#f92672">]</span>
 └─$ cat cracked_micheal_hash.txt 
-$6$mG3Cp2VPGY.FDE8u$KVWVIHzqTzhOSYkzJIpFc2EsgmqvPa.q2Z9bLUU6tlBWaEwuxCDEP9UFHIXNUcF2rBnsaFYuJa6DUh/pL2IJD/:insaneclownposse
+$6$mG3Cp2VPGY.********:********
 
 
 </code></pre></div><p>Try ssh into <strong>michael</strong>:</p>
 <p><img src="attachment/e86b9c94c5913aea4b70e9b7e3fb03cc.png" alt=""></p>
-<pre tabindex="0"><code>userflag:9dc449a3cd76e16166ea0ae08bd65880
-</code></pre><p>By analyzing services running on port:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:9dc449a3********
+</code></pre></div><p>By analyzing services running on port:</p>
 <p><img src="attachment/c6a62ceea6e4a4ba4721657b76a164e5.png" alt=""></p>
 <p>During ports forwarding trough SSH i found that there&rsquo;s froxlor running on 8080, but isn&rsquo;t reachable due the missing of it&rsquo;s domain name. Inspecting other ports i found that port 40975 is the port of an available chrome debugger:</p>
 <p><img src="attachment/91d6ba2807b9fbb33ce0dc23bd8ee157.png" alt=""></p>
 <p><img src="attachment/70fff9de0a46ccc3364d2458727d946c.png" alt=""></p>
-<pre tabindex="0"><code>admin:ForlorfroxAdmin
-</code></pre><p><img src="attachment/46aef148daacdeee888551a751e330d5.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">admin:F********
+</code></pre></div><p><img src="attachment/46aef148daacdeee888551a751e330d5.png" alt=""></p>
 <p><img src="attachment/82f88746687d4741f0f013bf84f1f829.png" alt=""></p>
 <p>After saving the PHPFM configuration disable and enable this by settings panel after querying
 <code>http://127.0.0.1:8080/admin_settings.php?start=phpfpm</code></p>
 <p>Now redo this procedure with the chmod command on id_rsa file just copied:</p>
-<pre tabindex="0"><code>chmod 644 /tmp/id_rsa
-</code></pre><p><img src="attachment/51da7e56b9548e78bc8115eeb77b66b8.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod <span style="color:#ae81ff">644</span> /tmp/id_rsa
+</code></pre></div><p><img src="attachment/51da7e56b9548e78bc8115eeb77b66b8.png" alt=""></p>
 <p>After a bit the command will be executed and you will be able to use id_rsa to login into root&rsquo;s ssh:</p>
 <p><img src="attachment/b21470aaf193edff2e229c3637135c2c.png" alt=""></p>
-<pre tabindex="0"><code>rootflag: 7a2a1b4afb44130a744827929fe643d3
-</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag: 7a2a1b4afb4********
+</code></pre></div>
       </div>
     </article>
 

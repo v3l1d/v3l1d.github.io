@@ -125,7 +125,7 @@ $ cat database.js
         "forceLogout": false,
         "forceHttps": false,
         "saveChangesPopup": false,
-        "password": "$2y$10$iOrk210RQSAzNCx6Vyq2X.aJ\/D.GuE4jRIikYiWrD3TM\/PjDnXm4q",
+        "password": "$2y$10$iOrk210RQSA****************",
         "lastLogins": {
             "2024\/08\/13 18:10:26": "127.0.0.1",
             "2024\/08\/13 18:09:26": "127.0.0.1",
@@ -141,10 +141,10 @@ $ cat database.js
 Fix the hash provided removing the escapes obtaining this:
 
 ```shell
-$2y$10$iOrk210RQSAzNCx6Vyq2X.aJ/D.GuE4jRIikYiWrD3TM/PjDnXm4q
+$2y$10$iOrk****************
 ┌──(kali㉿kali)-[~/HTB/Sea]
 └─$ hashcat hash.txt -m 3200 /usr/share/wordlists/rockyou.txt
-$2y$10$iOrk210RQSAzNCx6Vyq2X.aJ/D.GuE4jRIikYiWrD3TM/PjDnXm4q:mychemicalromance
+$2y$10$iOrk21****************:****************
                                                           
 Session..........: hashcat
 Status...........: Cracked
@@ -209,6 +209,6 @@ log_file=/root/root.txt;ls&analyze_log=/root/root.txt
 
 **Flags
 ```shell
-user:459138e5dbf2ead0be8b9c7944a38af7
-root:c58fac10593819ba13ab985ab6389ce0
+user:459138e5dbf2****************
+root:c58fac105938****************
 ```

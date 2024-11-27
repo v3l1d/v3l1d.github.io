@@ -129,15 +129,17 @@ reset_logs.sh
 root.txt
 vnc.log
 cat root.txt
-6118f8816315bd33ecac622d179c65af
+6118f881631**********
 ```
 
-![](attachment/95e2ca9714b079079c673225e5a17f15.png)![](attachment/e0218db999901f943bf934f889d0edec.png)
+![](attachment/95e2ca9714b079079c673225e5a17f15.png)
+
+![](attachment/e0218db999901f943bf934f889d0edec.png)
 
 ### Flags
 
-```
-root:6118f8816315bd33ecac622d179c65af
-user:15fd56e82fdefb166bfb1631b6c6360a
+```shell
+root:6118f8816315**********
+user:15fd56e82fde**********
 
 ```

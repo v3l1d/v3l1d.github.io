@@ -53,7 +53,7 @@ The API provided an endpoint for generating invite codes. By making POST request
   http://2million.htb/api/v1/invite/generate \
   -H 'Content-Type: application/json' \
   -d '{}'
-{"0":200,"success":1,"data":{"code":"N0VDWEYtQjFWU1UtVDNZSTktMTFMRFc=","format":"encoded"}}                                                                                                                                    
+{"0":200,"success":1,"data":{"code":"N0VDWEYt************","format":"encoded"}}                                                                                                                                    
 ┌──(kali㉿kali)-[~/HTB]
 └─$
 ┌──(kali㉿kali)-[~/HTB]
@@ -61,9 +61,9 @@ The API provided an endpoint for generating invite codes. By making POST request
   http://2million.htb/api/v1/invite/generate \
   -H 'Content-Type: application/json' \
   -d '{}'
-{"0":200,"success":1,"data":{"code":"SFlKOUUtSDNQU0ItMEhJTFotMDlIVVU=","format":"encoded"}}                                                                                                                              
+{"0":200,"success":1,"data":{"code":"SFlKOUUtSDNQU************","format":"encoded"}}                                                                                                                              
 ┌──(kali㉿kali)-[~/HTB]
-└─$ echo "SFlKOUUtSDNQU0ItMEhJTFotMDlIVVU=" | base64 -d          
+└─$ echo "SFlKOUUtSDN************" | base64 -d          
 HYJ9E-H3PSB-0HILZ-09HUU      
 
 ```
@@ -192,7 +192,7 @@ Cat the .env file:
 Log in ssh with credentials
 
 ```shell
-ssh admin@10.10.11.221: SuperDuberPass123
+ssh admin@10.10.11.221: Su************
 ```
 
 ![](attachment/0127d0b1827447c60fa7afec74c2f32b.png)
@@ -206,7 +206,7 @@ This CVE will give you root access
 
 ### Flags
 
-```
-root:7dc68d17b543edb77d35bc192d63907a
-user:f62e9b661ecc6002193860132292c635
+```shell
+root:7dc68d17************
+user:f62e9b66************
 ```

