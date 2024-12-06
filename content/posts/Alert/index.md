@@ -1,5 +1,5 @@
 ---
-title: "HTB: Alert Release Arena"
+title: "HTB Release Arena: Alert"
 author: "v3l1d"
 date: "2024-11-26"
 year: "2024"
